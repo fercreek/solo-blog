@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { FaCheckCircle, FaClock, FaTarget } from 'react-icons/fa';
+import { FaCheckCircle, FaClock, FaBullseye } from 'react-icons/fa';
+import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { parseImpossibleListContent, getSectionIcon } from '../utils/contentParser';
 
 const ListContainer = styled.div`
   max-width: 100%;
@@ -8,10 +10,26 @@ const ListContainer = styled.div`
 
 const Section = styled.section`
   margin-bottom: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: ${soloLevelingTheme.colors.gradients.secondary};
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  box-shadow: ${soloLevelingTheme.shadows.purple};
   overflow: hidden;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      ${soloLevelingTheme.colors.accent.orange},
+      ${soloLevelingTheme.colors.accent.gold}
+    );
+  }
   
   @media (min-width: 768px) {
     margin-bottom: 2.5rem;
@@ -19,8 +37,8 @@ const Section = styled.section`
 `;
 
 const SectionHeader = styled.div`
-  background: linear-gradient(135deg, #0070f3 0%, #0051cc 100%);
-  color: white;
+  background: ${soloLevelingTheme.colors.gradients.primary};
+  color: ${soloLevelingTheme.colors.text.primary};
   padding: 1rem 1.25rem;
   
   @media (min-width: 768px) {
@@ -31,10 +49,17 @@ const SectionHeader = styled.div`
 const SectionTitle = styled.h2`
   margin: 0;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
+  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: ${soloLevelingTheme.colors.text.primary};
+  
+  svg {
+    color: ${soloLevelingTheme.colors.accent.gold};
+    filter: drop-shadow(0 0 4px rgba(253, 203, 110, 0.3));
+  }
   
   @media (min-width: 768px) {
     font-size: 1.25rem;
@@ -66,18 +91,40 @@ const GoalItem = styled.li`
   align-items: flex-start;
   gap: 0.75rem;
   padding: 1rem;
-  background: ${props => props.completed ? '#f8f9fa' : '#fff'};
-  border: 1px solid ${props => props.completed ? '#28a745' : '#e9ecef'};
-  border-left: 4px solid ${props => props.completed ? '#28a745' : '#ffc107'};
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  background: ${soloLevelingTheme.colors.secondary};
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  border-radius: ${soloLevelingTheme.borderRadius.md};
+  transition: all ${soloLevelingTheme.animations.transition.fast};
   min-height: 60px;
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+      180deg,
+      ${soloLevelingTheme.colors.accent.orange},
+      ${soloLevelingTheme.colors.accent.gold}
+    );
+    opacity: 0;
+    transition: opacity ${soloLevelingTheme.animations.transition.fast};
   }
-  
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${soloLevelingTheme.shadows.glow};
+    border-color: ${soloLevelingTheme.colors.accent.orange};
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+
   @media (min-width: 768px) {
     padding: 1.25rem;
     gap: 1rem;
@@ -92,10 +139,12 @@ const GoalIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 0.125rem;
-  
+
   svg {
     font-size: 1.1rem;
-    color: ${props => props.completed ? '#28a745' : '#ffc107'};
+    color: ${props => props.completed ? soloLevelingTheme.colors.status.success : soloLevelingTheme.colors.accent.gold};
+    filter: drop-shadow(0 0 4px ${props => props.completed ? 'rgba(104, 211, 145, 0.3)' : 'rgba(253, 203, 110, 0.3)'});
+    transition: all ${soloLevelingTheme.animations.transition.fast};
   }
 `;
 
@@ -107,30 +156,35 @@ const GoalContent = styled.div`
 const GoalText = styled.div`
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #333;
+  color: ${soloLevelingTheme.colors.text.primary};
   word-wrap: break-word;
-  
+
   @media (min-width: 768px) {
     font-size: 1rem;
   }
-  
+
   strong {
-    font-weight: 600;
-    color: #222;
+    font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
+    color: ${soloLevelingTheme.colors.accent.gold};
+    text-shadow: 0 0 4px rgba(253, 203, 110, 0.2);
   }
-  
+
   em {
-    color: #666;
+    color: ${soloLevelingTheme.colors.text.secondary};
     font-style: italic;
     font-size: 0.9rem;
   }
-  
+
   a {
-    color: #0070f3;
+    color: ${soloLevelingTheme.colors.accent.orange};
     text-decoration: none;
     word-break: break-word;
+    font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+    transition: all ${soloLevelingTheme.animations.transition.fast};
     
     &:hover {
+      color: ${soloLevelingTheme.colors.accent.gold};
+      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
       text-decoration: underline;
     }
   }
@@ -149,85 +203,42 @@ const SubGoalItem = styled.li`
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.75rem;
-  background: ${props => props.completed ? '#e8f5e8' : '#f8f9fa'};
-  border-radius: 6px;
-  border-left: 3px solid ${props => props.completed ? '#28a745' : '#6c757d'};
+  background: ${soloLevelingTheme.colors.tertiary};
+  border-radius: ${soloLevelingTheme.borderRadius.sm};
+  border-left: 3px solid ${soloLevelingTheme.colors.accent.purple};
   font-size: 0.9rem;
+  color: ${soloLevelingTheme.colors.text.secondary};
+  transition: all ${soloLevelingTheme.animations.transition.fast};
   
+  &:hover {
+    background: ${soloLevelingTheme.colors.secondary};
+    border-left-color: ${soloLevelingTheme.colors.accent.gold};
+    transform: translateX(4px);
+  }
+
   @media (min-width: 768px) {
     padding: 1rem;
     font-size: 0.95rem;
   }
 `;
 
-const parseImpossibleListContent = (content) => {
-  const lines = content.split('\n').filter(line => line.trim());
-  const sections = [];
-  let currentSection = null;
-  
-  lines.forEach(line => {
-    const trimmedLine = line.trim();
-    
-    // Section headers (# Title)
-    if (trimmedLine.startsWith('# ')) {
-      if (currentSection) {
-        sections.push(currentSection);
-      }
-      currentSection = {
-        title: trimmedLine.replace('# ', ''),
-        goals: []
-      };
-    }
-    // Goals (- text or - ✅ text)
-    else if (trimmedLine.startsWith('- ')) {
-      if (currentSection) {
-        const goalText = trimmedLine.replace('- ', '');
-        const isCompleted = goalText.includes('✅');
-        const cleanText = goalText.replace('✅ ', '');
-        
-        // Check if this is a sub-goal (indented)
-        if (line.startsWith('  - ')) {
-          // Add as sub-goal to the last goal
-          const lastGoal = currentSection.goals[currentSection.goals.length - 1];
-          if (lastGoal) {
-            if (!lastGoal.subGoals) lastGoal.subGoals = [];
-            lastGoal.subGoals.push({
-              text: cleanText,
-              completed: isCompleted
-            });
-          }
-        } else {
-          // Add as main goal
-          currentSection.goals.push({
-            text: cleanText,
-            completed: isCompleted,
-            subGoals: []
-          });
-        }
-      }
-    }
-  });
-  
-  if (currentSection) {
-    sections.push(currentSection);
-  }
-  
-  return sections;
-};
 
-const getSectionIcon = (title) => {
-  const lowerTitle = title.toLowerCase();
-  if (lowerTitle.includes('completed') || lowerTitle.includes('check-in')) {
-    return <FaCheckCircle />;
-  }
-  if (lowerTitle.includes('current') || lowerTitle.includes('focuses')) {
-    return <FaClock />;
-  }
-  return <FaTarget />;
-};
 
 const ImpossibleList = ({ content }) => {
   const sections = parseImpossibleListContent(content);
+  
+  const renderIcon = (iconName) => {
+    switch (iconName) {
+      case 'FaCheckCircle':
+        return <FaCheckCircle />;
+      case 'FaClock':
+        return <FaClock />;
+      case 'FaBullseye':
+        return <FaBullseye />;
+      default:
+        return <FaBullseye />;
+    }
+  };
   
   return (
     <ListContainer>
@@ -235,7 +246,7 @@ const ImpossibleList = ({ content }) => {
         <Section key={index}>
           <SectionHeader>
             <SectionTitle>
-              {getSectionIcon(section.title)}
+              {renderIcon(getSectionIcon(section.title))}
               {section.title}
             </SectionTitle>
           </SectionHeader>

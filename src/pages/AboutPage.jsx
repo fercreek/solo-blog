@@ -1,20 +1,26 @@
-import MarkdownContent from '../components/MarkdownContent';
-import { aboutData } from '../data/about';
-import styled from 'styled-components';
-
-const PageTitle = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #333;
-  text-align: center;
-`;
+import MarkdownContent from "../components/MarkdownContent";
+import { aboutData } from "../data/about";
+import {
+  PageContainer,
+  PageHeader,
+  PageTitle,
+  ContentWrapper,
+  PageDescription,
+} from "../components/PageComponents";
 
 const AboutPage = () => {
   return (
-    <div>
-      <PageTitle>About Me</PageTitle>
-      <MarkdownContent content={aboutData} />
-    </div>
+    <PageContainer>
+      <PageHeader>
+        <PageTitle>About Me</PageTitle>
+        <PageDescription>
+          Discover my journey through code, dance, and digital innovation
+        </PageDescription>
+      </PageHeader>
+      <ContentWrapper>
+        <MarkdownContent content={aboutData} />
+      </ContentWrapper>
+    </PageContainer>
   );
 };
 

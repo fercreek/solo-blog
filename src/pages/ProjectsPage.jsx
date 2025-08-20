@@ -1,20 +1,35 @@
 import MarkdownContent from '../components/MarkdownContent';
 import { projectsData } from '../data/projects';
 import styled from 'styled-components';
+import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import {
+  PageContainer,
+  PageHeader,
+  PageTitle,
+  ContentWrapper
+} from '../components/PageComponents';
 
-const PageTitle = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #333;
-  text-align: center;
+const PageSubtitle = styled.p`
+  font-size: 1.2rem;
+  color: ${soloLevelingTheme.colors.text.secondary};
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 `;
 
 const ProjectsPage = () => {
   return (
-    <div>
-      <PageTitle>Projects</PageTitle>
-      <MarkdownContent content={projectsData} />
-    </div>
+    <PageContainer>
+      <PageHeader>
+        <PageTitle>Projects</PageTitle>
+        <PageSubtitle>
+          Explore my technical creations and development journey
+        </PageSubtitle>
+      </PageHeader>
+      <ContentWrapper>
+        <MarkdownContent content={projectsData} />
+      </ContentWrapper>
+    </PageContainer>
   );
 };
 
