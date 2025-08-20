@@ -1,28 +1,8 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { parseMarkdownContent, processMarkdownText } from '../utils/contentParser';
+import { fadeInUp, shimmer } from '../styles/keyframes';
 import { FaTrophy, FaMedal, FaAward, FaMusic, FaCode, FaCalendarAlt } from 'react-icons/fa';
-
-// Animaciones reutilizables
-export const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-export const shimmer = keyframes`
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-`;
 
 // Contenedor principal de página
 export const PageContainer = styled.div`

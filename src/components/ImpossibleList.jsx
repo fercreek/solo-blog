@@ -1,7 +1,9 @@
+import { useState, useMemo } from 'react';
 import styled from 'styled-components';
-import { FaCheckCircle, FaClock, FaBullseye } from 'react-icons/fa';
+import { FaCheckCircle, FaClock, FaBullseye, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { parseImpossibleListContent, getSectionIcon } from '../utils/contentParser';
+import { fadeInUp } from '../styles/keyframes';
 
 const ListContainer = styled.div`
   max-width: 100%;
@@ -16,6 +18,9 @@ const Section = styled.section`
   box-shadow: ${soloLevelingTheme.shadows.purple};
   overflow: hidden;
   position: relative;
+  animation: ${fadeInUp} 0.6s ease-out;
+  animation-delay: ${props => props.index * 0.1}s;
+  animation-fill-mode: both;
   
   &::before {
     content: '';
@@ -40,6 +45,12 @@ const SectionHeader = styled.div`
   background: ${soloLevelingTheme.colors.gradients.primary};
   color: ${soloLevelingTheme.colors.text.primary};
   padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all ${soloLevelingTheme.animations.transition.fast};
+  
+  &:hover {
+    background: ${soloLevelingTheme.colors.gradients.secondary};
+  }
   
   @media (min-width: 768px) {
     padding: 1.25rem 1.5rem;
@@ -53,8 +64,20 @@ const SectionTitle = styled.h2`
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   color: ${soloLevelingTheme.colors.text.primary};
+  
+  .title-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .collapse-icon {
+    transition: transform ${soloLevelingTheme.animations.transition.fast};
+    transform: ${props => props.collapsed ? 'rotate(-90deg)' : 'rotate(0deg)'};
+  }
   
   svg {
     color: ${soloLevelingTheme.colors.accent.gold};
@@ -67,10 +90,13 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionContent = styled.div`
-  padding: 1.25rem;
+  padding: ${props => props.collapsed ? '0' : '1.25rem'};
+  max-height: ${props => props.collapsed ? '0' : '2000px'};
+  overflow: hidden;
+  transition: all ${soloLevelingTheme.animations.transition.medium};
   
   @media (min-width: 768px) {
-    padding: 1.5rem;
+    padding: ${props => props.collapsed ? '0' : '1.5rem'};
   }
 `;
 
@@ -224,8 +250,63 @@ const SubGoalItem = styled.li`
 
 
 
-const ImpossibleList = ({ content }) => {
-  const sections = parseImpossibleListContent(content);
+const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
+  const [collapsedSections, setCollapsedSections] = useState(new Set());
+  
+  const sections = useMemo(() => parseImpossibleListContent(content), [content]);
+  
+  const filteredSections = useMemo(() => {
+    return sections.map(section => {
+      const filteredGoals = section.goals.filter(goal => {
+        // Filter by search term
+        const matchesSearch = !searchTerm || 
+          goal.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (goal.subGoals && goal.subGoals.some(subGoal => 
+            subGoal.text.toLowerCase().includes(searchTerm.toLowerCase())
+          ));
+        
+        // Filter by completion status
+        const matchesFilter = filter === 'all' || 
+          (filter === 'completed' && goal.completed) ||
+          (filter === 'progress' && !goal.completed);
+        
+        return matchesSearch && matchesFilter;
+      }).map(goal => {
+        // Also filter subgoals if they exist
+        if (goal.subGoals) {
+          const filteredSubGoals = goal.subGoals.filter(subGoal => {
+            const matchesSearch = !searchTerm || 
+              subGoal.text.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesFilter = filter === 'all' || 
+              (filter === 'completed' && subGoal.completed) ||
+              (filter === 'progress' && !subGoal.completed);
+            return matchesSearch && matchesFilter;
+          });
+          
+          return {
+            ...goal,
+            subGoals: filteredSubGoals
+          };
+        }
+        return goal;
+      });
+      
+      return {
+        ...section,
+        goals: filteredGoals
+      };
+    }).filter(section => section.goals.length > 0);
+  }, [sections, searchTerm, filter]);
+  
+  const toggleSection = (index) => {
+    const newCollapsed = new Set(collapsedSections);
+    if (newCollapsed.has(index)) {
+      newCollapsed.delete(index);
+    } else {
+      newCollapsed.add(index);
+    }
+    setCollapsedSections(newCollapsed);
+  };
   
   const renderIcon = (iconName) => {
     switch (iconName) {
@@ -240,44 +321,64 @@ const ImpossibleList = ({ content }) => {
     }
   };
   
+  if (filteredSections.length === 0) {
+    return (
+      <ListContainer>
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '3rem', 
+          color: soloLevelingTheme.colors.text.secondary 
+        }}>
+          No goals found matching your criteria.
+        </div>
+      </ListContainer>
+    );
+  }
+  
   return (
     <ListContainer>
-      {sections.map((section, index) => (
-        <Section key={index}>
-          <SectionHeader>
-            <SectionTitle>
-              {renderIcon(getSectionIcon(section.title))}
-              {section.title}
-            </SectionTitle>
-          </SectionHeader>
-          <SectionContent>
-            <GoalsList>
-              {section.goals.map((goal, goalIndex) => (
-                <GoalItem key={goalIndex} completed={goal.completed}>
-                  <GoalIcon completed={goal.completed}>
-                    {goal.completed ? <FaCheckCircle /> : <FaClock />}
-                  </GoalIcon>
-                  <GoalContent>
-                    <GoalText dangerouslySetInnerHTML={{ __html: goal.text }} />
-                    {goal.subGoals && goal.subGoals.length > 0 && (
-                      <SubGoalsList>
-                        {goal.subGoals.map((subGoal, subIndex) => (
-                          <SubGoalItem key={subIndex} completed={subGoal.completed}>
-                            <GoalIcon completed={subGoal.completed}>
-                              {subGoal.completed ? <FaCheckCircle /> : <FaClock />}
-                            </GoalIcon>
-                            <GoalText dangerouslySetInnerHTML={{ __html: subGoal.text }} />
-                          </SubGoalItem>
-                        ))}
-                      </SubGoalsList>
-                    )}
-                  </GoalContent>
-                </GoalItem>
-              ))}
-            </GoalsList>
-          </SectionContent>
-        </Section>
-      ))}
+      {filteredSections.map((section, index) => {
+        const isCollapsed = collapsedSections.has(index);
+        return (
+          <Section key={index} index={index}>
+            <SectionHeader onClick={() => toggleSection(index)}>
+              <SectionTitle collapsed={isCollapsed}>
+                <div className="title-content">
+                  {renderIcon(getSectionIcon(section.title))}
+                  {section.title}
+                </div>
+                <FaChevronDown className="collapse-icon" />
+              </SectionTitle>
+            </SectionHeader>
+            <SectionContent collapsed={isCollapsed}>
+              <GoalsList>
+                {section.goals.map((goal, goalIndex) => (
+                  <GoalItem key={goalIndex} completed={goal.completed}>
+                    <GoalIcon completed={goal.completed}>
+                      {goal.completed ? <FaCheckCircle /> : <FaClock />}
+                    </GoalIcon>
+                    <GoalContent>
+                      <GoalText dangerouslySetInnerHTML={{ __html: goal.text }} />
+                      {goal.subGoals && goal.subGoals.length > 0 && (
+                        <SubGoalsList>
+                          {goal.subGoals.map((subGoal, subIndex) => (
+                            <SubGoalItem key={subIndex} completed={subGoal.completed}>
+                              <GoalIcon completed={subGoal.completed}>
+                                {subGoal.completed ? <FaCheckCircle /> : <FaClock />}
+                              </GoalIcon>
+                              <GoalText dangerouslySetInnerHTML={{ __html: subGoal.text }} />
+                            </SubGoalItem>
+                          ))}
+                        </SubGoalsList>
+                      )}
+                    </GoalContent>
+                  </GoalItem>
+                ))}
+              </GoalsList>
+            </SectionContent>
+          </Section>
+        );
+      })}
     </ListContainer>
   );
 };
