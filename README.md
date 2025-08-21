@@ -39,7 +39,7 @@ A modern personal blog built with React, showcasing my journey as a software eng
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd fernando-castaneda-blog
+cd new-blog
 
 # Install dependencies
 npm install
