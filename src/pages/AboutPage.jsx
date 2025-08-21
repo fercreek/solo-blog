@@ -1,4 +1,5 @@
-import AboutContent from "../components/AboutContent";
+import MarkdownContent from "../components/MarkdownContent";
+import { aboutData } from "../data/about";
 import {
   PageContainer,
   PageHeader,
@@ -17,7 +18,7 @@ const AboutPage = () => {
         </PageDescription>
       </PageHeader>
       <ContentWrapper>
-        <AboutContent />
+        <MarkdownContent content={aboutData} />
       </ContentWrapper>
     </PageContainer>
   );

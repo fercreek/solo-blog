@@ -1,6 +1,5 @@
 import { keyframes } from 'styled-components';
 
-// Animaciones reutilizables
 export const fadeInUp = keyframes`
   from {
     opacity: 0;

@@ -1,8 +1,27 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { parseMarkdownContent, processMarkdownText } from '../utils/contentParser';
-import { fadeInUp, shimmer } from '../styles/keyframes';
-import { FaTrophy, FaMedal, FaAward, FaMusic, FaCode, FaCalendarAlt } from 'react-icons/fa';
+
+// Animaciones reutilizables
+export const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const shimmer = keyframes`
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+`;
 
 // Contenedor principal de página
 export const PageContainer = styled.div`
@@ -355,170 +374,6 @@ export const PageDescription = styled.p`
       color: ${soloLevelingTheme.colors.accent.gold};
       text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
       text-decoration: underline;
-    }
-  }
-`;
-
-// Sección especializada para logros
-export const AchievementSection = styled.div`
-  margin: 3rem 0;
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    ${soloLevelingTheme.colors.secondary}aa 0%, 
-    ${soloLevelingTheme.colors.primary}aa 100%);
-  border-radius: 15px;
-  border: 1px solid ${soloLevelingTheme.colors.accent.orange}33;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-      ${soloLevelingTheme.colors.accent.orange}, 
-      ${soloLevelingTheme.colors.accent.gold});
-  }
-`;
-
-// Título de sección con icono para logros
-export const AchievementSectionTitle = styled.h2`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  margin-bottom: 2rem;
-  text-shadow: 0 0 10px rgba(253, 203, 110, 0.3);
-  
-  svg {
-    color: ${soloLevelingTheme.colors.accent.orange};
-    filter: drop-shadow(0 0 8px rgba(253, 203, 110, 0.5));
-  }
-`;
-
-// Contenedor de logros por año
-export const YearGroup = styled.div`
-  margin-bottom: 2.5rem;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-// Título del año
-export const YearTitle = styled.h3`
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: ${soloLevelingTheme.colors.accent.gold};
-  font-size: 1.4rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semiBold};
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid ${soloLevelingTheme.colors.accent.orange}33;
-  
-  svg {
-    color: ${soloLevelingTheme.colors.accent.orange};
-  }
-`;
-
-// Lista de logros
-export const AchievementList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 1rem;
-`;
-
-// Item individual de logro
-export const AchievementItem = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background: ${soloLevelingTheme.colors.primary}66;
-  border-radius: 10px;
-  border-left: 4px solid ${props => {
-    if (props.place === '1st') return soloLevelingTheme.colors.accent.gold;
-    if (props.place === '2nd') return '#C0C0C0';
-    if (props.place === '3rd') return '#CD7F32';
-    return soloLevelingTheme.colors.accent.orange;
-  }};
-  transition: all ${soloLevelingTheme.animations.transition.medium};
-  
-  &:hover {
-    transform: translateX(5px);
-    background: ${soloLevelingTheme.colors.primary}99;
-    box-shadow: 0 4px 20px rgba(253, 203, 110, 0.2);
-  }
-`;
-
-// Icono de medalla
-export const MedalIcon = styled.div`
-  font-size: 1.5rem;
-  color: ${props => {
-    if (props.place === '1st') return soloLevelingTheme.colors.accent.gold;
-    if (props.place === '2nd') return '#C0C0C0';
-    if (props.place === '3rd') return '#CD7F32';
-    return soloLevelingTheme.colors.accent.orange;
-  }};
-  filter: drop-shadow(0 0 8px currentColor);
-  animation: ${soloLevelingTheme.animations.keyframes.glow} 2s ease-in-out infinite alternate;
-`;
-
-// Texto del logro
-export const AchievementText = styled.span`
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  flex: 1;
-  
-  a {
-    color: ${soloLevelingTheme.colors.accent.orange};
-    text-decoration: none;
-    transition: all ${soloLevelingTheme.animations.transition.fast};
-    
-    &:hover {
-      color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
-    }
-  }
-`;
-
-// Sección de información personal
-export const PersonalSection = styled.div`
-  margin: 2rem 0;
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    ${soloLevelingTheme.colors.primary}aa 0%, 
-    ${soloLevelingTheme.colors.secondary}aa 100%);
-  border-radius: 15px;
-  border: 1px solid ${soloLevelingTheme.colors.accent.orange}22;
-`;
-
-// Lista de hobbies
-export const HobbyList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-  
-  li {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 0;
-    color: ${soloLevelingTheme.colors.text.secondary};
-    font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-    
-    &::before {
-      content: '▶';
-      color: ${soloLevelingTheme.colors.accent.orange};
-      font-size: 0.8rem;
     }
   }
 `;
