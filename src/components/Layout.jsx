@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { Analytics } from '@vercel/analytics/react';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const Layout = ({ children }) => {
       <Navbar />
       <Main>{children}</Main>
       <Footer />
+      <Analytics />
     </LayoutContainer>
   );
 };
