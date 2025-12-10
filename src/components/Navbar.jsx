@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaTwitter, FaBars, FaTimes } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 
@@ -232,10 +232,6 @@ const SocialLink = styled.a`
   &:nth-child(2):hover {
     box-shadow: 0 0 20px rgba(0, 119, 181, 0.4);
   }
-
-  &:nth-child(3):hover {
-    box-shadow: 0 0 20px rgba(29, 161, 242, 0.4);
-  }
 `;
 
 const Navbar = () => {
@@ -272,9 +268,6 @@ const Navbar = () => {
           <SocialLink href="https://linkedin.com/in/fercreek" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
           </SocialLink>
-          <SocialLink href="https://twitter.com/fercreek" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
-          </SocialLink>
         </SocialLinks>
         
         {/* Mobile Menu Button */}
@@ -302,9 +295,6 @@ const Navbar = () => {
           </SocialLink>
           <SocialLink href="https://linkedin.com/in/fercreek" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
-          </SocialLink>
-          <SocialLink href="https://twitter.com/fercreek" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
           </SocialLink>
         </MobileSocialLinks>
       </MobileNavLinks>
