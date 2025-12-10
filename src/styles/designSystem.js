@@ -1,16 +1,8 @@
 import styled, { keyframes } from 'styled-components';
-import {
-  PageContainer,
-  PageHeader,
-  PageTitle,
-  ContentWrapper,
-  PageDescription
-} from '../components/PageComponents';
-import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp } from '../styles/keyframes.js';
-import { FaClock, FaMapMarkerAlt, FaCode, FaDumbbell, FaChartLine, FaUsers, FaBullseye, FaLaptopCode, FaProjectDiagram, FaCoins, FaMusic } from 'react-icons/fa';
+import { soloLevelingTheme } from './soloLevelingTheme';
+import { fadeInUp } from './keyframes';
 
-const glowPulse = keyframes`
+export const glowPulse = keyframes`
   0%, 100% {
     box-shadow: 0 0 20px rgba(253, 203, 110, 0.3), 0 0 40px rgba(108, 92, 231, 0.2);
   }
@@ -19,7 +11,7 @@ const glowPulse = keyframes`
   }
 `;
 
-const shimmer = keyframes`
+export const shimmer = keyframes`
   0% {
     background-position: -200% 0;
   }
@@ -28,7 +20,7 @@ const shimmer = keyframes`
   }
 `;
 
-const float = keyframes`
+export const float = keyframes`
   0%, 100% {
     transform: translateY(0px);
   }
@@ -37,7 +29,7 @@ const float = keyframes`
   }
 `;
 
-const pulse = keyframes`
+export const pulse = keyframes`
   0%, 100% {
     opacity: 1;
     transform: scale(1);
@@ -48,7 +40,7 @@ const pulse = keyframes`
   }
 `;
 
-const slideIn = keyframes`
+export const slideIn = keyframes`
   from {
     opacity: 0;
     transform: translateX(-20px);
@@ -59,7 +51,7 @@ const slideIn = keyframes`
   }
 `;
 
-const HighlightSection = styled.div`
+export const HighlightCard = styled.div`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.98));
   border: 2px solid ${soloLevelingTheme.colors.border.accent};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
@@ -113,9 +105,14 @@ const HighlightSection = styled.div`
     pointer-events: none;
     animation: ${float} 6s ease-in-out infinite;
   }
+  
+  @media (max-width: 768px) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 `;
 
-const LocationBadge = styled.div`
+export const GradientBadge = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -125,7 +122,7 @@ const LocationBadge = styled.div`
   border-radius: ${soloLevelingTheme.borderRadius.full};
   font-size: 1.05rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  margin-bottom: 2rem;
+  margin-bottom: ${props => props.marginBottom || '2rem'};
   box-shadow: ${soloLevelingTheme.shadows.glow}, 0 4px 15px rgba(225, 112, 85, 0.4);
   position: relative;
   z-index: 1;
@@ -144,27 +141,11 @@ const LocationBadge = styled.div`
   }
 `;
 
-const HighlightText = styled.p`
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 1.2rem;
-  line-height: 1.9;
-  position: relative;
-  z-index: 1;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: 0.3px;
-  
-  @media (max-width: 768px) {
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-`;
-
-const SectionTitle = styled.h2`
+export const SectionTitle = styled.h2`
   color: ${soloLevelingTheme.colors.text.primary};
   font-size: 2.5rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  margin: 4rem 0 3rem;
+  margin: ${props => props.margin || '4rem 0 3rem'};
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   text-align: center;
   position: relative;
@@ -212,14 +193,7 @@ const SectionTitle = styled.h2`
   }
 `;
 
-const ActivitiesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-`;
-
-const ActivityCard = styled.div`
+export const FeatureCard = styled.div`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
   border: 2px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
@@ -231,7 +205,7 @@ const ActivityCard = styled.div`
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(15px);
-  cursor: pointer;
+  cursor: ${props => props.cursor || 'pointer'};
   
   &::before {
     content: '';
@@ -284,7 +258,7 @@ const ActivityCard = styled.div`
   }
 `;
 
-const ActivityIcon = styled.div`
+export const CardIcon = styled.div`
   font-size: 3rem;
   color: ${soloLevelingTheme.colors.accent.gold};
   margin-bottom: 1.75rem;
@@ -311,7 +285,7 @@ const ActivityIcon = styled.div`
     transition: opacity 0.4s ease;
   }
   
-  ${ActivityCard}:hover & {
+  ${FeatureCard}:hover & {
     transform: scale(1.15) rotate(8deg);
     filter: drop-shadow(0 0 25px rgba(253, 203, 110, 0.9));
     
@@ -326,7 +300,7 @@ const ActivityIcon = styled.div`
   }
 `;
 
-const ActivityTitle = styled.h3`
+export const CardTitle = styled.h3`
   color: ${soloLevelingTheme.colors.text.primary};
   font-size: 1.5rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
@@ -339,7 +313,7 @@ const ActivityTitle = styled.h3`
   transition: all 0.3s ease;
   position: relative;
   
-  ${ActivityCard}:hover & {
+  ${FeatureCard}:hover & {
     background: ${soloLevelingTheme.colors.gradients.gold};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -351,14 +325,14 @@ const ActivityTitle = styled.h3`
   }
 `;
 
-const ActivityDescription = styled.p`
+export const CardDescription = styled.p`
   color: ${soloLevelingTheme.colors.text.secondary};
   font-size: 1.05rem;
   line-height: 1.8;
   margin: 0;
   transition: color 0.3s ease;
   
-  ${ActivityCard}:hover & {
+  ${FeatureCard}:hover & {
     color: ${soloLevelingTheme.colors.text.primary};
   }
   
@@ -368,17 +342,19 @@ const ActivityDescription = styled.p`
   }
 `;
 
-const FocusSection = styled.div`
-  background: linear-gradient(135deg, rgba(22, 33, 62, 0.95), rgba(26, 26, 46, 0.95));
-  border: 2px solid ${soloLevelingTheme.colors.border.accent};
+export const StatCard = styled.div`
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
+  border: 2px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
-  padding: 3rem 2rem;
-  margin: 3rem 0;
-  animation: ${fadeInUp} 0.8s ease-out;
+  padding: 2rem;
+  text-align: center;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: ${soloLevelingTheme.shadows.purple};
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: ${fadeInUp} 0.6s ease-out;
+  animation-delay: ${props => props.delay || '0s'};
+  animation-fill-mode: both;
+  backdrop-filter: blur(15px);
   
   &::before {
     content: '';
@@ -387,41 +363,82 @@ const FocusSection = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: ${soloLevelingTheme.colors.gradients.gold};
-    box-shadow: 0 0 20px rgba(253, 203, 110, 0.5);
+    background: ${props => {
+      if (props.variant === 'completed') return soloLevelingTheme.colors.gradients.gold;
+      if (props.variant === 'progress') return soloLevelingTheme.colors.gradients.purple;
+      return soloLevelingTheme.colors.gradients.mana;
+    }};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+    box-shadow: ${props => {
+      if (props.variant === 'completed') return '0 0 15px rgba(253, 203, 110, 0.5)';
+      if (props.variant === 'progress') return '0 0 15px rgba(108, 92, 231, 0.5)';
+      return '0 0 15px rgba(116, 185, 255, 0.5)';
+    }};
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 12px 40px rgba(108, 92, 231, 0.3);
+    border-color: ${soloLevelingTheme.colors.accent.purple};
+    
+    &::before {
+      transform: scaleX(1);
+    }
   }
 `;
 
-const FocusTitle = styled.h2`
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 2rem;
+export const StatIcon = styled.div`
+  font-size: 2.5rem;
+  color: ${props => {
+    if (props.variant === 'completed') return soloLevelingTheme.colors.accent.gold;
+    if (props.variant === 'progress') return soloLevelingTheme.colors.accent.purple;
+    return soloLevelingTheme.colors.accent.blue;
+  }};
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 12px ${props => {
+    if (props.variant === 'completed') return 'rgba(253, 203, 110, 0.6)';
+    if (props.variant === 'progress') return 'rgba(108, 92, 231, 0.6)';
+    return 'rgba(116, 185, 255, 0.6)';
+  }});
+  transition: all 0.3s ease;
+  
+  ${StatCard}:hover & {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 20px ${props => {
+      if (props.variant === 'completed') return 'rgba(253, 203, 110, 0.8)';
+      if (props.variant === 'progress') return 'rgba(108, 92, 231, 0.8)';
+      return 'rgba(116, 185, 255, 0.8)';
+    }});
+  }
+`;
+
+export const StatNumber = styled.div`
+  font-size: 2.5rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  margin-bottom: 2rem;
+  color: ${soloLevelingTheme.colors.text.primary};
+  margin-bottom: 0.5rem;
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: ${soloLevelingTheme.colors.gradients.gold};
+  background: ${props => {
+    if (props.variant === 'completed') return soloLevelingTheme.colors.gradients.gold;
+    if (props.variant === 'progress') return soloLevelingTheme.colors.gradients.purple;
+    return soloLevelingTheme.colors.gradients.mana;
+  }};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
-  svg {
-    filter: drop-shadow(0 0 10px rgba(253, 203, 110, 0.6));
-  }
 `;
 
-const FocusList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+export const StatLabel = styled.div`
+  font-size: 1rem;
+  color: ${soloLevelingTheme.colors.text.secondary};
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
 `;
 
-const FocusItem = styled.li`
+export const AnimatedListItem = styled.li`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.85), rgba(10, 10, 15, 0.85));
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
   border-left: 5px solid ${soloLevelingTheme.colors.accent.orange};
@@ -483,112 +500,77 @@ const FocusItem = styled.li`
   }
 `;
 
-const LastUpdated = styled.div`
-  text-align: center;
-  color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.6), rgba(10, 10, 15, 0.6));
+export const SearchInput = styled.input`
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.9));
+  border: 2px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.lg};
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  color: ${soloLevelingTheme.colors.text.primary};
+  font-size: 1rem;
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   
-  svg {
-    color: ${soloLevelingTheme.colors.accent.gold};
-    filter: drop-shadow(0 0 8px rgba(253, 203, 110, 0.4));
+  &::placeholder {
+    color: ${soloLevelingTheme.colors.text.secondary};
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: ${soloLevelingTheme.colors.accent.purple};
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2), 0 0 20px rgba(108, 92, 231, 0.3);
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
   }
 `;
 
-const NowPage = () => {
-  const currentActivities = [
-    {
-      icon: <FaLaptopCode />,
-      title: "Backend Development",
-      description: "Working as a senior backend developer at Fountain, building scalable solutions."
-    },
-    {
-      icon: <FaProjectDiagram />,
-      title: "Side Projects",
-      description: "Developing Studio Link and Vayla Dance as personal ventures."
-    },
-    {
-      icon: <FaCoins />,
-      title: "Crypto Trading",
-      description: "Engaging in cryptocurrency trading and investment strategies."
-    },
-    {
-      icon: <FaMusic />,
-      title: "Dancing",
-      description: "Regularly practicing bachata and salsa to improve my skills."
-    }
-  ];
+export const FilterButton = styled.button`
+  padding: 0.75rem 1.5rem;
+  background: ${props => props.active 
+    ? `linear-gradient(135deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold})`
+    : `linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.9))`
+  };
+  border: 2px solid ${props => props.active 
+    ? soloLevelingTheme.colors.accent.gold
+    : soloLevelingTheme.colors.border.primary
+  };
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  color: ${props => props.active 
+    ? soloLevelingTheme.colors.text.primary
+    : soloLevelingTheme.colors.text.secondary
+  };
+  font-size: 0.95rem;
+  font-weight: ${props => props.active 
+    ? soloLevelingTheme.typography.fontWeight.semibold
+    : soloLevelingTheme.typography.fontWeight.medium
+  };
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: ${props => props.active 
+    ? soloLevelingTheme.shadows.glow
+    : 'none'
+  };
+  
+  &:hover {
+    background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold});
+    color: ${soloLevelingTheme.colors.text.primary};
+    border-color: ${soloLevelingTheme.colors.accent.gold};
+    box-shadow: ${soloLevelingTheme.shadows.glow};
+    transform: translateY(-2px) scale(1.05);
+  }
+  
+  &:active {
+    transform: translateY(0) scale(1);
+  }
+  
+  svg {
+    filter: drop-shadow(0 0 4px ${props => props.active 
+      ? 'rgba(253, 203, 110, 0.6)'
+      : 'rgba(255, 255, 255, 0.3)'
+    });
+  }
+`;
 
-  const currentFocus = [
-    "Enhancing my dance skills",
-    "Refining my daily habits",
-    "Becoming a profitable trader",
-    "Learning to delegate effectively",
-    "Increasing productivity"
-  ];
-
-  return (
-    <PageContainer>
-      <PageHeader>
-        <PageTitle>What I'm Doing Now</PageTitle>
-        <PageDescription>
-          A snapshot of my current activities and priorities. This page serves as a public declaration 
-          and personal reminder, inspired by <a href="https://sivers.org/now" target="_blank" rel="noopener noreferrer">Derek Sivers</a> 
-          and <a href="https://collegeinfogeek.com/now/" target="_blank" rel="noopener noreferrer"> Thomas Frank</a>.
-        </PageDescription>
-      </PageHeader>
-      
-      <ContentWrapper>
-        <HighlightSection>
-          <LocationBadge>
-            <FaMapMarkerAlt />
-            Monterrey, Nuevo León
-          </LocationBadge>
-          <HighlightText>
-            Currently immersing myself in the world of cryptocurrencies, investment, and data analytics 
-            while continuing to grow as a developer and dancer.
-          </HighlightText>
-        </HighlightSection>
-
-        <SectionTitle>Current Activities</SectionTitle>
-        <ActivitiesGrid>
-          {currentActivities.map((activity, index) => (
-            <ActivityCard key={index} delay={`${index * 0.1}s`}>
-              <ActivityIcon>{activity.icon}</ActivityIcon>
-              <ActivityTitle>{activity.title}</ActivityTitle>
-              <ActivityDescription>{activity.description}</ActivityDescription>
-            </ActivityCard>
-          ))}
-        </ActivitiesGrid>
-
-        <FocusSection>
-          <FocusTitle>
-            <FaBullseye />
-            Primary Focus Areas
-          </FocusTitle>
-          <FocusList>
-            {currentFocus.map((focus, index) => (
-              <FocusItem key={index} delay={`${index * 0.1}s`}>{focus}</FocusItem>
-            ))}
-          </FocusList>
-        </FocusSection>
-
-        <LastUpdated>
-          <FaClock />
-          Last updated: February 26, 2025
-        </LastUpdated>
-      </ContentWrapper>
-    </PageContainer>
-  );
-};
-
-export default NowPage;

@@ -7,9 +7,10 @@ export const parseImpossibleListContent = (content) => {
   if (!content || typeof content !== 'string') {
     return [];
   }
-  const lines = content.split('\n').filter(line => line.trim());
+  const lines = content.split('\n');
   const sections = [];
   let currentSection = null;
+  let currentSubsection = null;
   
   lines.forEach(line => {
     const trimmedLine = line.trim();
@@ -20,18 +21,23 @@ export const parseImpossibleListContent = (content) => {
         sections.push(currentSection);
       }
       currentSection = {
-        title: trimmedLine.replace('# ', ''),
+        title: trimmedLine.replace('# ', '').trim(),
         goals: []
       };
+      currentSubsection = null;
+    }
+    // Subsection headers (## Title) - ignore them, they're just organizational
+    else if (trimmedLine.startsWith('## ')) {
+      currentSubsection = trimmedLine.replace('## ', '').trim();
     }
     // Goals (- text or - ✅ text)
     else if (trimmedLine.startsWith('- ')) {
       if (currentSection) {
-        const goalText = trimmedLine.replace('- ', '');
+        const goalText = trimmedLine.replace('- ', '').trim();
         const isCompleted = goalText.includes('✅');
-        const cleanText = goalText.replace('✅ ', '');
+        const cleanText = goalText.replace(/✅\s*/g, '').trim();
         
-        // Check if this is a sub-goal (indented)
+        // Check if this is a sub-goal (indented with 2 spaces)
         if (line.startsWith('  - ')) {
           // Add as sub-goal to the last goal
           const lastGoal = currentSection.goals[currentSection.goals.length - 1];

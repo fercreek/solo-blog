@@ -8,6 +8,18 @@ import { fadeInUp } from '../styles/keyframes';
 const ListContainer = styled.div`
   max-width: 100%;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    gap: 2.5rem;
+  }
 `;
 
 const Section = styled.section`
@@ -21,6 +33,7 @@ const Section = styled.section`
   animation: ${fadeInUp} 0.6s ease-out;
   animation-delay: ${props => props.index * 0.1}s;
   animation-fill-mode: both;
+  grid-column: ${props => props.fullWidth ? '1 / -1' : 'auto'};
   
   &::before {
     content: '';
@@ -110,6 +123,18 @@ const GoalsList = styled.ul`
   @media (min-width: 768px) {
     gap: 1rem;
   }
+  
+  ${props => props.isTravelGoals && `
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+  `}
 `;
 
 const GoalItem = styled.li`
@@ -121,7 +146,7 @@ const GoalItem = styled.li`
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.md};
   transition: all ${soloLevelingTheme.animations.transition.fast};
-  min-height: 60px;
+  min-height: ${props => props.isTravelGoals ? 'auto' : '60px'};
   position: relative;
   overflow: hidden;
 
@@ -152,7 +177,7 @@ const GoalItem = styled.li`
   }
 
   @media (min-width: 768px) {
-    padding: 1.25rem;
+    padding: ${props => props.isTravelGoals ? '1rem' : '1.25rem'};
     gap: 1rem;
   }
 `;
@@ -339,8 +364,9 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
     <ListContainer>
       {filteredSections.map((section, index) => {
         const isCollapsed = collapsedSections.has(index);
+        const isTravelGoals = section.title.toLowerCase().includes('travel goals');
         return (
-          <Section key={index} index={index}>
+          <Section key={index} index={index} fullWidth={isTravelGoals}>
             <SectionHeader onClick={() => toggleSection(index)}>
               <SectionTitle collapsed={isCollapsed}>
                 <div className="title-content">
@@ -351,9 +377,9 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
               </SectionTitle>
             </SectionHeader>
             <SectionContent collapsed={isCollapsed}>
-              <GoalsList>
+              <GoalsList isTravelGoals={isTravelGoals}>
                 {section.goals.map((goal, goalIndex) => (
-                  <GoalItem key={goalIndex} completed={goal.completed}>
+                  <GoalItem key={goalIndex} completed={goal.completed} isTravelGoals={isTravelGoals}>
                     <GoalIcon completed={goal.completed}>
                       {goal.completed ? <FaCheckCircle /> : <FaClock />}
                     </GoalIcon>

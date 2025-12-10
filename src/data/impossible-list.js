@@ -64,7 +64,7 @@ export const impossibleListData = `
 - E-commerce
 - Software running online
   - ✅ Vayla (May)
-  - ✅ Studio Link
+  - ✅ Studio Link (2024)
 
 # Habit Goals
 
@@ -101,85 +101,6 @@ export const impossibleListData = `
 - Finish at 100% Kingdom Hearts
 - Finish at 100% Devil May Cry 5
 
-# Travel Goals
-
-## ✅ Check-in
-
-- México
-  - CDMX
-  - Toluca
-  - Chihuahua
-  - Puerto Vallarta
-  - Guadalajara
-  - Oaxaca
-  - Hidalgo
-  - Playa del Carmen
-  - Mazatlan
-  - Los Cabos
-  - Zapopan
-  - Tampico
-  - San Luis Potosi
-  - Puebla
-  - Huatulco
-  - Campeche
-  - Sayulita
-  - Chiapas
-- United States
-  - Little Rock
-- France, Paris
-- United Kingdom
-  - London
-  - Gibraltar
-- Netherlands, Amsterdam
-- Germany
-  - Berlin
-  - Frankfurt
-- Portugal
-  - Lisboa
-  - Oporto
-- Spain
-  - Barcelona
-  - Madrid
-  - Oviedo
-  - Bilbao
-  - Pajares
-  - Gijon
-  - Galicia
-  - Granada
-  - Sevilla
-  - Malaga
-  - León
-- Belgium
-  - Brussels
-  - Bruges
-- Luxembourg, Luxembourg
-- Czech republic
-  - Prague
-  - Náchod
-- Poland
-  - Warsaw
-  - Lublin
-- Hungary, Budapest
-- Italy
-  - Venice
-  - Parma
-  - Florence
-  - Pisa
-  - Rome
-
-## To-do Check-in
-
-- Zacatecas, Zacatecas
-- León, Guanajuato
-- La Habana, Cuba
-- Cali, Colombia
-
-## Live for a while in
-
-- Poland
-- France
-- Italy
-
 # Life Goals
 
 - ✅ Have many active incomes
@@ -187,4 +108,78 @@ export const impossibleListData = `
 - Read 100 books
 - Have a software consulting
 - Be an investor
+
+# Travel Goals
+
+## ✅ Check-in
+
+- ✅ México
+  - ✅ CDMX
+  - ✅ Toluca
+  - ✅ Chihuahua
+  - ✅ Puerto Vallarta
+  - ✅ Guadalajara
+  - ✅ Oaxaca
+  - ✅ Hidalgo
+  - ✅ Playa del Carmen
+  - ✅ Mazatlan
+  - ✅ Los Cabos
+  - ✅ Zapopan
+  - ✅ Tampico
+  - ✅ San Luis Potosi
+  - ✅ Puebla
+  - ✅ Huatulco
+  - ✅ Campeche
+  - ✅ Sayulita
+  - ✅ Chiapas
+  - ✅ Guanajuato
+- ✅ Spain
+  - ✅ Barcelona
+  - ✅ Madrid
+  - ✅ Oviedo
+  - ✅ Bilbao
+  - ✅ Pajares
+  - ✅ Gijon
+  - ✅ Galicia
+  - ✅ Granada
+  - ✅ Sevilla
+  - ✅ Malaga
+  - ✅ León
+- ✅ Italy
+  - ✅ Venice
+  - ✅ Parma
+  - ✅ Florence
+  - ✅ Pisa
+  - ✅ Rome
+- ✅ Germany
+  - ✅ Berlin
+  - ✅ Frankfurt
+- ✅ Portugal
+  - ✅ Lisboa
+  - ✅ Oporto
+- ✅ Poland
+  - ✅ Warsaw
+  - ✅ Lublin
+- ✅ Czech republic
+  - ✅ Prague
+  - ✅ Náchod
+- ✅ Belgium
+  - ✅ Brussels
+  - ✅ Bruges
+- ✅ United Kingdom
+  - ✅ London
+  - ✅ Gibraltar
+- ✅ France
+  - ✅ Paris
+- ✅ Netherlands
+  - ✅ Amsterdam
+- ✅ United States
+  - ✅ Little Rock
+- ✅ Hungary
+  - ✅ Budapest
+- ✅ Luxembourg
+  - ✅ Luxembourg
+
+
+
 `;

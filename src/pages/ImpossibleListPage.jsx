@@ -5,74 +5,45 @@ import { impossibleListData } from '../data/impossible-list';
 import { PageContainer, PageHeader, PageTitle, ContentWrapper, PageDescription } from '../components/PageComponents';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp } from '../styles/keyframes';
-import { FaTrophy, FaClock, FaBullseye, FaSearch, FaFilter } from 'react-icons/fa';
+import { FaTrophy, FaClock, FaBullseye, FaSearch, FaFilter, FaChartLine } from 'react-icons/fa';
 import { parseImpossibleListContent } from '../utils/contentParser';
+import {
+  StatCard,
+  StatIcon,
+  StatNumber,
+  StatLabel,
+  SearchInput,
+  FilterButton,
+  SectionTitle
+} from '../styles/designSystem';
 
 const StatsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
   animation: ${fadeInUp} 0.6s ease-out;
-`;
-
-const StatCard = styled.div`
-  background: ${soloLevelingTheme.colors.gradients.secondary};
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  padding: 1.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: all ${soloLevelingTheme.animations.transition.medium};
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(
-      90deg,
-      ${soloLevelingTheme.colors.accent.orange},
-      ${soloLevelingTheme.colors.accent.gold}
-    );
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
   
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${soloLevelingTheme.shadows.glow};
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
-`;
-
-const StatIcon = styled.div`
-  font-size: 2rem;
-  color: ${soloLevelingTheme.colors.accent.gold};
-  margin-bottom: 0.5rem;
-  filter: drop-shadow(0 0 8px rgba(253, 203, 110, 0.4));
-`;
-
-const StatNumber = styled.div`
-  font-size: 2rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  color: ${soloLevelingTheme.colors.text.primary};
-  margin-bottom: 0.25rem;
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-`;
-
-const StatLabel = styled.div`
-  font-size: 0.9rem;
-  color: ${soloLevelingTheme.colors.text.secondary};
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  
+  @media (min-width: 1280px) {
+    gap: 2rem;
+  }
 `;
 
 const ControlsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
   align-items: center;
   justify-content: space-between;
   
@@ -85,67 +56,35 @@ const ControlsContainer = styled.div`
 const SearchContainer = styled.div`
   position: relative;
   flex: 1;
-  max-width: 400px;
+  max-width: 450px;
   
   @media (max-width: 768px) {
     max-width: 100%;
   }
 `;
 
-const SearchInput = styled.input`
-  width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
-  background: ${soloLevelingTheme.colors.secondary};
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 0.9rem;
-  transition: all ${soloLevelingTheme.animations.transition.fast};
-  
-  &::placeholder {
-    color: ${soloLevelingTheme.colors.text.secondary};
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: ${soloLevelingTheme.colors.accent.orange};
-    box-shadow: 0 0 0 2px rgba(255, 138, 76, 0.2);
-  }
-`;
-
 const SearchIcon = styled(FaSearch)`
   position: absolute;
-  left: 0.75rem;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
   color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(108, 92, 231, 0.3));
+  transition: all 0.3s ease;
+  
+  ${SearchContainer}:has(input:focus) & {
+    color: ${soloLevelingTheme.colors.accent.purple};
+    filter: drop-shadow(0 0 8px rgba(108, 92, 231, 0.6));
+  }
 `;
 
 const FilterContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
-`;
-
-const FilterButton = styled.button`
-  padding: 0.5rem 1rem;
-  background: ${props => props.active ? soloLevelingTheme.colors.accent.orange : soloLevelingTheme.colors.secondary};
-  border: 1px solid ${props => props.active ? soloLevelingTheme.colors.accent.orange : soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.sm};
-  color: ${props => props.active ? soloLevelingTheme.colors.text.primary : soloLevelingTheme.colors.text.secondary};
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all ${soloLevelingTheme.animations.transition.fast};
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  
-  &:hover {
-    background: ${soloLevelingTheme.colors.accent.orange};
-    color: ${soloLevelingTheme.colors.text.primary};
-    border-color: ${soloLevelingTheme.colors.accent.orange};
-  }
 `;
 
 const ImpossibleListPage = () => {
@@ -201,27 +140,27 @@ const ImpossibleListPage = () => {
       
       <ContentWrapper>
         <StatsContainer>
-          <StatCard>
-            <StatIcon><FaBullseye /></StatIcon>
-            <StatNumber>{stats.total}</StatNumber>
+          <StatCard delay="0s">
+            <StatIcon variant="default"><FaBullseye /></StatIcon>
+            <StatNumber variant="default">{stats.total}</StatNumber>
             <StatLabel>Total Goals</StatLabel>
           </StatCard>
           
-          <StatCard>
-            <StatIcon><FaTrophy /></StatIcon>
-            <StatNumber>{stats.completed}</StatNumber>
+          <StatCard delay="0.1s" variant="completed">
+            <StatIcon variant="completed"><FaTrophy /></StatIcon>
+            <StatNumber variant="completed">{stats.completed}</StatNumber>
             <StatLabel>Completed</StatLabel>
           </StatCard>
           
-          <StatCard>
-            <StatIcon><FaClock /></StatIcon>
-            <StatNumber>{stats.inProgress}</StatNumber>
+          <StatCard delay="0.2s" variant="progress">
+            <StatIcon variant="progress"><FaClock /></StatIcon>
+            <StatNumber variant="progress">{stats.inProgress}</StatNumber>
             <StatLabel>In Progress</StatLabel>
           </StatCard>
           
-          <StatCard>
-            <StatIcon><FaTrophy /></StatIcon>
-            <StatNumber>{stats.completionRate}%</StatNumber>
+          <StatCard delay="0.3s" variant="completed">
+            <StatIcon variant="completed"><FaChartLine /></StatIcon>
+            <StatNumber variant="completed">{stats.completionRate}%</StatNumber>
             <StatLabel>Completion Rate</StatLabel>
           </StatCard>
         </StatsContainer>
