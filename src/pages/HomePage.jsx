@@ -32,6 +32,11 @@ const HeroSection = styled.section`
     background: radial-gradient(circle at center, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
     pointer-events: none;
   }
+  
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Avatar = styled.div`
@@ -57,6 +62,13 @@ const Avatar = styled.div`
     background: ${soloLevelingTheme.colors.gradients.primary};
     border-radius: 50%;
     z-index: -1;
+  }
+  
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
@@ -92,10 +104,22 @@ const Description = styled.p`
   font-size: 1.1rem;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
 `;
 
 const PostsSection = styled.section`
   margin-top: 4rem;
+  
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -118,6 +142,17 @@ const SectionTitle = styled.h2`
     background: ${soloLevelingTheme.colors.gradients.gold};
     border-radius: 2px;
   }
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    
+    &::after {
+      width: 60px;
+      height: 2px;
+      bottom: -8px;
+    }
+  }
 `;
 
 const PostsGrid = styled.div`
@@ -129,6 +164,11 @@ const PostsGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
   }
 `;
 
@@ -156,6 +196,18 @@ const PostCard = styled.article`
     box-shadow: ${soloLevelingTheme.shadows.purple}, 0 20px 40px rgba(0, 0, 0, 0.2);
     border-color: ${soloLevelingTheme.colors.accent.purple};
   }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const PostTitle = styled.h3`
@@ -163,12 +215,23 @@ const PostTitle = styled.h3`
   color: ${soloLevelingTheme.colors.text.primary};
   margin-bottom: 1rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
+  
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const PostExcerpt = styled.p`
   color: ${soloLevelingTheme.colors.text.secondary};
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
 `;
 
 const PostMeta = styled.div`
@@ -177,9 +240,27 @@ const PostMeta = styled.div`
   align-items: center;
   font-size: 0.9rem;
   color: ${soloLevelingTheme.colors.text.muted};
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 `;
 
-const ReadMoreButton = styled.button`
+const PostCategory = styled.span`
+  background: ${soloLevelingTheme.colors.gradients.primary};
+  color: ${soloLevelingTheme.colors.text.primary};
+  padding: 0.25rem 0.75rem;
+  border-radius: ${soloLevelingTheme.borderRadius.sm};
+  font-size: 0.75rem;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+`;
+
+const ReadMoreButton = styled.a`
   background: ${soloLevelingTheme.colors.gradients.primary};
   color: ${soloLevelingTheme.colors.text.primary};
   border: none;
@@ -188,16 +269,45 @@ const ReadMoreButton = styled.button`
   font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
   cursor: pointer;
   transition: all ${soloLevelingTheme.animations.transition.fast};
+  width: 100%;
+  margin-top: 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
   
   &:hover {
     background: ${soloLevelingTheme.colors.gradients.gold};
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(253, 203, 110, 0.3);
   }
+  
+  @media (max-width: 768px) {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
 `;
 
 const HomePage = () => {
   const featuredPosts = [
+    {
+      id: 1,
+      title: 'Studio Link',
+      excerpt: 'Studio Link is your all-in-one income and records manager designed for academies and gyms. Simplify your business management and effortlessly keep track of client payments, class schedules, and member information all in one powerful platform.',
+      date: '2024',
+      readTime: '3 min read',
+      url: 'https://studiolink.online/',
+      category: 'Project'
+    },
+    {
+      id: 2,
+      title: 'Vayla Dance',
+      excerpt: 'Vayla Dance redefines dance competitions by making event organization seamless and empowering competitors to shine. Our cutting-edge scoring and judging system transforms how you manage dance events, tailored specifically for communities passionate about dance.',
+      date: '2024',
+      readTime: '4 min read',
+      url: 'https://vayla.dance/',
+      category: 'Project'
+    }
   ];
 
   return (
@@ -218,13 +328,20 @@ const HomePage = () => {
         <PostsGrid>
           {featuredPosts.map(post => (
             <PostCard key={post.id}>
+              <PostCategory>{post.category}</PostCategory>
               <PostTitle>{post.title}</PostTitle>
               <PostExcerpt>{post.excerpt}</PostExcerpt>
               <PostMeta>
                 <span>{post.date}</span>
                 <span>{post.readTime}</span>
               </PostMeta>
-              <ReadMoreButton>Read More</ReadMoreButton>
+              <ReadMoreButton 
+                href={post.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Explore Project
+              </ReadMoreButton>
             </PostCard>
           ))}
         </PostsGrid>

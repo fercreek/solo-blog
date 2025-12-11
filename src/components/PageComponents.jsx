@@ -356,13 +356,18 @@ const MarkdownList = styled.ul`
 
 // Descripción de página reutilizable
 export const PageDescription = styled.p`
-  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
   color: ${soloLevelingTheme.colors.text.secondary};
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin-top: 2rem;
   line-height: 1.6;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    text-align: left;
+  }
   
   a {
     color: ${soloLevelingTheme.colors.accent.orange};

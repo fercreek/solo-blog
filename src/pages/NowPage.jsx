@@ -153,10 +153,13 @@ const HighlightText = styled.p`
   font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.3px;
+  text-align: justify;
+  text-justify: inter-word;
   
   @media (max-width: 768px) {
     font-size: 1.05rem;
     line-height: 1.7;
+    text-align: left;
   }
 `;
 
@@ -357,6 +360,8 @@ const ActivityDescription = styled.p`
   line-height: 1.8;
   margin: 0;
   transition: color 0.3s ease;
+  text-align: justify;
+  text-justify: inter-word;
   
   ${ActivityCard}:hover & {
     color: ${soloLevelingTheme.colors.text.primary};
@@ -365,6 +370,7 @@ const ActivityDescription = styled.p`
   @media (max-width: 768px) {
     font-size: 0.95rem;
     line-height: 1.6;
+    text-align: left;
   }
 `;
 
