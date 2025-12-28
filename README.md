@@ -129,7 +129,7 @@ src/
 
 - **Email**: fercreek@gmail.com
 - **Website**: [Studio Link](https://studiolink.online/)
-- **Dance Platform**: [Vayla Dance](https://vayla.dance/)
+- **Dance Platform**: [Vayla Dance](https://www.vayla.dance/)
 
 ## 📄 License
 

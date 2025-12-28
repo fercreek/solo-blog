@@ -9,6 +9,7 @@ import {
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp } from '../styles/keyframes.js';
 import { FaClock, FaMapMarkerAlt, FaCode, FaDumbbell, FaChartLine, FaUsers, FaBullseye, FaLaptopCode, FaProjectDiagram, FaCoins, FaMusic } from 'react-icons/fa';
+import { useTranslation } from '../hooks/useTranslation';
 
 const glowPulse = keyframes`
   0%, 100% {
@@ -511,61 +512,63 @@ const LastUpdated = styled.div`
 `;
 
 const NowPage = () => {
+  const { t } = useTranslation();
+
   const currentActivities = [
     {
       icon: <FaLaptopCode />,
-      title: "Backend Development",
-      description: "Working as a senior backend developer at Fountain, building scalable solutions."
+      title: t('now.currentActivities.backend.title'),
+      description: t('now.currentActivities.backend.description')
     },
     {
       icon: <FaProjectDiagram />,
-      title: "Side Projects",
-      description: "Developing Studio Link and Vayla Dance as personal ventures."
+      title: t('now.currentActivities.sideProjects.title'),
+      description: t('now.currentActivities.sideProjects.description')
     },
     {
       icon: <FaCoins />,
-      title: "Crypto Trading",
-      description: "Engaging in cryptocurrency trading and investment strategies."
+      title: t('now.currentActivities.trading.title'),
+      description: t('now.currentActivities.trading.description')
     },
     {
       icon: <FaMusic />,
-      title: "Dancing",
-      description: "Regularly practicing bachata and salsa to improve my skills."
+      title: t('now.currentActivities.dancing.title'),
+      description: t('now.currentActivities.dancing.description')
     }
   ];
 
   const currentFocus = [
-    "Enhancing my dance skills",
-    "Refining my daily habits",
-    "Becoming a profitable trader",
-    "Learning to delegate effectively",
-    "Increasing productivity"
+    t('now.focus.item1'),
+    t('now.focus.item2'),
+    t('now.focus.item3'),
+    t('now.focus.item4'),
+    t('now.focus.item5')
   ];
 
   return (
     <PageContainer>
       <PageHeader>
-        <PageTitle>What I'm Doing Now</PageTitle>
-        <PageDescription>
-          A snapshot of my current activities and priorities. This page serves as a public declaration 
-          and personal reminder, inspired by <a href="https://sivers.org/now" target="_blank" rel="noopener noreferrer">Derek Sivers</a> 
-          and <a href="https://collegeinfogeek.com/now/" target="_blank" rel="noopener noreferrer"> Thomas Frank</a>.
-        </PageDescription>
+        <PageTitle>{t('now.title')}</PageTitle>
+        <PageDescription dangerouslySetInnerHTML={{
+          __html: t('now.description', { 
+            sivers: '<a href="https://sivers.org/now" target="_blank" rel="noopener noreferrer">Derek Sivers</a>',
+            frank: '<a href="https://collegeinfogeek.com/now/" target="_blank" rel="noopener noreferrer">Thomas Frank</a>'
+          })
+        }} />
       </PageHeader>
       
       <ContentWrapper>
         <HighlightSection>
           <LocationBadge>
             <FaMapMarkerAlt />
-            Monterrey, Nuevo León
+            {t('now.location')}
           </LocationBadge>
           <HighlightText>
-            Currently immersing myself in the world of cryptocurrencies, investment, and data analytics 
-            while continuing to grow as a developer and dancer.
+            {t('now.highlight')}
           </HighlightText>
         </HighlightSection>
 
-        <SectionTitle>Current Activities</SectionTitle>
+        <SectionTitle>{t('now.currentActivities.title')}</SectionTitle>
         <ActivitiesGrid>
           {currentActivities.map((activity, index) => (
             <ActivityCard key={index} delay={`${index * 0.1}s`}>
@@ -579,7 +582,7 @@ const NowPage = () => {
         <FocusSection>
           <FocusTitle>
             <FaBullseye />
-            Primary Focus Areas
+            {t('now.focus.title')}
           </FocusTitle>
           <FocusList>
             {currentFocus.map((focus, index) => (
@@ -590,7 +593,7 @@ const NowPage = () => {
 
         <LastUpdated>
           <FaClock />
-          Last updated: February 26, 2025
+          {t('now.lastUpdated', { date: 'February 26, 2025' })}
         </LastUpdated>
       </ContentWrapper>
     </PageContainer>

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../hooks/useTranslation';
 
 const NavContainer = styled.nav`
   position: relative;
@@ -199,6 +201,53 @@ const MobileSocialLinks = styled.div`
   justify-content: center;
 `;
 
+const LanguageSelector = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(108, 92, 231, 0.1);
+  border: 1px solid ${soloLevelingTheme.colors.border.accent};
+  border-radius: ${soloLevelingTheme.borderRadius.md};
+  color: ${soloLevelingTheme.colors.text.secondary};
+  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  min-width: 70px;
+  
+  &:hover {
+    background: ${soloLevelingTheme.colors.gradients.purple};
+    color: ${soloLevelingTheme.colors.text.primary};
+    box-shadow: ${soloLevelingTheme.shadows.glow};
+    transform: translateY(-2px);
+    border-color: ${soloLevelingTheme.colors.accent.purple};
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 767px) {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+`;
+
+const LanguageSelectorMobile = styled(LanguageSelector)`
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+`;
+
 const SocialLink = styled.a`
   color: ${soloLevelingTheme.colors.text.secondary};
   font-size: 1.2rem;
@@ -236,6 +285,8 @@ const SocialLink = styled.a`
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -252,16 +303,19 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <NavLinks>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/projects">Projects</NavLink>
-          <NavLink to="/impossible-list">Impossible List</NavLink>
-          <NavLink to="/now">Now</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/">{t('common.nav.home')}</NavLink>
+          <NavLink to="/about">{t('common.nav.about')}</NavLink>
+          <NavLink to="/projects">{t('common.nav.projects')}</NavLink>
+          <NavLink to="/impossible-list">{t('common.nav.impossibleList')}</NavLink>
+          <NavLink to="/now">{t('common.nav.now')}</NavLink>
+          <NavLink to="/contact">{t('common.nav.contact')}</NavLink>
         </NavLinks>
         
-        {/* Desktop Social Links */}
+        {/* Desktop Language Selector & Social Links */}
         <SocialLinks>
+          <LanguageSelector onClick={toggleLanguage}>
+            {language === 'en' ? '🇬🇧 EN' : '🇲🇽 ES'}
+          </LanguageSelector>
           <SocialLink href="https://github.com/fercreek" target="_blank" rel="noopener noreferrer">
             <FaGithub />
           </SocialLink>
@@ -281,12 +335,17 @@ const Navbar = () => {
       
       {/* Mobile Navigation */}
       <MobileNavLinks isOpen={isMobileMenuOpen}>
-        <MobileNavLink to="/" onClick={closeMobileMenu}>Home</MobileNavLink>
-        <MobileNavLink to="/about" onClick={closeMobileMenu}>About</MobileNavLink>
-        <MobileNavLink to="/projects" onClick={closeMobileMenu}>Projects</MobileNavLink>
-        <MobileNavLink to="/impossible-list" onClick={closeMobileMenu}>Impossible List</MobileNavLink>
-        <MobileNavLink to="/now" onClick={closeMobileMenu}>Now</MobileNavLink>
-        <MobileNavLink to="/contact" onClick={closeMobileMenu}>Contact</MobileNavLink>
+        <MobileNavLink to="/" onClick={closeMobileMenu}>{t('common.nav.home')}</MobileNavLink>
+        <MobileNavLink to="/about" onClick={closeMobileMenu}>{t('common.nav.about')}</MobileNavLink>
+        <MobileNavLink to="/projects" onClick={closeMobileMenu}>{t('common.nav.projects')}</MobileNavLink>
+        <MobileNavLink to="/impossible-list" onClick={closeMobileMenu}>{t('common.nav.impossibleList')}</MobileNavLink>
+        <MobileNavLink to="/now" onClick={closeMobileMenu}>{t('common.nav.now')}</MobileNavLink>
+        <MobileNavLink to="/contact" onClick={closeMobileMenu}>{t('common.nav.contact')}</MobileNavLink>
+        
+        {/* Mobile Language Selector */}
+        <LanguageSelectorMobile onClick={() => { toggleLanguage(); closeMobileMenu(); }}>
+          {language === 'en' ? `🇬🇧 ${t('common.language.english')}` : `🇲🇽 ${t('common.language.spanish')}`}
+        </LanguageSelectorMobile>
         
         {/* Mobile Social Links */}
         <MobileSocialLinks>

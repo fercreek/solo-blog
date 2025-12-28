@@ -5,6 +5,73 @@ I'm a software engineer, dancer, trader, and hobbyist writer.
 
 Formerly a break dancer, I now compete in bachata and salsa. I'm a Mexican, residing in Monterrey, Nuevo León, México.
 
+# Professional Profile
+
+Senior Software Engineer with 9+ years building and scaling web platforms, specializing in Ruby on Rails and Python/Django. Currently building with Next.js and Supabase, with 3+ years of experience using React and Vue. Experienced in microservices, CI/CD, monitoring, and incident-driven reliability improvements, leveraging AI-assisted development to improve delivery speed and code quality. Currently learning Go (Golang) with a focus on maintainability, reliability, and user impact.
+
+# Professional Experience
+
+## Software Developer - Fountain
+**Jun 2025 - Dec 2025**
+
+Worked as part of the support team, prioritizing and resolving high-impact tickets and production incidents in close collaboration with product and engineering teams. Leveraged tools like Cursor to accelerate bug detection and root-cause analysis, improving turnaround time and overall platform stability. Partnered with design and frontend teams to propose and ship UX/UI improvements based on user feedback and support insights, enhancing the overall user experience.
+
+## Senior Software Engineer - Buk Chile
+**Jan 2025 - Apr 2025**
+
+Collaborated with a Chile-based, cross-functional team to design and deliver new features for the core application, ensuring alignment with business and product goals. Helped design and evolve an internal DSL used to build reusable UI components, enabling a consistent visual language and faster development across the app. Developed and maintained new product features end-to-end, from component definitions to integration, focusing on code quality, maintainability, and a cohesive user experience.
+
+## Senior Backend Developer - Apptegy
+**Sep 2021 - Jan 2024**
+
+Designed and implemented backend services in a microservices architecture, delivering robust and scalable solutions for education clients. Used DevOps tooling (CI/CD, monitoring, infrastructure-as-code) to streamline deployments, improve reliability, and reduce time-to-release. Partnered with product, support, and customer-facing teams to clarify requirements, prioritize work, and ship features that improved district administrators' workflows and satisfaction.
+
+## Chief Operating Officer - Bviral (Startup)
+**March 2020 - Sep 2021**
+
+Built and maintained multiple Ruby on Rails and Vue.js applications from scratch, improving performance and user experience for marketing campaigns and internal tools. Translated marketing and business requirements into technical roadmaps, coordinating designers and developers to deliver projects on time. Managed budgets for third-party services, payroll, and operating expenses, balancing cost efficiency with platform reliability and delivery needs.
+
+## Senior Lead Software Engineer - Syscap Holding
+**April 2019 - Feb 2020**
+
+Led a backend team building and maintaining Ruby on Rails APIs, ensuring smooth integration with frontend squads and external services. Drove engineering planning, code reviews, and continuous improvement initiatives, raising code quality and delivery predictability. Mentored interns and junior developers through pair programming and structured feedback, accelerating their growth and impact on the team.
+
+## Lead Software Engineer - Civica Digital (Startup / Civic Technology)
+**Aug 2017 - March 2019**
+
+Built and maintained civic-tech platforms with Ruby on Rails, enabling NGOs and public institutions to better engage with citizens. Designed and iterated digital tools that increased transparency and responsiveness for participating organizations. Led multiple client projects end-to-end (requirements, delivery, support), ensuring timelines, quality standards, and stakeholder alignment.
+
+## Earlier Experience
+
+### Full Stack Developer - Logitrack
+**Apr 2016 – Oct 2016**
+
+GPS tracking platform; implemented real-time temperature monitoring, improved geofencing and page performance, and exposed data via web services for third parties.
+
+### Frontend Developer - BBXM Studios
+**Feb 2015 – Mar 2016**
+
+Improved performance and UX for a social network for artists and singers, and built internal dashboards to visualize API metrics and usage.
+
+### Junior Web Developer - eCareSoft
+**Jul 2014 – Feb 2015**
+
+Created web interfaces and medical report templates for a healthcare SaaS platform used by clinics and hospitals.
+
+# Education
+
+**UANL (Universidad Autónoma de Nuevo León)** - Nuevo León, México  
+**Summer 2012 – 2017**
+
+Relevant coursework: Operating Systems, Databases, Algorithms, Programming Languages, Computer Architecture, and Entrepreneurship.
+
+# Technical Skills
+
+**Backend:** Ruby & Ruby on Rails (9+ yrs), Python & Django (7+ yrs), Golang (1+ yrs)  
+**Frontend:** JavaScript (9+ yrs), Vue.js, React & Next.js (3+ yrs)  
+**Data & Storage:** PostgreSQL (9+ yrs), MySQL, MongoDB (5+ yrs)  
+**DevOps & Cloud:** AWS, Heroku, Docker (5+ yrs), Render (2+ yrs)
+
 # A Closer Look
 
 I have experience as a consultant and web programmer, adept at planning and managing projects from inception to completion.
@@ -19,6 +86,13 @@ My hobbies include:
 - Working out
 - Writing about life and technology
 - Crypto trading
+
+# Additional Experience and Awards
+
+- Organizer of the Jumpstart UNICODE Hackathon 2015 (UANL) and leader of the "Dev Zone in progress" study group for FIME-UANL students.
+- Mentor at HackMTY 2018 and the DevOps Mastery Program (CeroUno), supporting students and professionals in modern engineering practices.
+- Two-time national bachata champion with multiple national awards in bachata and salsa, and active collaborator in the organization of local dance congresses and events.
+- Helped dance academies in Monterrey improve their billing and payment processes by designing and implementing digital tools tailored to their day-to-day operations.
 
 # Exhibitions and presentations
 

@@ -17,6 +17,9 @@ import {
 } from '../styles/designSystem';
 import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic } from 'react-icons/fa';
 import { processMarkdownText } from '../utils/contentParser';
+import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getAboutData } from '../data/aboutTranslations';
 
 const BioSection = styled(HighlightCard)`
   margin-bottom: 3rem;
@@ -164,19 +167,23 @@ const SubEventItem = styled.li`
 `;
 
 const AboutPage = () => {
+  const { language } = useLanguage();
+  const { t } = useTranslation();
+  const aboutMarkdown = getAboutData(language);
+
   const hobbies = [
-    { icon: <FaMusic />, name: 'Dancing bachata and salsa' },
-    { icon: <FaDumbbell />, name: 'Working out' },
-    { icon: <FaPenFancy />, name: 'Writing about life and technology' },
-    { icon: <FaCoins />, name: 'Crypto trading' }
+    { icon: <FaMusic />, name: t('about.hobbies.dancing') },
+    { icon: <FaDumbbell />, name: t('about.hobbies.workingOut') },
+    { icon: <FaPenFancy />, name: t('about.hobbies.writing') },
+    { icon: <FaCoins />, name: t('about.hobbies.trading') }
   ];
 
   return (
     <PageContainer>
       <PageHeader>
-        <PageTitle>About Me</PageTitle>
+        <PageTitle>{t('about.title')}</PageTitle>
         <PageDescription>
-          Discover my journey through code, dance, and digital innovation
+          {t('about.description')}
         </PageDescription>
       </PageHeader>
       
@@ -184,30 +191,30 @@ const AboutPage = () => {
         <BioSection>
           <GradientBadge marginBottom="1.5rem">
             <FaMapMarkerAlt />
-            Monterrey, Nuevo León, México
+            {t('about.location')}
           </GradientBadge>
           <BioText>
-            I'm a software engineer, dancer, trader, and hobbyist writer.
+            {t('about.bio.intro')}
           </BioText>
           <BioText>
-            Formerly a break dancer, I now compete in bachata and salsa. I'm a Mexican, residing in Monterrey, Nuevo León, México.
+            {t('about.bio.background')}
           </BioText>
         </BioSection>
 
         <BioSection>
-          <SectionTitle margin="0 0 2rem 0">A Closer Look</SectionTitle>
+          <SectionTitle margin="0 0 2rem 0">{t('about.closerLook.title')}</SectionTitle>
           <BioText>
-            I have experience as a consultant and web programmer, adept at planning and managing projects from inception to completion.
+            {t('about.closerLook.text1')}
           </BioText>
           <BioText>
-            My professional focus is backend development with Ruby on Rails. In my leisure time, I compete in bachata and salsa dancing. I also engage in crypto trading and am continually learning about investments.
+            {t('about.closerLook.text2')}
           </BioText>
           <BioText>
-            I'm an active participant in the local tech scene. In the past, I've organized a hackathon event at UANL - FIME for students.
+            {t('about.closerLook.text3')}
           </BioText>
         </BioSection>
 
-        <SectionTitle>My Hobbies</SectionTitle>
+        <SectionTitle>{t('about.hobbies.title')}</SectionTitle>
         <HobbiesGrid>
           {hobbies.map((hobby) => (
             <HobbyCard key={hobby.name} delay={`${hobbies.indexOf(hobby) * 0.1}s`}>
@@ -218,12 +225,12 @@ const AboutPage = () => {
         </HobbiesGrid>
 
         <ExhibitionsSection>
-          <SectionTitle>Exhibitions and Presentations</SectionTitle>
+          <SectionTitle>{t('about.exhibitions.title')}</SectionTitle>
           
           <CategoryCard>
             <CategoryTitle>
               <FaCode />
-              Programming
+              {t('about.exhibitions.programming')}
             </CategoryTitle>
             <EventList>
               <EventItem delay="0s" dangerouslySetInnerHTML={{ __html: processMarkdownText('FIME UANL September 4, 2015 - [Qué es git?](https://docs.google.com/presentation/d/1nM6y1TTKOk28Pk_Cv4lmCmLRpWqLJLozD6x__rvxN5Y/edit?usp=sharing)') }} />
@@ -234,7 +241,7 @@ const AboutPage = () => {
           <CategoryCard>
             <CategoryTitle>
               <FaTrophy />
-              Dance
+              {t('about.exhibitions.dance')}
             </CategoryTitle>
             <EventList>
               <EventItem delay="0s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Timbal Latin Dance Congress 2019 - [🥈2nd place - Fuego Latino Men Shines](https://www.facebook.com/TIMBALDANCECONGRESS/videos/576061669623842/UzpfSTczNjExMDI1NzoxMDE2Mjg1OTA3NDY3MDI1OA/?q=timbal%20congress%20men%20shine&epa=SEARCH_BOX)') }} />

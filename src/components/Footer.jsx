@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { useTranslation } from '../hooks/useTranslation';
 
 const FooterContainer = styled.footer`
   padding: 1.5rem 1rem;
@@ -48,11 +49,12 @@ const FooterText = styled.p`
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
   
   return (
     <FooterContainer>
       <FooterText>
-        © {currentYear} Fernando Castañeda. All rights reserved.
+        © {currentYear} Fernando Castañeda. {t('common.footer.copyright')}
       </FooterText>
     </FooterContainer>
   );

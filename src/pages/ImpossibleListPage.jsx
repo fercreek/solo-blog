@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import ImpossibleList from '../components/ImpossibleList';
-import { impossibleListData } from '../data/impossible-list';
 import { PageContainer, PageHeader, PageTitle, ContentWrapper, PageDescription } from '../components/PageComponents';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp } from '../styles/keyframes';
@@ -16,6 +15,9 @@ import {
   FilterButton,
   SectionTitle
 } from '../styles/designSystem';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../hooks/useTranslation';
+import { getImpossibleListData } from '../data/impossibleListTranslations';
 
 const StatsContainer = styled.div`
   display: grid;
@@ -90,8 +92,11 @@ const FilterContainer = styled.div`
 const ImpossibleListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
+  const { language } = useLanguage();
+  const { t } = useTranslation();
   
-  const sections = useMemo(() => parseImpossibleListContent(impossibleListData), []);
+  const impossibleListDataTranslated = useMemo(() => getImpossibleListData(language), [language]);
+  const sections = useMemo(() => parseImpossibleListContent(impossibleListDataTranslated), [impossibleListDataTranslated]);
   
   const stats = useMemo(() => {
     let totalGoals = 0;
@@ -131,11 +136,10 @@ const ImpossibleListPage = () => {
   return (
     <PageContainer>
       <PageHeader>
-        <PageTitle>Impossible List</PageTitle>
-        <PageDescription>
-          Inspired by <a href="https://impossiblehq.com/impossible-list/" target="_blank" rel="noopener noreferrer">Joel Runyon's Impossible List</a>, 
-          this is my collection of goals that push me beyond my comfort zone.
-        </PageDescription>
+        <PageTitle>{t('impossibleList.title')}</PageTitle>
+        <PageDescription dangerouslySetInnerHTML={{
+          __html: t('impossibleList.description', { link: `<a href="https://impossiblehq.com/impossible-list/" target="_blank" rel="noopener noreferrer">${t('impossibleList.linkText')}</a>` })
+        }} />
       </PageHeader>
       
       <ContentWrapper>
@@ -143,25 +147,25 @@ const ImpossibleListPage = () => {
           <StatCard delay="0s">
             <StatIcon variant="default"><FaBullseye /></StatIcon>
             <StatNumber variant="default">{stats.total}</StatNumber>
-            <StatLabel>Total Goals</StatLabel>
+            <StatLabel>{t('impossibleList.stats.totalGoals')}</StatLabel>
           </StatCard>
           
           <StatCard delay="0.1s" variant="completed">
             <StatIcon variant="completed"><FaTrophy /></StatIcon>
             <StatNumber variant="completed">{stats.completed}</StatNumber>
-            <StatLabel>Completed</StatLabel>
+            <StatLabel>{t('impossibleList.stats.completed')}</StatLabel>
           </StatCard>
           
           <StatCard delay="0.2s" variant="progress">
             <StatIcon variant="progress"><FaClock /></StatIcon>
             <StatNumber variant="progress">{stats.inProgress}</StatNumber>
-            <StatLabel>In Progress</StatLabel>
+            <StatLabel>{t('impossibleList.stats.inProgress')}</StatLabel>
           </StatCard>
           
           <StatCard delay="0.3s" variant="completed">
             <StatIcon variant="completed"><FaChartLine /></StatIcon>
             <StatNumber variant="completed">{stats.completionRate}%</StatNumber>
-            <StatLabel>Completion Rate</StatLabel>
+            <StatLabel>{t('impossibleList.stats.completionRate')}</StatLabel>
           </StatCard>
         </StatsContainer>
         
@@ -170,7 +174,7 @@ const ImpossibleListPage = () => {
             <SearchIcon />
             <SearchInput
               type="text"
-              placeholder="Search goals..."
+              placeholder={t('impossibleList.search.placeholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -181,25 +185,25 @@ const ImpossibleListPage = () => {
               active={filter === 'all'}
               onClick={() => setFilter('all')}
             >
-              <FaFilter /> All
+              <FaFilter /> {t('impossibleList.filters.all')}
             </FilterButton>
             <FilterButton 
               active={filter === 'completed'}
               onClick={() => setFilter('completed')}
             >
-              <FaTrophy /> Completed
+              <FaTrophy /> {t('impossibleList.filters.completed')}
             </FilterButton>
             <FilterButton 
               active={filter === 'progress'}
               onClick={() => setFilter('progress')}
             >
-              <FaClock /> In Progress
+              <FaClock /> {t('impossibleList.filters.progress')}
             </FilterButton>
           </FilterContainer>
         </ControlsContainer>
         
         <ImpossibleList 
-          content={impossibleListData} 
+          content={impossibleListDataTranslated} 
           searchTerm={searchTerm}
           filter={filter}
         />

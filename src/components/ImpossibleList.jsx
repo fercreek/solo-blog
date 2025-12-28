@@ -4,6 +4,7 @@ import { FaCheckCircle, FaClock, FaBullseye, FaChevronDown, FaChevronUp } from '
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { parseImpossibleListContent, getSectionIcon } from '../utils/contentParser';
 import { fadeInUp } from '../styles/keyframes';
+import { useTranslation } from '../hooks/useTranslation';
 
 const ListContainer = styled.div`
   max-width: 100%;
@@ -346,6 +347,8 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
     }
   };
   
+  const { t } = useTranslation();
+
   if (filteredSections.length === 0) {
     return (
       <ListContainer>
@@ -354,7 +357,7 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
           padding: '3rem', 
           color: soloLevelingTheme.colors.text.secondary 
         }}>
-          No goals found matching your criteria.
+          {t('impossibleList.noResults')}
         </div>
       </ListContainer>
     );

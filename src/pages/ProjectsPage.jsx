@@ -16,7 +16,9 @@ import {
   SectionTitle
 } from '../styles/designSystem';
 import { FaGlobe, FaCode, FaRocket } from 'react-icons/fa';
-import { projectsData } from '../data/projects';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslation } from '../hooks/useTranslation';
+import { getProjectsData } from '../data/projectsTranslations';
 
 const ProjectsGrid = styled.div`
   display: grid;
@@ -65,7 +67,10 @@ const ProjectLink = styled.a`
 `;
 
 const ProjectsPage = () => {
+  const { language } = useLanguage();
+  const { t } = useTranslation();
   const projects = useMemo(() => {
+    const projectsData = getProjectsData(language);
     const lines = projectsData.split('\n').filter(line => line.trim());
     const parsedProjects = [];
     let currentProject = null;
@@ -103,7 +108,7 @@ const ProjectsPage = () => {
     }
     
     return parsedProjects;
-  }, []);
+  }, [language]);
 
   const getProjectIcon = (title) => {
     if (title.toLowerCase().includes('studio')) return <FaCode />;
@@ -114,9 +119,9 @@ const ProjectsPage = () => {
   return (
     <PageContainer>
       <PageHeader>
-        <PageTitle>Projects</PageTitle>
+        <PageTitle>{t('projects.title')}</PageTitle>
         <PageDescription>
-          Explore my technical creations and development journey. Each project represents a unique challenge and learning experience.
+          {t('projects.description')}
         </PageDescription>
       </PageHeader>
       
@@ -135,7 +140,7 @@ const ProjectsPage = () => {
                   aria-label={`Visit ${project.title}`}
                 >
                   <FaGlobe />
-                  Visit Project
+                  {t('common.buttons.viewProject')}
                 </ProjectLink>
               )}
             </FeatureCard>

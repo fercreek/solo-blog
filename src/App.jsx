@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { lazy } from 'react'
 import Layout from './components/Layout'
 import LazyPageLoader from './components/LazyPageLoader'
+import { LanguageProvider } from './contexts/LanguageContext'
 import './App.css'
 
 // Lazy load pages for better performance
@@ -14,20 +15,22 @@ const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <LazyPageLoader>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/impossible-list" element={<ImpossibleListPage />} />
-            <Route path="/now" element={<NowPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-        </LazyPageLoader>
-      </Layout>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Layout>
+          <LazyPageLoader>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/impossible-list" element={<ImpossibleListPage />} />
+              <Route path="/now" element={<NowPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+          </LazyPageLoader>
+        </Layout>
+      </Router>
+    </LanguageProvider>
   )
 }
 
