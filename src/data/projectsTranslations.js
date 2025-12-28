@@ -10,6 +10,21 @@ Explore more at [Studio Link](https://studiolink.online/).
 Vayla Dance redefines dance competitions by making event organization seamless and empowering competitors to shine. A web platform that streamlines the organization of dance competitions by automating judging and scoring, improving accuracy, and reducing manual work for organizers. Our cutting-edge scoring and judging system transforms how you manage dance events, tailored specifically for communities passionate about dance.  
 Discover details at [Vayla Dance](https://www.vayla.dance/).
 
+## Litebox Parcel
+
+Send and track packages easily. Litebox Parcel simplifies shipping management, from creating labels to monitoring deliveries. Perfect for businesses that need logistics efficiency.  
+Explore more at [Litebox Parcel](https://www.liteboxparcel.com/).
+
+## Progreso Personal Finance
+
+Take control of your personal finances. Progreso helps you see where your money goes, create budgets, and better understand your financial situation. Designed to be simple and intuitive.  
+Discover details at [Progreso Personal Finance](https://v0-progreso-personal-finance-ui.vercel.app/).
+
+## Sin Bronca
+
+Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.  
+Explore more at [Sin Bronca](https://sin-bronca.vercel.app/).
+
 ## Hackathon Projects
 
 ### Pebble Mouse (HackMTY 2014)
@@ -29,6 +44,21 @@ Explora más en [Studio Link](https://studiolink.online/).
 
 Vayla Dance redefine las competencias de baile haciendo que la organización de eventos sea fluida y empoderando a los competidores para brillar. Una plataforma web que agiliza la organización de competencias de baile automatizando el juicio y la calificación, mejorando la precisión y reduciendo el trabajo manual para los organizadores. Nuestro sistema de calificación y juicio de vanguardia transforma cómo gestionas eventos de baile, diseñado específicamente para comunidades apasionadas por el baile.  
 Descubre detalles en [Vayla Dance](https://www.vayla.dance/).
+
+## Litebox Parcel
+
+Envía y rastrea paquetes fácilmente. Litebox Parcel simplifica la gestión de envíos, desde crear etiquetas hasta monitorear entregas. Perfecto para negocios que necesitan eficiencia en logística.  
+Explora más en [Litebox Parcel](https://www.liteboxparcel.com/).
+
+## Progreso Personal Finance
+
+Toma control de tus finanzas personales. Progreso te ayuda a ver dónde gastas tu dinero, crear presupuestos y entender mejor tu situación financiera. Diseñado para ser simple e intuitivo.  
+Descubre detalles en [Progreso Personal Finance](https://v0-progreso-personal-finance-ui.vercel.app/).
+
+## Sin Bronca
+
+Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.  
+Explora más en [Sin Bronca](https://sin-bronca.vercel.app/).
 
 ## Proyectos de Hackathon
 

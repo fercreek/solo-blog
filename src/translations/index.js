@@ -89,7 +89,9 @@ export const translations = {
     },
     projects: {
       title: 'Projects',
-      description: 'Explore my technical creations and development journey. Each project represents a unique challenge and learning experience.'
+      description: 'Explore my technical creations and development journey. Each project represents a unique challenge and learning experience.',
+      mainProjects: 'Main Projects',
+      hackathonProjects: 'Hackathon Projects'
     },
     impossibleList: {
       title: 'Impossible List',
@@ -239,7 +241,9 @@ export const translations = {
     },
     projects: {
       title: 'Proyectos',
-      description: 'Explora mis creaciones técnicas y mi viaje de desarrollo. Cada proyecto representa un desafío único y una experiencia de aprendizaje.'
+      description: 'Explora mis creaciones técnicas y mi viaje de desarrollo. Cada proyecto representa un desafío único y una experiencia de aprendizaje.',
+      mainProjects: 'Proyectos Principales',
+      hackathonProjects: 'Proyectos de Hackathon'
     },
     impossibleList: {
       title: 'Lista Imposible',
