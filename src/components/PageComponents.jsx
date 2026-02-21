@@ -124,38 +124,7 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-// Variante de título más pequeño para secciones
-export const SectionTitle = styled.h2`
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  margin-bottom: 1.5rem;
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  background: linear-gradient(
-    90deg,
-    ${soloLevelingTheme.colors.accent.orange},
-    ${soloLevelingTheme.colors.accent.gold}
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      ${soloLevelingTheme.colors.accent.orange},
-      ${soloLevelingTheme.colors.accent.gold}
-    );
-    border-radius: 1px;
-  }
-`;
+export { SectionTitle } from '../styles/designSystem';
 
 // Contenedor de grid para tarjetas
 export const GridContainer = styled.div`

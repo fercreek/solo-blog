@@ -69,6 +69,12 @@ export const HighlightCard = styled.div`
     transform: translateY(-2px);
   }
   
+  &:focus-visible {
+    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline-offset: 2px;
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+  }
+  
   &::before {
     content: '';
     position: absolute;
@@ -191,6 +197,23 @@ export const SectionTitle = styled.h2`
     font-size: 2rem;
     margin: 3rem 0 2rem;
   }
+`;
+
+export const SectionDivider = styled.div`
+  width: 100%;
+  max-width: 120px;
+  height: 2px;
+  margin: ${props => props.margin || '2rem auto'};
+  background: linear-gradient(
+    90deg,
+    transparent,
+    ${soloLevelingTheme.colors.accent.gold},
+    ${soloLevelingTheme.colors.accent.purple},
+    ${soloLevelingTheme.colors.accent.gold},
+    transparent
+  );
+  opacity: 0.6;
+  border-radius: 1px;
 `;
 
 export const FeatureCard = styled.div`
@@ -521,6 +544,11 @@ export const SearchInput = styled.input`
     box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2), 0 0 20px rgba(108, 92, 231, 0.3);
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
   }
+  
+  &:focus-visible {
+    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline-offset: 2px;
+  }
 `;
 
 export const FilterButton = styled.button`
@@ -564,6 +592,12 @@ export const FilterButton = styled.button`
   
   &:active {
     transform: translateY(0) scale(1);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline-offset: 2px;
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
   }
   
   svg {
