@@ -7,6 +7,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { useParallax } from '../hooks/useParallax';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
+import PageHead from '../components/PageHead';
 
 const glowPulse = keyframes`
   0%, 100% {
@@ -423,6 +424,7 @@ const HomePage = () => {
 
   return (
     <PageContainer>
+      <PageHead title={t('home.hero.title')} description={t('home.hero.description')} />
       <HeroWrapper>
         <HeroSection>
         <ParallaxLayer $offset={parallaxOffset} />

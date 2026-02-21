@@ -20,6 +20,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { getProjectsData } from '../data/projectsTranslations';
 import ProjectCard from '../components/ProjectCard';
+import PageHead from '../components/PageHead';
 
 const RecentProjectsGrid = styled.div`
   display: grid;
@@ -242,6 +243,7 @@ const ProjectsPage = () => {
 
   return (
     <PageContainer>
+      <PageHead title={t('projects.title')} description={t('projects.description')} />
       <PageHeader>
         <PageTitle>{t('projects.title')}</PageTitle>
         <PageDescription>

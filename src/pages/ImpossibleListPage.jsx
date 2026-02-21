@@ -17,6 +17,7 @@ import {
 } from '../styles/designSystem';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
+import PageHead from '../components/PageHead';
 import { getImpossibleListData } from '../data/impossibleListTranslations';
 
 const StatsWrapper = styled.div`
@@ -307,6 +308,7 @@ const ImpossibleListPage = () => {
   
   return (
     <PageContainer>
+      <PageHead title={t('impossibleList.title')} description={t('impossibleList.description', { link: t('impossibleList.linkText') })} />
       <PageHeader>
         <PageTitle>{t('impossibleList.title')}</PageTitle>
         <PageDescription dangerouslySetInnerHTML={{

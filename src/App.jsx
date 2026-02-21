@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { lazy } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import Layout from './components/Layout'
 import LazyPageLoader from './components/LazyPageLoader'
 import { LanguageProvider } from './contexts/LanguageContext'
@@ -15,8 +16,9 @@ const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
+    <HelmetProvider>
+      <LanguageProvider>
+        <Router>
         <Layout>
           <LazyPageLoader>
             <Routes>
@@ -29,8 +31,9 @@ function App() {
             </Routes>
           </LazyPageLoader>
         </Layout>
-      </Router>
-    </LanguageProvider>
+        </Router>
+      </LanguageProvider>
+    </HelmetProvider>
   )
 }
 

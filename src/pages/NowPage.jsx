@@ -10,6 +10,7 @@ import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp, xpBarProgressive, levelNumber, starTwinkle, particleFloat, levelUp, shimmer as shimmerKeyframe } from '../styles/keyframes.js';
 import { FaClock, FaMapMarkerAlt, FaCode, FaDumbbell, FaChartLine, FaUsers, FaBullseye, FaLaptopCode, FaProjectDiagram, FaCoins, FaMusic, FaRocket, FaCalendarAlt } from 'react-icons/fa';
 import { useTranslation } from '../hooks/useTranslation';
+import PageHead from '../components/PageHead';
 import NowCard from '../components/NowCard';
 
 const glowPulse = keyframes`
@@ -1080,6 +1081,7 @@ const NowPage = () => {
 
   return (
     <PageContainer>
+      <PageHead title={t('now.title')} description={t('now.description')} />
       <PageHeader>
         <PageTitle>{t('now.title')}</PageTitle>
         <PageDescription dangerouslySetInnerHTML={{

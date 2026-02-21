@@ -19,6 +19,7 @@ import {
 import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { processMarkdownText } from '../utils/contentParser';
 import { useTranslation } from '../hooks/useTranslation';
+import PageHead from '../components/PageHead';
 import { danceEvents, getDanceStats } from '../data/danceEvents';
 
 const BioSection = styled(HighlightCard)`
@@ -305,6 +306,7 @@ const AboutPage = () => {
 
   return (
     <PageContainer>
+      <PageHead title={t('about.title')} description={t('about.description')} />
       <PageHeader>
         <PageTitle>{t('about.title')}</PageTitle>
         <PageDescription>

@@ -10,6 +10,7 @@ import {
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp } from '../styles/keyframes';
 import { useTranslation } from '../hooks/useTranslation';
+import PageHead from '../components/PageHead';
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
 
 const ContactGridWrapper = styled.div`
@@ -194,6 +195,7 @@ const ContactPage = () => {
 
   return (
     <PageContainer>
+      <PageHead title={t('contact.title')} description={t('contact.description')} />
       <PageHeader>
         <PageTitle>{t('contact.title')}</PageTitle>
         <PageDescription>{t('contact.description')}</PageDescription>
