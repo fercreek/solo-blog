@@ -153,7 +153,12 @@ Professional systems that shape my execution:
   - 🥈2nd place - Salsa Team Shines Mixto Open (Regios Team)
   - 4th place - Bachata Grupos Open
   - 5th place - Bachata Solista Amateur
-  - 7th place - Salsa Solista Amateur`,
+  - 7th place - Salsa Solista Amateur
+- Mambolee One 2026 (Fue un congreso muy diferente)
+  - 🥇 Bachata dúo mixto open
+  - 🥈 Bachata men shines open
+  - 🥈 Bachata pareja am-al
+  - 🥈 Bachata grupo mixto`,
     es: `# Instantánea de Mí
 
 Soy un dueño de problemas que entrega alivio mediante la precisión.
@@ -307,7 +312,12 @@ Sistemas profesionales que dan forma a mi ejecución:
   - 🥈2do lugar - Salsa Team Shines Mixto Open (Regios Team)
   - 4to lugar - Bachata Grupos Open
   - 5to lugar - Bachata Solista Amateur
-  - 7mo lugar - Salsa Solista Amateur`
+  - 7mo lugar - Salsa Solista Amateur
+- Mambolee One 2026 (Fue un congreso muy diferente)
+  - 🥇 Bachata dúo mixto open
+  - 🥈 Bachata men shines open
+  - 🥈 Bachata pareja am-al
+  - 🥈 Bachata grupo mixto`
   };
 
   return translations[language] || translations.en;

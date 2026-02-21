@@ -156,4 +156,9 @@ My hobbies include:
   - 4th place - Bachata Grupos Open
   - 5th place - Bachata Solista Amateur
   - 7th place - Salsa Solista Amateur
+- Mambolee One 2026 (Fue un congreso muy diferente)
+  - 🥇 Bachata dúo mixto open
+  - 🥈 Bachata men shines open
+  - 🥈 Bachata pareja am-al
+  - 🥈 Bachata grupo mixto
 `;

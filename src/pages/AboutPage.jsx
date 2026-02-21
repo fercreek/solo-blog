@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import {
@@ -15,9 +16,10 @@ import {
   CardIcon,
   AnimatedListItem
 } from '../styles/designSystem';
-import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic } from 'react-icons/fa';
+import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { processMarkdownText } from '../utils/contentParser';
 import { useTranslation } from '../hooks/useTranslation';
+import { danceEvents, getDanceStats } from '../data/danceEvents';
 
 const BioSection = styled(HighlightCard)`
   margin-bottom: 3rem;
@@ -110,11 +112,25 @@ const EventList = styled.ul`
   padding: 0;
   margin: 0;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const EventListFullWidth = styled.li`
+  grid-column: 1 / -1;
+  list-style: none;
 `;
 
 const EventItem = styled(AnimatedListItem)`
   padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.6;
   
   a {
     color: ${soloLevelingTheme.colors.accent.orange};
@@ -132,19 +148,25 @@ const EventItem = styled(AnimatedListItem)`
 const SubEventList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0.75rem 0 0 2rem;
+  margin: 0.75rem 0 0 1.5rem;
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const SubEventItem = styled.li`
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.125rem;
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.6), rgba(10, 10, 15, 0.6));
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
   border-left: 3px solid ${soloLevelingTheme.colors.accent.purple};
   border-radius: ${soloLevelingTheme.borderRadius.md};
   color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
   transition: all 0.3s ease;
   
   &:hover {
@@ -164,8 +186,115 @@ const SubEventItem = styled.li`
   }
 `;
 
+const DanceStatsSummary = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(26, 26, 46, 0.9));
+  border: 1px solid ${soloLevelingTheme.colors.border.accent};
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  color: ${soloLevelingTheme.colors.text.secondary};
+  font-size: 1rem;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+`;
+
+const AccordionTrigger = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.85), rgba(10, 10, 15, 0.85));
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  border-left: 5px solid ${soloLevelingTheme.colors.accent.orange};
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  color: ${soloLevelingTheme.colors.text.primary};
+  font-size: 1.05rem;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(26, 26, 46, 0.95));
+    border-left-color: ${soloLevelingTheme.colors.accent.gold};
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline-offset: 2px;
+  }
+  
+  span {
+    flex: 1;
+  }
+  
+  svg {
+    flex-shrink: 0;
+    color: ${soloLevelingTheme.colors.accent.gold};
+    transition: transform 0.3s ease;
+  }
+`;
+
+const AccordionPreview = styled.span`
+  color: ${soloLevelingTheme.colors.text.secondary};
+  font-size: 0.9rem;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.normal};
+`;
+
+const AccordionContent = styled.div`
+  overflow: hidden;
+  transition: max-height 0.35s ease-out, opacity 0.25s ease;
+`;
+
+const AccordionInner = styled.div`
+  padding: 0.5rem 0 0 1.5rem;
+  border-left: 2px solid ${soloLevelingTheme.colors.border.accent};
+  margin-left: 0.75rem;
+`;
+
+const ProgrammingGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 0.75rem;
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ProgrammingItem = styled(AnimatedListItem)`
+  padding: 1rem 1.25rem;
+  margin: 0;
+  
+  a {
+    color: ${soloLevelingTheme.colors.accent.orange};
+    text-decoration: none;
+    font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: ${soloLevelingTheme.colors.accent.gold};
+      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+    }
+  }
+`;
+
+const DanceSingleLineTrigger = styled(AccordionTrigger)`
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+`;
+
 const AboutPage = () => {
   const { t } = useTranslation();
+  const [expandedId, setExpandedId] = useState(null);
+  const [programmingExpanded, setProgrammingExpanded] = useState(false);
+  const danceStats = getDanceStats();
 
   const hobbies = [
     { icon: <FaMusic />, name: t('about.hobbies.dancing') },
@@ -224,14 +353,32 @@ const AboutPage = () => {
           <SectionTitle>{t('about.exhibitions.title')}</SectionTitle>
           
           <CategoryCard>
-            <CategoryTitle>
-              <FaCode />
-              {t('about.exhibitions.programming')}
-            </CategoryTitle>
-            <EventList>
-              <EventItem delay="0s" dangerouslySetInnerHTML={{ __html: processMarkdownText('FIME UANL September 4, 2015 - [Qué es git?](https://docs.google.com/presentation/d/1nM6y1TTKOk28Pk_Cv4lmCmLRpWqLJLozD6x__rvxN5Y/edit?usp=sharing)') }} />
-              <EventItem delay="0.1s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Code Crafters MTY April 12, 2019 - [Lightning Talks - How to make a blog with Hugo and Github pages](https://docs.google.com/presentation/d/16Np6grMtFSlnfoJ-KsN91QPb_NESclMR3AWw9Jc6MFE/edit?usp=sharing)') }} />
-            </EventList>
+            <AccordionTrigger
+              type="button"
+              onClick={() => setProgrammingExpanded(!programmingExpanded)}
+              aria-expanded={programmingExpanded}
+              aria-controls="programming-list"
+            >
+              <span>
+                <FaCode style={{ marginRight: '0.75rem', verticalAlign: 'middle' }} />
+                <strong>{t('about.exhibitions.programming')}</strong>
+                <AccordionPreview>
+                  {' · '}{t('about.exhibitions.programmingCount', { count: 2 })}
+                </AccordionPreview>
+              </span>
+              {programmingExpanded ? <FaChevronDown /> : <FaChevronRight />}
+            </AccordionTrigger>
+            <AccordionContent
+              id="programming-list"
+              style={{ maxHeight: programmingExpanded ? '500px' : 0, opacity: programmingExpanded ? 1 : 0 }}
+            >
+              <AccordionInner>
+                <ProgrammingGrid>
+                  <ProgrammingItem delay="0s" dangerouslySetInnerHTML={{ __html: processMarkdownText('FIME UANL September 4, 2015 - [Qué es git?](https://docs.google.com/presentation/d/1nM6y1TTKOk28Pk_Cv4lmCmLRpWqLJLozD6x__rvxN5Y/edit?usp=sharing)') }} />
+                  <ProgrammingItem delay="0.05s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Code Crafters MTY April 12, 2019 - [Lightning Talks - How to make a blog with Hugo and Github pages](https://docs.google.com/presentation/d/16Np6grMtFSlnfoJ-KsN91QPb_NESclMR3AWw9Jc6MFE/edit?usp=sharing)') }} />
+                </ProgrammingGrid>
+              </AccordionInner>
+            </AccordionContent>
           </CategoryCard>
 
           <CategoryCard>
@@ -239,94 +386,80 @@ const AboutPage = () => {
               <FaTrophy />
               {t('about.exhibitions.dance')}
             </CategoryTitle>
+            <DanceStatsSummary>
+              {t('about.exhibitions.danceStats', {
+                congresses: danceStats.congresses,
+                gold: danceStats.gold,
+                silver: danceStats.silver,
+                bronze: danceStats.bronze
+              })}
+            </DanceStatsSummary>
             <EventList>
-              <EventItem delay="0s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Timbal Latin Dance Congress 2019 - [🥈2nd place - Fuego Latino Men Shines](https://www.facebook.com/TIMBALDANCECONGRESS/videos/576061669623842/UzpfSTczNjExMDI1NzoxMDE2Mjg1OTA3NDY3MDI1OA/?q=timbal%20congress%20men%20shine&epa=SEARCH_BOX)') }} />
-              <EventItem delay="0.1s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Mambolee One Dance Congress 2020 - [🥇1st place - Fuego Latino Men Shines](https://www.facebook.com/MamboleeONE/videos/179732403335733)') }} />
-              <EventItem delay="0.2s">
-                Mambolee One Dance Congress 2022
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥈2nd place - Fuego Latino Bachata Men shines](https://fb.watch/eKrEuaRkHy/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Pa que me perdones - Bachata Solista Alumno](https://fb.watch/bBoIn6JN3X/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Via Perico - Salsa Solista Alumno](https://fb.watch/bBoI_zIexG/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Catalogo de amor - Bachata Pareja Alumno](https://fb.watch/bBoL8l1idM/)') }} />
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="0.3s">
-                BKS Festival 2022
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Solista Alumno](https://www.facebook.com/793921981/videos/417107049784576/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Grupos](https://fb.watch/eKN1MF6Igg/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Men Shines](https://www.facebook.com/793921981/videos/441330537751269/)') }} />
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="0.4s">
-                Olimpo 2022
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥇1st place - Bachata Solista Alumno](https://fb.watch/eKM4U2y98N/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Duo](https://fb.watch/eKM63pUadb/)') }} />
-                  <SubEventItem>Salsa Solista Alumno</SubEventItem>
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="0.5s">
-                Hobby SalsaFest 2022
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Solista Alumno](https://fb.watch/eKs4qvOs0P/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Bachata Grupos Alumnos](https://fb.watch/eKLFtTUPiy/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[Salsa Duos Shines](https://fb.watch/eKLI77CUrQ/)') }} />
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="0.6s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Mambolee One Dance Congress 2023 - [🥇1st place - Bachata Solista Alumno](https://fb.watch/p0GhSp1EXg/)') }} />
-              <EventItem delay="0.7s" dangerouslySetInnerHTML={{ __html: processMarkdownText('Imperio Latino 2023 - [🥈2nd place - Bachata Solista Alumno](https://fb.watch/p0Gnlmw2pp/)') }} />
-              <EventItem delay="0.8s">
-                Euroson Latino Dance Congress 2023
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥈2nd place - Bachata Solista Alumno](https://fb.watch/p0GzPkXBZU/)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥉3rd place - Salsa Solista Alumno](https://fb.watch/p0GtQBRcIm/)') }} />
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="0.9s">
-                Mambolee One Dance Congress 2024
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥇1st place - Bachata Solista Alumno](https://www.facebook.com/100041993030366/videos/909271574226046/)') }} />
-                  <SubEventItem>🥈2nd place - Bachata Pareja Pro-al</SubEventItem>
-                  <SubEventItem>🥈2nd place - Bachata Pareja Alumno</SubEventItem>
-                  <SubEventItem>🥈2nd place - Bachata Mixto Open</SubEventItem>
-                  <SubEventItem>🥉3rd place - Bachata Duo Open</SubEventItem>
-                  <SubEventItem>🥉3rd place - Salsa Duo Open</SubEventItem>
-                  <SubEventItem>Salsa Solista Alumno</SubEventItem>
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="1s">
-                Beach Latin Fest 2024
-                <SubEventList>
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥇1st place - Bachata Solista Am-Al](https://www.facebook.com/BeachLatinFriends/videos/1021641623088761)') }} />
-                  <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText('[🥇1st place - Salsa Solista Alumno](https://www.facebook.com/BeachLatinFriends/videos/1029371465647551)') }} />
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="1.1s">
-                Brisa Latin Cup 2024
-                <SubEventList>
-                  <SubEventItem>🥇1st place - Bachata Solista Am</SubEventItem>
-                  <SubEventItem>🥇1st place - Bachata Team Shine Mixto</SubEventItem>
-                  <SubEventItem>🥇1st place - Bachata Duo Open</SubEventItem>
-                  <SubEventItem>🥈2nd place - Bachata Parejas Open</SubEventItem>
-                  <SubEventItem>🥈2nd place - Bachata Solista Open</SubEventItem>
-                  <SubEventItem>🥈2nd place - Salsa Solista Alumno</SubEventItem>
-                  <SubEventItem>🥉3rd place - Salsa Duo Open</SubEventItem>
-                  <SubEventItem>5th place - Salsa Solista Open</SubEventItem>
-                </SubEventList>
-              </EventItem>
-              <EventItem delay="1.2s">
-                Mambolee One Dance Congress 2025
-                <SubEventList>
-                  <SubEventItem>🥇1st place - Bachata Parejas Am-al</SubEventItem>
-                  <SubEventItem>🥈2nd place - Bachata Men Shines Open</SubEventItem>
-                  <SubEventItem>🥈2nd place - Salsa Team Shines Mixto Open (Regios Team)</SubEventItem>
-                  <SubEventItem>4th place - Bachata Grupos Open</SubEventItem>
-                  <SubEventItem>5th place - Bachata Solista Amateur</SubEventItem>
-                  <SubEventItem>7th place - Salsa Solista Amateur</SubEventItem>
-                </SubEventList>
-              </EventItem>
+              {danceEvents.map((event) => {
+                const isExpanded = expandedId === event.id;
+                if (event.singleLine) {
+                  return (
+                    <li key={event.id} style={{ listStyle: 'none' }}>
+                      <DanceSingleLineTrigger
+                        type="button"
+                        onClick={() => setExpandedId(isExpanded ? null : event.id)}
+                        aria-expanded={isExpanded}
+                        aria-controls={`dance-${event.id}`}
+                      >
+                        <span>
+                          <strong>{event.title}</strong>
+                          <AccordionPreview>{' · '}{event.summary}</AccordionPreview>
+                        </span>
+                        {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
+                      </DanceSingleLineTrigger>
+                      <AccordionContent
+                        id={`dance-${event.id}`}
+                        style={{ maxHeight: isExpanded ? '200px' : 0, opacity: isExpanded ? 1 : 0 }}
+                      >
+                        <AccordionInner>
+                          <SubEventList style={{ marginTop: '0.75rem', marginBottom: 0 }}>
+                            <SubEventItem dangerouslySetInnerHTML={{ __html: processMarkdownText(event.html) }} />
+                          </SubEventList>
+                        </AccordionInner>
+                      </AccordionContent>
+                    </li>
+                  );
+                }
+                return (
+                  <EventListFullWidth key={event.id}>
+                    <AccordionTrigger
+                      type="button"
+                      onClick={() => setExpandedId(isExpanded ? null : event.id)}
+                      aria-expanded={isExpanded}
+                      aria-controls={`dance-${event.id}`}
+                    >
+                      <span>
+                        <strong>{event.title}</strong>
+                        <AccordionPreview>
+                          {' · '}{t('about.exhibitions.danceResults', { count: event.count })}
+                        </AccordionPreview>
+                      </span>
+                      {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
+                    </AccordionTrigger>
+                    <AccordionContent
+                      id={`dance-${event.id}`}
+                      style={{ maxHeight: isExpanded ? '2000px' : 0, opacity: isExpanded ? 1 : 0 }}
+                    >
+                      <AccordionInner>
+                        <SubEventList style={{ marginTop: '0.75rem', marginBottom: 0 }}>
+                          {event.items.map((item, i) =>
+                            item.startsWith('[') ? (
+                              <SubEventItem key={i} dangerouslySetInnerHTML={{ __html: processMarkdownText(item) }} />
+                            ) : (
+                              <SubEventItem key={i}>{item}</SubEventItem>
+                            )
+                          )}
+                        </SubEventList>
+                      </AccordionInner>
+                    </AccordionContent>
+                  </EventListFullWidth>
+                );
+              })}
             </EventList>
           </CategoryCard>
         </ExhibitionsSection>
