@@ -1,16 +1,14 @@
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp, levelUp } from '../styles/keyframes';
+import { levelUp } from '../styles/keyframes';
 
-const CardContainer = styled.article`
+const CardContainer = styled(motion.article)`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
   border: 2px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.$delay || '0s'};
-  animation-fill-mode: both;
   position: relative;
   backdrop-filter: blur(15px);
   cursor: pointer;
@@ -212,12 +210,20 @@ const getGlowColor = (type) => {
   return colors[type] || colors.default;
 };
 
+const parseDelay = (delayStr) => parseFloat(String(delayStr).replace('s', '')) || 0;
+
 const NowCard = ({ type, icon, title, description, delay = '0s' }) => {
+  const prefersReducedMotion = useReducedMotion();
   const gradient = getGradient(type);
   const glowColor = getGlowColor(type);
+  const delaySeconds = parseDelay(delay);
 
   return (
-    <CardContainer $delay={delay}>
+    <CardContainer
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : delaySeconds }}
+    >
       <HeaderSection $gradient={gradient}>
         <LevelUpGlow $color={glowColor} />
         <IconWrapper>{icon}</IconWrapper>

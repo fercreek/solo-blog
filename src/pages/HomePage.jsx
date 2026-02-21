@@ -1,10 +1,10 @@
 import styled, { keyframes } from 'styled-components';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { PageContainer } from '../components/PageComponents';
 import { SectionTitle } from '../styles/designSystem';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
-import { useParallax } from '../hooks/useParallax';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
 import PageHead from '../components/PageHead';
@@ -29,7 +29,7 @@ const HeroWrapper = styled.section`
   }
 `;
 
-const ParallaxLayer = styled.div`
+const ParallaxLayerStyles = styled(motion.div)`
   position: absolute;
   top: -20%;
   left: -10%;
@@ -40,7 +40,6 @@ const ParallaxLayer = styled.div`
   z-index: 0;
   background: radial-gradient(ellipse 60% 40% at 50% 20%, rgba(108, 92, 231, 0.2) 0%, transparent 50%),
               radial-gradient(ellipse 80% 50% at 80% 60%, rgba(253, 203, 110, 0.06) 0%, transparent 50%);
-  transform: translateY(${props => props.$offset}px);
 `;
 
 const HeroSection = styled.section`
@@ -420,14 +419,16 @@ const HomePage = () => {
     }
   ];
 
-  const parallaxOffset = useParallax(0.25);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, (v) => (prefersReducedMotion ? 0 : v * 0.25));
 
   return (
     <PageContainer>
       <PageHead title={t('home.hero.title')} description={t('home.hero.description')} />
       <HeroWrapper>
         <HeroSection>
-        <ParallaxLayer $offset={parallaxOffset} />
+        <ParallaxLayerStyles style={{ y: parallaxY }} />
         <Name>{t('home.hero.name')}</Name>
         <Title>{t('home.hero.title')}</Title>
         <Description>

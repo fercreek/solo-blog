@@ -3,17 +3,16 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import LazyImage from './LazyImage';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp } from '../styles/animations';
 
-const MarkdownContainer = styled.div`
+const MarkdownContainer = styled(motion.div)`
   line-height: 1.7;
   color: ${soloLevelingTheme.colors.text.primary};
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-family: ${soloLevelingTheme.typography.fontFamily.primary};
-  animation: ${fadeInUp} 0.6s ease-out;
 
   h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
@@ -356,9 +355,20 @@ const MarkdownContainer = styled.div`
   }
 `;
 
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: [0, 0.2, 0.2, 1] }
+};
+
 const MarkdownContent = ({ content }) => {
+  const prefersReducedMotion = useReducedMotion();
   return (
-    <MarkdownContainer>
+    <MarkdownContainer
+      initial={prefersReducedMotion ? false : fadeInUp.initial}
+      animate={prefersReducedMotion ? undefined : fadeInUp.animate}
+      transition={fadeInUp.transition}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

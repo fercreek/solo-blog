@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp } from '../styles/keyframes';
 import Button from './Button';
 
 const glowPulse = keyframes`
@@ -42,7 +42,7 @@ export const getProjectXP = (project) => {
   return Math.min(100, yearProgress + statusBonus);
 };
 
-const Card = styled.article`
+const Card = styled(motion.article)`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
   border: 2px solid ${soloLevelingTheme.colors.border.primary};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
@@ -50,9 +50,6 @@ const Card = styled.article`
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.$delay || '0s'};
-  animation-fill-mode: both;
   backdrop-filter: blur(10px);
   
   &::before {
@@ -211,6 +208,8 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const parseDelay = (delayStr) => parseFloat(String(delayStr).replace('s', '')) || 0;
+
 const ProjectCard = ({
   title,
   excerpt,
@@ -222,8 +221,14 @@ const ProjectCard = ({
   buttonText = 'View Project',
   statusLabel
 }) => {
+  const prefersReducedMotion = useReducedMotion();
+  const delaySeconds = parseDelay(delay);
   return (
-    <Card $delay={delay}>
+    <Card
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+      animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : delaySeconds }}
+    >
       <StatusBadge $status={status}>
         {statusLabel || (status === 'production' ? 'In Production' : 'MVP')}
       </StatusBadge>

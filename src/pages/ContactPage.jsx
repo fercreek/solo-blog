@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
   PageContainer,
   PageHeader,
@@ -8,7 +9,6 @@ import {
   ContentWrapper
 } from '../components/PageComponents';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp } from '../styles/keyframes';
 import { useTranslation } from '../hooks/useTranslation';
 import PageHead from '../components/PageHead';
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
@@ -79,7 +79,7 @@ const ContactAction = styled.span`
   }
 `;
 
-const CardBase = styled.div`
+const CardBase = styled(motion.div)`
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
@@ -92,8 +92,6 @@ const CardBase = styled.div`
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   color: ${soloLevelingTheme.colors.text.primary};
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: ${fadeInUp} 0.6s ease-out;
-  animation-fill-mode: both;
   position: relative;
   overflow: hidden;
 
@@ -171,9 +169,12 @@ const LINKEDIN_URL = 'https://linkedin.com/in/fercreek';
 const LOCATION = 'Monterrey, Nuevo León, México';
 const LOCATION_URL = 'https://www.google.com/maps/search/?api=1&query=Monterrey+Nuevo+Leon+Mexico';
 
+const fadeInUp = { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.6, ease: [0, 0.2, 0.2, 1] } };
+
 const ContactPage = () => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const copyEmail = async () => {
     try {
@@ -209,7 +210,9 @@ const ContactPage = () => {
                 key={channel.id}
                 type="button"
                 onClick={copyEmail}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={prefersReducedMotion ? false : fadeInUp.initial}
+                animate={prefersReducedMotion ? undefined : fadeInUp.animate}
+                transition={{ ...fadeInUp.transition, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               >
                 <ContactIcon>{channel.icon}</ContactIcon>
                 <ContactContent>
@@ -231,7 +234,9 @@ const ContactPage = () => {
                 href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={prefersReducedMotion ? false : fadeInUp.initial}
+                animate={prefersReducedMotion ? undefined : fadeInUp.animate}
+                transition={{ ...fadeInUp.transition, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               >
                 <ContactIcon>{channel.icon}</ContactIcon>
                 <ContactContent>
@@ -249,7 +254,9 @@ const ContactPage = () => {
                 href={channel.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={prefersReducedMotion ? false : fadeInUp.initial}
+                animate={prefersReducedMotion ? undefined : fadeInUp.animate}
+                transition={{ ...fadeInUp.transition, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               >
                 <ContactIcon>{channel.icon}</ContactIcon>
                 <ContactContent>

@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import ImpossibleList from '../components/ImpossibleList';
 import { PageContainer, PageHeader, PageTitle, ContentWrapper, PageDescription } from '../components/PageComponents';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp } from '../styles/keyframes';
 import { FaTrophy, FaClock, FaBullseye, FaSearch, FaFilter, FaChartLine, FaCheckCircle, FaChevronDown } from 'react-icons/fa';
 import { parseImpossibleListContent } from '../utils/contentParser';
 import {
@@ -29,11 +29,10 @@ const StatsWrapper = styled.div`
   border-top: 3px solid ${soloLevelingTheme.colors.accent.gold};
 `;
 
-const StatsContainer = styled.div`
+const StatsContainer = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  animation: ${fadeInUp} 0.6s ease-out;
   
   @media (min-width: 640px) {
     grid-template-columns: repeat(4, 1fr);
@@ -115,7 +114,7 @@ const FilterContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const RecentPreviewWrapper = styled.div`
+const RecentPreviewWrapper = styled(motion.div)`
   padding: 1.75rem;
   margin-bottom: 2.5rem;
   background: linear-gradient(165deg, rgba(22, 33, 62, 0.95), rgba(26, 26, 46, 0.95));
@@ -123,7 +122,6 @@ const RecentPreviewWrapper = styled.div`
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   position: relative;
   overflow: hidden;
-  animation: ${fadeInUp} 0.6s ease-out 0.2s both;
 
   &::before {
     content: '';
@@ -244,6 +242,7 @@ const ImpossibleListPage = () => {
   const [recentCollapsed, setRecentCollapsed] = useState(false);
   const { language } = useLanguage();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   
   const impossibleListDataTranslated = useMemo(() => getImpossibleListData(language), [language]);
   const sections = useMemo(() => parseImpossibleListContent(impossibleListDataTranslated), [impossibleListDataTranslated]);
@@ -318,7 +317,11 @@ const ImpossibleListPage = () => {
       
       <ContentWrapper>
         <StatsWrapper>
-          <StatsContainer>
+          <StatsContainer
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1] }}
+          >
             <StatCard $delay="0s">
             <StatIcon $variant="default"><FaBullseye /></StatIcon>
             <StatNumber $variant="default">{stats.total}</StatNumber>
@@ -346,7 +349,11 @@ const ImpossibleListPage = () => {
         </StatsWrapper>
 
         {recentGoals.length > 0 && (
-          <RecentPreviewWrapper>
+          <RecentPreviewWrapper
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: 0.2 }}
+          >
             <RecentPreviewHeader
               type="button"
               $collapsed={recentCollapsed}

@@ -10,8 +10,10 @@ import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp, xpBarProgressive, levelNumber, starTwinkle, particleFloat, levelUp, shimmer as shimmerKeyframe } from '../styles/keyframes.js';
 import { FaClock, FaMapMarkerAlt, FaCode, FaDumbbell, FaChartLine, FaUsers, FaBullseye, FaLaptopCode, FaProjectDiagram, FaCoins, FaMusic, FaRocket, FaCalendarAlt } from 'react-icons/fa';
 import { useTranslation } from '../hooks/useTranslation';
+import { useLanguage } from '../contexts/LanguageContext';
 import PageHead from '../components/PageHead';
 import NowCard from '../components/NowCard';
+import { formatDate } from '../utils/formatDate';
 
 const glowPulse = keyframes`
   0%, 100% {
@@ -979,8 +981,11 @@ const HighlightParticleEffect = () => (
   </HighlightParticlesContainer>
 );
 
+const NOW_LAST_UPDATED = new Date(2025, 1, 26);
+
 const NowPage = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
 
   const currentActivities = [
     {
@@ -1150,7 +1155,7 @@ const NowPage = () => {
 
         <LastUpdated>
           <FaClock />
-          {t('now.lastUpdated', { date: 'February 26, 2025' })}
+          {t('now.lastUpdated', { date: formatDate(NOW_LAST_UPDATED, language) })}
         </LastUpdated>
       </ContentWrapper>
     </PageContainer>

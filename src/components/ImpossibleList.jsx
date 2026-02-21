@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
 import styled from 'styled-components';
+import { motion, useReducedMotion } from 'framer-motion';
 import { FaCheckCircle, FaClock, FaBullseye, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { parseImpossibleListContent, getSectionIcon } from '../utils/contentParser';
-import { fadeInUp } from '../styles/keyframes';
 import { useTranslation } from '../hooks/useTranslation';
 
-const NoResultsWrapper = styled.div`
+const NoResultsWrapper = styled(motion.div)`
   grid-column: 1 / -1;
   position: relative;
   text-align: center;
@@ -17,7 +17,6 @@ const NoResultsWrapper = styled.div`
   color: ${soloLevelingTheme.colors.text.secondary};
   font-size: 1.1rem;
   overflow: hidden;
-  animation: ${fadeInUp} 0.6s ease-out;
 
   &::before {
     content: '';
@@ -48,16 +47,13 @@ const ListContainer = styled.div`
   }
 `;
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   margin-bottom: 0;
   background: linear-gradient(165deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.95) 100%);
   border-radius: ${soloLevelingTheme.borderRadius.lg};
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
   overflow: hidden;
   position: relative;
-  animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.$index * 0.08}s;
-  animation-fill-mode: both;
   grid-column: ${props => props.$fullWidth ? '1 / -1' : 'auto'};
   transition: border-color 0.25s ease;
 
@@ -274,8 +270,14 @@ const SubGoalItem = styled.li`
 
 
 
+const fadeInUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+};
+
 const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
   const [collapsedSections, setCollapsedSections] = useState(new Set());
+  const prefersReducedMotion = useReducedMotion();
   
   const sections = useMemo(() => parseImpossibleListContent(content), [content]);
   
@@ -350,7 +352,13 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
   if (filteredSections.length === 0) {
     return (
       <ListContainer>
-        <NoResultsWrapper>{t('impossibleList.noResults')}</NoResultsWrapper>
+        <NoResultsWrapper
+          initial={prefersReducedMotion ? false : fadeInUpVariants.hidden}
+          animate={prefersReducedMotion ? undefined : fadeInUpVariants.visible}
+          transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1] }}
+        >
+          {t('impossibleList.noResults')}
+        </NoResultsWrapper>
       </ListContainer>
     );
   }
@@ -361,7 +369,14 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
         const isCollapsed = collapsedSections.has(index);
         const isTravelGoals = section.title.toLowerCase().includes('travel goals');
         return (
-          <Section key={index} $index={index} $fullWidth={isTravelGoals}>
+          <Section
+            key={index}
+            $index={index}
+            $fullWidth={isTravelGoals}
+            initial={prefersReducedMotion ? false : fadeInUpVariants.hidden}
+            animate={prefersReducedMotion ? undefined : fadeInUpVariants.visible}
+            transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : index * 0.08 }}
+          >
             <SectionHeader onClick={() => toggleSection(index)}>
               <SectionTitle $collapsed={isCollapsed}>
                 <div className="title-content">
