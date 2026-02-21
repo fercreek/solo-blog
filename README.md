@@ -1,25 +1,37 @@
-# Fernando Castañeda - Personal Blog
+# Fernando Castañeda - Strategic Operator
 
-A modern, bilingual personal blog built with React, showcasing my journey as a software engineer, dancer, and trader. Live at [contrerascode.com](https://contrerascode.com)
+*Last updated: January 2026*
+
+Personal site built with React, positioned around the **6FE methodology**: from "Senior Dev CV" to proof of an **Independent Operator with systemic discipline**. Live at [fercontreras.com](https://fercontreras.com)
+
+**Core idea:** *Engineering is a precision system, like a financial market or a bachata choreography.* Trading (risk) and dancing (discipline, rhythm) support the narrative, not as curiosities but as evidence of how I operate.
 
 ## 🚀 Features
 
-- **Bilingual Support**: Full English and Spanish translation system
-- **Responsive Design**: Optimized for all devices and screen sizes
-- **Modern Stack**: Built with React 19, Vite, and Styled Components
-- **Fast Performance**: Optimized for speed, SEO, and lazy loading
-- **Intuitive Navigation**: Clean and accessible user interface
-- **Rich Content**: Markdown support with syntax highlighting
-- **Dynamic Animations**: Solo Leveling-inspired UI with smooth transitions
+- **6FE Positioning**: Strategic Operator, Stack→Output→Outcome, no skill lists
+- **Bilingual**: English and Spanish for all content
+- **Responsive**: Mobile-first, Solo Leveling–inspired UI
+- **Modern Stack**: React 19, Vite, Styled Components
+- **Performance**: Lazy loading, code splitting
+- **Rich Content**: Markdown with syntax highlighting
+
+## 📐 6FE Methodology
+
+- **Positioning**: Strategic Operator instead of "senior developer CV"
+- **Framework**: Stack → Output → Outcome for experience and projects
+- **No skill lists**: Emphasis on Professional Systems and execution
+- **Dancer & Trader**: Discipline, rhythm, risk analysis as proof of how I work
+- **Language**: Relief, certainty, precision, outcomes
+- **Tone**: Direct, minimal, high authority
 
 ## 📄 Pages
 
-- **Home**: Introduction, featured projects, and recent work showcase
-- **About**: Professional background, experience, and personal achievements
-- **Projects**: Portfolio of technical projects and solutions
-- **Impossible List**: Personal goals tracker and achievements log
-- **Now**: Current activities, focuses, and priorities
-- **Contact**: Get in touch via email, GitHub, or LinkedIn
+- **Home**: Hero, featured projects, recent work
+- **About**: Professional profile, experience (Stack→Output→Outcome), Beyond the Code
+- **Projects**: Portfolio with leveling-style cards and status badges
+- **Impossible List**: Personal goals tracker
+- **Now**: Current activities and focus areas
+- **Contact**: Email, GitHub, LinkedIn
 
 ## 🛠️ Tech Stack
 
@@ -34,7 +46,7 @@ A modern, bilingual personal blog built with React, showcasing my journey as a s
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 - npm or yarn
 
 ### Installation
@@ -56,6 +68,9 @@ The blog will be available at `http://localhost:5173`
 ### Build for Production
 
 ```bash
+# Validate before commit (lint + build)
+npm run validate
+
 # Build the project
 npm run build
 
@@ -67,7 +82,7 @@ npm run preview
 
 ### Deploy to Vercel (Recommended)
 
-The site is configured for deployment on Vercel at **contrerascode.com**
+The site is configured for deployment on Vercel at **fercontreras.com**
 
 1. **Install Vercel CLI**:
    ```bash
@@ -79,7 +94,7 @@ The site is configured for deployment on Vercel at **contrerascode.com**
    vercel
    ```
 
-3. **Configure domain** in Vercel dashboard to point to `contrerascode.com`
+3. **Configure domain** in Vercel dashboard to point to `fercontreras.com`
 
 4. **Automatic deployments** are enabled on git push to main branch
 
@@ -93,19 +108,33 @@ No environment variables are required for this static site.
 - Output directory: `dist`
 - Install command: `npm install`
 
+### Scripts
+
+| Script     | Description                    |
+|-----------|--------------------------------|
+| `npm run dev`      | Start dev server               |
+| `npm run build`    | Production build               |
+| `npm run validate` | Lint + build (run before commit) |
+| `npm run lint`     | Run ESLint                     |
+| `npm run preview`  | Preview production build       |
+
 ## 📁 Project Structure
 
 ```
 src/
 ├── components/          # Reusable UI components
+│   ├── Button.jsx       # Unified button (primary, secondary, ghost, outline)
 │   ├── Footer.jsx
 │   ├── ImpossibleList.jsx
 │   ├── Layout.jsx
 │   ├── LazyImage.jsx
 │   ├── LazyPageLoader.jsx
+│   ├── LevelingAnimation.jsx  # XP bars, stars, particles (Solo Leveling theme)
 │   ├── MarkdownContent.jsx
 │   ├── Navbar.jsx
-│   └── PageComponents.jsx
+│   ├── NowCard.jsx
+│   ├── PageComponents.jsx
+│   └── ProjectCard.jsx  # Unified project card with LevelingAnimation
 ├── contexts/           # React contexts
 │   └── LanguageContext.jsx
 ├── data/               # Content data files
@@ -212,5 +241,5 @@ This project is private and proprietary.
 
 ---
 
-**Built with ❤️ by Fernando Castañeda**  
-**Live at**: [contrerascode.com](https://contrerascode.com)
+**Built with ❤️ by Fernando Castañeda — 2026**  
+**Live at**: [fercontreras.com](https://fercontreras.com)
