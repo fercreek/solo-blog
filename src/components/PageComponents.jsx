@@ -50,7 +50,7 @@ export const PageHeader = styled.header`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, rgba(225, 112, 85, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
     pointer-events: none;
   }
 `;
@@ -325,18 +325,13 @@ const MarkdownList = styled.ul`
 
 // Descripción de página reutilizable
 export const PageDescription = styled.p`
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: center;
   color: ${soloLevelingTheme.colors.text.secondary};
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   margin-top: 2rem;
   line-height: 1.6;
   position: relative;
   z-index: 1;
-  
-  @media (max-width: 768px) {
-    text-align: left;
-  }
   
   a {
     color: ${soloLevelingTheme.colors.accent.orange};

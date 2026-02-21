@@ -90,15 +90,12 @@ export const levelUp = keyframes`
   0% {
     opacity: 0;
     transform: scale(0.5);
-    filter: brightness(1);
   }
   50% {
-    transform: scale(1.1);
-    filter: brightness(2);
+    transform: scale(1.05);
   }
   100% {
     opacity: 1;
     transform: scale(1);
-    filter: brightness(1.5);
   }
 `;

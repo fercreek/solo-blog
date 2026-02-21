@@ -72,15 +72,10 @@ const StyledButton = styled.button`
   `}
 `;
 
-const StyledLink = StyledButton.withComponent('a');
-
-const Button = ({ variant = 'primary', as, children, ...props }) => {
-  const Component = as === 'a' ? StyledLink : StyledButton;
-  return (
-    <Component $variant={variant} {...props}>
-      {children}
-    </Component>
-  );
-};
+const Button = ({ variant = 'primary', as, children, ...props }) => (
+  <StyledButton as={as || 'button'} $variant={variant} {...props}>
+    {children}
+  </StyledButton>
+);
 
 export default Button;
