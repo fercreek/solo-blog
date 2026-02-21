@@ -33,8 +33,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Senior Software Engineer | Dancer | Trader',
-        description: 'Welcome to my digital realm! I\'m a Senior Software Engineer with 9+ years building and scaling web platforms, specializing in Ruby on Rails and Python/Django. Currently building with Next.js and Supabase, with 3+ years of experience using React and Vue. Experienced in microservices, CI/CD, monitoring, and incident-driven reliability improvements. Currently learning Go (Golang) with a focus on maintainability, reliability, and user impact. When I\'m not coding, you\'ll find me dancing bachata and salsa, analyzing crypto markets, or exploring new technologies. Join me on this journey of continuous learning and growth.'
+        title: 'Engineering Scalable Solutions | Strategic Operator',
+        description: 'Engineering is a precision system, like a financial market or a bachata choreography. I turn complex problems into reliable, high-impact outcomes. Senior Software Engineer focused on building platforms that deliver real value. With nearly a decade of experience, I\'ve learned that clients don\'t pay for implementation—they pay for relief and certainty. My analytical mindset as a trader and the discipline of salsa and bachata let me approach engineering with a unique blend of precision and creativity. I don\'t just ship code; I ship solutions that move the needle.'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -62,24 +62,24 @@ export const translations = {
     },
     about: {
       title: 'About Me',
-      description: 'Discover my journey through code, dance, and digital innovation',
+      description: 'Strategic operator who delivers relief through precision',
       location: 'Monterrey, Nuevo León, México',
       bio: {
-        intro: 'I\'m a software engineer, dancer, trader, and hobbyist writer.',
-        background: 'Formerly a break dancer, I now compete in bachata and salsa. I\'m a Mexican, residing in Monterrey, Nuevo León, México.'
+        intro: 'I\'m a problem owner who delivers relief through precision.',
+        background: 'Formerly a break dancer, I now compete in bachata and salsa. Based in Monterrey, Nuevo León, México. My discipline on stage and in markets translates directly into how I build systems.'
       },
       closerLook: {
-        title: 'A Closer Look',
-        text1: 'I have experience as a consultant and web programmer, adept at planning and managing projects from inception to completion.',
-        text2: 'My professional focus is backend development with Ruby on Rails. In my leisure time, I compete in bachata and salsa dancing. I also engage in crypto trading and am continually learning about investments.',
-        text3: 'I\'m an active participant in the local tech scene. In the past, I\'ve organized a hackathon event at UANL - FIME for students.'
+        title: 'Beyond the Code',
+        text1: 'I have experience as a consultant and operator, planning and delivering projects from inception to completion. Clients don\'t pay for implementation—they pay for certainty.',
+        text2: 'My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a market or a choreography.',
+        text3: 'I\'m active in the local tech scene and have organized hackathons at UANL-FIME. I don\'t just ship code; I ship solutions that move the needle.'
       },
       hobbies: {
-        title: 'My Hobbies',
-        dancing: 'Dancing bachata and salsa',
-        workingOut: 'Working out',
-        writing: 'Writing about life and technology',
-        trading: 'Crypto trading'
+        title: 'Professional Systems',
+        dancing: 'Discipline and rhythm—bachata and salsa',
+        workingOut: 'Physical rigor and consistency',
+        writing: 'Clear thinking through writing',
+        trading: 'Risk analysis and decision under uncertainty'
       },
       exhibitions: {
         title: 'Exhibitions and Presentations',
@@ -89,7 +89,7 @@ export const translations = {
     },
     projects: {
       title: 'Projects',
-      description: 'Explore my technical creations and development journey. Each project represents a unique challenge and learning experience.',
+      description: 'Solutions I\'ve delivered. Each project turns complex problems into reliable outcomes.',
       mainProjects: 'Main Projects',
       hackathonProjects: 'Hackathon Projects'
     },
@@ -117,7 +117,7 @@ export const translations = {
       title: 'What I\'m Doing Now',
       description: 'A snapshot of my current activities and priorities. This page serves as a public declaration and personal reminder, inspired by {sivers} and {frank}.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Currently immersing myself in the world of cryptocurrencies, investment, and data analytics while continuing to grow as a developer and dancer.',
+      highlight: 'Immersing myself in cryptocurrencies, investment, and data analytics. My discipline as a trader and dancer—risk analysis, rhythm, execution—informs how I build and operate.',
       currentActivities: {
         title: 'Current Activities',
         backend: {
@@ -185,8 +185,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Ingeniero de Software Senior | Bailarín | Trader',
-        description: '¡Bienvenido a mi reino digital! Soy un Ingeniero de Software Senior con más de 9 años construyendo y escalando plataformas web, especializándome en Ruby on Rails y Python/Django. Actualmente construyendo con Next.js y Supabase, con más de 3 años de experiencia usando React y Vue. Experimentado en microservicios, CI/CD, monitoreo y mejoras de confiabilidad impulsadas por incidentes. Actualmente aprendiendo Go (Golang) con un enfoque en mantenibilidad, confiabilidad e impacto en el usuario. Cuando no estoy programando, me encontrarás bailando bachata y salsa, analizando mercados de criptomonedas o explorando nuevas tecnologías. Únete a mí en este viaje de aprendizaje y crecimiento continuo.'
+        title: 'Soluciones Escalables | Operador Estratégico',
+        description: 'La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía de bachata. Convierto problemas complejos en resultados confiables y de alto impacto. Ingeniero de Software Senior enfocado en construir plataformas que entregan valor real. Con casi una década de experiencia, he aprendido que los clientes no pagan por implementación—pagan por alivio y certeza. Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con una mezcla única de precisión y creatividad. No solo entrego código; entrego soluciones que marcan la diferencia.'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -214,24 +214,24 @@ export const translations = {
     },
     about: {
       title: 'Acerca de Mí',
-      description: 'Descubre mi viaje a través del código, el baile y la innovación digital',
+      description: 'Operador estratégico que entrega alivio mediante la precisión',
       location: 'Monterrey, Nuevo León, México',
       bio: {
-        intro: 'Soy un ingeniero de software, bailarín, trader y escritor aficionado.',
-        background: 'Antiguamente un break dancer, ahora compito en bachata y salsa. Soy mexicano, residiendo en Monterrey, Nuevo León, México.'
+        intro: 'Soy un dueño de problemas que entrega alivio mediante la precisión.',
+        background: 'Antiguamente break dancer, ahora compito en bachata y salsa. Radicado en Monterrey, Nuevo León, México. Mi disciplina en escenario y en mercados se traduce directamente en cómo construyo sistemas.'
       },
       closerLook: {
-        title: 'Una Mirada Más Cercana',
-        text1: 'Tengo experiencia como consultor y programador web, hábil en planificar y gestionar proyectos desde su inicio hasta su finalización.',
-        text2: 'Mi enfoque profesional es el desarrollo backend con Ruby on Rails. En mi tiempo libre, compito en baile de bachata y salsa. También me dedico al trading de criptomonedas y estoy aprendiendo continuamente sobre inversiones.',
-        text3: 'Soy un participante activo en la escena tecnológica local. En el pasado, he organizado un evento de hackathon en UANL - FIME para estudiantes.'
+        title: 'Más Allá del Código',
+        text1: 'Tengo experiencia como consultor y operador, planificando y entregando proyectos de inicio a fin. Los clientes no pagan por implementación—pagan por certeza.',
+        text2: 'Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado o una coreografía.',
+        text3: 'Soy activo en la escena tech local y he organizado hackathons en UANL-FIME. No solo entrego código; entrego soluciones que marcan la diferencia.'
       },
       hobbies: {
-        title: 'Mis Pasatiempos',
-        dancing: 'Bailar bachata y salsa',
-        workingOut: 'Hacer ejercicio',
-        writing: 'Escribir sobre vida y tecnología',
-        trading: 'Trading de criptomonedas'
+        title: 'Sistemas Profesionales',
+        dancing: 'Disciplina y ritmo—bachata y salsa',
+        workingOut: 'Rigor físico y consistencia',
+        writing: 'Pensamiento claro mediante la escritura',
+        trading: 'Análisis de riesgo y decisiones bajo incertidumbre'
       },
       exhibitions: {
         title: 'Exhibiciones y Presentaciones',
@@ -241,7 +241,7 @@ export const translations = {
     },
     projects: {
       title: 'Proyectos',
-      description: 'Explora mis creaciones técnicas y mi viaje de desarrollo. Cada proyecto representa un desafío único y una experiencia de aprendizaje.',
+      description: 'Soluciones que he entregado. Cada proyecto convierte problemas complejos en resultados confiables.',
       mainProjects: 'Proyectos Principales',
       hackathonProjects: 'Proyectos de Hackathon'
     },
@@ -269,7 +269,7 @@ export const translations = {
       title: 'Qué Estoy Haciendo Ahora',
       description: 'Una instantánea de mis actividades y prioridades actuales. Esta página sirve como una declaración pública y un recordatorio personal, inspirado por {sivers} y {frank}.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Actualmente me estoy sumergiendo en el mundo de las criptomonedas, las inversiones y el análisis de datos mientras continúo creciendo como desarrollador y bailarín.',
+      highlight: 'Sumergiéndome en criptomonedas, inversiones y análisis de datos. Mi disciplina como trader y bailarín—análisis de riesgo, ritmo, ejecución—da forma a cómo construyo y opero.',
       currentActivities: {
         title: 'Actividades Actuales',
         backend: {

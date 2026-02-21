@@ -18,8 +18,6 @@ import {
 import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic } from 'react-icons/fa';
 import { processMarkdownText } from '../utils/contentParser';
 import { useTranslation } from '../hooks/useTranslation';
-import { useLanguage } from '../contexts/LanguageContext';
-import { getAboutData } from '../data/aboutTranslations';
 
 const BioSection = styled(HighlightCard)`
   margin-bottom: 3rem;
@@ -167,9 +165,7 @@ const SubEventItem = styled.li`
 `;
 
 const AboutPage = () => {
-  const { language } = useLanguage();
   const { t } = useTranslation();
-  const aboutMarkdown = getAboutData(language);
 
   const hobbies = [
     { icon: <FaMusic />, name: t('about.hobbies.dancing') },

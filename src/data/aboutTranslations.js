@@ -2,62 +2,62 @@ export const getAboutData = (language = 'en') => {
   const translations = {
     en: `# Snapshot of Me
 
-I'm a software engineer, dancer, trader, and hobbyist writer.
+I'm a problem owner who delivers relief through precision.
 
-Formerly a break dancer, I now compete in bachata and salsa. I'm a Mexican, residing in Monterrey, Nuevo León, México.
+Formerly a break dancer, I now compete in bachata and salsa. Based in Monterrey, Nuevo León, México. My discipline on stage and in markets translates directly into how I build systems.
 
 # Professional Profile
 
-Senior Software Engineer with 9+ years building and scaling web platforms, specializing in Ruby on Rails and Python/Django. Currently building with Next.js and Supabase, with 3+ years of experience using React and Vue. Experienced in microservices, CI/CD, monitoring, and incident-driven reliability improvements, leveraging AI-assisted development to improve delivery speed and code quality. Currently learning Go (Golang) with a focus on maintainability, reliability, and user impact.
+Engineering is a precision system, like a financial market or a bachata choreography. With nearly a decade building and scaling web platforms, I've learned that clients don't pay for implementation—they pay for relief and certainty. I design architectures that last, from microservices to CI/CD and incident-driven reliability. My real work is understanding your business logic to build for stability. I don't just ship code; I ship solutions that move the needle.
 
 # Professional Experience
 
 ## Software Developer - Fountain
 **Jun 2025 - Dec 2025**
 
-Worked as part of the support team, prioritizing and resolving high-impact tickets and production incidents in close collaboration with product and engineering teams. Leveraged tools like Cursor to accelerate bug detection and root-cause analysis, improving turnaround time and overall platform stability. Partnered with design and frontend teams to propose and ship UX/UI improvements based on user feedback and support insights, enhancing the overall user experience.
+Delivered faster resolution of high-impact production incidents and tickets. Outcome: improved platform stability and turnaround time. Partnered with design and frontend teams to ship UX/UI improvements based on user feedback. Outcome: enhanced user experience and satisfaction.
 
 ## Senior Software Engineer - Buk Chile
 **Jan 2025 - Apr 2025**
 
-Collaborated with a Chile-based, cross-functional team to design and deliver new features for the core application, ensuring alignment with business and product goals. Helped design and evolve an internal DSL used to build reusable UI components, enabling a consistent visual language and faster development across the app. Developed and maintained new product features end-to-end, from component definitions to integration, focusing on code quality, maintainability, and a cohesive user experience.
+Designed and delivered new features aligned with business goals. Evolved an internal DSL for reusable UI components. Outcome: consistent visual language and faster development. Shipped end-to-end product features. Outcome: cohesive user experience and maintainability.
 
 ## Senior Backend Developer - Apptegy
 **Sep 2021 - Jan 2024**
 
-Designed and implemented backend services in a microservices architecture, delivering robust and scalable solutions for education clients. Used DevOps tooling (CI/CD, monitoring, infrastructure-as-code) to streamline deployments, improve reliability, and reduce time-to-release. Partnered with product, support, and customer-facing teams to clarify requirements, prioritize work, and ship features that improved district administrators' workflows and satisfaction.
+Delivered scalable backend services for education clients. Output: robust solutions in a microservices architecture. Streamlined deployments and incident-driven improvements. Outcome: improved reliability, reduced time-to-release, and better workflows for district administrators.
 
 ## Chief Operating Officer - Bviral (Startup)
 **March 2020 - Sep 2021**
 
-Built and maintained multiple Ruby on Rails and Vue.js applications from scratch, improving performance and user experience for marketing campaigns and internal tools. Translated marketing and business requirements into technical roadmaps, coordinating designers and developers to deliver projects on time. Managed budgets for third-party services, payroll, and operating expenses, balancing cost efficiency with platform reliability and delivery needs.
+Translated marketing and business requirements into technical roadmaps. Delivered multiple applications for campaigns and internal tools. Outcome: projects on time, cost efficiency balanced with platform reliability. Managed budgets and coordinated designers and developers.
 
 ## Senior Lead Software Engineer - Syscap Holding
 **April 2019 - Feb 2020**
 
-Led a backend team building and maintaining Ruby on Rails APIs, ensuring smooth integration with frontend squads and external services. Drove engineering planning, code reviews, and continuous improvement initiatives, raising code quality and delivery predictability. Mentored interns and junior developers through pair programming and structured feedback, accelerating their growth and impact on the team.
+Led a backend team delivering APIs with smooth integration. Drove planning, code reviews, and continuous improvement. Outcome: higher code quality and delivery predictability. Mentored junior developers. Outcome: accelerated growth and impact on the team.
 
 ## Lead Software Engineer - Civica Digital (Startup / Civic Technology)
 **Aug 2017 - March 2019**
 
-Built and maintained civic-tech platforms with Ruby on Rails, enabling NGOs and public institutions to better engage with citizens. Designed and iterated digital tools that increased transparency and responsiveness for participating organizations. Led multiple client projects end-to-end (requirements, delivery, support), ensuring timelines, quality standards, and stakeholder alignment.
+Delivered civic-tech platforms enabling NGOs and institutions to engage citizens. Designed digital tools. Outcome: increased transparency and responsiveness. Led client projects end-to-end. Outcome: timelines, quality standards, and stakeholder alignment.
 
 ## Earlier Experience
 
 ### Full Stack Developer - Logitrack
 **Apr 2016 – Oct 2016**
 
-GPS tracking platform; implemented real-time temperature monitoring, improved geofencing and page performance, and exposed data via web services for third parties.
+Delivered real-time monitoring and improved geofencing for a GPS platform. Outcome: better performance and data exposure for third parties.
 
 ### Frontend Developer - BBXM Studios
 **Feb 2015 – Mar 2016**
 
-Improved performance and UX for a social network for artists and singers, and built internal dashboards to visualize API metrics and usage.
+Shipped performance and UX improvements for a social network. Built internal dashboards. Outcome: visual metrics and usage insights.
 
 ### Junior Web Developer - eCareSoft
 **Jul 2014 – Feb 2015**
 
-Created web interfaces and medical report templates for a healthcare SaaS platform used by clinics and hospitals.
+Delivered web interfaces and medical report templates for a healthcare SaaS. Outcome: usable tools for clinics and hospitals.
 
 # Education
 
@@ -66,34 +66,31 @@ Created web interfaces and medical report templates for a healthcare SaaS platfo
 
 Relevant coursework: Operating Systems, Databases, Algorithms, Programming Languages, Computer Architecture, and Entrepreneurship.
 
-# Technical Skills
+# How I Operate
 
-**Backend:** Ruby & Ruby on Rails (9+ yrs), Python & Django (7+ yrs), Golang (1+ yrs)  
-**Frontend:** JavaScript (9+ yrs), Vue.js, React & Next.js (3+ yrs)  
-**Data & Storage:** PostgreSQL (9+ yrs), MySQL, MongoDB (5+ yrs)  
-**DevOps & Cloud:** AWS, Heroku, Docker (5+ yrs), Render (2+ yrs)
+I build systems for precision and reliability. Rigor in prioritization. Incident-driven improvement. Continuous delivery. My analytical mindset as a trader—risk analysis, decision under uncertainty—and the discipline of salsa and bachata—rhythm, consistency, execution—inform how I design architectures and deliver outcomes. Clients get certainty, not just code.
 
-# A Closer Look
+# Beyond the Code
 
-I have experience as a consultant and web programmer, adept at planning and managing projects from inception to completion.
+I have experience as a consultant and operator, planning and delivering projects from inception to completion. Clients don't pay for implementation—they pay for relief and certainty.
 
-My professional focus is backend development with Ruby on Rails. In my leisure time, I compete in bachata and salsa dancing. I also engage in crypto trading and am continually learning about investments.
+My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a financial market or a choreography.
 
-I'm an active participant in the local tech scene. In the past, I've organized a hackathon event at UANL - FIME for students.
+I'm active in the local tech scene and have organized hackathons at UANL-FIME. I don't just ship code; I ship solutions that move the needle.
 
-My hobbies include:
+Professional systems that shape my execution:
 
-- Dancing bachata and salsa
-- Working out
-- Writing about life and technology
-- Crypto trading
+- Discipline and rhythm—bachata and salsa
+- Physical rigor and consistency
+- Clear thinking through writing
+- Risk analysis and decision under uncertainty
 
 # Additional Experience and Awards
 
-- Organizer of the Jumpstart UNICODE Hackathon 2015 (UANL) and leader of the "Dev Zone in progress" study group for FIME-UANL students.
-- Mentor at HackMTY 2018 and the DevOps Mastery Program (CeroUno), supporting students and professionals in modern engineering practices.
-- Two-time national bachata champion with multiple national awards in bachata and salsa, and active collaborator in the organization of local dance congresses and events.
-- Helped dance academies in Monterrey improve their billing and payment processes by designing and implementing digital tools tailored to their day-to-day operations.
+- Organized the Jumpstart UNICODE Hackathon 2015 (UANL) and led the "Dev Zone in progress" study group. Outcome: students gained hands-on engineering experience.
+- Mentored at HackMTY 2018 and the DevOps Mastery Program (CeroUno). Outcome: professionals and students adopted modern engineering practices.
+- Two-time national bachata champion with multiple national awards. Active in organizing local dance congresses. Outcome: evidence of discipline and execution under pressure.
+- Delivered digital tools for dance academies in Monterrey. Outcome: improved billing and payment processes for day-to-day operations.
 
 # Exhibitions and presentations
 
@@ -159,62 +156,62 @@ My hobbies include:
   - 7th place - Salsa Solista Amateur`,
     es: `# Instantánea de Mí
 
-Soy un ingeniero de software, bailarín, trader y escritor aficionado.
+Soy un dueño de problemas que entrega alivio mediante la precisión.
 
-Antiguamente un break dancer, ahora compito en bachata y salsa. Soy mexicano, residiendo en Monterrey, Nuevo León, México.
+Antiguamente break dancer, ahora compito en bachata y salsa. Radicado en Monterrey, Nuevo León, México. Mi disciplina en escenario y en mercados se traduce directamente en cómo construyo sistemas.
 
 # Perfil Profesional
 
-Ingeniero de Software Senior con más de 9 años construyendo y escalando plataformas web, especializándome en Ruby on Rails y Python/Django. Actualmente construyendo con Next.js y Supabase, con más de 3 años de experiencia usando React y Vue. Experimentado en microservicios, CI/CD, monitoreo y mejoras de confiabilidad impulsadas por incidentes, aprovechando el desarrollo asistido por IA para mejorar la velocidad de entrega y la calidad del código. Actualmente aprendiendo Go (Golang) con un enfoque en mantenibilidad, confiabilidad e impacto en el usuario.
+La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía de bachata. Con casi una década construyendo y escalando plataformas web, he aprendido que los clientes no pagan por implementación—pagan por alivio y certeza. Diseño arquitecturas que perduran, desde microservicios hasta CI/CD y confiabilidad impulsada por incidentes. Mi trabajo real es entender tu lógica de negocio para construir con estabilidad. No solo entrego código; entrego soluciones que marcan la diferencia.
 
 # Experiencia Profesional
 
 ## Desarrollador de Software - Fountain
 **Jun 2025 - Dic 2025**
 
-Trabajé como parte del equipo de soporte, priorizando y resolviendo tickets de alto impacto e incidentes de producción en estrecha colaboración con equipos de producto e ingeniería. Aproveché herramientas como Cursor para acelerar la detección de errores y el análisis de causa raíz, mejorando el tiempo de respuesta y la estabilidad general de la plataforma. Colaboré con equipos de diseño y frontend para proponer e implementar mejoras de UX/UI basadas en comentarios de usuarios e insights de soporte, mejorando la experiencia general del usuario.
+Entregué resolución más rápida de incidentes de producción e tickets de alto impacto. Resultado: mayor estabilidad de plataforma y tiempo de respuesta. Colaboré con equipos de diseño y frontend para entregar mejoras de UX/UI basadas en feedback. Resultado: mejor experiencia de usuario y satisfacción.
 
 ## Ingeniero de Software Senior - Buk Chile
 **Ene 2025 - Abr 2025**
 
-Colaboré con un equipo multifuncional con sede en Chile para diseñar y entregar nuevas características para la aplicación principal, asegurando la alineación con los objetivos de negocio y producto. Ayudé a diseñar y evolucionar un DSL interno usado para construir componentes de UI reutilizables, permitiendo un lenguaje visual consistente y un desarrollo más rápido en toda la aplicación. Desarrollé y mantuve nuevas características de producto de extremo a extremo, desde definiciones de componentes hasta integración, enfocándome en calidad de código, mantenibilidad y una experiencia de usuario cohesiva.
+Diseñé y entregué nuevas características alineadas con objetivos de negocio. Evolucioné un DSL interno para componentes de UI reutilizables. Resultado: lenguaje visual consistente y desarrollo más rápido. Entregué características de producto de extremo a extremo. Resultado: experiencia de usuario cohesiva y mantenibilidad.
 
 ## Desarrollador Backend Senior - Apptegy
 **Sep 2021 - Ene 2024**
 
-Diseñé e implementé servicios backend en una arquitectura de microservicios, entregando soluciones robustas y escalables para clientes educativos. Usé herramientas DevOps (CI/CD, monitoreo, infraestructura como código) para agilizar despliegues, mejorar la confiabilidad y reducir el tiempo de lanzamiento. Colaboré con equipos de producto, soporte y atención al cliente para clarificar requisitos, priorizar trabajo y entregar características que mejoraron los flujos de trabajo y la satisfacción de los administradores de distrito.
+Entregué servicios backend escalables para clientes educativos. Output: soluciones robustas en arquitectura de microservicios. Optimicé despliegues y mejoras impulsadas por incidentes. Resultado: mayor confiabilidad, menor tiempo de lanzamiento, mejores flujos para administradores de distrito.
 
 ## Director de Operaciones - Bviral (Startup)
 **Marzo 2020 - Sep 2021**
 
-Construí y mantuve múltiples aplicaciones Ruby on Rails y Vue.js desde cero, mejorando el rendimiento y la experiencia de usuario para campañas de marketing y herramientas internas. Traduje requisitos de marketing y negocio en roadmaps técnicos, coordinando diseñadores y desarrolladores para entregar proyectos a tiempo. Administré presupuestos para servicios de terceros, nómina y gastos operativos, equilibrando la eficiencia de costos con la confiabilidad de la plataforma y las necesidades de entrega.
+Traduje requisitos de marketing y negocio en roadmaps técnicos. Entregué múltiples aplicaciones para campañas y herramientas internas. Resultado: proyectos a tiempo, eficiencia de costos equilibrada con confiabilidad. Administré presupuestos y coordiné diseñadores y desarrolladores.
 
 ## Ingeniero de Software Líder Senior - Syscap Holding
 **Abril 2019 - Feb 2020**
 
-Lideré un equipo backend construyendo y manteniendo APIs de Ruby on Rails, asegurando una integración fluida con escuadrones frontend y servicios externos. Impulsé planificación de ingeniería, revisiones de código e iniciativas de mejora continua, elevando la calidad del código y la predictibilidad de entrega. Mientras tanto, mentoreé pasantes y desarrolladores junior a través de programación en pareja y retroalimentación estructurada, acelerando su crecimiento e impacto en el equipo.
+Lideré un equipo backend entregando APIs con integración fluida. Impulsé planificación, revisiones de código y mejora continua. Resultado: mayor calidad de código y predictibilidad de entrega. Mentoreé desarrolladores junior. Resultado: crecimiento acelerado e impacto en el equipo.
 
 ## Ingeniero de Software Líder - Civica Digital (Startup / Tecnología Cívica)
 **Ago 2017 - Marzo 2019**
 
-Construí y mantuve plataformas de tecnología cívica con Ruby on Rails, permitiendo que ONGs e instituciones públicas se relacionaran mejor con los ciudadanos. Diseñé e iteré herramientas digitales que aumentaron la transparencia y capacidad de respuesta para las organizaciones participantes. Lideré múltiples proyectos de clientes de extremo a extremo (requisitos, entrega, soporte), asegurando cronogramas, estándares de calidad y alineación de partes interesadas.
+Entregué plataformas de tecnología cívica que permitieron a ONGs e instituciones relacionarse con ciudadanos. Diseñé herramientas digitales. Resultado: mayor transparencia y capacidad de respuesta. Lideré proyectos de clientes de extremo a extremo. Resultado: cronogramas, estándares de calidad y alineación de partes interesadas.
 
 ## Experiencia Anterior
 
 ### Desarrollador Full Stack - Logitrack
 **Abr 2016 – Oct 2016**
 
-Plataforma de rastreo GPS; implementé monitoreo de temperatura en tiempo real, mejoré geofencing y rendimiento de página, y expuse datos vía servicios web para terceros.
+Entregué monitoreo en tiempo real y mejoras de geofencing para plataforma GPS. Resultado: mejor rendimiento y exposición de datos para terceros.
 
 ### Desarrollador Frontend - BBXM Studios
 **Feb 2015 – Mar 2016**
 
-Mejoré el rendimiento y UX para una red social de artistas y cantantes, y construí dashboards internos para visualizar métricas y uso de API.
+Entregué mejoras de rendimiento y UX para red social. Construí dashboards internos. Resultado: métricas visuales e insights de uso.
 
 ### Desarrollador Web Junior - eCareSoft
 **Jul 2014 – Feb 2015**
 
-Creé interfaces web y plantillas de informes médicos para una plataforma SaaS de salud usada por clínicas y hospitales.
+Entregué interfaces web y plantillas de informes médicos para SaaS de salud. Resultado: herramientas utilizables para clínicas y hospitales.
 
 # Educación
 
@@ -223,34 +220,31 @@ Creé interfaces web y plantillas de informes médicos para una plataforma SaaS 
 
 Cursos relevantes: Sistemas Operativos, Bases de Datos, Algoritmos, Lenguajes de Programación, Arquitectura de Computadoras y Emprendimiento.
 
-# Habilidades Técnicas
+# Cómo Opero
 
-**Backend:** Ruby & Ruby on Rails (9+ años), Python & Django (7+ años), Golang (1+ años)  
-**Frontend:** JavaScript (9+ años), Vue.js, React & Next.js (3+ años)  
-**Datos y Almacenamiento:** PostgreSQL (9+ años), MySQL, MongoDB (5+ años)  
-**DevOps y Cloud:** AWS, Heroku, Docker (5+ años), Render (2+ años)
+Construyo sistemas para precisión y confiabilidad. Rigor en priorización. Mejora impulsada por incidentes. Entrega continua. Mi mentalidad analítica como trader—análisis de riesgo, decisiones bajo incertidumbre—y la disciplina del salsa y bachata—ritmo, consistencia, ejecución—dan forma a cómo diseño arquitecturas y entrego resultados. Los clientes obtienen certeza, no solo código.
 
-# Una Mirada Más Cercana
+# Más Allá del Código
 
-Tengo experiencia como consultor y programador web, hábil en planificar y gestionar proyectos desde su inicio hasta su finalización.
+Tengo experiencia como consultor y operador, planificando y entregando proyectos de inicio a fin. Los clientes no pagan por implementación—pagan por alivio y certeza.
 
-Mi enfoque profesional es el desarrollo backend con Ruby on Rails. En mi tiempo libre, compito en baile de bachata y salsa. También me dedico al trading de criptomonedas y estoy aprendiendo continuamente sobre inversiones.
+Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía.
 
-Soy un participante activo en la escena tecnológica local. En el pasado, he organizado un evento de hackathon en UANL - FIME para estudiantes.
+Soy activo en la escena tech local y he organizado hackathons en UANL-FIME. No solo entrego código; entrego soluciones que marcan la diferencia.
 
-Mis pasatiempos incluyen:
+Sistemas profesionales que dan forma a mi ejecución:
 
-- Bailar bachata y salsa
-- Hacer ejercicio
-- Escribir sobre vida y tecnología
-- Trading de criptomonedas
+- Disciplina y ritmo—bachata y salsa
+- Rigor físico y consistencia
+- Pensamiento claro mediante la escritura
+- Análisis de riesgo y decisiones bajo incertidumbre
 
 # Experiencia Adicional y Premios
 
-- Organizador del Jumpstart UNICODE Hackathon 2015 (UANL) y líder del grupo de estudio "Dev Zone in progress" para estudiantes de FIME-UANL.
-- Mentor en HackMTY 2018 y el Programa de Maestría en DevOps (CeroUno), apoyando a estudiantes y profesionales en prácticas modernas de ingeniería.
-- Campeón nacional de bachata en dos ocasiones con múltiples premios nacionales en bachata y salsa, y colaborador activo en la organización de congresos y eventos de baile locales.
-- Ayudé a academias de baile en Monterrey a mejorar sus procesos de facturación y pago diseñando e implementando herramientas digitales adaptadas a sus operaciones diarias.
+- Organicé el Jumpstart UNICODE Hackathon 2015 (UANL) y lideré el grupo de estudio "Dev Zone in progress". Resultado: estudiantes ganaron experiencia práctica en ingeniería.
+- Mentoré en HackMTY 2018 y el Programa de Maestría en DevOps (CeroUno). Resultado: profesionales y estudiantes adoptaron prácticas modernas de ingeniería.
+- Campeón nacional de bachata en dos ocasiones con múltiples premios nacionales. Activo en organización de congresos locales. Resultado: evidencia de disciplina y ejecución bajo presión.
+- Entregué herramientas digitales para academias de baile en Monterrey. Resultado: procesos de facturación y pago mejorados para operaciones diarias.
 
 # Exhibiciones y presentaciones
 
