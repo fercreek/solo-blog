@@ -10,7 +10,6 @@ export const parseImpossibleListContent = (content) => {
   const lines = content.split('\n');
   const sections = [];
   let currentSection = null;
-  let currentSubsection = null;
   
   lines.forEach(line => {
     const trimmedLine = line.trim();
@@ -24,11 +23,9 @@ export const parseImpossibleListContent = (content) => {
         title: trimmedLine.replace('# ', '').trim(),
         goals: []
       };
-      currentSubsection = null;
     }
-    // Subsection headers (## Title) - ignore them, they're just organizational
     else if (trimmedLine.startsWith('## ')) {
-      currentSubsection = trimmedLine.replace('## ', '').trim();
+      void 0;
     }
     // Goals (- text or - ✅ text)
     else if (trimmedLine.startsWith('- ')) {
@@ -167,7 +164,7 @@ export const processMarkdownText = (text) => {
     // Italic text
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     // Links
-    .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
     // Code
     .replace(/`([^`]+)`/g, '<code>$1</code>');
 };

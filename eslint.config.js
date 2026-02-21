@@ -26,4 +26,20 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+  {
+    files: [
+      '**/PageComponents.jsx',
+      '**/ProjectCard.jsx',
+      '**/LanguageContext.jsx',
+    ],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
+  {
+    files: ['**/vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])

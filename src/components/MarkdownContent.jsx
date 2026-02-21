@@ -360,7 +360,7 @@ const MarkdownContent = ({ content }) => {
     <MarkdownContainer>
       <ReactMarkdown
         components={{
-          code({ node, inline, className, children, ...props }) {
+          code({ inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match ? (
               <SyntaxHighlighter
@@ -377,7 +377,7 @@ const MarkdownContent = ({ content }) => {
               </code>
             );
           },
-          img({ node, ...props }) {
+          img({ ...props }) {
             return <LazyImage {...props} />;
           },
         }}
