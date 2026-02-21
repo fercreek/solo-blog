@@ -72,7 +72,7 @@ I build systems for precision and reliability. Rigor in prioritization. Incident
 
 # Beyond the Code
 
-I have experience as a consultant and operator, planning and delivering projects from inception to completion. Clients don't pay for implementation—they pay for relief and certainty.
+Over the years I've seen that what matters most to clients is certainty that things will work, more than technical details.
 
 My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a financial market or a choreography.
 
@@ -231,7 +231,7 @@ Construyo sistemas para precisión y confiabilidad. Rigor en priorización. Mejo
 
 # Más Allá del Código
 
-Tengo experiencia como consultor y operador, planificando y entregando proyectos de inicio a fin. Los clientes no pagan por implementación—pagan por alivio y certeza.
+A lo largo de los años he visto que lo que más importa al cliente es la certeza de que las cosas van a funcionar, más que los detalles técnicos.
 
 Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía.
 

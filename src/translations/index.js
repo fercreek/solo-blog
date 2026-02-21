@@ -70,7 +70,7 @@ export const translations = {
       },
       closerLook: {
         title: 'Beyond the Code',
-        text1: 'I have experience as a consultant and operator, planning and delivering projects from inception to completion. Clients don\'t pay for implementation—they pay for certainty.',
+        text1: "Over the years I've seen that what matters most to clients is certainty that things will work, more than technical details.",
         text2: 'My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a market or a choreography.',
         text3: 'I\'m active in the local tech scene and have organized hackathons at UANL-FIME. I don\'t just ship code; I ship solutions that move the needle.'
       },
@@ -239,7 +239,7 @@ export const translations = {
       },
       closerLook: {
         title: 'Más Allá del Código',
-        text1: 'Tengo experiencia como consultor y operador, planificando y entregando proyectos de inicio a fin. Los clientes no pagan por implementación—pagan por certeza.',
+        text1: 'A lo largo de los años he visto que lo que más importa al cliente es la certeza de que las cosas van a funcionar, más que los detalles técnicos.',
         text2: 'Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado o una coreografía.',
         text3: 'Soy activo en la escena tech local y he organizado hackathons en UANL-FIME. No solo entrego código; entrego soluciones que marcan la diferencia.'
       },
