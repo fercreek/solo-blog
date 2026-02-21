@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
@@ -12,7 +13,7 @@ const Image = styled.img`
   width: 100%;
   height: auto;
   transition: opacity 0.3s ease;
-  opacity: ${props => props.loaded ? 1 : 0};
+  opacity: ${props => props.$loaded ? 1 : 0};
 `;
 
 const Placeholder = styled.div`
@@ -27,52 +28,30 @@ const Placeholder = styled.div`
   background-color: #f8f9fa;
   color: #6c757d;
   font-size: 0.9rem;
-  opacity: ${props => props.show ? 1 : 0};
+  opacity: ${props => props.$show ? 1 : 0};
   transition: opacity 0.3s ease;
 `;
 
 const LazyImage = ({ src, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
-  const [inView, setInView] = useState(false);
-  const imgRef = useRef();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '50px'
-      }
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleLoad = () => {
-    setLoaded(true);
-  };
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    rootMargin: '50px',
+    triggerOnce: true
+  });
 
   return (
-    <ImageContainer ref={imgRef} {...props}>
+    <ImageContainer ref={ref} {...props}>
       {inView && (
         <Image
           src={src}
           alt={alt}
-          loaded={loaded}
-          onLoad={handleLoad}
+          $loaded={loaded}
+          onLoad={() => setLoaded(true)}
           loading="lazy"
         />
       )}
-      <Placeholder show={!loaded}>
+      <Placeholder $show={!loaded}>
         {loaded ? '' : 'Loading...'}
       </Placeholder>
     </ImageContainer>
