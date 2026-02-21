@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import Button from './Button';
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -13,22 +15,29 @@ const LoaderContainer = styled.div`
   justify-content: center;
   min-height: 200px;
   padding: 2rem;
+  background: ${soloLevelingTheme.colors.gradients.secondary};
+  border-radius: ${soloLevelingTheme.borderRadius.xl};
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
 `;
 
 const Spinner = styled.div`
-  width: 40px;
-  height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #0070f3;
+  width: 48px;
+  height: 48px;
+  border: 3px solid ${soloLevelingTheme.colors.border.primary};
+  border-top-color: ${soloLevelingTheme.colors.accent.purple};
+  border-right-color: ${soloLevelingTheme.colors.accent.gold};
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
 `;
 
 const LoadingText = styled.p`
-  color: #666;
+  color: ${soloLevelingTheme.colors.text.muted};
   font-size: 0.9rem;
   margin: 0;
+  font-family: ${soloLevelingTheme.typography.fontFamily.primary};
 `;
 
 const ErrorContainer = styled.div`
@@ -39,32 +48,16 @@ const ErrorContainer = styled.div`
   min-height: 200px;
   padding: 2rem;
   text-align: center;
+  background: ${soloLevelingTheme.colors.gradients.secondary};
+  border-radius: ${soloLevelingTheme.borderRadius.xl};
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
 `;
 
 const ErrorText = styled.p`
-  color: #dc3545;
+  color: ${soloLevelingTheme.colors.status.error};
   font-size: 1rem;
   margin-bottom: 1rem;
-`;
-
-const RetryButton = styled.button`
-  background-color: #0070f3;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  min-height: 44px;
-  
-  &:hover {
-    background-color: #0051cc;
-  }
-  
-  &:active {
-    transform: translateY(1px);
-  }
+  font-family: ${soloLevelingTheme.typography.fontFamily.primary};
 `;
 
 const PageLoader = () => (
@@ -74,14 +67,14 @@ const PageLoader = () => (
   </LoaderContainer>
 );
 
-const ErrorFallback = ({ error, resetError }) => (
+const ErrorFallback = ({ resetError }) => (
   <ErrorContainer>
     <ErrorText>
       Something went wrong while loading this page.
     </ErrorText>
-    <RetryButton onClick={resetError}>
+    <Button variant="primary" onClick={resetError}>
       Try Again
-    </RetryButton>
+    </Button>
   </ErrorContainer>
 );
 

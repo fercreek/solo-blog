@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
@@ -130,8 +130,10 @@ const MobileNavLinks = styled.div.withConfig({
   }
 `;
 
-const NavLink = styled(Link)`
-  color: ${soloLevelingTheme.colors.text.secondary};
+const NavLink = styled(Link).withConfig({
+  shouldForwardProp: (prop) => prop !== '$active',
+})`
+  color: ${props => props.$active ? soloLevelingTheme.colors.text.accent : soloLevelingTheme.colors.text.secondary};
   text-decoration: none;
   font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
   font-family: ${soloLevelingTheme.typography.fontFamily.primary};
@@ -143,6 +145,8 @@ const NavLink = styled(Link)`
   align-items: center;
   position: relative;
   overflow: hidden;
+  border-bottom: 2px solid ${props => props.$active ? soloLevelingTheme.colors.accent.gold : 'transparent'};
+  margin-bottom: ${props => props.$active ? '-2px' : '0'};
 
   &::before {
     content: '';
@@ -164,6 +168,11 @@ const NavLink = styled(Link)`
     &::before {
       left: 0;
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline-offset: 2px;
   }
 
   &:active {
@@ -285,8 +294,11 @@ const SocialLink = styled.a`
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { pathname } = useLocation();
   const { language, toggleLanguage } = useLanguage();
   const { t } = useTranslation();
+
+  const isActive = (path) => pathname === path || (path !== '/' && pathname.startsWith(path));
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -303,12 +315,12 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <NavLinks>
-          <NavLink to="/">{t('common.nav.home')}</NavLink>
-          <NavLink to="/about">{t('common.nav.about')}</NavLink>
-          <NavLink to="/projects">{t('common.nav.projects')}</NavLink>
-          <NavLink to="/impossible-list">{t('common.nav.impossibleList')}</NavLink>
-          <NavLink to="/now">{t('common.nav.now')}</NavLink>
-          <NavLink to="/contact">{t('common.nav.contact')}</NavLink>
+          <NavLink to="/" $active={pathname === '/'}>{t('common.nav.home')}</NavLink>
+          <NavLink to="/about" $active={isActive('/about')}>{t('common.nav.about')}</NavLink>
+          <NavLink to="/projects" $active={isActive('/projects')}>{t('common.nav.projects')}</NavLink>
+          <NavLink to="/impossible-list" $active={isActive('/impossible-list')}>{t('common.nav.impossibleList')}</NavLink>
+          <NavLink to="/now" $active={isActive('/now')}>{t('common.nav.now')}</NavLink>
+          <NavLink to="/contact" $active={isActive('/contact')}>{t('common.nav.contact')}</NavLink>
         </NavLinks>
         
         {/* Desktop Language Selector & Social Links */}
@@ -335,12 +347,12 @@ const Navbar = () => {
       
       {/* Mobile Navigation */}
       <MobileNavLinks isOpen={isMobileMenuOpen}>
-        <MobileNavLink to="/" onClick={closeMobileMenu}>{t('common.nav.home')}</MobileNavLink>
-        <MobileNavLink to="/about" onClick={closeMobileMenu}>{t('common.nav.about')}</MobileNavLink>
-        <MobileNavLink to="/projects" onClick={closeMobileMenu}>{t('common.nav.projects')}</MobileNavLink>
-        <MobileNavLink to="/impossible-list" onClick={closeMobileMenu}>{t('common.nav.impossibleList')}</MobileNavLink>
-        <MobileNavLink to="/now" onClick={closeMobileMenu}>{t('common.nav.now')}</MobileNavLink>
-        <MobileNavLink to="/contact" onClick={closeMobileMenu}>{t('common.nav.contact')}</MobileNavLink>
+        <MobileNavLink to="/" $active={pathname === '/'} onClick={closeMobileMenu}>{t('common.nav.home')}</MobileNavLink>
+        <MobileNavLink to="/about" $active={isActive('/about')} onClick={closeMobileMenu}>{t('common.nav.about')}</MobileNavLink>
+        <MobileNavLink to="/projects" $active={isActive('/projects')} onClick={closeMobileMenu}>{t('common.nav.projects')}</MobileNavLink>
+        <MobileNavLink to="/impossible-list" $active={isActive('/impossible-list')} onClick={closeMobileMenu}>{t('common.nav.impossibleList')}</MobileNavLink>
+        <MobileNavLink to="/now" $active={isActive('/now')} onClick={closeMobileMenu}>{t('common.nav.now')}</MobileNavLink>
+        <MobileNavLink to="/contact" $active={isActive('/contact')} onClick={closeMobileMenu}>{t('common.nav.contact')}</MobileNavLink>
         
         {/* Mobile Language Selector */}
         <LanguageSelectorMobile onClick={() => { toggleLanguage(); closeMobileMenu(); }}>
