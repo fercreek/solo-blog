@@ -4,6 +4,7 @@ import { PageContainer } from '../components/PageComponents';
 import { SectionTitle } from '../styles/designSystem';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
+import { useParallax } from '../hooks/useParallax';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
 
@@ -16,6 +17,31 @@ const glowPulse = keyframes`
   }
 `;
 
+const HeroWrapper = styled.section`
+  position: relative;
+  margin-bottom: 4rem;
+  overflow: hidden;
+  border-radius: ${soloLevelingTheme.borderRadius.xl};
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+`;
+
+const ParallaxLayer = styled.div`
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 20%, rgba(108, 92, 231, 0.2) 0%, transparent 50%),
+              radial-gradient(ellipse 80% 50% at 80% 60%, rgba(253, 203, 110, 0.06) 0%, transparent 50%);
+  transform: translateY(${props => props.$offset}px);
+`;
+
 const HeroSection = styled.section`
   text-align: center;
   padding: 4rem 2rem;
@@ -23,7 +49,6 @@ const HeroSection = styled.section`
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
   box-shadow: ${soloLevelingTheme.shadows.purple}, 0 20px 60px -15px rgba(0, 0, 0, 0.5);
-  margin-bottom: 4rem;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(20px);
@@ -40,20 +65,8 @@ const HeroSection = styled.section`
     box-shadow: 0 0 20px rgba(253, 203, 110, 0.5), 0 0 40px rgba(108, 92, 231, 0.3);
   }
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(108, 92, 231, 0.15) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  
   @media (max-width: 768px) {
     padding: 3rem 1.5rem;
-    margin-bottom: 3rem;
   }
 `;
 
@@ -406,15 +419,20 @@ const HomePage = () => {
     }
   ];
 
+  const parallaxOffset = useParallax(0.25);
+
   return (
     <PageContainer>
-      <HeroSection>
+      <HeroWrapper>
+        <HeroSection>
+        <ParallaxLayer $offset={parallaxOffset} />
         <Name>{t('home.hero.name')}</Name>
         <Title>{t('home.hero.title')}</Title>
         <Description>
           {t('home.hero.description')}
         </Description>
       </HeroSection>
+      </HeroWrapper>
       
       <PostsSection>
         <SectionTitle>{t('home.sections.featuredPosts')}</SectionTitle>
