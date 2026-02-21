@@ -4,6 +4,7 @@ import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { useTranslation } from '../hooks/useTranslation';
 
 const FooterContainer = styled.footer`
+  width: 100%;
   padding: 2rem 1rem;
   background: ${soloLevelingTheme.colors.gradients.primary};
   border-top: 1px solid ${soloLevelingTheme.colors.border.accent};

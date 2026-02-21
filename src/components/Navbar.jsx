@@ -7,6 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 
 const NavContainer = styled.nav`
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: space-between;

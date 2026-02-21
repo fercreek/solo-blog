@@ -5,6 +5,7 @@ import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { Analytics } from '@vercel/analytics/react';
 
 const LayoutContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
