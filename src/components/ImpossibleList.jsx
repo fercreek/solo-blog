@@ -6,35 +6,64 @@ import { parseImpossibleListContent, getSectionIcon } from '../utils/contentPars
 import { fadeInUp } from '../styles/keyframes';
 import { useTranslation } from '../hooks/useTranslation';
 
+const NoResultsWrapper = styled.div`
+  grid-column: 1 / -1;
+  position: relative;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(165deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.95));
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  border-radius: ${soloLevelingTheme.borderRadius.xl};
+  color: ${soloLevelingTheme.colors.text.secondary};
+  font-size: 1.1rem;
+  overflow: hidden;
+  animation: ${fadeInUp} 0.6s ease-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold});
+    border-radius: ${soloLevelingTheme.borderRadius.xl} ${soloLevelingTheme.borderRadius.xl} 0 0;
+  }
+`;
+
 const ListContainer = styled.div`
   max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1rem;
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1.25rem;
   }
   
   @media (min-width: 1024px) {
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 `;
 
 const Section = styled.section`
-  margin-bottom: 2rem;
-  background: ${soloLevelingTheme.colors.gradients.secondary};
+  margin-bottom: 0;
+  background: linear-gradient(165deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.95) 100%);
   border-radius: ${soloLevelingTheme.borderRadius.lg};
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  box-shadow: ${soloLevelingTheme.shadows.purple};
   overflow: hidden;
   position: relative;
   animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.index * 0.1}s;
+  animation-delay: ${props => props.$index * 0.08}s;
   animation-fill-mode: both;
-  grid-column: ${props => props.fullWidth ? '1 / -1' : 'auto'};
+  grid-column: ${props => props.$fullWidth ? '1 / -1' : 'auto'};
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    border-color: ${soloLevelingTheme.colors.border.accent};
+  }
   
   &::before {
     content: '';
@@ -43,43 +72,35 @@ const Section = styled.section`
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(
-      90deg,
-      ${soloLevelingTheme.colors.accent.orange},
-      ${soloLevelingTheme.colors.accent.gold}
-    );
-  }
-  
-  @media (min-width: 768px) {
-    margin-bottom: 2.5rem;
+    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.purple});
   }
 `;
 
 const SectionHeader = styled.div`
-  background: ${soloLevelingTheme.colors.gradients.primary};
-  color: ${soloLevelingTheme.colors.text.primary};
-  padding: 1rem 1.25rem;
+  background: rgba(26, 26, 46, 0.95);
+  padding: 0.875rem 1.25rem;
   cursor: pointer;
-  transition: all ${soloLevelingTheme.animations.transition.fast};
+  transition: background 0.25s ease;
+  border-bottom: 1px solid transparent;
   
   &:hover {
-    background: ${soloLevelingTheme.colors.gradients.secondary};
+    background: rgba(108, 92, 231, 0.1);
   }
   
   @media (min-width: 768px) {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.35rem;
   }
 `;
 
 const SectionTitle = styled.h2`
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.6rem;
   color: ${soloLevelingTheme.colors.text.primary};
   
   .title-content {
@@ -89,28 +110,29 @@ const SectionTitle = styled.h2`
   }
   
   .collapse-icon {
-    transition: transform ${soloLevelingTheme.animations.transition.fast};
-    transform: ${props => props.collapsed ? 'rotate(-90deg)' : 'rotate(0deg)'};
+    color: ${soloLevelingTheme.colors.accent.gold};
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    transform: ${props => props.$collapsed ? 'rotate(-90deg)' : 'rotate(0deg)'};
   }
   
-  svg {
+  .title-content svg {
     color: ${soloLevelingTheme.colors.accent.gold};
-    filter: drop-shadow(0 0 4px rgba(253, 203, 110, 0.3));
   }
   
   @media (min-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 `;
 
 const SectionContent = styled.div`
-  padding: ${props => props.collapsed ? '0' : '1.25rem'};
-  max-height: ${props => props.collapsed ? '0' : '2000px'};
+  padding: ${props => props.$collapsed ? '0' : '0.875rem 1.25rem'};
+  max-height: ${props => props.$collapsed ? '0' : '2000px'};
   overflow: hidden;
-  transition: all ${soloLevelingTheme.animations.transition.medium};
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   
   @media (min-width: 768px) {
-    padding: ${props => props.collapsed ? '0' : '1.5rem'};
+    padding: ${props => props.$collapsed ? '0' : '1rem 1.35rem'};
   }
 `;
 
@@ -119,21 +141,21 @@ const GoalsList = styled.ul`
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.75rem;
+  gap: 0.5rem;
   
   @media (min-width: 768px) {
-    gap: 1rem;
+    gap: 0.6rem;
   }
   
-  ${props => props.isTravelGoals && `
+  ${props => props.$isTravelGoals && `
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 0.6rem;
     }
     
     @media (min-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      gap: 0.75rem;
     }
   `}
 `;
@@ -141,62 +163,40 @@ const GoalsList = styled.ul`
 const GoalItem = styled.li`
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
-  background: ${soloLevelingTheme.colors.secondary};
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.95));
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  transition: all ${soloLevelingTheme.animations.transition.fast};
-  min-height: ${props => props.isTravelGoals ? 'auto' : '60px'};
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  border-left: 4px solid ${props => props.$completed ? 'rgba(104, 211, 145, 0.8)' : soloLevelingTheme.colors.accent.gold};
+  transition: all 0.3s ease;
+  min-height: ${props => props.$isTravelGoals ? 'auto' : '48px'};
   position: relative;
   overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(
-      180deg,
-      ${soloLevelingTheme.colors.accent.orange},
-      ${soloLevelingTheme.colors.accent.gold}
-    );
-    opacity: 0;
-    transition: opacity ${soloLevelingTheme.animations.transition.fast};
-  }
+  transition: border-color 0.2s ease;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${soloLevelingTheme.shadows.glow};
-    border-color: ${soloLevelingTheme.colors.accent.orange};
-    
-    &::before {
-      opacity: 1;
-    }
+    border-color: ${soloLevelingTheme.colors.border.accent};
   }
 
   @media (min-width: 768px) {
-    padding: ${props => props.isTravelGoals ? '1rem' : '1.25rem'};
-    gap: 1rem;
+    padding: ${props => props.$isTravelGoals ? '0.75rem 1rem' : '0.875rem 1.1rem'};
+    gap: 0.75rem;
   }
 `;
 
 const GoalIcon = styled.div`
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0.125rem;
+  margin-top: 0.1rem;
 
   svg {
-    font-size: 1.1rem;
-    color: ${props => props.completed ? soloLevelingTheme.colors.status.success : soloLevelingTheme.colors.accent.gold};
-    filter: drop-shadow(0 0 4px ${props => props.completed ? 'rgba(104, 211, 145, 0.3)' : 'rgba(253, 203, 110, 0.3)'});
-    transition: all ${soloLevelingTheme.animations.transition.fast};
+    font-size: 0.95rem;
+    color: ${props => props.$completed ? soloLevelingTheme.colors.status.success : soloLevelingTheme.colors.accent.gold};
   }
 `;
 
@@ -206,13 +206,13 @@ const GoalContent = styled.div`
 `;
 
 const GoalText = styled.div`
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.875rem;
+  line-height: 1.45;
   color: ${soloLevelingTheme.colors.text.primary};
   word-wrap: break-word;
 
   @media (min-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   strong {
@@ -245,32 +245,30 @@ const GoalText = styled.div`
 const SubGoalsList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0.75rem 0 0 0;
+  margin: 0.5rem 0 0 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
 `;
 
 const SubGoalItem = styled.li`
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  padding: 0.75rem;
-  background: ${soloLevelingTheme.colors.tertiary};
-  border-radius: ${soloLevelingTheme.borderRadius.sm};
-  border-left: 3px solid ${soloLevelingTheme.colors.accent.purple};
-  font-size: 0.9rem;
+  padding: 0.6rem 0.875rem;
+  background: rgba(22, 33, 62, 0.85);
+  border-radius: ${soloLevelingTheme.borderRadius.md};
+  border-left: 4px solid ${props => props.$completed ? 'rgba(104, 211, 145, 0.8)' : soloLevelingTheme.colors.accent.purple};
+  font-size: 0.8125rem;
   color: ${soloLevelingTheme.colors.text.secondary};
-  transition: all ${soloLevelingTheme.animations.transition.fast};
+  transition: border-color 0.2s ease;
   
   &:hover {
-    background: ${soloLevelingTheme.colors.secondary};
     border-left-color: ${soloLevelingTheme.colors.accent.gold};
-    transform: translateX(4px);
   }
 
   @media (min-width: 768px) {
-    padding: 1rem;
-    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.875rem;
   }
 `;
 
@@ -352,13 +350,7 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
   if (filteredSections.length === 0) {
     return (
       <ListContainer>
-        <div style={{ 
-          textAlign: 'center', 
-          padding: '3rem', 
-          color: soloLevelingTheme.colors.text.secondary 
-        }}>
-          {t('impossibleList.noResults')}
-        </div>
+        <NoResultsWrapper>{t('impossibleList.noResults')}</NoResultsWrapper>
       </ListContainer>
     );
   }
@@ -369,9 +361,9 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
         const isCollapsed = collapsedSections.has(index);
         const isTravelGoals = section.title.toLowerCase().includes('travel goals');
         return (
-          <Section key={index} index={index} fullWidth={isTravelGoals}>
+          <Section key={index} $index={index} $fullWidth={isTravelGoals}>
             <SectionHeader onClick={() => toggleSection(index)}>
-              <SectionTitle collapsed={isCollapsed}>
+              <SectionTitle $collapsed={isCollapsed}>
                 <div className="title-content">
                   {renderIcon(getSectionIcon(section.title))}
                   {section.title}
@@ -379,11 +371,11 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
                 <FaChevronDown className="collapse-icon" />
               </SectionTitle>
             </SectionHeader>
-            <SectionContent collapsed={isCollapsed}>
-              <GoalsList isTravelGoals={isTravelGoals}>
+            <SectionContent $collapsed={isCollapsed}>
+              <GoalsList $isTravelGoals={isTravelGoals}>
                 {section.goals.map((goal, goalIndex) => (
-                  <GoalItem key={goalIndex} completed={goal.completed} isTravelGoals={isTravelGoals}>
-                    <GoalIcon completed={goal.completed}>
+                  <GoalItem key={goalIndex} $completed={goal.completed} $isTravelGoals={isTravelGoals}>
+                    <GoalIcon $completed={goal.completed}>
                       {goal.completed ? <FaCheckCircle /> : <FaClock />}
                     </GoalIcon>
                     <GoalContent>
@@ -391,8 +383,8 @@ const ImpossibleList = ({ content, searchTerm = '', filter = 'all' }) => {
                       {goal.subGoals && goal.subGoals.length > 0 && (
                         <SubGoalsList>
                           {goal.subGoals.map((subGoal, subIndex) => (
-                            <SubGoalItem key={subIndex} completed={subGoal.completed}>
-                              <GoalIcon completed={subGoal.completed}>
+                            <SubGoalItem key={subIndex} $completed={subGoal.completed}>
+                              <GoalIcon $completed={subGoal.completed}>
                                 {subGoal.completed ? <FaCheckCircle /> : <FaClock />}
                               </GoalIcon>
                               <GoalText dangerouslySetInnerHTML={{ __html: subGoal.text }} />

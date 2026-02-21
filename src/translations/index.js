@@ -84,7 +84,11 @@ export const translations = {
       exhibitions: {
         title: 'Exhibitions and Presentations',
         programming: 'Programming',
-        dance: 'Dance'
+        dance: 'Dance',
+        danceStats: '{congresses} congresses · 🥇 {gold} · 🥈 {silver} · 🥉 {bronze}',
+        danceExpand: 'Click to view details',
+        danceResults: '{count} results',
+        programmingCount: '{count} presentations'
       }
     },
     projects: {
@@ -102,6 +106,10 @@ export const translations = {
         completed: 'Completed',
         inProgress: 'In Progress',
         completionRate: 'Completion Rate'
+      },
+      recentPreview: {
+        title: 'Latest',
+        subtitle: 'Most recent milestones'
       },
       search: {
         placeholder: 'Search goals...'
@@ -148,7 +156,16 @@ export const translations = {
       lastUpdated: 'Last updated: {date}'
     },
     contact: {
-      title: 'Contact'
+      title: 'Contact',
+      description: "Let's connect. Open to collaborations, opportunities, and conversations.",
+      email: 'Email',
+      phone: 'Phone',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      location: 'Location',
+      copyEmail: 'Copy email',
+      copied: 'Copied!',
+      openLink: 'Open'
     }
   },
   es: {
@@ -236,7 +253,11 @@ export const translations = {
       exhibitions: {
         title: 'Exhibiciones y Presentaciones',
         programming: 'Programación',
-        dance: 'Baile'
+        dance: 'Baile',
+        danceStats: '{congresses} congresos · 🥇 {gold} · 🥈 {silver} · 🥉 {bronze}',
+        danceExpand: 'Clic para ver detalles',
+        danceResults: '{count} resultados',
+        programmingCount: '{count} presentaciones'
       }
     },
     projects: {
@@ -254,6 +275,10 @@ export const translations = {
         completed: 'Completadas',
         inProgress: 'En Progreso',
         completionRate: 'Tasa de Completación'
+      },
+      recentPreview: {
+        title: 'Recientes',
+        subtitle: 'Últimos logros'
       },
       search: {
         placeholder: 'Buscar metas...'
@@ -300,7 +325,16 @@ export const translations = {
       lastUpdated: 'Última actualización: {date}'
     },
     contact: {
-      title: 'Contacto'
+      title: 'Contacto',
+      description: 'Conectemos. Abierto a colaboraciones, oportunidades y conversaciones.',
+      email: 'Correo',
+      phone: 'Teléfono',
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      location: 'Ubicación',
+      copyEmail: 'Copiar correo',
+      copied: '¡Copiado!',
+      openLink: 'Abrir'
     }
   }
 };
