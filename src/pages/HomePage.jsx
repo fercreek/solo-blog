@@ -4,8 +4,7 @@ import { PageContainer } from '../components/PageComponents';
 import { SectionTitle } from '../styles/designSystem';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
-import LevelingAnimation from '../components/LevelingAnimation';
-import ProjectCard, { getProjectAnimationType, getProjectLevel, getProjectXP } from '../components/ProjectCard';
+import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
 
 const glowPulse = keyframes`
@@ -19,14 +18,15 @@ const glowPulse = keyframes`
 
 const HeroSection = styled.section`
   text-align: center;
-  padding: 3rem 0;
-  background: ${soloLevelingTheme.colors.gradients.secondary};
+  padding: 4rem 2rem;
+  background: linear-gradient(165deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.98) 50%, rgba(10, 10, 15, 0.99) 100%);
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  box-shadow: ${soloLevelingTheme.shadows.purple};
-  margin-bottom: 3rem;
+  box-shadow: ${soloLevelingTheme.shadows.purple}, 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 4rem;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(20px);
   
   &::before {
     content: '';
@@ -34,14 +34,26 @@ const HeroSection = styled.section`
     top: 0;
     left: 0;
     right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.gold});
+    border-radius: ${soloLevelingTheme.borderRadius.xl} ${soloLevelingTheme.borderRadius.xl} 0 0;
+    box-shadow: 0 0 20px rgba(253, 203, 110, 0.5), 0 0 40px rgba(108, 92, 231, 0.3);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(108, 92, 231, 0.15) 0%, transparent 60%);
     pointer-events: none;
   }
   
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
-    margin-bottom: 2rem;
+    padding: 3rem 1.5rem;
+    margin-bottom: 3rem;
   }
 `;
 
@@ -79,44 +91,65 @@ const Avatar = styled.div`
 `;
 
 const Name = styled.h1`
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 1rem;
-  color: ${soloLevelingTheme.colors.text.primary};
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  margin-bottom: 0.75rem;
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  background: ${soloLevelingTheme.colors.gradients.gold};
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.gold} 0%, ${soloLevelingTheme.colors.accent.orange} 50%, ${soloLevelingTheme.colors.accent.gold} 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(253, 203, 110, 0.2));
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const Title = styled.h2`
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   color: ${soloLevelingTheme.colors.text.secondary};
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.95;
   position: relative;
   z-index: 1;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 1.25rem auto 0;
+    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.gold});
+    border-radius: ${soloLevelingTheme.borderRadius.full};
+    opacity: 0.8;
+  }
 `;
 
 const Description = styled.p`
-  max-width: 700px;
-  margin: 0 auto 2rem;
+  max-width: 640px;
+  margin: 0 auto;
   line-height: 1.8;
   color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  font-weight: ${soloLevelingTheme.typography.fontWeight.normal};
   position: relative;
   z-index: 1;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  opacity: 0.92;
   
   @media (max-width: 768px) {
     font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    padding: 0;
+    line-height: 1.7;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -202,10 +235,6 @@ const PostCard = styled.article.withConfig({
   ${props => props.$isLarge && `
     z-index: 2;
     
-    ${ProjectPreviewImage} {
-      height: 220px;
-    }
-    
     ${PostTitle} {
       font-size: 1.75rem;
     }
@@ -243,68 +272,6 @@ const PostCard = styled.article.withConfig({
   
   @media (max-width: 480px) {
     padding: 1rem;
-  }
-`;
-
-const ProjectPreviewImage = styled.div`
-  width: 100%;
-  height: 200px;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  position: relative;
-  background: ${props => props.gradient || 'linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(253, 203, 110, 0.1))'};
-  border: 1px solid rgba(108, 92, 231, 0.3);
-  transition: all 0.4s ease;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(10, 10, 15, 0.4) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 70%
-    );
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  @media (max-width: 768px) {
-    height: 160px;
-    margin-bottom: 1.25rem;
-  }
-  
-  @media (max-width: 480px) {
-    height: 140px;
-    margin-bottom: 1rem;
   }
 `;
 
@@ -453,21 +420,10 @@ const HomePage = () => {
         <SectionTitle>{t('home.sections.featuredPosts')}</SectionTitle>
         <PostsGrid>
           {featuredPosts.map((post) => {
-            const animationType = getProjectAnimationType(post);
-            const level = getProjectLevel(post);
-            const xp = getProjectXP(post);
             const isStudioLink = post.id === 1;
             
             return (
               <PostCard key={post.id} $isLarge={isStudioLink}>
-                <ProjectPreviewImage gradient={post.gradient}>
-                  <LevelingAnimation 
-                    type={animationType}
-                    level={level}
-                    xp={xp}
-                    progressive={true}
-                  />
-                </ProjectPreviewImage>
                 <PostCategory>{post.category}</PostCategory>
                 <PostTitle>{post.title}</PostTitle>
                 <PostExcerpt>{post.excerpt}</PostExcerpt>
@@ -498,11 +454,6 @@ const HomePage = () => {
               url={project.url}
               status={project.status}
               category={project.category}
-              gradient={project.gradient}
-              image={project.image}
-              animationType={getProjectAnimationType(project)}
-              level={getProjectLevel(project)}
-              xp={getProjectXP(project)}
               delay={`${index * 0.1}s`}
               buttonText={t('common.buttons.viewProject')}
               statusLabel={project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp')}

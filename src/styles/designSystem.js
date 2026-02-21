@@ -366,98 +366,56 @@ export const CardDescription = styled.p`
 `;
 
 export const StatCard = styled.div`
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
-  border: 2px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  padding: 2rem;
+  background: rgba(26, 26, 46, 0.85);
+  border: 1px solid ${soloLevelingTheme.colors.border.primary};
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  border-top: 3px solid ${props => {
+    if (props.$variant === 'completed') return soloLevelingTheme.colors.accent.gold;
+    if (props.$variant === 'progress') return soloLevelingTheme.colors.accent.purple;
+    return soloLevelingTheme.colors.accent.blue;
+  }};
+  padding: 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.25s ease, background 0.25s ease;
   animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.delay || '0s'};
+  animation-delay: ${props => props.$delay || '0s'};
   animation-fill-mode: both;
-  backdrop-filter: blur(15px);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: ${props => {
-      if (props.variant === 'completed') return soloLevelingTheme.colors.gradients.gold;
-      if (props.variant === 'progress') return soloLevelingTheme.colors.gradients.purple;
-      return soloLevelingTheme.colors.gradients.mana;
-    }};
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-    box-shadow: ${props => {
-      if (props.variant === 'completed') return '0 0 15px rgba(253, 203, 110, 0.5)';
-      if (props.variant === 'progress') return '0 0 15px rgba(108, 92, 231, 0.5)';
-      return '0 0 15px rgba(116, 185, 255, 0.5)';
-    }};
-  }
-  
+
   &:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 12px 40px rgba(108, 92, 231, 0.3);
-    border-color: ${soloLevelingTheme.colors.accent.purple};
-    
-    &::before {
-      transform: scaleX(1);
-    }
+    background: rgba(30, 30, 55, 0.9);
+    border-color: ${soloLevelingTheme.colors.border.accent};
   }
 `;
 
 export const StatIcon = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: ${props => {
-    if (props.variant === 'completed') return soloLevelingTheme.colors.accent.gold;
-    if (props.variant === 'progress') return soloLevelingTheme.colors.accent.purple;
+    if (props.$variant === 'completed') return soloLevelingTheme.colors.accent.gold;
+    if (props.$variant === 'progress') return soloLevelingTheme.colors.accent.purple;
     return soloLevelingTheme.colors.accent.blue;
   }};
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 12px ${props => {
-    if (props.variant === 'completed') return 'rgba(253, 203, 110, 0.6)';
-    if (props.variant === 'progress') return 'rgba(108, 92, 231, 0.6)';
-    return 'rgba(116, 185, 255, 0.6)';
-  }});
-  transition: all 0.3s ease;
-  
-  ${StatCard}:hover & {
-    transform: scale(1.1) rotate(5deg);
-    filter: drop-shadow(0 0 20px ${props => {
-      if (props.variant === 'completed') return 'rgba(253, 203, 110, 0.8)';
-      if (props.variant === 'progress') return 'rgba(108, 92, 231, 0.8)';
-      return 'rgba(116, 185, 255, 0.8)';
-    }});
-  }
+  margin-bottom: 0.75rem;
 `;
 
 export const StatNumber = styled.div`
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  color: ${soloLevelingTheme.colors.text.primary};
-  margin-bottom: 0.5rem;
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-  background: ${props => {
-    if (props.variant === 'completed') return soloLevelingTheme.colors.gradients.gold;
-    if (props.variant === 'progress') return soloLevelingTheme.colors.gradients.purple;
-    return soloLevelingTheme.colors.gradients.mana;
+  color: ${props => {
+    if (props.$variant === 'completed') return soloLevelingTheme.colors.accent.gold;
+    if (props.$variant === 'progress') return soloLevelingTheme.colors.accent.purple;
+    return soloLevelingTheme.colors.accent.blue;
   }};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 0.35rem;
+  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
 `;
 
 export const StatLabel = styled.div`
-  font-size: 1rem;
+  font-size: 0.8125rem;
   color: ${soloLevelingTheme.colors.text.secondary};
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
 `;
 
@@ -553,21 +511,21 @@ export const SearchInput = styled.input`
 
 export const FilterButton = styled.button`
   padding: 0.75rem 1.5rem;
-  background: ${props => props.active 
+  background: ${props => props.$active 
     ? `linear-gradient(135deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold})`
     : `linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.9))`
   };
-  border: 2px solid ${props => props.active 
+  border: 2px solid ${props => props.$active 
     ? soloLevelingTheme.colors.accent.gold
     : soloLevelingTheme.colors.border.primary
   };
   border-radius: ${soloLevelingTheme.borderRadius.lg};
-  color: ${props => props.active 
+  color: ${props => props.$active 
     ? soloLevelingTheme.colors.text.primary
     : soloLevelingTheme.colors.text.secondary
   };
   font-size: 0.95rem;
-  font-weight: ${props => props.active 
+  font-weight: ${props => props.$active 
     ? soloLevelingTheme.typography.fontWeight.semibold
     : soloLevelingTheme.typography.fontWeight.medium
   };
@@ -577,7 +535,7 @@ export const FilterButton = styled.button`
   align-items: center;
   gap: 0.5rem;
   backdrop-filter: blur(10px);
-  box-shadow: ${props => props.active 
+  box-shadow: ${props => props.$active 
     ? soloLevelingTheme.shadows.glow
     : 'none'
   };
@@ -601,7 +559,7 @@ export const FilterButton = styled.button`
   }
   
   svg {
-    filter: drop-shadow(0 0 4px ${props => props.active 
+    filter: drop-shadow(0 0 4px ${props => props.$active 
       ? 'rgba(253, 203, 110, 0.6)'
       : 'rgba(255, 255, 255, 0.3)'
     });

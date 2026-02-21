@@ -19,7 +19,7 @@ import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools } from 'react-i
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { getProjectsData } from '../data/projectsTranslations';
-import ProjectCard, { getProjectAnimationType, getProjectLevel, getProjectXP } from '../components/ProjectCard';
+import ProjectCard from '../components/ProjectCard';
 
 const RecentProjectsGrid = styled.div`
   display: grid;
@@ -48,42 +48,67 @@ const RecentProjectsGrid = styled.div`
 `;
 
 const HackathonProjectsSection = styled.section`
-  margin-top: 5rem;
+  margin-top: 3rem;
   
   @media (max-width: 768px) {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 `;
 
-const ProjectsGrid = styled.div`
+const HackathonGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  margin: 3rem 0;
+  gap: 1rem;
+  margin: 2rem 0;
   
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1.25rem;
   }
   
-  @media (max-width: 768px) {
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
   }
+`;
+
+const HackathonCard = styled(FeatureCard)`
+  padding: 1.25rem;
+  border-width: 1px;
+  border-radius: ${soloLevelingTheme.borderRadius.lg};
+
+  &::before {
+    height: 3px;
+  }
+`;
+
+const HackathonCardIcon = styled(CardIcon)`
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+`;
+
+const HackathonCardTitle = styled(CardTitle)`
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+`;
+
+const HackathonCardDescription = styled(CardDescription)`
+  font-size: 0.8125rem;
+  line-height: 1.5;
 `;
 
 const ProjectLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
   background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold});
   color: ${soloLevelingTheme.colors.text.primary};
   text-decoration: none;
   border-radius: ${soloLevelingTheme.borderRadius.lg};
   font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  font-size: 0.95rem;
   transition: all 0.3s ease;
   box-shadow: ${soloLevelingTheme.shadows.glow};
   border: 1px solid rgba(253, 203, 110, 0.3);
@@ -236,10 +261,6 @@ const ProjectsPage = () => {
               url={project.url}
               status={project.status}
               category={project.category}
-              gradient={project.gradient}
-              animationType={getProjectAnimationType(project)}
-              level={getProjectLevel(project)}
-              xp={getProjectXP(project)}
               delay={`${index * 0.1}s`}
               buttonText={t('common.buttons.viewProject')}
               statusLabel={project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp')}
@@ -250,12 +271,12 @@ const ProjectsPage = () => {
         {hackathonProjects.length > 0 && (
           <HackathonProjectsSection>
             <SectionTitle>{t('projects.hackathonProjects') || 'Hackathon Projects'}</SectionTitle>
-            <ProjectsGrid>
+            <HackathonGrid>
               {hackathonProjects.map((project, index) => (
-                <FeatureCard key={project.title} delay={`${index * 0.1}s`}>
-                  <CardIcon>{getProjectIcon(project.title)}</CardIcon>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
+                <HackathonCard key={project.title} delay={`${index * 0.1}s`}>
+                  <HackathonCardIcon>{getProjectIcon(project.title)}</HackathonCardIcon>
+                  <HackathonCardTitle>{project.title}</HackathonCardTitle>
+                  <HackathonCardDescription>{project.description}</HackathonCardDescription>
                   {project.url && (
                     <ProjectLink 
                       href={project.url} 
@@ -267,9 +288,9 @@ const ProjectsPage = () => {
                       {t('common.buttons.viewProject')}
                     </ProjectLink>
                   )}
-                </FeatureCard>
+                </HackathonCard>
               ))}
-            </ProjectsGrid>
+            </HackathonGrid>
           </HackathonProjectsSection>
         )}
       </ContentWrapper>

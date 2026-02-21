@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { fadeInUp } from '../styles/keyframes';
-import LevelingAnimation from './LevelingAnimation';
 import Button from './Button';
 
 const glowPulse = keyframes`
@@ -43,51 +42,6 @@ export const getProjectXP = (project) => {
   return Math.min(100, yearProgress + statusBonus);
 };
 
-const ProjectPreviewImage = styled.div`
-  width: 100%;
-  height: 200px;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  position: relative;
-  background: ${props => props.gradient || 'linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(253, 203, 110, 0.1))'};
-  border: 1px solid rgba(108, 92, 231, 0.3);
-  transition: all 0.4s ease;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(10, 10, 15, 0.4) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
-  
-  @media (max-width: 768px) {
-    height: 160px;
-    margin-bottom: 1.25rem;
-  }
-  
-  @media (max-width: 480px) {
-    height: 140px;
-    margin-bottom: 1rem;
-  }
-`;
-
 const Card = styled.article`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
   border: 2px solid ${soloLevelingTheme.colors.border.primary};
@@ -97,13 +51,9 @@ const Card = styled.article`
   position: relative;
   overflow: hidden;
   animation: ${fadeInUp} 0.6s ease-out;
-  animation-delay: ${props => props.delay || '0s'};
+  animation-delay: ${props => props.$delay || '0s'};
   animation-fill-mode: both;
   backdrop-filter: blur(10px);
-  
-  ${ProjectPreviewImage} {
-    opacity: 0.85;
-  }
   
   &::before {
     content: '';
@@ -149,15 +99,6 @@ const Card = styled.article`
       opacity: 1;
       animation: ${glowPulse} 3s ease-in-out infinite;
     }
-    
-    ${ProjectPreviewImage} {
-      opacity: 1;
-      border-color: ${soloLevelingTheme.colors.accent.purple};
-      
-      img {
-        transform: scale(1.05);
-      }
-    }
   }
   
   @media (max-width: 768px) {
@@ -184,13 +125,13 @@ export const StatusBadge = styled.span`
   margin-bottom: 0.75rem;
   transition: all 0.3s ease;
   
-  ${props => props.status === 'production' && `
+  ${props => props.$status === 'production' && `
     background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.orange});
     color: ${soloLevelingTheme.colors.text.primary};
     box-shadow: 0 0 15px rgba(253, 203, 110, 0.4);
   `}
   
-  ${props => props.status === 'mvp' && `
+  ${props => props.$status === 'mvp' && `
     background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.blue});
     color: ${soloLevelingTheme.colors.text.primary};
     box-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
@@ -277,30 +218,13 @@ const ProjectCard = ({
   url,
   status,
   category,
-  gradient,
-  image,
-  animationType,
-  level,
-  xp,
   delay = '0s',
   buttonText = 'View Project',
   statusLabel
 }) => {
   return (
-    <Card delay={delay}>
-      <ProjectPreviewImage gradient={gradient}>
-        {image ? (
-          <img src={image} alt={`${title} preview`} loading="lazy" />
-        ) : (
-          <LevelingAnimation
-            type={animationType}
-            level={level}
-            xp={xp}
-            progressive
-          />
-        )}
-      </ProjectPreviewImage>
-      <StatusBadge status={status}>
+    <Card $delay={delay}>
+      <StatusBadge $status={status}>
         {statusLabel || (status === 'production' ? 'In Production' : 'MVP')}
       </StatusBadge>
       <PostCategory>{category}</PostCategory>
