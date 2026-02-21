@@ -725,11 +725,11 @@ const ActivityXPContainer = styled.div`
 
 const ActivityXPBar = styled.div`
   height: 100%;
-  width: ${props => props.progressive ? '100%' : `${props.xp || 0}%`};
-  background: ${props => props.gradient || 'linear-gradient(90deg, rgba(108, 92, 231, 0.8), rgba(116, 185, 255, 0.8))'};
+  width: ${props => props.$progressive ? '100%' : `${props.$xp || 0}%`};
+  background: ${props => props.$gradient || 'linear-gradient(90deg, rgba(108, 92, 231, 0.8), rgba(116, 185, 255, 0.8))'};
   border-radius: ${soloLevelingTheme.borderRadius.full};
-  animation: ${props => props.progressive ? xpBarProgressive : 'none'} ${props => props.progressive ? '7s' : '0s'} ease-in-out infinite;
-  box-shadow: 0 0 8px ${props => props.shadowColor || 'rgba(108, 92, 231, 0.6)'};
+  animation: ${props => props.$progressive ? xpBarProgressive : 'none'} ${props => props.$progressive ? '7s' : '0s'} ease-in-out infinite;
+  box-shadow: 0 0 8px ${props => props.$shadowColor || 'rgba(108, 92, 231, 0.6)'};
   position: relative;
   transform-origin: left center;
   
@@ -760,7 +760,7 @@ const ActivityLevelDisplay = styled.div`
   font-size: 3rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 20px ${props => props.gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'}, 0 0 40px ${props => props.gold ? 'rgba(253, 203, 110, 0.6)' : 'rgba(108, 92, 231, 0.6)'};
+  text-shadow: 0 0 20px ${props => props.$gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'}, 0 0 40px ${props => props.$gold ? 'rgba(253, 203, 110, 0.6)' : 'rgba(108, 92, 231, 0.6)'};
   animation: ${levelNumber} 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   line-height: 1;
@@ -788,10 +788,10 @@ const ActivityStarsContainer = styled.div`
 
 const ActivityStar = styled.span`
   font-size: 1rem;
-  color: ${props => props.gold ? soloLevelingTheme.colors.accent.gold : soloLevelingTheme.colors.accent.purple};
-  filter: drop-shadow(0 0 6px ${props => props.gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'});
+  color: ${props => props.$gold ? soloLevelingTheme.colors.accent.gold : soloLevelingTheme.colors.accent.purple};
+  filter: drop-shadow(0 0 6px ${props => props.$gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'});
   animation: ${starTwinkle} 4s ease-in-out infinite;
-  animation-delay: ${props => props.delay || 0}s;
+  animation-delay: ${props => props.$delay || 0}s;
   display: inline-block;
   
   @media (max-width: 768px) {
@@ -814,14 +814,15 @@ const ActivityParticle = styled.div`
   position: absolute;
   width: 3px;
   height: 3px;
-  background: ${props => props.color || soloLevelingTheme.colors.accent.gold};
+  background: ${props => props.$color || soloLevelingTheme.colors.accent.gold};
   border-radius: 50%;
-  box-shadow: 0 0 6px ${props => props.color || soloLevelingTheme.colors.accent.gold}, 0 0 10px ${props => props.color || soloLevelingTheme.colors.accent.gold};
-  left: ${props => props.left || '50%'};
+  box-shadow: 0 0 6px ${props => props.$color || soloLevelingTheme.colors.accent.gold}, 0 0 10px ${props => props.$color || soloLevelingTheme.colors.accent.gold};
+  left: ${props => props.$left || '50%'};
   bottom: 0;
-  animation: ${particleFloat} ${props => props.duration || 6}s ease-in-out infinite;
-  animation-delay: ${props => props.delay || 0}s;
+  animation: ${particleFloat} ${props => props.$duration || 6}s ease-in-out infinite;
+  animation-delay: ${props => props.$delay || 0}s;
   opacity: 0;
+  @media (prefers-reduced-motion: reduce) { animation: none; opacity: 0.3; }
 `;
 
 const ActivityLevelUpGlow = styled.div`
@@ -832,10 +833,11 @@ const ActivityLevelUpGlow = styled.div`
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  background: radial-gradient(circle, ${props => props.color || 'rgba(253, 203, 110, 0.3)'} 0%, transparent 70%);
+  background: radial-gradient(circle, ${props => props.$color || 'rgba(253, 203, 110, 0.3)'} 0%, transparent 70%);
   animation: ${levelUp} 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
+  @media (prefers-reduced-motion: reduce) { animation: none; }
 `;
 
 const HighlightParticlesContainer = styled.div`
@@ -853,14 +855,15 @@ const HighlightParticle = styled.div`
   position: absolute;
   width: 5px;
   height: 5px;
-  background: ${props => props.color || soloLevelingTheme.colors.accent.gold};
+  background: ${props => props.$color || soloLevelingTheme.colors.accent.gold};
   border-radius: 50%;
-  box-shadow: 0 0 10px ${props => props.color || soloLevelingTheme.colors.accent.gold}, 0 0 15px ${props => props.color || soloLevelingTheme.colors.accent.gold};
-  left: ${props => props.left || '50%'};
-  bottom: ${props => props.bottom || '0'};
-  animation: ${particleFloat} ${props => props.duration || 8}s ease-in-out infinite;
-  animation-delay: ${props => props.delay || 0}s;
+  box-shadow: 0 0 10px ${props => props.$color || soloLevelingTheme.colors.accent.gold}, 0 0 15px ${props => props.$color || soloLevelingTheme.colors.accent.gold};
+  left: ${props => props.$left || '50%'};
+  bottom: ${props => props.$bottom || '0'};
+  animation: ${particleFloat} ${props => props.$duration || 8}s ease-in-out infinite;
+  animation-delay: ${props => props.$delay || 0}s;
   opacity: 0.6;
+  @media (prefers-reduced-motion: reduce) { animation: none; }
 `;
 
 const getActivityType = (title) => {
@@ -870,17 +873,6 @@ const getActivityType = (title) => {
   if (titleLower.includes('trading') || titleLower.includes('crypto')) return 'trading';
   if (titleLower.includes('danc')) return 'dancing';
   return 'default';
-};
-
-const getActivityLevel = (type) => {
-  const levels = {
-    backend: 25,
-    sideProjects: 20,
-    trading: 18,
-    dancing: 15,
-    default: 10
-  };
-  return levels[type] || 10;
 };
 
 const getActivityGradient = (type) => {
@@ -894,16 +886,16 @@ const getActivityGradient = (type) => {
   return gradients[type] || gradients.default;
 };
 
-const ActivityParticleEffect = ({ count = 8, color }) => {
+const ActivityParticleEffect = ({ count = 4, color }) => {
   return (
     <ActivityParticlesContainer>
       {Array.from({ length: count }).map((_, i) => (
         <ActivityParticle
           key={i}
-          left={`${15 + (i * 10)}%`}
-          delay={`${i * 0.2}s`}
-          duration={6 + (i % 2)}
-          color={color}
+          $left={`${15 + (i * 10)}%`}
+          $delay={`${i * 0.2}s`}
+          $duration={6 + (i % 2)}
+          $color={color}
         />
       ))}
     </ActivityParticlesContainer>
@@ -915,13 +907,13 @@ const ActivityXPBarComponent = ({ xp, multiple = false, progressive = false, gra
     return (
       <MultipleActivityXPBars>
         <ActivityXPContainer>
-          <ActivityXPBar progressive={progressive} gradient={gradient} shadowColor={shadowColor} />
+          <ActivityXPBar $progressive={progressive} $gradient={gradient} $shadowColor={shadowColor} />
         </ActivityXPContainer>
         <ActivityXPContainer>
-          <ActivityXPBar progressive={progressive} gradient={gradient} shadowColor={shadowColor} />
+          <ActivityXPBar $progressive={progressive} $gradient={gradient} $shadowColor={shadowColor} />
         </ActivityXPContainer>
         <ActivityXPContainer>
-          <ActivityXPBar progressive={progressive} gradient={gradient} shadowColor={shadowColor} />
+          <ActivityXPBar $progressive={progressive} $gradient={gradient} $shadowColor={shadowColor} />
         </ActivityXPContainer>
       </MultipleActivityXPBars>
     );
@@ -929,7 +921,7 @@ const ActivityXPBarComponent = ({ xp, multiple = false, progressive = false, gra
   
   return (
     <ActivityXPContainer>
-      <ActivityXPBar progressive={progressive} xp={!progressive ? xp : undefined} gradient={gradient} shadowColor={shadowColor} />
+      <ActivityXPBar $progressive={progressive} $xp={!progressive ? xp : undefined} $gradient={gradient} $shadowColor={shadowColor} />
     </ActivityXPContainer>
   );
 };
@@ -938,14 +930,14 @@ const ActivityStarRating = ({ count = 5, gold = false }) => {
   return (
     <ActivityStarsContainer>
       {Array.from({ length: count }).map((_, i) => (
-        <ActivityStar key={i} delay={`${i * 0.2}s`} gold={gold}>★</ActivityStar>
+        <ActivityStar key={i} $delay={`${i * 0.2}s`} $gold={gold}>★</ActivityStar>
       ))}
     </ActivityStarsContainer>
   );
 };
 
 const ActivityLevelDisplayComponent = ({ level, gold = false }) => {
-  return <ActivityLevelDisplay gold={gold}>{level}</ActivityLevelDisplay>;
+  return <ActivityLevelDisplay $gold={gold}>{level}</ActivityLevelDisplay>;
 };
 
 const ActivityLevelingAnimation = ({ type, level }) => {
@@ -964,28 +956,27 @@ const ActivityLevelingAnimation = ({ type, level }) => {
 
   return (
     <LevelingActivityContainer gradient={getActivityGradient(type)}>
-      <ActivityLevelUpGlow color={getGlowColor(type)} />
+      <ActivityLevelUpGlow $color={getGlowColor(type)} />
       <ActivityLevelDisplayComponent level={level} gold={isGold} />
     </LevelingActivityContainer>
   );
 };
 
-const HighlightParticleEffect = () => {
-  return (
-    <HighlightParticlesContainer>
-      {Array.from({ length: 15 }).map((_, i) => (
-        <HighlightParticle
-          key={i}
-          left={`${5 + (i * 6)}%`}
-          bottom={`${Math.random() * 50}%`}
-          delay={`${i * 0.3}s`}
-          duration={8 + (i % 3)}
-          color={i % 3 === 0 ? soloLevelingTheme.colors.accent.gold : i % 3 === 1 ? soloLevelingTheme.colors.accent.orange : soloLevelingTheme.colors.accent.purple}
-        />
-      ))}
-    </HighlightParticlesContainer>
-  );
-};
+const HIGHLIGHT_PARTICLE_POSITIONS = Array.from({ length: 8 }, (_, i) => 5 + (i * 11));
+const HighlightParticleEffect = () => (
+  <HighlightParticlesContainer>
+    {HIGHLIGHT_PARTICLE_POSITIONS.map((leftPct, i) => (
+      <HighlightParticle
+        key={i}
+        $left={`${leftPct}%`}
+        $bottom={`${(i * 13) % 45}%`}
+        $delay={`${i * 0.3}s`}
+        $duration={8 + (i % 3)}
+        $color={i % 3 === 0 ? soloLevelingTheme.colors.accent.gold : i % 3 === 1 ? soloLevelingTheme.colors.accent.orange : soloLevelingTheme.colors.accent.purple}
+      />
+    ))}
+  </HighlightParticlesContainer>
+);
 
 const NowPage = () => {
   const { t } = useTranslation();
@@ -1113,22 +1104,16 @@ const NowPage = () => {
 
         <SectionTitle>{t('now.currentActivities.title')}</SectionTitle>
         <ActivitiesGrid>
-          {currentActivities.map((activity, index) => {
-            const activityType = getActivityType(activity.title);
-            const level = getActivityLevel(activityType);
-            
-            return (
-              <NowCard
-                key={index}
-                type={activityType}
-                level={level}
-                icon={activity.icon}
-                title={activity.title}
-                description={activity.description}
-                delay={`${index * 0.1}s`}
-              />
-            );
-          })}
+          {currentActivities.map((activity, index) => (
+            <NowCard
+              key={index}
+              type={getActivityType(activity.title)}
+              icon={activity.icon}
+              title={activity.title}
+              description={activity.description}
+              delay={`${index * 0.1}s`}
+            />
+          ))}
         </ActivitiesGrid>
 
         <FocusSection>

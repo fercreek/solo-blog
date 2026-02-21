@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import { fadeInUp, levelNumber, levelUp } from '../styles/keyframes';
+import { fadeInUp, levelUp } from '../styles/keyframes';
 
 const CardContainer = styled.article`
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
@@ -96,55 +96,7 @@ const LevelUpGlow = styled.div`
   animation: ${levelUp} 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
-`;
-
-const LevelNumber = styled.div`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 3rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 20px ${props => props.$gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'}, 0 0 40px ${props => props.$gold ? 'rgba(253, 203, 110, 0.6)' : 'rgba(108, 92, 231, 0.6)'};
-  animation: ${levelNumber} 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-  line-height: 1;
-  z-index: 2;
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-    top: 0.75rem;
-    left: 0.75rem;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 2rem;
-    top: 0.5rem;
-    left: 0.5rem;
-  }
-`;
-
-const LevelBadge = styled.div`
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  padding: 0.35rem 0.75rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(10, 10, 15, 0.9));
-  border: 1px solid ${soloLevelingTheme.colors.border.accent};
-  border-radius: ${soloLevelingTheme.borderRadius.full};
-  font-size: 0.75rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  color: ${soloLevelingTheme.colors.accent.gold};
-  backdrop-filter: blur(10px);
-  z-index: 3;
-  box-shadow: 0 0 15px rgba(253, 203, 110, 0.4);
-  
-  @media (max-width: 768px) {
-    padding: 0.3rem 0.65rem;
-    font-size: 0.7rem;
-    top: 0.6rem;
-    right: 0.6rem;
-  }
+  @media (prefers-reduced-motion: reduce) { animation: none; }
 `;
 
 const IconWrapper = styled.div`
@@ -260,17 +212,14 @@ const getGlowColor = (type) => {
   return colors[type] || colors.default;
 };
 
-const NowCard = ({ type, level, icon, title, description, delay = '0s' }) => {
+const NowCard = ({ type, icon, title, description, delay = '0s' }) => {
   const gradient = getGradient(type);
   const glowColor = getGlowColor(type);
-  const isGold = type === 'sideProjects' || type === 'trading';
 
   return (
     <CardContainer $delay={delay}>
       <HeaderSection $gradient={gradient}>
         <LevelUpGlow $color={glowColor} />
-        <LevelNumber $gold={isGold}>{level}</LevelNumber>
-        <LevelBadge>LVL {level}</LevelBadge>
         <IconWrapper>{icon}</IconWrapper>
         <Title>{title}</Title>
       </HeaderSection>
