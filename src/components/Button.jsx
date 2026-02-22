@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 
-const StyledButton = styled.button`
+const baseStyles = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   transition: all ${soloLevelingTheme.animations.transition.normal};
   min-height: 44px;
   border: none;
+  text-decoration: none;
   
   &:focus-visible {
     outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
@@ -72,10 +73,22 @@ const StyledButton = styled.button`
   `}
 `;
 
-const Button = ({ variant = 'primary', as, children, ...props }) => (
-  <StyledButton as={as || 'button'} $variant={variant} {...props}>
-    {children}
-  </StyledButton>
-);
+const StyledButton = styled.button`
+  ${baseStyles}
+`;
+
+const StyledLink = styled.a`
+  ${baseStyles}
+`;
+
+const Button = ({ variant = 'primary', as, children, href, ...props }) => {
+  const isLink = as === 'a' || href;
+  const Component = isLink ? StyledLink : StyledButton;
+  return (
+    <Component $variant={variant} href={href} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export default Button;
