@@ -15,7 +15,7 @@ import {
   CardDescription,
   SectionTitle
 } from '../styles/designSystem';
-import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools } from 'react-icons/fa';
+import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools, FaClock } from 'react-icons/fa';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { getProjectsData } from '../data/projectsTranslations';
@@ -182,6 +182,16 @@ const ProjectsPage = () => {
       status: 'mvp',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(108, 92, 231, 0.2))'
+    },
+    {
+      id: 'chronodev',
+      title: 'ChronoDev',
+      excerpt: t('home.recent.chronoDev.excerpt'),
+      date: '2025',
+      url: 'https://v0-chrono-dev-dashboard.vercel.app/',
+      status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(100, 116, 139, 0.3), rgba(71, 85, 105, 0.2))'
     }
   ], [t]);
 
@@ -237,6 +247,7 @@ const ProjectsPage = () => {
     if (lowerTitle.includes('dance') || lowerTitle.includes('vayla')) return <FaRocket />;
     if (lowerTitle.includes('parcel') || lowerTitle.includes('litebox')) return <FaBox />;
     if (lowerTitle.includes('finance') || lowerTitle.includes('progreso')) return <FaDollarSign />;
+    if (lowerTitle.includes('chronodev')) return <FaClock />;
     if (lowerTitle.includes('bronca')) return <FaTools />;
     return <FaGlobe />;
   };

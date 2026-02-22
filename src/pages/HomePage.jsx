@@ -416,6 +416,16 @@ const HomePage = () => {
       status: 'mvp',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(108, 92, 231, 0.2))'
+    },
+    {
+      id: 'chronodev',
+      title: 'ChronoDev',
+      excerpt: t('home.recent.chronoDev.excerpt'),
+      date: '2025',
+      url: 'https://v0-chrono-dev-dashboard.vercel.app/',
+      status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(100, 116, 139, 0.3), rgba(71, 85, 105, 0.2))'
     }
   ];
 

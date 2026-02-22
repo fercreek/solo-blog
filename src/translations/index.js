@@ -57,6 +57,9 @@ export const translations = {
         },
         sinBronca: {
           excerpt: 'Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.'
+        },
+        chronoDev: {
+          excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
         }
       }
     },
@@ -226,6 +229,9 @@ export const translations = {
         },
         sinBronca: {
           excerpt: 'Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.'
+        },
+        chronoDev: {
+          excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
         }
       }
     },

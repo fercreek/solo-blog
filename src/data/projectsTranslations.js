@@ -25,6 +25,11 @@ Discover details at [Progreso Personal Finance](https://v0-progreso-personal-fin
 Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.  
 Explore more at [Sin Bronca](https://sin-bronca.vercel.app/).
 
+## ChronoDev
+
+Estimate your development hours from GitHub commits. No signup, 100% free. Your data stays in your browser. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.  
+Explore more at [ChronoDev](https://v0-chrono-dev-dashboard.vercel.app/).
+
 ## Hackathon Projects
 
 ### Pebble Mouse (HackMTY 2014)
@@ -60,6 +65,11 @@ Descubre detalles en [Progreso Personal Finance](https://v0-progreso-personal-fi
 Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.  
 Explora más en [Sin Bronca](https://sin-bronca.vercel.app/).
 
+## ChronoDev
+
+Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Tus datos se quedan en tu navegador. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).  
+Explora más en [ChronoDev](https://v0-chrono-dev-dashboard.vercel.app/).
+
 ## Proyectos de Hackathon
 
 ### Pebble Mouse (HackMTY 2014)
@@ -94,6 +104,9 @@ export const projectsTranslations = {
       },
       sinBronca: {
         excerpt: 'Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.'
+      },
+      chronoDev: {
+        excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
       }
     }
   },
@@ -115,6 +128,9 @@ export const projectsTranslations = {
       },
       sinBronca: {
         excerpt: 'Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.'
+      },
+      chronoDev: {
+        excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
       }
     }
   }
