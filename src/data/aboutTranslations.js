@@ -4,15 +4,17 @@ export const getAboutData = (language = 'en') => {
 
 I am a Problem Owner. I bridge the gap between technical complexity and business reality.
 
-My background involves a rare combination: 10 years of Senior Engineering and a tenure as a Chief Operating Officer (COO). This allows me to see code through a P&L lens—understanding burn rate, ROI, and operational friction where others only see functions and features.
+# Unfair Advantage
 
-# Professional Profile
+Most engineers see bugs; I see burn rate. As a former COO, I treat every line of code as a line item on your P&L—I spot money leaks and operational friction where others only see features. My discipline as a two-time National Bachata Champion is not a hobby; it is proof of a zero-fail mindset. I apply that same obsessive precision to high-pressure technical projects: execution is flawless, outcomes are guaranteed.
 
-My unfair advantage is simple: I am a Senior Engineer who thinks like a COO. I don't just build features; I eliminate operational liabilities.
+# The Value of Relief
 
-My discipline as a two-time National Bachata Champion is not a hobby—it is the proof of my organizational rigor. I apply that same obsessive precision to high-risk technical projects, ensuring execution is flawless and outcomes are guaranteed.
+- **Stop Enrollment Chaos:** Automate the friction that kills conversion.
+- **Bridge Finance & Tech:** Integrate revenue streams for real-time visibility.
+- **Scale Without Breaking:** Architect infrastructure that handles success.
 
-Most consultants sell implementation. I sell certainty. I use my decade of experience to ensure your technology serves the business, turning potential liabilities into measurable financial assets.
+Stop hiring task-takers. Schedule an Operations Audit.
 
 # Professional Experience
 
@@ -167,15 +169,17 @@ Professional systems that shape my execution:
 
 Soy un Dueño de Problemas. Uno la complejidad técnica con la realidad del negocio.
 
-Mi trayectoria implica una combinación poco común: 10 años de Ingeniería Senior y un mandato como Director de Operaciones (COO). Esto me permite ver el código a través de un lente financiero—entendiendo la tasa de consumo, el ROI y la fricción operativa donde otros solo ven funciones y características.
+# Ventaja Injusta
 
-# Perfil Profesional
+La mayoría de los ingenieros ven bugs; yo veo tasa de consumo. Como ex-COO, trato cada línea de código como una partida en tu P&L—detecto fugas de dinero y fricción operativa donde otros solo ven funcionalidades. Mi disciplina como bicampeón nacional de bachata no es un pasatiempo; es prueba de una mentalidad de cero fallas. Aplico esa misma precisión obsesiva a proyectos técnicos de alta presión: la ejecución es impecable, los resultados están garantizados.
 
-Mi ventaja injusta es simple: Soy un Ingeniero Senior que piensa como un COO. No solo construyo funcionalidades; elimino pasivos operativos.
+# El Valor del Alivio
 
-Mi disciplina como bicampeón nacional de bachata no es un pasatiempo—es la prueba de mi rigor organizacional. Aplico esa misma precisión obsesiva a proyectos técnicos de alto riesgo, asegurando que la ejecución sea impecable y los resultados estén garantizados.
+- **Termina con el Caos de Inscripciones:** Automatiza la fricción que mata la conversión.
+- **Une Finanzas y Tecnología:** Integra flujos de ingresos para visibilidad en tiempo real.
+- **Escala Sin Romper:** Arquitectura de infraestructura que soporta el crecimiento.
 
-La mayoría de los consultores venden implementación. Yo vendo certeza. Uso mi década de experiencia para asegurar que tu tecnología sirva al negocio, convirtiendo pasivos potenciales en activos financieros medibles.
+Deja de contratar ejecutores de tareas. Agenda una Auditoría Operativa.
 
 # Experiencia Profesional
 

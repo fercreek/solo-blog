@@ -1086,7 +1086,7 @@ const NowPage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('now.title')} description={t('now.description')} />
+      <PageHead title={t('now.title')} description={t('now.descriptionSeo')} />
       <PageHeader>
         <PageTitle>{t('now.title')}</PageTitle>
         <PageDescription dangerouslySetInnerHTML={{

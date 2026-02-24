@@ -33,8 +33,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Turn Technology Into a Financial Asset',
-        description: 'I use my decade of technical experience to ensure your technology is a financial asset, not an operational liability. By combining Senior Engineering mastery with COO fiscal discipline, I deliver certainty, relief, and measurable outcomes.'
+        title: 'Stop Losing Revenue to Operational Friction. I Architect Systems That Scale With Your Business.',
+        description: 'I am an Operations Architect and Fractional CTO. I don\'t just write code; I eliminate the bottlenecks that starve your business of cash.'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -65,7 +65,7 @@ export const translations = {
     },
     about: {
       title: 'About Me',
-      description: 'Ensuring technology is a financial asset, not an operational liability',
+      description: 'Former COO and Operations Architect. I see burn rate where others see bugs. Unfair advantage: 10 years engineering plus P&L discipline. Schedule an Operations Audit.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'I bridge the gap between technical complexity and business reality.',
@@ -96,13 +96,13 @@ export const translations = {
     },
     projects: {
       title: 'Projects',
-      description: 'Solutions I\'ve delivered. Each project turns complex problems into reliable outcomes.',
+      description: 'Systems and automation I\'ve delivered for businesses: enrollment, revenue visibility, and infrastructure that scales. Each project turns operational friction into measurable outcomes.',
       mainProjects: 'Main Projects',
       hackathonProjects: 'Hackathon Projects'
     },
     impossibleList: {
       title: 'Impossible List',
-      description: 'Inspired by {link}, this is my collection of goals that push me beyond my comfort zone.',
+      description: 'Inspired by {link}, my goals that push beyond the comfort zone. Discipline and execution under pressure—the same mindset I bring to high-stakes operations.',
       linkText: 'Joel Runyon\'s Impossible List',
       stats: {
         totalGoals: 'Total Goals',
@@ -127,6 +127,7 @@ export const translations = {
     now: {
       title: 'What I\'m Doing Now',
       description: 'A snapshot of my current activities and priorities. This page serves as a public declaration and personal reminder, inspired by {sivers} and {frank}.',
+      descriptionSeo: 'Current activities and priorities. Operations Architect and Fractional CTO—backend, ventures, and the discipline that fuels high-stakes delivery.',
       location: 'Monterrey, Nuevo León',
       highlight: 'Immersing myself in cryptocurrencies, investment, and data analytics. My discipline as a trader and dancer—risk analysis, rhythm, execution—informs how I build and operate.',
       currentActivities: {
@@ -160,7 +161,7 @@ export const translations = {
     },
     contact: {
       title: 'Contact',
-      description: "Let's connect. Open to collaborations, opportunities, and conversations.",
+      description: 'Schedule an Operations Audit. For business owners and operators seeking relief from enrollment chaos, silos, and fragile infrastructure.',
       email: 'Email',
       phone: 'Phone',
       github: 'GitHub',
@@ -205,8 +206,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Convierte la Tecnología en un Activo Financiero',
-        description: 'Uso mi década de experiencia técnica para asegurar que tu tecnología sea un activo financiero, no una responsabilidad operativa. Al combinar la maestría de Ingeniería Senior con la disciplina fiscal de un COO, entrego certeza, alivio y resultados medibles.'
+        title: 'Deja de Perder Ingresos por la Fricción Operativa. Arquitecto Sistemas Que Escalan Con Tu Negocio.',
+        description: 'Soy Arquitecto de Operaciones y CTO Fractional. No solo escribo código; elimino los cuellos de botella que ahogan el flujo de caja de tu negocio.'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -237,7 +238,7 @@ export const translations = {
     },
     about: {
       title: 'Acerca de Mí',
-      description: 'Asegurando que la tecnología sea un activo financiero, no un pasivo operativo',
+      description: 'Ex COO y Arquitecto de Operaciones. Veo tasa de consumo donde otros ven bugs. Ventaja: 10 años en ingeniería más disciplina P&L. Agenda una Auditoría Operativa.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'Uno la complejidad técnica con la realidad del negocio.',
@@ -268,13 +269,13 @@ export const translations = {
     },
     projects: {
       title: 'Proyectos',
-      description: 'Soluciones que he entregado. Cada proyecto convierte problemas complejos en resultados confiables.',
+      description: 'Sistemas y automatización que he entregado para negocios: inscripciones, visibilidad de ingresos e infraestructura que escala. Cada proyecto convierte fricción operativa en resultados medibles.',
       mainProjects: 'Proyectos Principales',
       hackathonProjects: 'Proyectos de Hackathon'
     },
     impossibleList: {
       title: 'Lista Imposible',
-      description: 'Inspirado por {link}, esta es mi colección de metas que me empujan más allá de mi zona de confort.',
+      description: 'Inspirado por {link}, metas que empujan más allá de la zona de confort. Disciplina y ejecución bajo presión—la misma mentalidad que aplico a operaciones de alto riesgo.',
       linkText: 'La Lista Imposible de Joel Runyon',
       stats: {
         totalGoals: 'Metas Totales',
@@ -299,6 +300,7 @@ export const translations = {
     now: {
       title: 'Qué Estoy Haciendo Ahora',
       description: 'Una instantánea de mis actividades y prioridades actuales. Esta página sirve como una declaración pública y un recordatorio personal, inspirado por {sivers} y {frank}.',
+      descriptionSeo: 'Actividades y prioridades actuales. Arquitecto de Operaciones y CTO Fractional—backend, proyectos y la disciplina que impulsa entregas de alto impacto.',
       location: 'Monterrey, Nuevo León',
       highlight: 'Sumergiéndome en criptomonedas, inversiones y análisis de datos. Mi disciplina como trader y bailarín—análisis de riesgo, ritmo, ejecución—da forma a cómo construyo y opero.',
       currentActivities: {
@@ -332,7 +334,7 @@ export const translations = {
     },
     contact: {
       title: 'Contacto',
-      description: 'Conectemos. Abierto a colaboraciones, oportunidades y conversaciones.',
+      description: 'Agenda una Auditoría Operativa. Para dueños y operadores que buscan alivio ante caos en inscripciones, silos e infraestructura frágil.',
       email: 'Correo',
       phone: 'Teléfono',
       github: 'GitHub',
