@@ -2,13 +2,17 @@ export const getAboutData = (language = 'en') => {
   const translations = {
     en: `# Snapshot of Me
 
-I'm a problem owner who delivers relief through precision.
+I am a Problem Owner. I bridge the gap between technical complexity and business reality.
 
-Formerly a break dancer, I now compete in bachata and salsa. Based in Monterrey, Nuevo León, México. My discipline on stage and in markets translates directly into how I build systems.
+My background involves a rare combination: 10 years of Senior Engineering and a tenure as a Chief Operating Officer (COO). This allows me to see code through a P&L lens—understanding burn rate, ROI, and operational friction where others only see functions and features.
 
 # Professional Profile
 
-Engineering is a precision system, like a financial market or a bachata choreography. With nearly a decade building and scaling web platforms, I've learned that clients don't pay for implementation—they pay for relief and certainty. I design architectures that last, from microservices to CI/CD and incident-driven reliability. My real work is understanding your business logic to build for stability. I don't just ship code; I ship solutions that move the needle.
+My unfair advantage is simple: I am a Senior Engineer who thinks like a COO. I don't just build features; I eliminate operational liabilities.
+
+My discipline as a two-time National Bachata Champion is not a hobby—it is the proof of my organizational rigor. I apply that same obsessive precision to high-risk technical projects, ensuring execution is flawless and outcomes are guaranteed.
+
+Most consultants sell implementation. I sell certainty. I use my decade of experience to ensure your technology serves the business, turning potential liabilities into measurable financial assets.
 
 # Professional Experience
 
@@ -161,13 +165,17 @@ Professional systems that shape my execution:
   - 🥈 Bachata grupo mixto`,
     es: `# Instantánea de Mí
 
-Soy un dueño de problemas que entrega alivio mediante la precisión.
+Soy un Dueño de Problemas. Uno la complejidad técnica con la realidad del negocio.
 
-Antiguamente break dancer, ahora compito en bachata y salsa. Radicado en Monterrey, Nuevo León, México. Mi disciplina en escenario y en mercados se traduce directamente en cómo construyo sistemas.
+Mi trayectoria implica una combinación poco común: 10 años de Ingeniería Senior y un mandato como Director de Operaciones (COO). Esto me permite ver el código a través de un lente financiero—entendiendo la tasa de consumo, el ROI y la fricción operativa donde otros solo ven funciones y características.
 
 # Perfil Profesional
 
-La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía de bachata. Con casi una década construyendo y escalando plataformas web, he aprendido que los clientes no pagan por implementación—pagan por alivio y certeza. Diseño arquitecturas que perduran, desde microservicios hasta CI/CD y confiabilidad impulsada por incidentes. Mi trabajo real es entender tu lógica de negocio para construir con estabilidad. No solo entrego código; entrego soluciones que marcan la diferencia.
+Mi ventaja injusta es simple: Soy un Ingeniero Senior que piensa como un COO. No solo construyo funcionalidades; elimino pasivos operativos.
+
+Mi disciplina como bicampeón nacional de bachata no es un pasatiempo—es la prueba de mi rigor organizacional. Aplico esa misma precisión obsesiva a proyectos técnicos de alto riesgo, asegurando que la ejecución sea impecable y los resultados estén garantizados.
+
+La mayoría de los consultores venden implementación. Yo vendo certeza. Uso mi década de experiencia para asegurar que tu tecnología sirva al negocio, convirtiendo pasivos potenciales en activos financieros medibles.
 
 # Experiencia Profesional
 

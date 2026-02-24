@@ -33,8 +33,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Engineering Scalable Solutions | Strategic Operator',
-        description: 'Engineering is a precision system, like a financial market or a bachata choreography. I turn complex problems into reliable, high-impact outcomes. Senior Software Engineer focused on building platforms that deliver real value. With nearly a decade of experience, I\'ve learned that clients don\'t pay for implementation—they pay for relief and certainty. My analytical mindset as a trader and the discipline of salsa and bachata let me approach engineering with a unique blend of precision and creativity. I don\'t just ship code; I ship solutions that move the needle.'
+        title: 'Turn Technology Into a Financial Asset',
+        description: 'I use my decade of technical experience to ensure your technology is a financial asset, not an operational liability. By combining Senior Engineering mastery with COO fiscal discipline, I deliver certainty, relief, and measurable outcomes.'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -65,11 +65,11 @@ export const translations = {
     },
     about: {
       title: 'About Me',
-      description: 'Strategic operator who delivers relief through precision',
+      description: 'Ensuring technology is a financial asset, not an operational liability',
       location: 'Monterrey, Nuevo León, México',
       bio: {
-        intro: 'I\'m a problem owner who delivers relief through precision.',
-        background: 'Formerly a break dancer, I now compete in bachata and salsa. Based in Monterrey, Nuevo León, México. My discipline on stage and in markets translates directly into how I build systems.'
+        intro: 'I bridge the gap between technical complexity and business reality.',
+        background: 'Former COO and Senior Engineer. 2x National Bachata Champion. I bring organizational rigor to high-stakes projects.'
       },
       closerLook: {
         title: 'Beyond the Code',
@@ -205,8 +205,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Soluciones Escalables | Operador Estratégico',
-        description: 'La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía de bachata. Convierto problemas complejos en resultados confiables y de alto impacto. Ingeniero de Software Senior enfocado en construir plataformas que entregan valor real. Con casi una década de experiencia, he aprendido que los clientes no pagan por implementación—pagan por alivio y certeza. Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con una mezcla única de precisión y creatividad. No solo entrego código; entrego soluciones que marcan la diferencia.'
+        title: 'Convierte la Tecnología en un Activo Financiero',
+        description: 'Uso mi década de experiencia técnica para asegurar que tu tecnología sea un activo financiero, no una responsabilidad operativa. Al combinar la maestría de Ingeniería Senior con la disciplina fiscal de un COO, entrego certeza, alivio y resultados medibles.'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -237,11 +237,11 @@ export const translations = {
     },
     about: {
       title: 'Acerca de Mí',
-      description: 'Operador estratégico que entrega alivio mediante la precisión',
+      description: 'Asegurando que la tecnología sea un activo financiero, no un pasivo operativo',
       location: 'Monterrey, Nuevo León, México',
       bio: {
-        intro: 'Soy un dueño de problemas que entrega alivio mediante la precisión.',
-        background: 'Antiguamente break dancer, ahora compito en bachata y salsa. Radicado en Monterrey, Nuevo León, México. Mi disciplina en escenario y en mercados se traduce directamente en cómo construyo sistemas.'
+        intro: 'Uno la complejidad técnica con la realidad del negocio.',
+        background: 'Ex COO e Ingeniero Senior. Bicampeón Nacional de Bachata. Aporto rigor organizacional a proyectos de alto riesgo.'
       },
       closerLook: {
         title: 'Más Allá del Código',
