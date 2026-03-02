@@ -125,11 +125,11 @@ export const translations = {
       noResults: 'No goals found matching your criteria.'
     },
     now: {
-      title: 'What I\'m Doing Now',
+      title: 'Building in Public: The Agentic Era.',
       description: 'A snapshot of my current activities and priorities. This page serves as a public declaration and personal reminder, inspired by {sivers} and {frank}.',
-      descriptionSeo: 'Agentic AI Architect. Scaling Litebox and Vayla with autonomous agents. This quarter: perfecting 30-day MVP deployment for business owners who have no time to lose.',
+      descriptionSeo: 'Agentic AI Architect. Scaling Studio Link\'s Revenue Protection engine to 0% capital leak. Perfecting 30-day MVP sprints with Agentic AI. Builder discipline in trading and bachata.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'I\'m scaling Litebox and Vayla through autonomous agents that minimize human intervention. My focus this quarter is perfecting 30-day MVP deployment for business owners who have no time to lose.',
+      highlight: 'Scaling Studio Link: I\'m injecting intelligence into our collection engine so every academy we serve has bulletproof financial health. We don\'t just manage students—we eliminate the human error that costs money. Agentic 0-to-1: My current obsession is speed. After Litebox (0 to operational in 30 days), I\'m refining agent processes so the next launches are even more autonomous and profitable.',
       currentActivities: {
         title: 'Current Activities',
         backend: {
@@ -137,25 +137,25 @@ export const translations = {
           description: 'Working as a senior backend developer at Fountain, building scalable solutions.'
         },
         sideProjects: {
-          title: 'Agentic Ventures',
-          description: 'Scaling Litebox and Vayla with autonomous agents that reduce human intervention to a minimum. Perfecting 30-day MVP deployment.'
+          title: 'Scaling Studio Link',
+          description: 'Strengthening the Revenue Protection engine so academies operate with 0% capital leak autonomously. No more manual gaps; we eliminate the human error that costs money.'
         },
         trading: {
           title: 'Crypto Trading',
-          description: 'Engaging in cryptocurrency trading and investment strategies.'
+          description: 'Builder discipline. Applying analytical rigor to trading—a Problem Owner must master complex systems, whether markets or architecture.'
         },
         dancing: {
           title: 'Dancing',
-          description: 'Regularly practicing bachata and salsa to improve my skills.'
+          description: 'Operational fluency in bachata. If a system isn\'t elegant and efficient, it\'s not mine.'
         }
       },
       focus: {
         title: 'Primary Focus Areas',
-        item1: 'Enhancing my dance skills',
-        item2: 'Refining my daily habits',
-        item3: 'Becoming a profitable trader',
-        item4: 'Learning to delegate effectively',
-        item5: 'Increasing productivity'
+        item1: 'Scaling Studio Link\'s Revenue Protection engine',
+        item2: 'Perfecting the 0-to-1 Framework (30-day MVPs)',
+        item3: 'Autonomous agent systems',
+        item4: 'Analytical rigor in trading',
+        item5: 'Builder discipline: elegant systems only'
       },
       lastUpdated: 'Last updated: {date}'
     },
@@ -298,11 +298,11 @@ export const translations = {
       noResults: 'No se encontraron metas que coincidan con tus criterios.'
     },
     now: {
-      title: 'Qué Estoy Haciendo Ahora',
+      title: 'Construyendo en Público: La Era Agéntica.',
       description: 'Una instantánea de mis actividades y prioridades actuales. Esta página sirve como una declaración pública y un recordatorio personal, inspirado por {sivers} y {frank}.',
-      descriptionSeo: 'Agentic AI Architect. Escalando Litebox y Vayla con agentes autónomos. Este trimestre: perfeccionar despliegue de MVPs en 30 días para dueños de negocio sin tiempo que perder.',
+      descriptionSeo: 'Agentic AI Architect. Escalando el motor de Revenue Protection de Studio Link hacia 0% de fuga de capital. Perfeccionando sprints de 30 días con IA Agéntica. Disciplina de Builder en trading y bachata.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Actualmente estoy escalando Litebox y Vayla mediante agentes autónomos que reducen la intervención humana al mínimo. Mi foco este trimestre es perfeccionar el despliegue de MVPs en 30 días para dueños de negocio que no tienen tiempo que perder.',
+      highlight: 'Protegiendo Ingresos con Studio Link: Estoy inyectando inteligencia a nuestro motor de cobranza para asegurar que cada academia bajo nuestra ala tenga una salud financiera blindada. No solo gestionamos alumnos; eliminamos el error humano que cuesta dinero. Arquitectura Agéntica 0-a-1: Mi obsesión actual es la velocidad. Tras el éxito de Litebox (30 días de 0 a operativo), estoy refinando los procesos de agentes de IA para que mis próximos lanzamientos sean aún más autónomos y rentables.',
       currentActivities: {
         title: 'Actividades Actuales',
         backend: {
@@ -310,25 +310,25 @@ export const translations = {
           description: 'Trabajando como desarrollador backend senior en Fountain, construyendo soluciones escalables.'
         },
         sideProjects: {
-          title: 'Venturas Agénticas',
-          description: 'Escalando Litebox y Vayla con agentes autónomos que reducen la intervención humana al mínimo. Perfeccionando despliegue de MVPs en 30 días.'
+          title: 'Escalando Studio Link',
+          description: 'Robusteciendo el motor de Revenue Protection para que las academias operen con 0% de fuga de capital de forma autónoma. Cero gestión manual; eliminamos el error humano que cuesta dinero.'
         },
         trading: {
           title: 'Trading de Criptomonedas',
-          description: 'Participando en estrategias de trading e inversión en criptomonedas.'
+          description: 'Disciplina de Builder. Aplicando rigor analítico al trading—un Problem Owner debe dominar sistemas complejos, ya sean mercados o arquitectura.'
         },
         dancing: {
           title: 'Baile',
-          description: 'Practicando regularmente bachata y salsa para mejorar mis habilidades.'
+          description: 'Fluidez operativa en la bachata. Si un sistema no es elegante y eficiente, no es mío.'
         }
       },
       focus: {
         title: 'Áreas de Enfoque Principales',
-        item1: 'Mejorar mis habilidades de baile',
-        item2: 'Refinar mis hábitos diarios',
-        item3: 'Convertirme en un trader rentable',
-        item4: 'Aprender a delegar efectivamente',
-        item5: 'Aumentar la productividad'
+        item1: 'Escalar el motor de Revenue Protection de Studio Link',
+        item2: 'Perfeccionar el Framework 0-a-1 (MVPs en 30 días)',
+        item3: 'Sistemas de agentes autónomos',
+        item4: 'Rigor analítico en trading',
+        item5: 'Disciplina de Builder: solo sistemas elegantes'
       },
       lastUpdated: 'Última actualización: {date}'
     },

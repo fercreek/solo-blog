@@ -1012,9 +1012,13 @@ const NowPage = () => {
 
   const getFocusIcon = (focusText) => {
     const text = focusText.toLowerCase();
+    if (text.includes('revenue') || text.includes('studio link')) return <FaProjectDiagram />;
+    if (text.includes('framework') || text.includes('mvp')) return <FaRocket />;
+    if (text.includes('autonomous') || text.includes('agent') || text.includes('autónomo')) return <FaProjectDiagram />;
     if (text.includes('baile') || text.includes('danc')) return <FaMusic />;
-    if (text.includes('hábito') || text.includes('habit')) return <FaCalendarAlt />;
     if (text.includes('trader') || text.includes('trading')) return <FaCoins />;
+    if (text.includes('builder') || text.includes('elegant') || text.includes('elegante')) return <FaBullseye />;
+    if (text.includes('hábito') || text.includes('habit')) return <FaCalendarAlt />;
     if (text.includes('delegar') || text.includes('delegat')) return <FaUsers />;
     if (text.includes('productividad') || text.includes('productivity')) return <FaRocket />;
     return <FaBullseye />;
@@ -1022,6 +1026,33 @@ const NowPage = () => {
 
   const getFocusConfig = (focusText) => {
     const text = focusText.toLowerCase();
+    if (text.includes('revenue') || text.includes('studio link')) {
+      return {
+        gradient: soloLevelingTheme.colors.gradients.mana,
+        glowColor: 'rgba(116, 185, 255, 0.6)',
+        borderHover: soloLevelingTheme.colors.accent.blue,
+        hoverGlow: 'rgba(116, 185, 255, 0.15)',
+        iconColor: soloLevelingTheme.colors.accent.blue
+      };
+    }
+    if (text.includes('framework') || text.includes('mvp')) {
+      return {
+        gradient: soloLevelingTheme.colors.gradients.gold,
+        glowColor: 'rgba(225, 112, 85, 0.6)',
+        borderHover: soloLevelingTheme.colors.accent.orange,
+        hoverGlow: 'rgba(225, 112, 85, 0.15)',
+        iconColor: soloLevelingTheme.colors.accent.orange
+      };
+    }
+    if (text.includes('autonomous') || text.includes('agent') || text.includes('autónomo')) {
+      return {
+        gradient: soloLevelingTheme.colors.gradients.purple,
+        glowColor: 'rgba(108, 92, 231, 0.6)',
+        borderHover: soloLevelingTheme.colors.accent.purple,
+        hoverGlow: 'rgba(108, 92, 231, 0.15)',
+        iconColor: soloLevelingTheme.colors.accent.purple
+      };
+    }
     if (text.includes('baile') || text.includes('danc')) {
       return {
         gradient: soloLevelingTheme.colors.gradients.purple,
@@ -1031,15 +1062,6 @@ const NowPage = () => {
         iconColor: soloLevelingTheme.colors.accent.purple
       };
     }
-    if (text.includes('hábito') || text.includes('habit')) {
-      return {
-        gradient: soloLevelingTheme.colors.gradients.mana,
-        glowColor: 'rgba(116, 185, 255, 0.6)',
-        borderHover: soloLevelingTheme.colors.accent.blue,
-        hoverGlow: 'rgba(116, 185, 255, 0.15)',
-        iconColor: soloLevelingTheme.colors.accent.blue
-      };
-    }
     if (text.includes('trader') || text.includes('trading')) {
       return {
         gradient: soloLevelingTheme.colors.gradients.gold,
@@ -1047,6 +1069,24 @@ const NowPage = () => {
         borderHover: soloLevelingTheme.colors.accent.gold,
         hoverGlow: 'rgba(253, 203, 110, 0.15)',
         iconColor: soloLevelingTheme.colors.accent.gold
+      };
+    }
+    if (text.includes('builder') || text.includes('elegant') || text.includes('elegante')) {
+      return {
+        gradient: soloLevelingTheme.colors.gradients.gold,
+        glowColor: 'rgba(253, 203, 110, 0.6)',
+        borderHover: soloLevelingTheme.colors.accent.gold,
+        hoverGlow: 'rgba(253, 203, 110, 0.15)',
+        iconColor: soloLevelingTheme.colors.accent.gold
+      };
+    }
+    if (text.includes('hábito') || text.includes('habit')) {
+      return {
+        gradient: soloLevelingTheme.colors.gradients.mana,
+        glowColor: 'rgba(116, 185, 255, 0.6)',
+        borderHover: soloLevelingTheme.colors.accent.blue,
+        hoverGlow: 'rgba(116, 185, 255, 0.15)',
+        iconColor: soloLevelingTheme.colors.accent.blue
       };
     }
     if (text.includes('delegar') || text.includes('delegat')) {
