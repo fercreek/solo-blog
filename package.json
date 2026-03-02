@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Personal blog of Fernando Castañeda - Software Engineer, Dancer, and Trader",
   "author": "Fernando Castañeda <fercreek@gmail.com>",
-  "homepage": "https://fernando-castaneda-blog.vercel.app",
+  "homepage": "https://fercontreras.com",
   "type": "module",
   "scripts": {
     "dev": "vite",

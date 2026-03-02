@@ -17,8 +17,8 @@ export const translations = {
         copyright: 'All rights reserved.'
       },
       buttons: {
-        exploreProject: 'Explore Project',
-        viewProject: 'Visit Project',
+        exploreProject: 'Operational Relief',
+        viewProject: 'See Case Study',
         readMore: 'Read More'
       },
       status: {
@@ -33,8 +33,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Stop Losing Revenue to Operational Friction. I Architect Systems That Scale With Your Business.',
-        description: 'I am an Operations Architect and Fractional CTO. I don\'t just write code; I eliminate the bottlenecks that starve your business of cash.'
+        title: 'Agentic AI Architect: I build autonomous systems that work while you scale.',
+        description: 'I don\'t sell hours; I deliver relief. I eliminate the bottlenecks that bleed your cash flow through Agentic AI Architecture.'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -42,15 +42,15 @@ export const translations = {
       },
       featured: {
         studioLink: {
-          excerpt: 'Manage your academy or gym effortlessly. Studio Link helps you control payments, attendance, and schedules from one place. Focus on what really matters: your students and your business.'
+          excerpt: 'Revenue Protection for academies. Stop the silent capital leak and take back control of your income today.'
         },
         vaylaDance: {
-          excerpt: 'Organize dance competitions professionally. Vayla simplifies judging and scoring, showing results in real-time. Perfect for organizers who want events without technical complications.'
+          excerpt: 'Event Intelligence. We honor dancers\' effort with precise, real-time results. Zero errors, zero chaos.'
         }
       },
       recent: {
         liteboxParcel: {
-          excerpt: 'Send and track packages easily. Litebox Parcel simplifies shipping management, from creating labels to monitoring deliveries. Perfect for businesses that need logistics efficiency.'
+          excerpt: 'Autonomous logistics 0-to-1. Full operability and profitability in 30 days. Proof that agentic speed is the new standard.'
         },
         progreso: {
           excerpt: 'Take control of your personal finances. Progreso helps you see where your money goes, create budgets, and better understand your financial situation. Designed to be simple and intuitive.'
@@ -65,7 +65,7 @@ export const translations = {
     },
     about: {
       title: 'About Me',
-      description: 'Former COO and Operations Architect. I see burn rate where others see bugs. Unfair advantage: 10 years engineering plus P&L discipline. Schedule an Operations Audit.',
+      description: 'My methodology unites the strategic vision of a former COO with the execution speed of Agentic AI. My goal is not to deliver lines of code, but an Operational Blueprint that recovers your time and money in under 30 days.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'I bridge the gap between technical complexity and business reality.',
@@ -127,9 +127,9 @@ export const translations = {
     now: {
       title: 'What I\'m Doing Now',
       description: 'A snapshot of my current activities and priorities. This page serves as a public declaration and personal reminder, inspired by {sivers} and {frank}.',
-      descriptionSeo: 'Current activities and priorities. Operations Architect and Fractional CTO—backend, ventures, and the discipline that fuels high-stakes delivery.',
+      descriptionSeo: 'Agentic AI Architect. Scaling Litebox and Vayla with autonomous agents. This quarter: perfecting 30-day MVP deployment for business owners who have no time to lose.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Immersing myself in cryptocurrencies, investment, and data analytics. My discipline as a trader and dancer—risk analysis, rhythm, execution—informs how I build and operate.',
+      highlight: 'I\'m scaling Litebox and Vayla through autonomous agents that minimize human intervention. My focus this quarter is perfecting 30-day MVP deployment for business owners who have no time to lose.',
       currentActivities: {
         title: 'Current Activities',
         backend: {
@@ -137,8 +137,8 @@ export const translations = {
           description: 'Working as a senior backend developer at Fountain, building scalable solutions.'
         },
         sideProjects: {
-          title: 'Side Projects',
-          description: 'Developing Studio Link and Vayla Dance as personal ventures.'
+          title: 'Agentic Ventures',
+          description: 'Scaling Litebox and Vayla with autonomous agents that reduce human intervention to a minimum. Perfecting 30-day MVP deployment.'
         },
         trading: {
           title: 'Crypto Trading',
@@ -161,7 +161,7 @@ export const translations = {
     },
     contact: {
       title: 'Contact',
-      description: 'Schedule an Operations Audit. For business owners and operators seeking relief from enrollment chaos, silos, and fragile infrastructure.',
+      description: 'Is your operation bleeding money? Request a 15-minute Operations Audit. Let\'s identify where AI can save you 20 hours of manual work this week.',
       email: 'Email',
       phone: 'Phone',
       github: 'GitHub',
@@ -190,8 +190,8 @@ export const translations = {
         copyright: 'Todos los derechos reservados.'
       },
       buttons: {
-        exploreProject: 'Explorar Proyecto',
-        viewProject: 'Visitar Proyecto',
+        exploreProject: 'Ver Alivio Operativo',
+        viewProject: 'Ver Caso',
         readMore: 'Leer Más'
       },
       status: {
@@ -206,8 +206,8 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Deja de Perder Ingresos por la Fricción Operativa. Arquitecto Sistemas Que Escalan Con Tu Negocio.',
-        description: 'Soy Arquitecto de Operaciones y CTO Fractional. No solo escribo código; elimino los cuellos de botella que ahogan el flujo de caja de tu negocio.'
+        title: 'Agentic AI Architect: Construyo sistemas autónomos que trabajan mientras tú escalas.',
+        description: 'No contrato horas; entrego alivio. Elimino los cuellos de botella que desangran tu flujo de caja mediante Arquitectura de IA Agéntica.'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -215,15 +215,15 @@ export const translations = {
       },
       featured: {
         studioLink: {
-          excerpt: 'Gestiona tu academia o gimnasio sin complicaciones. Studio Link te ayuda a controlar pagos, asistencias y horarios desde un solo lugar. Enfócate en lo que realmente importa: tus alumnos y tu negocio.'
+          excerpt: 'Revenue Protection para Academias. Detén la fuga silenciosa de capital y recupera el control de tus ingresos hoy.'
         },
         vaylaDance: {
-          excerpt: 'Organiza competencias de baile de manera profesional. Vayla simplifica el jueceo y la calificación, mostrando resultados en tiempo real. Ideal para organizadores que quieren eventos sin complicaciones técnicas.'
+          excerpt: 'Event Intelligence. Honramos el esfuerzo de los bailarines con resultados precisos en tiempo real. Cero errores, cero caos.'
         }
       },
       recent: {
         liteboxParcel: {
-          excerpt: 'Envía y rastrea paquetes fácilmente. Litebox Parcel simplifica la gestión de envíos, desde crear etiquetas hasta monitorear entregas. Perfecto para negocios que necesitan eficiencia en logística.'
+          excerpt: 'Logística Autónoma 0-a-1. Operatividad total y rentabilidad en 30 días. La prueba de que la velocidad agéntica es el nuevo estándar.'
         },
         progreso: {
           excerpt: 'Toma control de tus finanzas personales. Progreso te ayuda a ver dónde gastas tu dinero, crear presupuestos y entender mejor tu situación financiera. Diseñado para ser simple e intuitivo.'
@@ -238,7 +238,7 @@ export const translations = {
     },
     about: {
       title: 'Acerca de Mí',
-      description: 'Ex COO y Arquitecto de Operaciones. Veo tasa de consumo donde otros ven bugs. Ventaja: 10 años en ingeniería más disciplina P&L. Agenda una Auditoría Operativa.',
+      description: 'Mi metodología une la visión estratégica de un ex-COO con la velocidad de ejecución de la IA Agéntica. Mi objetivo no es entregarte líneas de código, sino un Blueprint Operativo que recupere tu tiempo y tu dinero en menos de 30 días.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'Uno la complejidad técnica con la realidad del negocio.',
@@ -300,9 +300,9 @@ export const translations = {
     now: {
       title: 'Qué Estoy Haciendo Ahora',
       description: 'Una instantánea de mis actividades y prioridades actuales. Esta página sirve como una declaración pública y un recordatorio personal, inspirado por {sivers} y {frank}.',
-      descriptionSeo: 'Actividades y prioridades actuales. Arquitecto de Operaciones y CTO Fractional—backend, proyectos y la disciplina que impulsa entregas de alto impacto.',
+      descriptionSeo: 'Agentic AI Architect. Escalando Litebox y Vayla con agentes autónomos. Este trimestre: perfeccionar despliegue de MVPs en 30 días para dueños de negocio sin tiempo que perder.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Sumergiéndome en criptomonedas, inversiones y análisis de datos. Mi disciplina como trader y bailarín—análisis de riesgo, ritmo, ejecución—da forma a cómo construyo y opero.',
+      highlight: 'Actualmente estoy escalando Litebox y Vayla mediante agentes autónomos que reducen la intervención humana al mínimo. Mi foco este trimestre es perfeccionar el despliegue de MVPs en 30 días para dueños de negocio que no tienen tiempo que perder.',
       currentActivities: {
         title: 'Actividades Actuales',
         backend: {
@@ -310,8 +310,8 @@ export const translations = {
           description: 'Trabajando como desarrollador backend senior en Fountain, construyendo soluciones escalables.'
         },
         sideProjects: {
-          title: 'Proyectos Paralelos',
-          description: 'Desarrollando Studio Link y Vayla Dance como proyectos personales.'
+          title: 'Venturas Agénticas',
+          description: 'Escalando Litebox y Vayla con agentes autónomos que reducen la intervención humana al mínimo. Perfeccionando despliegue de MVPs en 30 días.'
         },
         trading: {
           title: 'Trading de Criptomonedas',
@@ -334,7 +334,7 @@ export const translations = {
     },
     contact: {
       title: 'Contacto',
-      description: 'Agenda una Auditoría Operativa. Para dueños y operadores que buscan alivio ante caos en inscripciones, silos e infraestructura frágil.',
+      description: '¿Tu operación está sangrando dinero? Solicita una Auditoría Operativa de 15 minutos. Identifiquemos dónde la IA puede ahorrarte 20 horas de labor manual esta misma semana.',
       email: 'Correo',
       phone: 'Teléfono',
       github: 'GitHub',
