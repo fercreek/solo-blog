@@ -25,6 +25,11 @@ Discover details at [Progreso Personal Finance](https://v0-progreso-personal-fin
 Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.  
 Explore more at [Sin Bronca](https://sin-bronca.vercel.app/).
 
+## Encontreras
+
+Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.  
+Explore more at [Encontreras Open Source](https://github.com/fercreek/encontreras).
+
 ## ChronoDev
 
 Estimate your development hours from GitHub commits. No signup, 100% free. Your data stays in your browser. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.  
@@ -64,6 +69,11 @@ Descubre detalles en [Progreso Personal Finance](https://v0-progreso-personal-fi
 
 Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.  
 Explora más en [Sin Bronca](https://sin-bronca.vercel.app/).
+
+## Encontreras
+
+Pipeline Agéntico Open-Source. Deja de comprar bases de datos frías: Encontreras extrae de Maps, analiza presencia web, califica prospectos, y redacta rompehielos con IA desde tu máquina local.  
+Explora el código en [Encontreras Open Source](https://github.com/fercreek/encontreras).
 
 ## ChronoDev
 
@@ -107,6 +117,9 @@ export const projectsTranslations = {
       },
       chronoDev: {
         excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
+      },
+      encontreras: {
+        excerpt: 'Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.'
       }
     }
   },
@@ -131,6 +144,9 @@ export const projectsTranslations = {
       },
       chronoDev: {
         excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
+      },
+      encontreras: {
+        excerpt: 'Pipeline Agéntico Open-Source. Deja de comprar bases de datos frías: Encontreras extrae de Maps, analiza presencia web, califica prospectos, y redacta rompehielos con IA desde tu máquina local.'
       }
     }
   }

@@ -9,6 +9,11 @@ Explore more at [Studio Link](https://studiolink.online/).
 Vayla Dance redefines dance competitions by making event organization seamless and empowering competitors to shine. A web platform that streamlines the organization of dance competitions by automating judging and scoring, improving accuracy, and reducing manual work for organizers. Our cutting-edge scoring and judging system transforms how you manage dance events, tailored specifically for communities passionate about dance.  
 Discover details at [Vayla Dance](https://www.vayla.dance/).
 
+## Encontreras
+
+Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.  
+Explore more at [Encontreras Open Source](https://github.com/fercreek/encontreras).
+
 ## Hackathon Projects
 
 ### Pebble Mouse (HackMTY 2014)
