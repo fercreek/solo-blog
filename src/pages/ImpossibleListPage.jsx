@@ -1,69 +1,190 @@
 import { useState, useMemo } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion, useReducedMotion } from 'framer-motion';
 import ImpossibleList from '../components/ImpossibleList';
 import { PageContainer, PageHeader, PageTitle, ContentWrapper, PageDescription } from '../components/PageComponents';
-import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { FaTrophy, FaClock, FaBullseye, FaSearch, FaFilter, FaChartLine, FaCheckCircle, FaChevronDown } from 'react-icons/fa';
 import { parseImpossibleListContent } from '../utils/contentParser';
-import {
-  StatCard,
-  StatIcon,
-  StatNumber,
-  StatLabel,
-  SearchInput,
-  FilterButton,
-  SectionTitle
-} from '../styles/designSystem';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import PageHead from '../components/PageHead';
 import { getImpossibleListData } from '../data/impossibleListTranslations';
+import { SystemPanel, SystemBadge, sys } from '../components/system';
 
-const StatsWrapper = styled.div`
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  background: rgba(22, 33, 62, 0.6);
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  border-top: 3px solid ${soloLevelingTheme.colors.accent.gold};
-`;
-
-const StatsContainer = styled(motion.div)`
+/* ─── Stats grid ─────────────────────────────────────────────── */
+const StatsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  
+  margin-bottom: 2rem;
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
   }
-  
   @media (min-width: 1024px) {
     gap: 1.5rem;
   }
 `;
 
-const ControlsWrapper = styled.div`
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 2.5rem;
-  background: linear-gradient(165deg, rgba(22, 33, 62, 0.95), rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.9));
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+const StatPanel = styled(SystemPanel)`
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem 1.25rem;
+  gap: 0.4rem;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.gold}, transparent);
-    opacity: 0.7;
+const StatIconWrap = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.12);
+  clip-path: ${sys.windowClip(sys.bevelSm)};
+  margin-bottom: 0.3rem;
+
+  svg {
+    font-size: 1.05rem;
+    color: ${sys.color.cyan};
+    filter: drop-shadow(${sys.glow.soft});
   }
+`;
+
+const StatNumber = styled.div`
+  font-family: ${sys.font.mono};
+  font-size: 2rem;
+  font-weight: 700;
+  color: ${sys.color.cyan};
+  text-shadow: ${sys.glow.mid};
+  line-height: 1;
+`;
+
+const StatLabel = styled.div`
+  font-family: ${sys.font.mono};
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: ${sys.color.muted};
+`;
+
+/* ─── Recent preview ─────────────────────────────────────────── */
+const RecentPanel = styled(SystemPanel)`
+  margin-bottom: 2.5rem;
+`;
+
+const RecentHeader = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0;
+  margin-bottom: ${props => props.$collapsed ? '0' : '1.25rem'};
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: margin 0.3s ease;
+
+  &:focus-visible {
+    outline: 2px solid ${sys.color.cyan};
+    outline-offset: 2px;
+  }
+`;
+
+const RecentHeaderLeft = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+`;
+
+const RecentIconWrap = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.15);
+  clip-path: ${sys.windowClip(sys.bevelSm)};
+
+  svg {
+    color: ${sys.color.cyan};
+    font-size: 1rem;
+    filter: drop-shadow(${sys.glow.soft});
+  }
+`;
+
+const RecentTitle = styled.h3`
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: ${sys.color.text};
+  font-family: ${sys.font.heading};
+`;
+
+const RecentSubtitle = styled.p`
+  margin: 0;
+  font-family: ${sys.font.mono};
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: ${sys.color.muted};
+`;
+
+const RecentChevron = styled(FaChevronDown)`
+  color: ${sys.color.cyan};
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: ${props => props.$collapsed ? 'rotate(-90deg)' : 'rotate(0deg)'};
+  filter: drop-shadow(${sys.glow.soft});
+`;
+
+const RecentContent = styled.div`
+  max-height: ${props => props.$collapsed ? '0' : '500px'};
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+`;
+
+const RecentList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+const RecentItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: rgba(56, 189, 248, 0.06);
+  border-left: 3px solid ${sys.color.cyan};
+  clip-path: ${sys.windowClip(sys.bevelSm)};
+  font-size: 0.875rem;
+  color: ${sys.color.text};
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.12);
+    transform: translateX(4px);
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: ${sys.color.cyan};
+    font-size: 0.8rem;
+    filter: drop-shadow(${sys.glow.soft});
+  }
+`;
+
+/* ─── Controls ───────────────────────────────────────────────── */
+const ControlsPanel = styled(SystemPanel)`
+  margin-bottom: 2.5rem;
 `;
 
 const ControlsContainer = styled.div`
@@ -72,7 +193,7 @@ const ControlsContainer = styled.div`
   gap: 1.25rem;
   align-items: center;
   justify-content: space-between;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: stretch;
@@ -84,7 +205,7 @@ const SearchContainer = styled.div`
   flex: 1;
   min-width: 200px;
   max-width: 400px;
-  
+
   @media (max-width: 768px) {
     max-width: 100%;
   }
@@ -95,16 +216,43 @@ const SearchIcon = styled(FaSearch)`
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 1rem;
+  color: ${sys.color.muted};
+  font-size: 0.9rem;
   z-index: 1;
   pointer-events: none;
-  filter: drop-shadow(0 0 4px rgba(108, 92, 231, 0.3));
+  filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3));
   transition: all 0.3s ease;
-  
+
   ${SearchContainer}:has(input:focus) & {
-    color: ${soloLevelingTheme.colors.accent.gold};
-    filter: drop-shadow(0 0 10px rgba(253, 203, 110, 0.5));
+    color: ${sys.color.cyan};
+    filter: drop-shadow(${sys.glow.soft});
+  }
+`;
+
+const SystemSearchInput = styled.input`
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.75rem;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid ${sys.color.line};
+  clip-path: ${sys.windowClip(sys.bevelSm)};
+  color: ${sys.color.text};
+  font-family: ${sys.font.mono};
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: ${sys.color.muted};
+    font-family: ${sys.font.mono};
+    letter-spacing: 0.06em;
+  }
+
+  &:focus {
+    border-color: ${sys.color.cyan};
+    background: rgba(56, 189, 248, 0.09);
+    box-shadow: ${sys.glow.soft};
   }
 `;
 
@@ -114,128 +262,38 @@ const FilterContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const RecentPreviewWrapper = styled(motion.div)`
-  padding: 1.75rem;
-  margin-bottom: 2.5rem;
-  background: linear-gradient(165deg, rgba(22, 33, 62, 0.95), rgba(26, 26, 46, 0.95));
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.orange});
-    opacity: 0.9;
-  }
-`;
-
-const RecentPreviewHeader = styled.button`
-  display: flex;
+const SystemFilterButton = styled.button`
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  margin-bottom: ${props => props.$collapsed ? '0' : '1.25rem'};
-  background: none;
-  border: none;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  font-family: ${sys.font.mono};
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  clip-path: ${sys.windowClip(sys.bevelSm)};
   cursor: pointer;
-  font-family: inherit;
-  text-align: left;
-  transition: margin 0.3s ease;
+  border: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 
-  &:focus-visible {
-    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
-    outline-offset: 2px;
-  }
+  ${props => props.$active ? css`
+    background: linear-gradient(135deg, ${sys.color.cyan}, ${sys.color.cyanDeep});
+    color: #03121b;
+    box-shadow: ${sys.glow.mid};
+  ` : css`
+    background: rgba(56, 189, 248, 0.07);
+    color: ${sys.color.muted};
+    border: 1px solid ${sys.color.line};
+    &:hover {
+      background: rgba(56, 189, 248, 0.14);
+      color: ${sys.color.cyanBright};
+      border-color: ${sys.color.cyan};
+    }
+  `}
 `;
 
-const RecentPreviewHeaderLeft = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-`;
-
-const RecentPreviewChevron = styled(FaChevronDown)`
-  color: ${soloLevelingTheme.colors.accent.gold};
-  font-size: 0.9rem;
-  flex-shrink: 0;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: ${props => props.$collapsed ? 'rotate(-90deg)' : 'rotate(0deg)'};
-`;
-
-const RecentPreviewContent = styled.div`
-  max-height: ${props => props.$collapsed ? '0' : '500px'};
-  overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-`;
-
-const RecentPreviewIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.orange});
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  color: ${soloLevelingTheme.colors.primary};
-  font-size: 1rem;
-`;
-
-const RecentPreviewTitle = styled.h3`
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
-`;
-
-const RecentPreviewSubtitle = styled.p`
-  margin: 0;
-  font-size: 0.8125rem;
-  color: ${soloLevelingTheme.colors.text.secondary};
-`;
-
-const RecentPreviewList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-`;
-
-const RecentPreviewItem = styled.li`
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 1rem;
-  background: rgba(108, 92, 231, 0.08);
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  border-left: 3px solid ${soloLevelingTheme.colors.accent.gold};
-  font-size: 0.9rem;
-  color: ${soloLevelingTheme.colors.text.primary};
-  transition: all 0.25s ease;
-
-  &:hover {
-    background: rgba(108, 92, 231, 0.15);
-    transform: translateX(4px);
-  }
-
-  svg {
-    flex-shrink: 0;
-    color: ${soloLevelingTheme.colors.accent.gold};
-    font-size: 0.8rem;
-  }
-`;
-
+/* ─── Page component ─────────────────────────────────────────── */
 const ImpossibleListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
@@ -243,15 +301,15 @@ const ImpossibleListPage = () => {
   const { language } = useLanguage();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
-  
+
   const impossibleListDataTranslated = useMemo(() => getImpossibleListData(language), [language]);
   const sections = useMemo(() => parseImpossibleListContent(impossibleListDataTranslated), [impossibleListDataTranslated]);
-  
+
   const stats = useMemo(() => {
     let totalGoals = 0;
     let completedGoals = 0;
     let inProgressGoals = 0;
-    
+
     sections.forEach(section => {
       section.goals.forEach(goal => {
         totalGoals++;
@@ -260,7 +318,7 @@ const ImpossibleListPage = () => {
         } else {
           inProgressGoals++;
         }
-        
+
         if (goal.subGoals) {
           goal.subGoals.forEach(subGoal => {
             totalGoals++;
@@ -273,7 +331,7 @@ const ImpossibleListPage = () => {
         }
       });
     });
-    
+
     return {
       total: totalGoals,
       completed: completedGoals,
@@ -304,7 +362,7 @@ const ImpossibleListPage = () => {
     }
     return recent;
   }, [sections]);
-  
+
   return (
     <PageContainer>
       <PageHead title={t('impossibleList.title')} description={t('impossibleList.description', { link: t('impossibleList.linkText') })} />
@@ -314,112 +372,108 @@ const ImpossibleListPage = () => {
           __html: t('impossibleList.description', { link: `<a href="https://impossiblehq.com/impossible-list/" target="_blank" rel="noopener noreferrer">${t('impossibleList.linkText')}</a>` })
         }} />
       </PageHeader>
-      
-      <ContentWrapper>
-        <StatsWrapper>
-          <StatsContainer
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
-            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1] }}
-          >
-            <StatCard $delay="0s">
-            <StatIcon $variant="default"><FaBullseye /></StatIcon>
-            <StatNumber $variant="default">{stats.total}</StatNumber>
-            <StatLabel>{t('impossibleList.stats.totalGoals')}</StatLabel>
-          </StatCard>
-          
-          <StatCard $delay="0.1s" $variant="completed">
-            <StatIcon $variant="completed"><FaTrophy /></StatIcon>
-            <StatNumber $variant="completed">{stats.completed}</StatNumber>
-            <StatLabel>{t('impossibleList.stats.completed')}</StatLabel>
-          </StatCard>
-          
-          <StatCard $delay="0.2s" $variant="progress">
-            <StatIcon $variant="progress"><FaClock /></StatIcon>
-            <StatNumber $variant="progress">{stats.inProgress}</StatNumber>
-            <StatLabel>{t('impossibleList.stats.inProgress')}</StatLabel>
-          </StatCard>
-          
-          <StatCard $delay="0.3s" $variant="completed">
-            <StatIcon $variant="completed"><FaChartLine /></StatIcon>
-            <StatNumber $variant="completed">{stats.completionRate}%</StatNumber>
-            <StatLabel>{t('impossibleList.stats.completionRate')}</StatLabel>
-            </StatCard>
-          </StatsContainer>
-        </StatsWrapper>
 
+      <ContentWrapper>
+        {/* ── Stats ── */}
+        <StatsGrid
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
+          animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1] }}
+        >
+          {[
+            { icon: <FaBullseye />, value: stats.total,          label: t('impossibleList.stats.totalGoals') },
+            { icon: <FaTrophy />,   value: stats.completed,      label: t('impossibleList.stats.completed') },
+            { icon: <FaClock />,    value: stats.inProgress,     label: t('impossibleList.stats.inProgress') },
+            { icon: <FaChartLine />,value: `${stats.completionRate}%`, label: t('impossibleList.stats.completionRate') },
+          ].map((s, i) => (
+            <StatPanel
+              key={i}
+              $compact
+              $reduced={prefersReducedMotion}
+              $interactive={false}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : i * 0.08 }}
+            >
+              <StatIconWrap>{s.icon}</StatIconWrap>
+              <StatNumber>{s.value}</StatNumber>
+              <StatLabel>{s.label}</StatLabel>
+            </StatPanel>
+          ))}
+        </StatsGrid>
+
+        {/* ── Recent preview ── */}
         {recentGoals.length > 0 && (
-          <RecentPreviewWrapper
+          <RecentPanel
+            $reduced={prefersReducedMotion}
             initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
             animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: 0.2 }}
           >
-            <RecentPreviewHeader
+            <RecentHeader
               type="button"
               $collapsed={recentCollapsed}
               onClick={() => setRecentCollapsed(!recentCollapsed)}
               aria-expanded={!recentCollapsed}
               aria-controls="recent-preview-list"
             >
-              <RecentPreviewHeaderLeft>
-                <RecentPreviewIcon><FaCheckCircle /></RecentPreviewIcon>
+              <RecentHeaderLeft>
+                <RecentIconWrap><FaCheckCircle /></RecentIconWrap>
                 <div>
-                  <RecentPreviewTitle>{t('impossibleList.recentPreview.title')}</RecentPreviewTitle>
-                  <RecentPreviewSubtitle>{t('impossibleList.recentPreview.subtitle')}</RecentPreviewSubtitle>
+                  <RecentTitle>{t('impossibleList.recentPreview.title')}</RecentTitle>
+                  <RecentSubtitle>{t('impossibleList.recentPreview.subtitle')}</RecentSubtitle>
                 </div>
-              </RecentPreviewHeaderLeft>
-              <RecentPreviewChevron $collapsed={recentCollapsed} />
-            </RecentPreviewHeader>
-            <RecentPreviewContent $collapsed={recentCollapsed} id="recent-preview-list">
-              <RecentPreviewList>
+              </RecentHeaderLeft>
+              <RecentChevron $collapsed={recentCollapsed} />
+            </RecentHeader>
+            <RecentContent $collapsed={recentCollapsed} id="recent-preview-list">
+              <RecentList>
                 {recentGoals.map((text, i) => (
-                  <RecentPreviewItem key={i}>
+                  <RecentItem key={i}>
                     <FaCheckCircle />
                     <span>{text}</span>
-                  </RecentPreviewItem>
+                  </RecentItem>
                 ))}
-              </RecentPreviewList>
-            </RecentPreviewContent>
-          </RecentPreviewWrapper>
+              </RecentList>
+            </RecentContent>
+          </RecentPanel>
         )}
 
-        <ControlsWrapper>
+        {/* ── Controls ── */}
+        <ControlsPanel
+          $reduced={prefersReducedMotion}
+          $compact
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+          animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+        >
           <ControlsContainer>
-          <SearchContainer>
-            <SearchIcon />
-            <SearchInput
-              type="text"
-              placeholder={t('impossibleList.search.placeholder')}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </SearchContainer>
-          
-          <FilterContainer>
-            <FilterButton 
-              $active={filter === 'all'}
-              onClick={() => setFilter('all')}
-            >
-              <FaFilter /> {t('impossibleList.filters.all')}
-            </FilterButton>
-            <FilterButton 
-              $active={filter === 'completed'}
-              onClick={() => setFilter('completed')}
-            >
-              <FaTrophy /> {t('impossibleList.filters.completed')}
-            </FilterButton>
-            <FilterButton 
-              $active={filter === 'progress'}
-              onClick={() => setFilter('progress')}
-            >
-              <FaClock /> {t('impossibleList.filters.progress')}
-            </FilterButton>
-          </FilterContainer>
+            <SearchContainer>
+              <SearchIcon />
+              <SystemSearchInput
+                type="text"
+                placeholder={t('impossibleList.search.placeholder')}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </SearchContainer>
+
+            <FilterContainer>
+              <SystemFilterButton $active={filter === 'all'} onClick={() => setFilter('all')}>
+                <FaFilter /> {t('impossibleList.filters.all')}
+              </SystemFilterButton>
+              <SystemFilterButton $active={filter === 'completed'} onClick={() => setFilter('completed')}>
+                <FaTrophy /> {t('impossibleList.filters.completed')}
+              </SystemFilterButton>
+              <SystemFilterButton $active={filter === 'progress'} onClick={() => setFilter('progress')}>
+                <FaClock /> {t('impossibleList.filters.progress')}
+              </SystemFilterButton>
+            </FilterContainer>
           </ControlsContainer>
-        </ControlsWrapper>
-        
-        <ImpossibleList 
-          content={impossibleListDataTranslated} 
+        </ControlsPanel>
+
+        <ImpossibleList
+          content={impossibleListDataTranslated}
           searchTerm={searchTerm}
           filter={filter}
         />

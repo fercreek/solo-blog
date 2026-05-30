@@ -78,19 +78,19 @@ export const scaleUp = keyframes`
 // Animaciones de brillo y resplandor
 export const glow = keyframes`
   0%, 100% {
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(108, 92, 231, 0.6), 0 0 40px rgba(253, 203, 110, 0.2);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.2);
   }
 `;
 
 export const glowPulse = keyframes`
   0%, 100% {
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(108, 92, 231, 0.6), 0 0 40px rgba(253, 203, 110, 0.2);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.2);
   }
 `;
 
@@ -105,10 +105,10 @@ export const shimmer = keyframes`
 
 export const textGlow = keyframes`
   0%, 100% {
-    text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
   }
   50% {
-    text-shadow: 0 0 16px rgba(253, 203, 110, 0.8), 0 0 24px rgba(108, 92, 231, 0.3);
+    text-shadow: 0 0 16px rgba(56, 189, 248, 0.8), 0 0 24px rgba(56, 189, 248, 0.3);
   }
 `;
 
@@ -280,7 +280,7 @@ export const hoverGlow = keyframes`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   to {
-    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3), 0 4px 12px rgba(253, 203, 110, 0.2);
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3), 0 4px 12px rgba(56, 189, 248, 0.2);
   }
 `;
 

@@ -118,7 +118,7 @@ const MarkdownContainer = styled(motion.div)`
     
     &:hover {
       color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
       
       &::after {
         width: 100%;
@@ -205,12 +205,12 @@ const MarkdownContainer = styled(motion.div)`
     
     /* Pending tasks styling */
     &:not(:has(> :first-child:contains('✅'))) {
-      background: linear-gradient(135deg, rgba(253, 203, 110, 0.1), rgba(253, 203, 110, 0.05));
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(56, 189, 248, 0.05));
       border-radius: 8px;
       padding: 0.75rem 1rem;
       margin-bottom: 0.75rem;
       border-left: 3px solid ${soloLevelingTheme.colors.accent.gold};
-      box-shadow: 0 2px 8px rgba(253, 203, 110, 0.2);
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.2);
       backdrop-filter: blur(10px);
       
       @media (min-width: 768px) {
@@ -224,11 +224,11 @@ const MarkdownContainer = styled(motion.div)`
     padding: 1.5rem;
     margin: 2rem 0;
     color: ${soloLevelingTheme.colors.text.secondary};
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.05));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(56, 189, 248, 0.05));
     border-radius: 0 12px 12px 0;
     position: relative;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 16px rgba(108, 92, 231, 0.2);
+    box-shadow: 0 4px 16px rgba(56, 189, 248, 0.2);
     
     &::before {
       content: '"';
@@ -251,26 +251,26 @@ const MarkdownContainer = styled(motion.div)`
     height: auto;
     border-radius: 12px;
     margin: 2rem 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(108, 92, 231, 0.2);
-    border: 1px solid rgba(108, 92, 231, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.2);
     transition: all 0.3s ease;
     
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(108, 92, 231, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(56, 189, 248, 0.3);
     }
   }
 
   code {
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(108, 92, 231, 0.1));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.1));
     color: ${soloLevelingTheme.colors.accent.purple};
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
     font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
     font-size: 0.9rem;
     word-break: break-all;
-    border: 1px solid rgba(108, 92, 231, 0.3);
-    box-shadow: 0 2px 4px rgba(108, 92, 231, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 2px 4px rgba(56, 189, 248, 0.1);
     
     @media (min-width: 768px) {
       font-size: 0.95rem;
@@ -283,8 +283,8 @@ const MarkdownContainer = styled(motion.div)`
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.95));
-    border: 1px solid rgba(108, 92, 231, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(108, 92, 231, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(56, 189, 248, 0.1);
     position: relative;
     
     &::before {
@@ -294,9 +294,9 @@ const MarkdownContainer = styled(motion.div)`
       left: 0;
       right: 0;
       height: 40px;
-      background: linear-gradient(90deg, rgba(108, 92, 231, 0.1), rgba(253, 203, 110, 0.1));
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.1), rgba(56, 189, 248, 0.1));
       border-radius: 12px 12px 0 0;
-      border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
     }
     
     code {
@@ -325,7 +325,7 @@ const MarkdownContainer = styled(motion.div)`
     width: 100%;
     border-collapse: collapse;
     margin: 2rem 0;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(108, 92, 231, 0.02));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(56, 189, 248, 0.02));
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -333,24 +333,24 @@ const MarkdownContainer = styled(motion.div)`
     th, td {
       padding: 1rem;
       text-align: left;
-      border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
     }
     
     th {
-      background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(108, 92, 231, 0.1));
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.1));
       color: ${soloLevelingTheme.colors.text.primary};
       font-weight: 600;
     }
     
     tr:hover {
-      background: rgba(108, 92, 231, 0.1);
+      background: rgba(56, 189, 248, 0.1);
     }
   }
 
   /* Better touch targets for mobile */
   @media (max-width: 767px) {
     * {
-      -webkit-tap-highlight-color: rgba(108, 92, 231, 0.1);
+      -webkit-tap-highlight-color: rgba(56, 189, 248, 0.1);
     }
   }
 `;

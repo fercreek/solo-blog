@@ -11,13 +11,35 @@ import {
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { useTranslation } from '../hooks/useTranslation';
 import PageHead from '../components/PageHead';
+import SystemButton from '../components/SystemButton';
+import { sys } from '../styles/systemTokens';
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
+
+const HeroCtaWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 auto 2.5rem;
+`;
+
+const HeroCtaNote = styled.span`
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${soloLevelingTheme.colors.accent.blue};
+  opacity: 0.85;
+`;
 
 const ContactGridWrapper = styled.div`
   padding: 2rem;
-  background: linear-gradient(165deg, rgba(22, 33, 62, 0.5), rgba(10, 10, 15, 0.6));
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent 45%),
+    ${sys.color.panel};
+  backdrop-filter: blur(12px);
+  border: 1px solid ${sys.color.line};
+  clip-path: ${sys.windowClip()};
   position: relative;
   overflow: hidden;
 
@@ -25,11 +47,11 @@ const ContactGridWrapper = styled.div`
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: ${sys.bevel};
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.purple});
-    box-shadow: 0 0 15px rgba(253, 203, 110, 0.4);
+    height: 2px;
+    background: linear-gradient(90deg, ${sys.color.cyan}, ${sys.color.cyanBright}, transparent);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
   }
 `;
 
@@ -47,35 +69,37 @@ const ContactIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.purple}, #5B4FCF);
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  color: ${soloLevelingTheme.colors.accent.gold};
+  background: linear-gradient(135deg, ${sys.color.cyan}, ${sys.color.cyanDeep});
+  clip-path: ${sys.windowClip('10px')};
+  color: #03121b;
   font-size: 1.35rem;
-  box-shadow: 0 4px 20px rgba(108, 92, 231, 0.5);
+  box-shadow: ${sys.glow.mid};
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 `;
 
 const ContactValue = styled.span`
   font-size: 1.0625rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  color: ${soloLevelingTheme.colors.accent.orange};
+  font-weight: 600;
+  color: ${sys.color.cyanBright};
   word-break: break-word;
   transition: color 0.2s ease;
-  text-shadow: 0 0 20px rgba(225, 112, 85, 0.3);
+  text-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
 `;
 
 const ContactAction = styled.span`
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.875rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  color: ${soloLevelingTheme.colors.accent.purple};
+  font-family: ${sys.font.mono};
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${sys.color.muted};
   margin-top: 0.65rem;
   transition: color 0.2s ease;
 
   svg {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -87,10 +111,13 @@ const CardBase = styled(motion.div)`
   width: 100%;
   max-width: 340px;
   min-width: 280px;
-  background: linear-gradient(165deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.95) 100%);
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  color: ${soloLevelingTheme.colors.text.primary};
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.06), transparent 42%),
+    ${sys.color.panel};
+  backdrop-filter: blur(10px);
+  border: 1px solid ${sys.color.line};
+  clip-path: ${sys.windowClip('10px')};
+  color: ${sys.color.text};
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -99,34 +126,34 @@ const CardBase = styled(motion.div)`
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 10px;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold});
-    opacity: 0.9;
+    height: 2px;
+    background: linear-gradient(90deg, ${sys.color.cyan}, ${sys.color.cyanBright}, transparent);
+    opacity: 0.7;
   }
 
   &:hover {
-    border-color: ${soloLevelingTheme.colors.border.accent};
-    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 12px 40px rgba(108, 92, 231, 0.25);
+    border-color: ${sys.color.cyan};
+    box-shadow: ${sys.glow.soft}, 0 16px 40px rgba(2, 6, 16, 0.5);
     transform: translateY(-5px);
 
     ${ContactIcon} {
       transform: scale(1.08);
-      box-shadow: 0 6px 24px rgba(108, 92, 231, 0.6);
+      box-shadow: ${sys.glow.strong};
     }
 
     ${ContactValue} {
-      color: ${soloLevelingTheme.colors.accent.gold};
+      color: #fff;
     }
 
     ${ContactAction} {
-      color: ${soloLevelingTheme.colors.accent.gold};
+      color: ${sys.color.cyanBright};
     }
   }
 
   &:focus-visible {
-    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline: 2px solid ${sys.color.cyanBright};
     outline-offset: 2px;
   }
 `;
@@ -148,12 +175,13 @@ const ContactContent = styled.div`
 
 const ContactLabel = styled.span`
   display: block;
-  font-size: 0.8125rem;
-  color: ${soloLevelingTheme.colors.text.secondary};
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  font-family: ${sys.font.mono};
+  font-size: 0.7rem;
+  color: ${sys.color.muted};
+  font-weight: 500;
   margin-bottom: 0.4rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.14em;
 `;
 
 const CopyFeedback = styled.span`
@@ -202,6 +230,15 @@ const ContactPage = () => {
         <PageDescription>{t('contact.description')}</PageDescription>
       </PageHeader>
       <ContentWrapper>
+        <HeroCtaWrapper>
+          <SystemButton
+            variant="primary"
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent('Operations Audit — 15 min')}`}
+          >
+            {t('contact.ctaAudit')}
+          </SystemButton>
+          <HeroCtaNote>{t('contact.ctaReply')}</HeroCtaNote>
+        </HeroCtaWrapper>
         <ContactGridWrapper>
           <ContactGrid>
           {channels.map((channel, index) => (

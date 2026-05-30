@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
+import { sys } from '../styles/systemTokens';
 
 const NavContainer = styled.nav`
   width: 100%;
@@ -13,15 +14,15 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: ${soloLevelingTheme.colors.gradients.primary};
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid ${soloLevelingTheme.colors.border.accent};
-  box-shadow: ${soloLevelingTheme.shadows.purple};
+  background: rgba(10, 18, 34, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid ${sys.color.line};
+  box-shadow: ${sys.glow.soft};
   z-index: 1000;
   transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: ${soloLevelingTheme.shadows.glow};
+    box-shadow: ${sys.glow.mid};
   }
 
   @media (min-width: 768px) {
@@ -41,7 +42,7 @@ const Logo = styled(Link)`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px rgba(253, 203, 110, 0.3);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 
   &:hover {
     transform: scale(1.05);
@@ -68,7 +69,7 @@ const MobileMenuButton = styled.button`
 
   &:hover {
     color: ${soloLevelingTheme.colors.accent.gold};
-    background: rgba(108, 92, 231, 0.1);
+    background: rgba(56, 189, 248, 0.1);
     transform: scale(1.1);
   }
 
@@ -134,62 +135,56 @@ const MobileNavLinks = styled.div.withConfig({
 const NavLink = styled(Link).withConfig({
   shouldForwardProp: (prop) => prop !== '$active',
 })`
-  color: ${props => props.$active ? soloLevelingTheme.colors.text.accent : soloLevelingTheme.colors.text.secondary};
+  color: ${props => props.$active ? sys.color.cyanBright : sys.color.muted};
   text-decoration: none;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  font-family: ${soloLevelingTheme.typography.fontFamily.primary};
+  font-weight: 500;
+  font-family: ${sys.font.mono};
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
   padding: 0.5rem 1rem;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  border-radius: 0;
   min-height: 44px;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  border-bottom: 2px solid ${props => props.$active ? soloLevelingTheme.colors.accent.gold : 'transparent'};
-  margin-bottom: ${props => props.$active ? '-2px' : '0'};
+  border: none;
+  margin-bottom: 0;
 
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: ${soloLevelingTheme.colors.gradients.purple};
-    transition: left 0.3s ease;
-    z-index: -1;
+    content: ${props => props.$active ? '"▸ "' : '""'};
+    position: static;
+    margin-right: 0.4em;
+    transition: all 0.3s ease;
   }
 
   &:hover {
-    color: ${soloLevelingTheme.colors.text.primary};
-    text-shadow: 0 0 8px ${soloLevelingTheme.colors.accent.purple};
-    transform: translateY(-2px);
-    
-    &::before {
-      left: 0;
-    }
+    color: ${sys.color.cyanBright};
+    text-shadow: ${sys.glow.soft};
+    transform: none;
   }
 
   &:focus-visible {
-    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline: 2px solid ${sys.color.cyanBright};
     outline-offset: 2px;
   }
 
   &:active {
-    transform: translateY(0);
+    transform: none;
   }
 `;
 
 const MobileNavLink = styled(NavLink)`
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   padding: 1rem 0.5rem;
-  border-bottom: 1px solid ${soloLevelingTheme.colors.border.primary};
+  border-bottom: 1px solid ${sys.color.line};
   border-radius: 0;
-  
+
   &:hover {
-    border-bottom-color: ${soloLevelingTheme.colors.accent.gold};
+    border-bottom-color: ${sys.color.cyanBright};
   }
 `;
 
@@ -217,35 +212,37 @@ const LanguageSelector = styled.button`
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: rgba(108, 92, 231, 0.1);
-  border: 1px solid ${soloLevelingTheme.colors.border.accent};
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  color: ${soloLevelingTheme.colors.text.secondary};
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  font-size: 0.9rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid ${sys.color.line};
+  border-radius: 0;
+  color: ${sys.color.muted};
+  font-weight: 500;
+  font-family: ${sys.font.mono};
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.3s ease;
   min-height: 44px;
   min-width: 70px;
-  
+
   &:hover {
-    background: ${soloLevelingTheme.colors.gradients.purple};
-    color: ${soloLevelingTheme.colors.text.primary};
-    box-shadow: ${soloLevelingTheme.shadows.glow};
-    transform: translateY(-2px);
-    border-color: ${soloLevelingTheme.colors.accent.purple};
+    background: rgba(56, 189, 248, 0.12);
+    color: ${sys.color.cyanBright};
+    box-shadow: ${sys.glow.soft};
+    border-color: ${sys.color.cyanBright};
   }
-  
+
   &:active {
-    transform: translateY(0);
+    transform: none;
   }
-  
+
   @media (max-width: 767px) {
     width: 100%;
     justify-content: center;
     margin-top: 1rem;
     padding: 1rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -254,8 +251,8 @@ const LanguageSelectorMobile = styled(LanguageSelector)`
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  font-size: 1rem;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  font-size: 0.95rem;
+  border-radius: 0;
 `;
 
 const SocialLink = styled.a`
@@ -270,7 +267,7 @@ const SocialLink = styled.a`
   align-items: center;
   justify-content: center;
   position: relative;
-  background: rgba(108, 92, 231, 0.1);
+  background: rgba(56, 189, 248, 0.1);
   border: 1px solid ${soloLevelingTheme.colors.border.accent};
 
   &:hover {

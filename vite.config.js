@@ -48,7 +48,7 @@ export default defineConfig({
   server: {
     compress: true,
     host: true,
-    port: 3000
+    port: process.env.PORT ? Number(process.env.PORT) : 3000
   },
   // Resolve aliases for cleaner imports
   resolve: {

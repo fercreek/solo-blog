@@ -8,46 +8,46 @@ export const soloLevelingTheme = {
     secondary: '#1A1A2E', // Slightly lighter dark
     tertiary: '#16213E', // Dark blue-purple
     
-    // Accent colors
+    // Accent colors — System cyan migration (purple token now points to cyan)
     accent: {
-      purple: '#6C5CE7', // Bright purple (mana/magic)
-      gold: '#FDCB6E', // Golden yellow (power/level up)
-      orange: '#E17055', // Orange-red (energy/fire)
-      blue: '#74B9FF', // Light blue (ice/water)
+      purple: '#38BDF8', // (legacy name) → System cyan core
+      gold: '#7DD3FC', // (legacy name) → cyan bright
+      orange: '#0EA5E9', // (legacy name) → cyan deep
+      blue: '#7DD3FC', // cyan bright
       silver: '#B2BEC3', // Silver-gray (metal/weapons)
     },
-    
+
     // Text colors
     text: {
-      primary: '#FFFFFF', // Pure white
-      secondary: '#DDD6FE', // Light purple-white
-      muted: '#A0AEC0', // Gray
-      accent: '#FDCB6E', // Gold for highlights
+      primary: '#E8F1FF', // off-white (never pure white)
+      secondary: '#C2D4EC', // light blue-white
+      muted: '#94A8C4', // muted blue-gray
+      accent: '#7DD3FC', // cyan for highlights
     },
-    
+
     // UI Elements
     border: {
-      primary: '#2D3748', // Dark gray
-      accent: '#6C5CE7', // Purple
-      glow: '#FDCB6E', // Gold glow
+      primary: '#1E2A42', // dark blue-gray
+      accent: '#38BDF8', // cyan
+      glow: '#38BDF8', // cyan glow
     },
-    
+
     // Status colors
     status: {
-      success: '#68D391', // Green
-      warning: '#F6AD55', // Orange
+      success: '#34D399', // Green
+      warning: '#7DD3FC', // Amber
       error: '#FC8181', // Red
-      info: '#63B3ED', // Blue
+      info: '#38BDF8', // Cyan
     },
-    
+
     // Gradients
     gradients: {
-      primary: 'linear-gradient(135deg, #0A0A0F 0%, #1A1A2E 50%, #16213E 100%)',
-      secondary: 'linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0A0A0F 100%)',
-      purple: 'linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%)',
-      gold: 'linear-gradient(135deg, #FDCB6E 0%, #E17055 100%)',
-      mana: 'linear-gradient(135deg, #74B9FF 0%, #6C5CE7 100%)',
-      shadow: 'linear-gradient(180deg, rgba(108, 92, 231, 0.3) 0%, rgba(26, 26, 46, 0.8) 100%)',
+      primary: 'linear-gradient(135deg, #05070D 0%, #0A1222 50%, #0F1B30 100%)',
+      secondary: 'linear-gradient(135deg, #0A1222 0%, #0F1B30 50%, #05070D 100%)',
+      purple: 'linear-gradient(135deg, #38BDF8 0%, #7DD3FC 100%)', // (legacy name) → cyan
+      gold: 'linear-gradient(135deg, #7DD3FC 0%, #0EA5E9 100%)',
+      mana: 'linear-gradient(135deg, #7DD3FC 0%, #0EA5E9 100%)',
+      shadow: 'linear-gradient(180deg, rgba(56, 189, 248, 0.3) 0%, rgba(10, 18, 34, 0.8) 100%)',
     }
   },
   
@@ -104,13 +104,13 @@ export const soloLevelingTheme = {
   
   // Shadows
   shadows: {
-    sm: '0 1px 2px 0 rgba(108, 92, 231, 0.05)',
-    md: '0 4px 6px -1px rgba(108, 92, 231, 0.1), 0 2px 4px -1px rgba(108, 92, 231, 0.06)',
-    lg: '0 10px 15px -3px rgba(108, 92, 231, 0.1), 0 4px 6px -2px rgba(108, 92, 231, 0.05)',
-    xl: '0 20px 25px -5px rgba(108, 92, 231, 0.1), 0 10px 10px -5px rgba(108, 92, 231, 0.04)',
-    glow: '0 0 20px rgba(253, 203, 110, 0.3), 0 0 40px rgba(108, 92, 231, 0.2)',
-    purple: '0 0 30px rgba(108, 92, 231, 0.4)',
-    gold: '0 0 30px rgba(253, 203, 110, 0.4)',
+    sm: '0 1px 2px 0 rgba(56, 189, 248, 0.05)',
+    md: '0 4px 6px -1px rgba(56, 189, 248, 0.1), 0 2px 4px -1px rgba(56, 189, 248, 0.06)',
+    lg: '0 10px 15px -3px rgba(56, 189, 248, 0.1), 0 4px 6px -2px rgba(56, 189, 248, 0.05)',
+    xl: '0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 10px 10px -5px rgba(56, 189, 248, 0.04)',
+    glow: '0 0 20px rgba(56, 189, 248, 0.35), 0 0 40px rgba(56, 189, 248, 0.2)',
+    purple: '0 0 30px rgba(56, 189, 248, 0.4)',
+    gold: '0 0 30px rgba(56, 189, 248, 0.4)',
   },
   
   // Animations
@@ -123,8 +123,8 @@ export const soloLevelingTheme = {
     keyframes: {
       glow: `
         @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(253, 203, 110, 0.3); }
-          50% { box-shadow: 0 0 30px rgba(253, 203, 110, 0.6), 0 0 40px rgba(108, 92, 231, 0.3); }
+          0%, 100% { box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); }
+          50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 40px rgba(125, 211, 252, 0.3); }
         }
       `,
       pulse: `

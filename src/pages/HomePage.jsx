@@ -7,14 +7,15 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
+import SystemButton from '../components/SystemButton';
 import PageHead from '../components/PageHead';
 
 const glowPulse = keyframes`
   0%, 100% {
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(108, 92, 231, 0.6), 0 0 40px rgba(253, 203, 110, 0.2);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.2);
   }
 `;
 
@@ -38,36 +39,52 @@ const ParallaxLayerStyles = styled(motion.div)`
   pointer-events: none;
   will-change: transform;
   z-index: 0;
-  background: radial-gradient(ellipse 60% 40% at 50% 20%, rgba(108, 92, 231, 0.2) 0%, transparent 50%),
-              radial-gradient(ellipse 80% 50% at 80% 60%, rgba(253, 203, 110, 0.06) 0%, transparent 50%);
+  background: radial-gradient(ellipse 60% 40% at 50% 20%, rgba(56, 189, 248, 0.22) 0%, transparent 50%),
+              radial-gradient(ellipse 80% 50% at 80% 60%, rgba(109, 93, 211, 0.12) 0%, transparent 50%);
 `;
 
 const HeroSection = styled.section`
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(165deg, rgba(26, 26, 46, 0.98) 0%, rgba(22, 33, 62, 0.98) 50%, rgba(10, 10, 15, 0.99) 100%);
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  box-shadow: ${soloLevelingTheme.shadows.purple}, 0 20px 60px -15px rgba(0, 0, 0, 0.5);
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.07), transparent 45%),
+    rgba(10, 18, 34, 0.78);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  box-shadow: 0 0 26px rgba(56, 189, 248, 0.12), 0 20px 60px -15px rgba(0, 0, 0, 0.55);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  
+  backdrop-filter: blur(18px);
+
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 18px;
     right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.gold});
-    border-radius: ${soloLevelingTheme.borderRadius.xl} ${soloLevelingTheme.borderRadius.xl} 0 0;
-    box-shadow: 0 0 20px rgba(253, 203, 110, 0.5), 0 0 40px rgba(108, 92, 231, 0.3);
+    height: 2px;
+    background: linear-gradient(90deg, #38BDF8, #7DD3FC, transparent);
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
   }
-  
+
   @media (max-width: 768px) {
     padding: 3rem 1.5rem;
   }
+`;
+
+const Kicker = styled.div`
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7DD3FC;
+  margin-bottom: 1.1rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
+
+  &::before { content: '▸ '; opacity: 0.8; }
 `;
 
 const Avatar = styled.div`
@@ -109,12 +126,12 @@ const Name = styled.h1`
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.gold} 0%, ${soloLevelingTheme.colors.accent.orange} 50%, ${soloLevelingTheme.colors.accent.gold} 100%);
+  background: linear-gradient(135deg, #7DD3FC 0%, #38BDF8 50%, #E8F1FF 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(253, 203, 110, 0.2));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
   position: relative;
   z-index: 1;
   
@@ -139,11 +156,11 @@ const Title = styled.h2`
     content: '';
     display: block;
     width: 60px;
-    height: 3px;
+    height: 2px;
     margin: 1.25rem auto 0;
-    background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.gold});
-    border-radius: ${soloLevelingTheme.borderRadius.full};
-    opacity: 0.8;
+    background: linear-gradient(90deg, #38BDF8, #7DD3FC);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    opacity: 0.85;
   }
 `;
 
@@ -163,6 +180,22 @@ const Description = styled.p`
     font-size: 1rem;
     line-height: 1.7;
     padding: 0 0.5rem;
+  }
+`;
+
+const HeroActions = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1.5rem;
   }
 `;
 
@@ -233,67 +266,73 @@ const PostsGrid = styled.div`
 const PostCard = styled.article.withConfig({
   shouldForwardProp: (prop) => prop !== '$isLarge',
 })`
-  background: ${soloLevelingTheme.colors.gradients.secondary};
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.06), transparent 42%),
+    rgba(10, 18, 34, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
   padding: ${props => props.$isLarge ? '2.5rem' : '2rem'};
-  transition: all ${soloLevelingTheme.animations.transition.normal};
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: auto;
-  transform: ${props => props.$isLarge ? 'scale(1.05)' : 'scale(1)'};
-  
+  transform: ${props => props.$isLarge ? 'scale(1.04)' : 'scale(1)'};
+
   ${props => props.$isLarge && `
     z-index: 2;
-    
+
     ${PostTitle} {
       font-size: 1.75rem;
     }
-    
+
     ${PostExcerpt} {
       font-size: 1.05rem;
       line-height: 1.7;
     }
   `}
-  
+
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 14px;
     right: 0;
-    height: 4px;
-    background: ${soloLevelingTheme.colors.gradients.gold};
+    height: 2px;
+    background: linear-gradient(90deg, #38BDF8, #7DD3FC, transparent);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.5);
     z-index: 1;
   }
-  
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${soloLevelingTheme.shadows.purple}, 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: ${soloLevelingTheme.colors.accent.purple};
+    transform: translateY(-8px) ${props => props.$isLarge ? 'scale(1.04)' : ''};
+    box-shadow: 0 0 22px rgba(56, 189, 248, 0.25), 0 22px 50px rgba(2, 6, 16, 0.55);
+    border-color: #38BDF8;
   }
-  
+
   @media (max-width: 768px) {
     padding: 1.5rem;
-    
+    transform: scale(1);
+
     &:hover {
       transform: translateY(-4px);
     }
   }
-  
+
   @media (max-width: 480px) {
-    padding: 1rem;
+    padding: 1.25rem;
   }
 `;
 
 const PostTitle = styled.h3`
+  font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
-  color: ${soloLevelingTheme.colors.text.primary};
+  color: #E8F1FF;
   margin-bottom: 1rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  
+  font-weight: 600;
+
   @media (max-width: 768px) {
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
@@ -301,14 +340,14 @@ const PostTitle = styled.h3`
 `;
 
 const PostExcerpt = styled.p`
-  color: ${soloLevelingTheme.colors.text.secondary};
+  color: #94A8C4;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
   flex: 1;
-  
+
   @media (max-width: 768px) {
     font-size: 0.95rem;
     line-height: 1.5;
@@ -320,11 +359,12 @@ const PostMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: ${soloLevelingTheme.colors.text.muted};
-  
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #94A8C4;
+
   @media (max-width: 768px) {
-    font-size: 0.85rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -332,14 +372,18 @@ const PostMeta = styled.div`
 `;
 
 const PostCategory = styled.span`
-  background: ${soloLevelingTheme.colors.gradients.primary};
-  color: ${soloLevelingTheme.colors.text.primary};
-  padding: 0.25rem 0.75rem;
-  border-radius: ${soloLevelingTheme.borderRadius.sm};
-  font-size: 0.75rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  align-self: flex-start;
+  font-family: 'JetBrains Mono', monospace;
+  color: #7DD3FC;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.25rem 0.7rem;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+  font-size: 0.66rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.14em;
+  margin-bottom: 1rem;
 `;
 
 const ReadMoreButtonWrapper = styled.div`
@@ -371,32 +415,33 @@ const HomePage = () => {
       url: 'https://studiolink.online/',
       category: t('common.status.project'),
       status: 'production',
-      gradient: 'linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(116, 185, 255, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
     },
     {
       id: 2,
-      title: 'Vayla Dance',
+      title: 'Vayla',
       excerpt: t('home.featured.vaylaDance.excerpt'),
       date: '2024',
       readTime: `${language === 'es' ? '4' : '4'} ${language === 'es' ? 'min lectura' : t('common.time.minRead')}`,
       url: 'https://www.vayla.dance/',
       category: t('common.status.project'),
       status: 'production',
-      gradient: 'linear-gradient(135deg, rgba(253, 203, 110, 0.3), rgba(225, 112, 85, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
+    },
+    {
+      id: 3,
+      title: 'Cargo Control · Litebox',
+      excerpt: t('home.recent.cargoControl.excerpt'),
+      date: '2025',
+      readTime: `${language === 'es' ? '3 min lectura' : `3 ${t('common.time.minRead')}`}`,
+      url: 'https://www.liteboxparcel.com/',
+      category: t('common.status.project'),
+      status: 'production',
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
     }
   ];
 
   const recentProjects2025 = [
-    {
-      id: 'litebox-parcel',
-      title: 'Litebox Parcel',
-      excerpt: t('home.recent.liteboxParcel.excerpt'),
-      date: '2025',
-      url: 'https://www.liteboxparcel.com/',
-      status: 'production',
-      category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(253, 203, 110, 0.3), rgba(225, 112, 85, 0.2))'
-    },
     {
       id: 'progreso',
       title: 'Progreso Personal Finance',
@@ -405,7 +450,7 @@ const HomePage = () => {
       url: 'https://v0-progreso-personal-finance-ui.vercel.app/',
       status: 'mvp',
       category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(116, 185, 255, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
     },
     {
       id: 'sin-bronca',
@@ -415,7 +460,7 @@ const HomePage = () => {
       url: 'https://sin-bronca.vercel.app/',
       status: 'mvp',
       category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(108, 92, 231, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(56, 189, 248, 0.2))'
     },
     {
       id: 'chronodev',
@@ -439,11 +484,16 @@ const HomePage = () => {
       <HeroWrapper>
         <HeroSection>
         <ParallaxLayerStyles style={{ y: parallaxY }} />
+        <Kicker>{t('home.hero.kicker')}</Kicker>
         <Name>{t('home.hero.name')}</Name>
         <Title>{t('home.hero.title')}</Title>
         <Description>
           {t('home.hero.description')}
         </Description>
+        <HeroActions>
+          <SystemButton to="/projects" variant="primary">{t('home.hero.ctaPrimary')}</SystemButton>
+          <SystemButton to="/about" variant="secondary">{t('home.hero.ctaSecondary')}</SystemButton>
+        </HeroActions>
       </HeroSection>
       </HeroWrapper>
       
@@ -463,9 +513,9 @@ const HomePage = () => {
                   <span>{post.readTime}</span>
                 </PostMeta>
                 <ReadMoreButtonWrapper>
-                  <Button as="a" href={post.url} target="_blank" rel="noopener noreferrer" variant="secondary">
+                  <SystemButton href={post.url} target="_blank" rel="noopener noreferrer" variant="secondary">
                     {t('common.buttons.exploreProject')}
-                  </Button>
+                  </SystemButton>
                 </ReadMoreButtonWrapper>
               </PostCard>
             );

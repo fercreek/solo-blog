@@ -37,7 +37,7 @@ const XPBarContainer = styled.div`
   overflow: hidden;
   margin-bottom: 0.75rem;
   position: relative;
-  border: 1px solid rgba(108, 92, 231, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.2);
 `;
 
 const XPBar = styled.div`
@@ -46,7 +46,7 @@ const XPBar = styled.div`
   background: linear-gradient(90deg, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.blue});
   border-radius: ${soloLevelingTheme.borderRadius.full};
   animation: ${props => props.$progressive ? xpBarProgressive : xpBarFill} ${props => props.$progressive ? '7s' : '1.5s'} ${props => props.$progressive ? 'ease-in-out infinite' : 'ease-out'};
-  box-shadow: 0 0 10px rgba(108, 92, 231, 0.6);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
   position: relative;
   transform-origin: left center;
   @media (prefers-reduced-motion: reduce) {
@@ -84,7 +84,7 @@ const LevelDisplay = styled.div`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 8px ${props => props.$gold ? 'rgba(253, 203, 110, 0.8)' : 'rgba(108, 92, 231, 0.8)'});
+  filter: drop-shadow(0 0 8px ${props => props.$gold ? 'rgba(56, 189, 248, 0.8)' : 'rgba(56, 189, 248, 0.8)'});
   animation: ${levelNumber} 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
@@ -161,7 +161,7 @@ const LevelUpGlow = styled.div`
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  background: radial-gradient(circle, ${props => props.$color || 'rgba(253, 203, 110, 0.3)'} 0%, transparent 70%);
+  background: radial-gradient(circle, ${props => props.$color || 'rgba(56, 189, 248, 0.3)'} 0%, transparent 70%);
   animation: ${levelUp} 4s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
@@ -219,7 +219,7 @@ const LevelingAnimation = ({ type, level, xp, progressive = true, variant = 'ful
       case 'studio':
         return (
           <>
-            <LevelUpGlow $color="rgba(108, 92, 231, 0.3)" />
+            <LevelUpGlow $color="rgba(56, 189, 248, 0.3)" />
             {LevelEl}
             {Accent}
             {showParticles && <ParticleEffect count={4} color={soloLevelingTheme.colors.accent.purple} />}
@@ -229,7 +229,7 @@ const LevelingAnimation = ({ type, level, xp, progressive = true, variant = 'ful
       case 'dance':
         return (
           <>
-            <LevelUpGlow $color="rgba(253, 203, 110, 0.3)" />
+            <LevelUpGlow $color="rgba(56, 189, 248, 0.3)" />
             {LevelEl}
             {Accent}
             {XpBar}
@@ -240,7 +240,7 @@ const LevelingAnimation = ({ type, level, xp, progressive = true, variant = 'ful
       case 'logistics':
         return (
           <>
-            <LevelUpGlow $color="rgba(225, 112, 85, 0.3)" />
+            <LevelUpGlow $color="rgba(14, 165, 233, 0.3)" />
             {LevelEl}
             {showXpBar && (
               <>
@@ -255,7 +255,7 @@ const LevelingAnimation = ({ type, level, xp, progressive = true, variant = 'ful
       case 'finance':
         return (
           <>
-            <LevelUpGlow $color="rgba(108, 92, 231, 0.3)" />
+            <LevelUpGlow $color="rgba(56, 189, 248, 0.3)" />
             {LevelEl}
             {XpBar}
             {Accent}

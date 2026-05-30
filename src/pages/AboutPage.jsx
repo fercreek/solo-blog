@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useReducedMotion } from 'framer-motion';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import {
   PageContainer,
@@ -16,18 +17,69 @@ import {
   CardIcon,
   AnimatedListItem
 } from '../styles/designSystem';
-import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic, FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { FaCode, FaTrophy, FaMapMarkerAlt, FaDumbbell, FaPenFancy, FaCoins, FaMusic, FaChevronDown, FaChevronRight, FaServer, FaBox } from 'react-icons/fa';
 import { processMarkdownText } from '../utils/contentParser';
 import { useTranslation } from '../hooks/useTranslation';
 import PageHead from '../components/PageHead';
 import { danceEvents, getDanceStats } from '../data/danceEvents';
+import { SystemPanel, SystemBadge } from '../components/system';
+import { sys } from '../styles/systemTokens';
 
-const BioSection = styled(HighlightCard)`
+const BioSection = styled(SystemPanel)`
   margin-bottom: 3rem;
 `;
 
+const SystemsSection = styled.section`
+  margin-bottom: 3rem;
+`;
+
+const SystemsHead = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
+const SystemsSubtitle = styled.p`
+  font-family: ${sys.font.mono};
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: ${sys.color.cyanBright};
+  margin: 0.4rem 0 0;
+`;
+
+const SystemsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+`;
+
+const SysCardIcon = styled.div`
+  font-size: 1.5rem;
+  color: ${sys.color.cyan};
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+`;
+
+const SysCardName = styled.h3`
+  font-family: ${sys.font.heading};
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: ${sys.color.text};
+  margin: 0 0 0.5rem;
+`;
+
+const SysCardDetail = styled.p`
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: ${sys.color.muted};
+  margin: 0;
+`;
+
 const BioText = styled.p`
-  color: ${soloLevelingTheme.colors.text.primary};
+  color: ${sys.color.text};
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
@@ -51,30 +103,28 @@ const HobbiesGrid = styled.div`
   margin: 2rem 0;
 `;
 
-const HobbyCard = styled(FeatureCard)`
-  padding: 1.5rem;
+const HobbyCard = styled(SystemPanel)`
   text-align: center;
-  
-  @media (max-width: 768px) {
-    padding: 1.25rem;
-  }
+  align-items: center;
 `;
 
-const HobbyIcon = styled(CardIcon)`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  
+const HobbyIcon = styled.div`
+  font-size: 2.2rem;
+  color: ${sys.color.cyan};
+  margin-bottom: 0.85rem;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 `;
 
 const HobbyName = styled.h3`
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 1.1rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
+  color: ${sys.color.text};
+  font-size: 1.05rem;
+  font-weight: 600;
   margin: 0;
-  font-family: ${soloLevelingTheme.typography.fontFamily.heading};
+  font-family: ${sys.font.heading};
 `;
 
 const ExhibitionsSection = styled.div`
@@ -104,7 +154,7 @@ const CategoryTitle = styled.h3`
   gap: 0.75rem;
   
   svg {
-    filter: drop-shadow(0 0 8px rgba(108, 92, 231, 0.5));
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
   }
 `;
 
@@ -141,7 +191,7 @@ const EventItem = styled(AnimatedListItem)`
     
     &:hover {
       color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
     }
   }
 `;
@@ -171,7 +221,7 @@ const SubEventItem = styled.li`
   transition: all 0.3s ease;
   
   &:hover {
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(26, 26, 46, 0.8));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(26, 26, 46, 0.8));
     border-left-color: ${soloLevelingTheme.colors.accent.gold};
     transform: translateX(4px);
   }
@@ -193,7 +243,7 @@ const DanceStatsSummary = styled.div`
   gap: 0.5rem 1.5rem;
   padding: 1rem 1.25rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(26, 26, 46, 0.9));
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(26, 26, 46, 0.9));
   border: 1px solid ${soloLevelingTheme.colors.border.accent};
   border-radius: ${soloLevelingTheme.borderRadius.lg};
   color: ${soloLevelingTheme.colors.text.secondary};
@@ -220,9 +270,9 @@ const AccordionTrigger = styled.button`
   transition: all 0.3s ease;
   
   &:hover {
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(26, 26, 46, 0.95));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(26, 26, 46, 0.95));
     border-left-color: ${soloLevelingTheme.colors.accent.gold};
-    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
   }
   
   &:focus-visible {
@@ -281,7 +331,7 @@ const ProgrammingItem = styled(AnimatedListItem)`
     
     &:hover {
       color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
     }
   }
 `;
@@ -293,6 +343,7 @@ const DanceSingleLineTrigger = styled(AccordionTrigger)`
 
 const AboutPage = () => {
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
   const [expandedId, setExpandedId] = useState(null);
   const [programmingExpanded, setProgrammingExpanded] = useState(false);
   const danceStats = getDanceStats();
@@ -302,6 +353,12 @@ const AboutPage = () => {
     { icon: <FaDumbbell />, name: t('about.hobbies.workingOut') },
     { icon: <FaPenFancy />, name: t('about.hobbies.writing') },
     { icon: <FaCoins />, name: t('about.hobbies.trading') }
+  ];
+
+  const systems = [
+    { icon: <FaCode />, name: t('about.systems.studioLink.name'), detail: t('about.systems.studioLink.detail') },
+    { icon: <FaTrophy />, name: t('about.systems.vayla.name'), detail: t('about.systems.vayla.detail') },
+    { icon: <FaBox />, name: t('about.systems.cargoControl.name'), detail: t('about.systems.cargoControl.detail') }
   ];
 
   return (
@@ -315,7 +372,7 @@ const AboutPage = () => {
       </PageHeader>
       
       <ContentWrapper>
-        <BioSection>
+        <BioSection $interactive={false} $reduced={prefersReducedMotion}>
           <GradientBadge marginBottom="1.5rem">
             <FaMapMarkerAlt />
             {t('about.location')}
@@ -328,7 +385,32 @@ const AboutPage = () => {
           </BioText>
         </BioSection>
 
-        <BioSection>
+        <SystemsSection>
+          <SystemsHead>
+            <SectionTitle margin="0">{t('about.systems.title')}</SectionTitle>
+            <SystemsSubtitle>{t('about.systems.subtitle')}</SystemsSubtitle>
+          </SystemsHead>
+          <SystemsGrid>
+            {systems.map((s, i) => (
+              <SystemPanel
+                key={s.name}
+                $compact
+                $reduced={prefersReducedMotion}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : i * 0.08 }}
+              >
+                <SystemBadge $variant="cyan">In Production</SystemBadge>
+                <SysCardIcon style={{ marginTop: '0.9rem' }}>{s.icon}</SysCardIcon>
+                <SysCardName>{s.name}</SysCardName>
+                <SysCardDetail>{s.detail}</SysCardDetail>
+              </SystemPanel>
+            ))}
+          </SystemsGrid>
+        </SystemsSection>
+
+        <BioSection $interactive={false} $reduced={prefersReducedMotion}>
           <SectionTitle margin="0 0 2rem 0">{t('about.closerLook.title')}</SectionTitle>
           <BioText>
             {t('about.closerLook.text1')}
@@ -343,8 +425,16 @@ const AboutPage = () => {
 
         <SectionTitle>{t('about.hobbies.title')}</SectionTitle>
         <HobbiesGrid>
-          {hobbies.map((hobby) => (
-            <HobbyCard key={hobby.name} delay={`${hobbies.indexOf(hobby) * 0.1}s`}>
+          {hobbies.map((hobby, i) => (
+            <HobbyCard
+              key={hobby.name}
+              $compact
+              $reduced={prefersReducedMotion}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : i * 0.08 }}
+            >
               <HobbyIcon>{hobby.icon}</HobbyIcon>
               <HobbyName>{hobby.name}</HobbyName>
             </HobbyCard>

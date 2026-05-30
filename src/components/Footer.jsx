@@ -1,36 +1,37 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { sys } from '../styles/systemTokens';
 import { useTranslation } from '../hooks/useTranslation';
 
 const FooterContainer = styled.footer`
   width: 100%;
   padding: 2rem 1rem;
-  background: ${soloLevelingTheme.colors.gradients.primary};
-  border-top: 1px solid ${soloLevelingTheme.colors.border.accent};
+  background: ${sys.color.bgDeep};
+  border-top: 1px solid ${sys.color.line};
   text-align: center;
   margin-top: auto;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(10px);
-  
+  backdrop-filter: blur(8px);
+
   &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
+    height: 2px;
     background: linear-gradient(
       90deg,
       transparent,
-      ${soloLevelingTheme.colors.accent.gold},
-      ${soloLevelingTheme.colors.accent.purple},
-      ${soloLevelingTheme.colors.accent.gold},
+      ${sys.color.cyan},
+      ${sys.color.cyanDeep},
+      ${sys.color.cyan},
       transparent
     );
-    opacity: 0.6;
+    box-shadow: ${sys.glow.soft};
+    opacity: 0.8;
   }
 
   @media (min-width: 768px) {
@@ -47,21 +48,23 @@ const FooterLinks = styled.nav`
 `;
 
 const FooterLink = styled(Link)`
-  color: ${soloLevelingTheme.colors.text.secondary};
+  color: ${sys.color.muted};
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  font-size: 0.85rem;
+  font-family: ${sys.font.mono};
+  font-weight: 500;
+  letter-spacing: 0.02em;
   transition: all 0.3s ease;
   padding: 0.25rem 0.5rem;
-  border-radius: ${soloLevelingTheme.borderRadius.sm};
-  
+  border-radius: 0;
+
   &:hover {
-    color: ${soloLevelingTheme.colors.text.accent};
-    text-shadow: 0 0 8px ${soloLevelingTheme.colors.accent.gold};
+    color: ${sys.color.cyanBright};
+    text-shadow: ${sys.glow.soft};
   }
-  
+
   &:focus-visible {
-    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline: 2px solid ${sys.color.cyan};
     outline-offset: 2px;
   }
 `;
@@ -72,28 +75,24 @@ const FooterDivider = styled.div`
   background: linear-gradient(
     90deg,
     transparent,
-    ${soloLevelingTheme.colors.accent.purple},
+    ${sys.color.line},
     transparent
   );
-  opacity: 0.5;
+  opacity: 0.6;
   margin: 0 auto 1.5rem;
 `;
 
 const FooterText = styled.p`
-  color: ${soloLevelingTheme.colors.text.muted};
-  font-size: 0.85rem;
-  font-family: ${soloLevelingTheme.typography.fontFamily.primary};
+  color: ${sys.color.muted};
+  font-size: 0.8rem;
+  font-family: ${sys.font.mono};
+  letter-spacing: 0.01em;
   margin: 0;
   line-height: 1.4;
   transition: all 0.3s ease;
-  
-  &:hover {
-    color: ${soloLevelingTheme.colors.text.accent};
-    text-shadow: 0 0 8px ${soloLevelingTheme.colors.accent.gold};
-  }
 
   @media (min-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 `;
 

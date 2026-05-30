@@ -4,10 +4,10 @@ import { fadeInUp } from './keyframes';
 
 export const glowPulse = keyframes`
   0%, 100% {
-    box-shadow: 0 0 20px rgba(253, 203, 110, 0.3), 0 0 40px rgba(108, 92, 231, 0.2);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 0 40px rgba(56, 189, 248, 0.2);
   }
   50% {
-    box-shadow: 0 0 30px rgba(253, 203, 110, 0.5), 0 0 60px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.5), 0 0 60px rgba(56, 189, 248, 0.3);
   }
 `;
 
@@ -72,7 +72,7 @@ export const HighlightCard = styled.div`
   &:focus-visible {
     outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
     outline-offset: 2px;
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
   
   &::before {
@@ -91,7 +91,7 @@ export const HighlightCard = styled.div`
       ${soloLevelingTheme.colors.accent.orange}
     );
     background-size: 200% 100%;
-    box-shadow: 0 0 25px rgba(253, 203, 110, 0.6), 0 0 50px rgba(108, 92, 231, 0.4);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 50px rgba(56, 189, 248, 0.4);
     animation: ${shimmer} 3s linear infinite;
   }
   
@@ -104,8 +104,8 @@ export const HighlightCard = styled.div`
     height: 200%;
     background: radial-gradient(
       circle,
-      rgba(225, 112, 85, 0.15) 0%,
-      rgba(108, 92, 231, 0.1) 30%,
+      rgba(14, 165, 233, 0.15) 0%,
+      rgba(56, 189, 248, 0.1) 30%,
       transparent 70%
     );
     pointer-events: none;
@@ -129,15 +129,15 @@ export const GradientBadge = styled.div`
   font-size: 1.05rem;
   font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
   margin-bottom: ${props => props.marginBottom || '2rem'};
-  box-shadow: ${soloLevelingTheme.shadows.glow}, 0 4px 15px rgba(225, 112, 85, 0.4);
+  box-shadow: ${soloLevelingTheme.shadows.glow}, 0 4px 15px rgba(14, 165, 233, 0.4);
   position: relative;
   z-index: 1;
   transition: all 0.3s ease;
-  border: 1px solid rgba(253, 203, 110, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   
   &:hover {
     transform: scale(1.08) translateY(-2px);
-    box-shadow: 0 0 40px rgba(253, 203, 110, 0.7), 0 6px 20px rgba(225, 112, 85, 0.5);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.7), 0 6px 20px rgba(14, 165, 233, 0.5);
     animation: ${pulse} 1.5s ease-in-out infinite;
   }
   
@@ -159,7 +159,7 @@ export const SectionTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(253, 203, 110, 0.3);
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
   animation: ${fadeInUp} 0.8s ease-out;
   
   &::before {
@@ -172,7 +172,7 @@ export const SectionTitle = styled.h2`
     height: 120%;
     background: radial-gradient(
       circle,
-      rgba(253, 203, 110, 0.1) 0%,
+      rgba(56, 189, 248, 0.1) 0%,
       transparent 70%
     );
     z-index: -1;
@@ -189,7 +189,7 @@ export const SectionTitle = styled.h2`
     height: 4px;
     background: ${soloLevelingTheme.colors.gradients.gold};
     border-radius: ${soloLevelingTheme.borderRadius.full};
-    box-shadow: 0 0 20px rgba(253, 203, 110, 0.6), 0 0 40px rgba(253, 203, 110, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
     animation: ${glowPulse} 2s ease-in-out infinite;
   }
   
@@ -241,7 +241,7 @@ export const FeatureCard = styled.div`
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.5s ease;
-    box-shadow: 0 0 15px rgba(108, 92, 231, 0.5);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
   }
   
   &::after {
@@ -253,7 +253,7 @@ export const FeatureCard = styled.div`
     height: 200%;
     background: radial-gradient(
       circle,
-      rgba(108, 92, 231, 0.1) 0%,
+      rgba(56, 189, 248, 0.1) 0%,
       transparent 60%
     );
     opacity: 0;
@@ -263,7 +263,7 @@ export const FeatureCard = styled.div`
   
   &:hover {
     transform: translateY(-12px) scale(1.03);
-    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 12px 40px rgba(108, 92, 231, 0.3);
+    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 12px 40px rgba(56, 189, 248, 0.3);
     border-color: ${soloLevelingTheme.colors.accent.purple};
     
     &::before {
@@ -285,7 +285,7 @@ export const CardIcon = styled.div`
   font-size: 3rem;
   color: ${soloLevelingTheme.colors.accent.gold};
   margin-bottom: 1.75rem;
-  filter: drop-shadow(0 0 15px rgba(253, 203, 110, 0.7));
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.7));
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-block;
   position: relative;
@@ -300,7 +300,7 @@ export const CardIcon = styled.div`
     height: 80px;
     background: radial-gradient(
       circle,
-      rgba(253, 203, 110, 0.2) 0%,
+      rgba(56, 189, 248, 0.2) 0%,
       transparent 70%
     );
     border-radius: 50%;
@@ -310,7 +310,7 @@ export const CardIcon = styled.div`
   
   ${FeatureCard}:hover & {
     transform: scale(1.15) rotate(8deg);
-    filter: drop-shadow(0 0 25px rgba(253, 203, 110, 0.9));
+    filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.9));
     
     &::before {
       opacity: 1;
@@ -441,7 +441,7 @@ export const AnimatedListItem = styled.li`
     color: ${soloLevelingTheme.colors.accent.orange};
     margin-right: 1rem;
     font-size: 1rem;
-    filter: drop-shadow(0 0 6px rgba(225, 112, 85, 0.7));
+    filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.7));
     transition: all 0.4s ease;
     display: inline-block;
   }
@@ -453,21 +453,21 @@ export const AnimatedListItem = styled.li`
     left: 0;
     width: 0;
     height: 100%;
-    background: linear-gradient(90deg, rgba(108, 92, 231, 0.2), transparent);
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), transparent);
     transition: width 0.4s ease;
     z-index: 0;
   }
   
   &:hover {
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(26, 26, 46, 0.95));
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(26, 26, 46, 0.95));
     transform: translateX(12px) translateY(-3px);
     border-left-color: ${soloLevelingTheme.colors.accent.gold};
-    box-shadow: 0 6px 25px rgba(108, 92, 231, 0.4), 0 0 15px rgba(253, 203, 110, 0.2);
+    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.4), 0 0 15px rgba(56, 189, 248, 0.2);
     
     &::before {
       transform: translateX(6px) scale(1.2);
       color: ${soloLevelingTheme.colors.accent.gold};
-      filter: drop-shadow(0 0 10px rgba(253, 203, 110, 0.8));
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
     }
     
     &::after {
@@ -499,7 +499,7 @@ export const SearchInput = styled.input`
   &:focus {
     outline: none;
     border-color: ${soloLevelingTheme.colors.accent.purple};
-    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2), 0 0 20px rgba(108, 92, 231, 0.3);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2), 0 0 20px rgba(56, 189, 248, 0.3);
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(10, 10, 15, 0.95));
   }
   
@@ -555,12 +555,12 @@ export const FilterButton = styled.button`
   &:focus-visible {
     outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
     outline-offset: 2px;
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
   
   svg {
     filter: drop-shadow(0 0 4px ${props => props.$active 
-      ? 'rgba(253, 203, 110, 0.6)'
+      ? 'rgba(56, 189, 248, 0.6)'
       : 'rgba(255, 255, 255, 0.3)'
     });
   }

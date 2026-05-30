@@ -50,7 +50,7 @@ export const PageHeader = styled.header`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
     pointer-events: none;
   }
 `;
@@ -253,7 +253,7 @@ const MarkdownParagraph = styled.p`
   strong {
     font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
     color: ${soloLevelingTheme.colors.accent.gold};
-    text-shadow: 0 0 4px rgba(253, 203, 110, 0.2);
+    text-shadow: 0 0 4px rgba(56, 189, 248, 0.2);
   }
   
   em {
@@ -269,7 +269,7 @@ const MarkdownParagraph = styled.p`
     
     &:hover {
       color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
       text-decoration: underline;
     }
   }
@@ -341,7 +341,7 @@ export const PageDescription = styled.p`
     
     &:hover {
       color: ${soloLevelingTheme.colors.accent.gold};
-      text-shadow: 0 0 8px rgba(253, 203, 110, 0.5);
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
       text-decoration: underline;
     }
   }

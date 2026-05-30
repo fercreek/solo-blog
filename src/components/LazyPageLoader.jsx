@@ -18,7 +18,7 @@ const LoaderContainer = styled.div`
   background: ${soloLevelingTheme.colors.gradients.secondary};
   border-radius: ${soloLevelingTheme.borderRadius.xl};
   border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  box-shadow: 0 0 30px rgba(108, 92, 231, 0.2);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
 `;
 
 const Spinner = styled.div`
@@ -30,7 +30,7 @@ const Spinner = styled.div`
   border-radius: 50%;
   animation: ${spin} 1s linear infinite;
   margin-bottom: 1rem;
-  box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 `;
 
 const LoadingText = styled.p`

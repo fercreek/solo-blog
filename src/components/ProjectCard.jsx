@@ -1,22 +1,34 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { motion, useReducedMotion } from 'framer-motion';
-import { soloLevelingTheme } from '../styles/soloLevelingTheme';
-import Button from './Button';
+import SystemButton from './SystemButton';
 
-const glowPulse = keyframes`
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(108, 92, 231, 0.6), 0 0 40px rgba(253, 203, 110, 0.2);
-  }
+// ── Solo Leveling "System" palette ──────────────────────────────
+const SYS = {
+  bg: 'rgba(10, 18, 34, 0.72)',
+  cyan: '#38BDF8',
+  cyanBright: '#7DD3FC',
+  cyanDeep: '#0EA5E9',
+  amber: '#7DD3FC',
+  shadow: '#6D5DD3',
+  text: '#E8F1FF',
+  muted: '#94A8C4',
+};
+
+const borderGlow = keyframes`
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+`;
+
+const sweep = keyframes`
+  0% { transform: translateX(-130%) skewX(-12deg); }
+  100% { transform: translateX(230%) skewX(-12deg); }
 `;
 
 export const getProjectAnimationType = (project) => {
   const title = (project.title || '').toLowerCase();
   if (title.includes('studio') || title.includes('link')) return 'studio';
   if (title.includes('dance') || title.includes('vayla')) return 'dance';
-  if (title.includes('parcel') || title.includes('logistics') || title.includes('litebox')) return 'logistics';
+  if (title.includes('parcel') || title.includes('logistics') || title.includes('litebox') || title.includes('cargo')) return 'logistics';
   if (title.includes('finance') || title.includes('progreso') || title.includes('money')) return 'finance';
   return 'default';
 };
@@ -42,170 +54,174 @@ export const getProjectXP = (project) => {
   return Math.min(100, yearProgress + statusBonus);
 };
 
+const BEVEL = '14px';
+
 const Card = styled(motion.article)`
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.95));
-  border: 2px solid ${soloLevelingTheme.colors.border.primary};
-  border-radius: ${soloLevelingTheme.borderRadius.xl};
-  padding: 2.5rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.9rem 1.8rem;
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.06), transparent 42%),
+    ${SYS.bg};
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  /* System window cut */
+  clip-path: polygon(${BEVEL} 0, 100% 0, 100% calc(100% - ${BEVEL}), calc(100% - ${BEVEL}) 100%, 0 100%, 0 ${BEVEL});
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, 0.05),
+    0 18px 40px rgba(2, 6, 16, 0.55),
+    inset 0 0 22px rgba(56, 189, 248, 0.05);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  
+
+  /* top accent rail */
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: ${BEVEL};
     right: 0;
-    height: 5px;
-    background: ${soloLevelingTheme.colors.gradients.purple};
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
+    height: 2px;
+    background: linear-gradient(90deg, ${SYS.cyan}, ${SYS.cyanBright}, transparent);
+    opacity: 0.55;
+    ${props => !props.$reduced && css`animation: ${borderGlow} 3.5s ease-in-out infinite;`}
   }
-  
+
+  /* diagonal light sweep (hover) */
   &::after {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba(108, 92, 231, 0.1) 0%,
-      transparent 60%
-    );
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(125, 211, 252, 0.16), transparent);
+    transform: translateX(-130%) skewX(-12deg);
     pointer-events: none;
   }
-  
+
   &:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: ${soloLevelingTheme.shadows.glow}, 0 20px 50px rgba(108, 92, 231, 0.3), 0 0 60px rgba(108, 92, 231, 0.2);
-    border-color: ${soloLevelingTheme.colors.accent.purple};
-    
-    &::before {
-      transform: scaleX(1);
-    }
-    
+    transform: translateY(-8px);
+    border-color: ${SYS.cyan};
+    box-shadow:
+      0 0 22px rgba(56, 189, 248, 0.28),
+      0 26px 60px rgba(2, 6, 16, 0.6),
+      inset 0 0 26px rgba(56, 189, 248, 0.1);
+
+    &::before { opacity: 1; }
     &::after {
-      opacity: 1;
-      animation: ${glowPulse} 3s ease-in-out infinite;
+      ${props => !props.$reduced && css`animation: ${sweep} 0.85s ease;`}
     }
   }
-  
+
   @media (max-width: 768px) {
-    padding: 2rem;
-    
-    &:hover {
-      transform: translateY(-6px) scale(1.01);
-    }
+    padding: 1.6rem 1.4rem 1.5rem;
+    &:hover { transform: translateY(-4px); }
   }
-  
-  @media (max-width: 480px) {
-    padding: 1.5rem;
-  }
+`;
+
+const CornerTag = styled.span`
+  position: absolute;
+  top: 0.85rem;
+  right: 1.1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: ${SYS.cyanBright};
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.55);
+`;
+
+const HeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
 `;
 
 export const StatusBadge = styled.span`
-  display: inline-block;
-  padding: 0.35rem 0.85rem;
-  border-radius: ${soloLevelingTheme.borderRadius.full};
-  font-size: 0.75rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.75rem;
-  transition: all 0.3s ease;
-  
-  ${props => props.$status === 'production' && `
-    background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.gold}, ${soloLevelingTheme.colors.accent.orange});
-    color: ${soloLevelingTheme.colors.text.primary};
-    box-shadow: 0 0 15px rgba(253, 203, 110, 0.4);
-  `}
-  
-  ${props => props.$status === 'mvp' && `
-    background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.purple}, ${soloLevelingTheme.colors.accent.blue});
-    color: ${soloLevelingTheme.colors.text.primary};
-    box-shadow: 0 0 15px rgba(108, 92, 231, 0.4);
-  `}
-`;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
 
-const PostCategory = styled.span`
-  background: ${soloLevelingTheme.colors.gradients.primary};
-  color: ${soloLevelingTheme.colors.text.primary};
-  padding: 0.25rem 0.75rem;
-  border-radius: ${soloLevelingTheme.borderRadius.sm};
-  font-size: 0.75rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-`;
-
-const PostTitle = styled.h3`
-  font-size: 1.5rem;
-  color: ${soloLevelingTheme.colors.text.primary};
-  margin-bottom: 1rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  
-  @media (max-width: 768px) {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
   }
+
+  ${props => props.$status === 'production' && css`
+    color: #03121b;
+    background: linear-gradient(135deg, ${SYS.cyan}, ${SYS.cyanDeep});
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+    &::before { background: #03121b; box-shadow: 0 0 6px rgba(3, 18, 27, 0.6); }
+  `}
+
+  ${props => props.$status !== 'production' && css`
+    color: ${SYS.amber};
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    &::before { background: ${SYS.amber}; box-shadow: 0 0 8px rgba(56, 189, 248, 0.7); }
+  `}
 `;
 
-const PostExcerpt = styled.p`
-  color: ${soloLevelingTheme.colors.text.secondary};
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+const Category = styled.span`
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${SYS.muted};
+`;
+
+const Title = styled.h3`
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: ${SYS.text};
+  margin: 0 0 0.85rem;
+
+  @media (max-width: 768px) { font-size: 1.3rem; }
+`;
+
+const Excerpt = styled.p`
+  color: ${SYS.muted};
+  line-height: 1.65;
+  font-size: 0.97rem;
+  margin: 0 0 1.5rem;
+  flex: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto;
-  flex: 1;
-  
-  @media (max-width: 768px) {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-  }
+
+  @media (max-width: 768px) { font-size: 0.92rem; line-height: 1.55; }
 `;
 
-const PostMeta = styled.div`
+const Meta = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
-  color: ${soloLevelingTheme.colors.text.muted};
-  
-  @media (max-width: 768px) {
-    font-size: 0.85rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
+  gap: 0.55rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: ${SYS.muted};
+  margin-bottom: 1.1rem;
+
+  .dot { color: ${SYS.cyan}; }
 `;
 
 const ButtonWrapper = styled.div`
-  margin-top: 1rem;
   width: 100%;
-  
-  a {
-    display: block;
-    text-align: center;
-    
-    @media (max-width: 768px) {
-      padding: 0.625rem 1.25rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    margin-top: 0.75rem;
-  }
+  a { display: flex; width: 100%; }
 `;
 
 const parseDelay = (delayStr) => parseFloat(String(delayStr).replace('s', '')) || 0;
@@ -223,25 +239,33 @@ const ProjectCard = ({
 }) => {
   const prefersReducedMotion = useReducedMotion();
   const delaySeconds = parseDelay(delay);
+  const level = getProjectLevel({ title, date, status });
+
   return (
     <Card
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 30 }}
-      animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : delaySeconds }}
+      $reduced={prefersReducedMotion}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 28 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.55, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : delaySeconds }}
     >
-      <StatusBadge $status={status}>
-        {statusLabel || (status === 'production' ? 'In Production' : 'MVP')}
-      </StatusBadge>
-      <PostCategory>{category}</PostCategory>
-      <PostTitle>{title}</PostTitle>
-      <PostExcerpt>{excerpt}</PostExcerpt>
-      <PostMeta>
+      <CornerTag>LV.{level}</CornerTag>
+      <HeaderRow>
+        <StatusBadge $status={status}>
+          {statusLabel || (status === 'production' ? 'In Production' : 'MVP')}
+        </StatusBadge>
+        <Category>{category}</Category>
+      </HeaderRow>
+      <Title>{title}</Title>
+      <Excerpt>{excerpt}</Excerpt>
+      <Meta>
+        <span className="dot">▸</span>
         <span>{date}</span>
-      </PostMeta>
+      </Meta>
       <ButtonWrapper>
-        <Button as="a" href={url} target="_blank" rel="noopener noreferrer" variant="secondary">
+        <SystemButton href={url} target="_blank" rel="noopener noreferrer" variant="secondary">
           {buttonText}
-        </Button>
+        </SystemButton>
       </ButtonWrapper>
     </Card>
   );

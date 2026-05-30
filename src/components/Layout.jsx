@@ -20,8 +20,8 @@ const LayoutContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 80%, rgba(108, 92, 231, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(253, 203, 110, 0.05) 0%, transparent 50%),
+    background: radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(116, 185, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;

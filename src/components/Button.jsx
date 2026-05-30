@@ -19,7 +19,7 @@ const baseStyles = css`
   &:focus-visible {
     outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
     outline-offset: 2px;
-    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
   
   &:disabled {
@@ -33,7 +33,7 @@ const baseStyles = css`
     
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(253, 203, 110, 0.3);
+      box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
     }
   `}
   
@@ -55,7 +55,7 @@ const baseStyles = css`
     color: ${soloLevelingTheme.colors.text.secondary};
     
     &:hover:not(:disabled) {
-      background: rgba(108, 92, 231, 0.1);
+      background: rgba(56, 189, 248, 0.1);
       color: ${soloLevelingTheme.colors.text.primary};
     }
   `}
@@ -66,8 +66,8 @@ const baseStyles = css`
     border: 2px solid ${soloLevelingTheme.colors.accent.purple};
     
     &:hover:not(:disabled) {
-      background: rgba(108, 92, 231, 0.2);
-      box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+      background: rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
       transform: translateY(-2px);
     }
   `}

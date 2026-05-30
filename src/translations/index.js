@@ -33,8 +33,11 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Agentic AI Architect: I build autonomous systems that work while you scale.',
-        description: 'I don\'t sell hours; I deliver relief. I eliminate the bottlenecks that bleed your cash flow through Agentic AI Architecture.'
+        kicker: 'Builder · Operator · Dancer · Trader',
+        title: 'I build AI-native products — and run them in production.',
+        description: 'Engineer and operator from Monterrey. I design systems with the precision of a financial market and the discipline of a bachata choreography, then ship them as real products people use every day. This is who I am and what I\'m building.',
+        ctaPrimary: 'Explore my work',
+        ctaSecondary: 'Who I am'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -45,7 +48,7 @@ export const translations = {
           excerpt: 'Revenue Protection for academies. Stop the silent capital leak and take back control of your income today.'
         },
         vaylaDance: {
-          excerpt: 'Event Intelligence. We honor dancers\' effort with precise, real-time results. Zero errors, zero chaos.'
+          excerpt: 'Event Intelligence. Real-time judge scoring for live competitions — now across dance and gymnastics. We honor athletes\' effort with precise results. Zero errors, zero chaos.'
         }
       },
       recent: {
@@ -60,6 +63,15 @@ export const translations = {
         },
         chronoDev: {
           excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
+        },
+        encontreras: {
+          excerpt: 'Agentic open-source pipeline. Stop buying cold databases: it extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers — all from your own machine.'
+        },
+        cargoControl: {
+          excerpt: 'Logistics control for a real cross-border operation (McAllen→Monterrey). Telegram bot + OCR scanning + QR labels + financial reconciliation. Live with a paying client.'
+        },
+        contrerasCode: {
+          excerpt: 'My digitalization & automation studio. AI WhatsApp agents and custom systems that turn manual operations into measurable outcomes for non-technical businesses.'
         }
       }
     },
@@ -74,8 +86,15 @@ export const translations = {
       closerLook: {
         title: 'Beyond the Code',
         text1: "Over the years I've seen that what matters most to clients is certainty that things will work, more than technical details.",
-        text2: 'My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a market or a choreography.',
+        text2: 'My analytical mindset as a trader and the discipline of salsa and bachata allow me to approach engineering with precision and creativity. Engineering is a system of precision, like a financial market or a choreography.',
         text3: 'I\'m active in the local tech scene and have organized hackathons at UANL-FIME. I don\'t just ship code; I ship solutions that move the needle.'
+      },
+      systems: {
+        title: 'Systems in Production',
+        subtitle: 'Not side projects — products with paying clients.',
+        studioLink: { name: 'Studio Link', detail: 'SaaS for academies — billing, attendance & WhatsApp comms. Live with real clients.' },
+        vayla: { name: 'Vayla', detail: 'Real-time judge scoring for live competitions. Used at StarCup, Impulso & Summer Cup — dance and gymnastics.' },
+        cargoControl: { name: 'Cargo Control', detail: 'Cross-border logistics control (McAllen→Monterrey). Live with a paying client.' }
       },
       hobbies: {
         title: 'Professional Systems',
@@ -169,7 +188,9 @@ export const translations = {
       location: 'Location',
       copyEmail: 'Copy email',
       copied: 'Copied!',
-      openLink: 'Open'
+      openLink: 'Open',
+      ctaAudit: 'Request your 15-min Audit',
+      ctaReply: 'Reply within 24 hours'
     }
   },
   es: {
@@ -206,8 +227,11 @@ export const translations = {
     home: {
       hero: {
         name: 'Fernando Castañeda',
-        title: 'Agentic AI Architect: Construyo sistemas autónomos que trabajan mientras tú escalas.',
-        description: 'No contrato horas; entrego alivio. Elimino los cuellos de botella que desangran tu flujo de caja mediante Arquitectura de IA Agéntica.'
+        kicker: 'Builder · Operator · Dancer · Trader',
+        title: 'Construyo productos AI-native — y los corro en producción.',
+        description: 'Ingeniero y operador de Monterrey. Diseño sistemas con la precisión de un mercado financiero y la disciplina de una coreografía de bachata, y los lanzo como productos reales que la gente usa todos los días. Esto es quién soy y lo que estoy construyendo.',
+        ctaPrimary: 'Explora mi trabajo',
+        ctaSecondary: 'Quién soy'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -218,7 +242,7 @@ export const translations = {
           excerpt: 'Revenue Protection para Academias. Detén la fuga silenciosa de capital y recupera el control de tus ingresos hoy.'
         },
         vaylaDance: {
-          excerpt: 'Event Intelligence. Honramos el esfuerzo de los bailarines con resultados precisos en tiempo real. Cero errores, cero caos.'
+          excerpt: 'Event Intelligence. Calificación de jueces en tiempo real para competencias en vivo — ahora en baile y gimnasia. Honramos el esfuerzo de los atletas con resultados precisos. Cero errores, cero caos.'
         }
       },
       recent: {
@@ -233,6 +257,15 @@ export const translations = {
         },
         chronoDev: {
           excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
+        },
+        encontreras: {
+          excerpt: 'Pipeline agéntico open-source. Deja de comprar bases frías: extrae de Maps, analiza presencia web, califica prospectos y redacta rompehielos con IA — todo desde tu propia máquina.'
+        },
+        cargoControl: {
+          excerpt: 'Control logístico para una operación transfronteriza real (McAllen→Monterrey). Bot de Telegram + escaneo OCR + etiquetas QR + conciliación financiera. En producción con cliente de pago.'
+        },
+        contrerasCode: {
+          excerpt: 'Mi estudio de digitalización y automatización. Agentes de WhatsApp con IA y sistemas a la medida que convierten operaciones manuales en resultados medibles para negocios no técnicos.'
         }
       }
     },
@@ -247,8 +280,15 @@ export const translations = {
       closerLook: {
         title: 'Más Allá del Código',
         text1: 'A lo largo de los años he visto que lo que más importa al cliente es la certeza de que las cosas van a funcionar, más que los detalles técnicos.',
-        text2: 'Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado o una coreografía.',
+        text2: 'Mi mentalidad analítica como trader y la disciplina del salsa y bachata me permiten abordar la ingeniería con precisión y creatividad. La ingeniería es un sistema de precisión, como un mercado financiero o una coreografía.',
         text3: 'Soy activo en la escena tech local y he organizado hackathons en UANL-FIME. No solo entrego código; entrego soluciones que marcan la diferencia.'
+      },
+      systems: {
+        title: 'Sistemas en Producción',
+        subtitle: 'No son side projects — productos con clientes de pago.',
+        studioLink: { name: 'Studio Link', detail: 'SaaS para academias — cobros, asistencia y comunicación por WhatsApp. En producción con clientes reales.' },
+        vayla: { name: 'Vayla', detail: 'Calificación de jueces en tiempo real para competencias en vivo. Usado en StarCup, Impulso y Summer Cup — baile y gimnasia.' },
+        cargoControl: { name: 'Cargo Control', detail: 'Control logístico transfronterizo (McAllen→Monterrey). En producción con cliente de pago.' }
       },
       hobbies: {
         title: 'Sistemas Profesionales',
@@ -342,7 +382,9 @@ export const translations = {
       location: 'Ubicación',
       copyEmail: 'Copiar correo',
       copied: '¡Copiado!',
-      openLink: 'Abrir'
+      openLink: 'Abrir',
+      ctaAudit: 'Solicita tu Auditoría de 15 min',
+      ctaReply: 'Respondo en menos de 24 horas'
     }
   }
 };

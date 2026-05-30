@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
-import { soloLevelingTheme } from '../styles/soloLevelingTheme';
+import { useReducedMotion } from 'framer-motion';
 import {
   PageContainer,
   PageHeader,
@@ -9,10 +9,6 @@ import {
   PageDescription
 } from '../components/PageComponents';
 import {
-  FeatureCard,
-  CardIcon,
-  CardTitle,
-  CardDescription,
   SectionTitle
 } from '../styles/designSystem';
 import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools, FaClock } from 'react-icons/fa';
@@ -21,6 +17,8 @@ import { useTranslation } from '../hooks/useTranslation';
 import { getProjectsData } from '../data/projectsTranslations';
 import ProjectCard from '../components/ProjectCard';
 import PageHead from '../components/PageHead';
+import { SystemPanel } from '../components/system';
+import { sys } from '../styles/systemTokens';
 
 const RecentProjectsGrid = styled.div`
   display: grid;
@@ -73,29 +71,27 @@ const HackathonGrid = styled.div`
   }
 `;
 
-const HackathonCard = styled(FeatureCard)`
-  padding: 1.25rem;
-  border-width: 1px;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-
-  &::before {
-    height: 3px;
-  }
+const HackathonCardIcon = styled.div`
+  font-size: 1.65rem;
+  color: ${sys.color.cyan};
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
 `;
 
-const HackathonCardIcon = styled(CardIcon)`
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-`;
-
-const HackathonCardTitle = styled(CardTitle)`
+const HackathonCardTitle = styled.h4`
+  font-family: ${sys.font.heading};
   font-size: 1.05rem;
-  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: ${sys.color.text};
+  margin: 0 0 0.45rem;
 `;
 
-const HackathonCardDescription = styled(CardDescription)`
-  font-size: 0.8125rem;
-  line-height: 1.5;
+const HackathonCardDescription = styled.p`
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: ${sys.color.muted};
+  margin: 0;
+  flex: 1;
 `;
 
 const ProjectLink = styled.a`
@@ -103,34 +99,27 @@ const ProjectLink = styled.a`
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
-  background: linear-gradient(135deg, ${soloLevelingTheme.colors.accent.orange}, ${soloLevelingTheme.colors.accent.gold});
-  color: ${soloLevelingTheme.colors.text.primary};
+  font-family: ${sys.font.mono};
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${sys.color.cyanBright};
   text-decoration: none;
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  font-weight: ${soloLevelingTheme.typography.fontWeight.semibold};
-  transition: all 0.3s ease;
-  box-shadow: ${soloLevelingTheme.shadows.glow};
-  border: 1px solid rgba(253, 203, 110, 0.3);
-  
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+
   &:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 30px rgba(253, 203, 110, 0.6), 0 6px 20px rgba(225, 112, 85, 0.4);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
   }
-  
-  &:active {
-    transform: translateY(0) scale(1);
-  }
-  
-  svg {
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
-  }
+
+  svg { filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6)); }
 `;
 
 const ProjectsPage = () => {
   const { language } = useLanguage();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   const mainProjects = useMemo(() => [
     {
@@ -141,7 +130,17 @@ const ProjectsPage = () => {
       url: 'https://studiolink.online/',
       status: 'production',
       category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(116, 185, 255, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
+    },
+    {
+      id: 'contreras-code',
+      title: 'Contreras Code',
+      excerpt: t('home.recent.contrerasCode.excerpt'),
+      date: '2025',
+      url: 'https://www.contrerascode.com/',
+      status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(31, 75, 255, 0.3), rgba(56, 189, 248, 0.2))'
     },
     {
       id: 'vayla-dance',
@@ -151,37 +150,17 @@ const ProjectsPage = () => {
       url: 'https://www.vayla.dance/',
       status: 'production',
       category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(253, 203, 110, 0.3), rgba(225, 112, 85, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
     },
     {
-      id: 'litebox-parcel',
-      title: 'Litebox Parcel',
-      excerpt: t('home.recent.liteboxParcel.excerpt'),
+      id: 'cargo-control',
+      title: 'Cargo Control · Litebox',
+      excerpt: t('home.recent.cargoControl.excerpt'),
       date: '2025',
       url: 'https://www.liteboxparcel.com/',
       status: 'production',
       category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(253, 203, 110, 0.3), rgba(225, 112, 85, 0.2))'
-    },
-    {
-      id: 'progreso',
-      title: 'Progreso Personal Finance',
-      excerpt: t('home.recent.progreso.excerpt'),
-      date: '2025',
-      url: 'https://v0-progreso-personal-finance-ui.vercel.app/',
-      status: 'mvp',
-      category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(116, 185, 255, 0.2))'
-    },
-    {
-      id: 'sin-bronca',
-      title: 'Sin Bronca',
-      excerpt: t('home.recent.sinBronca.excerpt'),
-      date: '2025',
-      url: 'https://sin-bronca.vercel.app/',
-      status: 'mvp',
-      category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(108, 92, 231, 0.2))'
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
     },
     {
       id: 'chronodev',
@@ -192,6 +171,36 @@ const ProjectsPage = () => {
       status: 'production',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(100, 116, 139, 0.3), rgba(71, 85, 105, 0.2))'
+    },
+    {
+      id: 'encontreras',
+      title: 'Encontreras',
+      excerpt: t('home.recent.encontreras.excerpt'),
+      date: '2025',
+      url: 'https://github.com/fercreek/encontreras',
+      status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
+    },
+    {
+      id: 'progreso',
+      title: 'Progreso Personal Finance',
+      excerpt: t('home.recent.progreso.excerpt'),
+      date: '2025',
+      url: 'https://v0-progreso-personal-finance-ui.vercel.app/',
+      status: 'mvp',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
+    },
+    {
+      id: 'sin-bronca',
+      title: 'Sin Bronca',
+      excerpt: t('home.recent.sinBronca.excerpt'),
+      date: '2025',
+      url: 'https://sin-bronca.vercel.app/',
+      status: 'mvp',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(56, 189, 248, 0.2))'
     }
   ], [t]);
 
@@ -245,7 +254,8 @@ const ProjectsPage = () => {
     const lowerTitle = title.toLowerCase();
     if (lowerTitle.includes('studio') || lowerTitle.includes('link')) return <FaCode />;
     if (lowerTitle.includes('dance') || lowerTitle.includes('vayla')) return <FaRocket />;
-    if (lowerTitle.includes('parcel') || lowerTitle.includes('litebox')) return <FaBox />;
+    if (lowerTitle.includes('cargo') || lowerTitle.includes('parcel') || lowerTitle.includes('litebox')) return <FaBox />;
+    if (lowerTitle.includes('contreras')) return <FaCode />;
     if (lowerTitle.includes('finance') || lowerTitle.includes('progreso')) return <FaDollarSign />;
     if (lowerTitle.includes('chronodev')) return <FaClock />;
     if (lowerTitle.includes('bronca')) return <FaTools />;
@@ -286,14 +296,22 @@ const ProjectsPage = () => {
             <SectionTitle>{t('projects.hackathonProjects') || 'Hackathon Projects'}</SectionTitle>
             <HackathonGrid>
               {hackathonProjects.map((project, index) => (
-                <HackathonCard key={project.title} delay={`${index * 0.1}s`}>
+                <SystemPanel
+                  key={project.title}
+                  $compact
+                  $reduced={prefersReducedMotion}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+                  whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, ease: [0, 0.2, 0.2, 1], delay: prefersReducedMotion ? 0 : index * 0.08 }}
+                >
                   <HackathonCardIcon>{getProjectIcon(project.title)}</HackathonCardIcon>
                   <HackathonCardTitle>{project.title}</HackathonCardTitle>
                   <HackathonCardDescription>{project.description}</HackathonCardDescription>
                   {project.url && (
-                    <ProjectLink 
-                      href={project.url} 
-                      target="_blank" 
+                    <ProjectLink
+                      href={project.url}
+                      target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit ${project.title}`}
                     >
@@ -301,7 +319,7 @@ const ProjectsPage = () => {
                       {t('common.buttons.viewProject')}
                     </ProjectLink>
                   )}
-                </HackathonCard>
+                </SystemPanel>
               ))}
             </HackathonGrid>
           </HackathonProjectsSection>
