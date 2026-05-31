@@ -94,7 +94,8 @@ export const translations = {
         subtitle: 'Not side projects — products with paying clients.',
         studioLink: { name: 'Studio Link', detail: 'SaaS for academies — billing, attendance & WhatsApp comms. Live with real clients.' },
         vayla: { name: 'Vayla', detail: 'Real-time judge scoring for live competitions. Used at StarCup, Impulso & Summer Cup — dance and gymnastics.' },
-        cargoControl: { name: 'Cargo Control', detail: 'Cross-border logistics control (McAllen→Monterrey). Live with a paying client.' }
+        cargoControl: { name: 'Cargo Control', detail: 'Cross-border logistics control system — Telegram bot, OCR scanning, QR labels & reconciliation. Live with a paying client.' },
+        litebox: { name: 'Litebox Parcel', detail: 'Parcel platform for cross-border shipping — quoting, onboarding & payments. Live at liteboxparcel.com.' }
       },
       hobbies: {
         title: 'Professional Systems',
@@ -288,7 +289,8 @@ export const translations = {
         subtitle: 'No son side projects — productos con clientes de pago.',
         studioLink: { name: 'Studio Link', detail: 'SaaS para academias — cobros, asistencia y comunicación por WhatsApp. En producción con clientes reales.' },
         vayla: { name: 'Vayla', detail: 'Calificación de jueces en tiempo real para competencias en vivo. Usado en StarCup, Impulso y Summer Cup — baile y gimnasia.' },
-        cargoControl: { name: 'Cargo Control', detail: 'Control logístico transfronterizo (McAllen→Monterrey). En producción con cliente de pago.' }
+        cargoControl: { name: 'Cargo Control', detail: 'Sistema de control logístico transfronterizo — bot de Telegram, escaneo OCR, etiquetas QR y conciliación. En producción con cliente de pago.' },
+        litebox: { name: 'Litebox Parcel', detail: 'Plataforma de paquetería transfronteriza — cotización, onboarding y pagos. En vivo en liteboxparcel.com.' }
       },
       hobbies: {
         title: 'Sistemas Profesionales',

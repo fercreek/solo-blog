@@ -154,8 +154,18 @@ const ProjectsPage = () => {
     },
     {
       id: 'cargo-control',
-      title: 'Cargo Control · Litebox',
+      title: 'Cargo Control',
       excerpt: t('home.recent.cargoControl.excerpt'),
+      date: '2025',
+      url: '',
+      status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
+    },
+    {
+      id: 'litebox-parcel',
+      title: 'Litebox Parcel',
+      excerpt: t('home.recent.liteboxParcel.excerpt'),
       date: '2025',
       url: 'https://www.liteboxparcel.com/',
       status: 'production',

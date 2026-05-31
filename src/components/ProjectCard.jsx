@@ -224,6 +224,18 @@ const ButtonWrapper = styled.div`
   a { display: flex; width: 100%; }
 `;
 
+const PrivateTag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${SYS.muted};
+  padding: 0.6rem 0;
+`;
+
 const parseDelay = (delayStr) => parseFloat(String(delayStr).replace('s', '')) || 0;
 
 const ProjectCard = ({
@@ -263,9 +275,13 @@ const ProjectCard = ({
         <span>{date}</span>
       </Meta>
       <ButtonWrapper>
-        <SystemButton href={url} target="_blank" rel="noopener noreferrer" variant="secondary">
-          {buttonText}
-        </SystemButton>
+        {url ? (
+          <SystemButton href={url} target="_blank" rel="noopener noreferrer" variant="secondary">
+            {buttonText}
+          </SystemButton>
+        ) : (
+          <PrivateTag>● Private engagement</PrivateTag>
+        )}
       </ButtonWrapper>
     </Card>
   );

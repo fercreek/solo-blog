@@ -460,8 +460,8 @@ const HomePage = () => {
     },
     {
       id: 3,
-      title: 'Cargo Control · Litebox',
-      excerpt: t('home.recent.cargoControl.excerpt'),
+      title: 'Litebox Parcel',
+      excerpt: t('home.recent.liteboxParcel.excerpt'),
       date: '2025',
       readTime: `${language === 'es' ? '3 min lectura' : `3 ${t('common.time.minRead')}`}`,
       url: 'https://www.liteboxparcel.com/',

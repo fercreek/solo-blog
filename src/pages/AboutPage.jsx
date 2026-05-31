@@ -384,7 +384,8 @@ const AboutPage = () => {
   const systems = [
     { icon: <FaCode />, name: t('about.systems.studioLink.name'), detail: t('about.systems.studioLink.detail') },
     { icon: <FaTrophy />, name: t('about.systems.vayla.name'), detail: t('about.systems.vayla.detail') },
-    { icon: <FaBox />, name: t('about.systems.cargoControl.name'), detail: t('about.systems.cargoControl.detail') }
+    { icon: <FaServer />, name: t('about.systems.cargoControl.name'), detail: t('about.systems.cargoControl.detail') },
+    { icon: <FaBox />, name: t('about.systems.litebox.name'), detail: t('about.systems.litebox.detail') }
   ];
 
   return (
