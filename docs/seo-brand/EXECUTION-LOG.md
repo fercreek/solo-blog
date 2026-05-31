@@ -16,10 +16,14 @@ Aplicado contra `ANALYSIS-2026-05-31.md`. Ejecutado directo (no executor skill).
   (vite preview + Chrome `--dump-dom` → escribe `dist/<route>/index.html` con contenido + JSON-LD).
   Validado: about/projects/now/contact/impossible-list renderizados con texto real, root no vacío.
 
-### ⚠️ Flag / decisión pendiente
-- **Prerender en CI de Vercel:** el script usa el Chrome local (no existe en el build de Vercel).
-  Funciona local y para deploy `--prebuilt`. Para prerender CI-native → instalar `react-snap`
-  (bundlea chromium) o puppeteer+@sparticuz/chromium. Requiere wiring hydrateRoot (React 19). Pendiente OK Fernando.
+### ✅ Prerender CI-native (resuelto)
+- `prerender.mjs` migrado a **puppeteer** (chromium bundleado → corre en build de Vercel).
+- `.puppeteerrc.cjs` → cache de chromium en `node_modules/.cache/puppeteer` (persiste en CI).
+- `build` ahora = `vite build && node scripts/prerender.mjs` (Vercel default lo corre). `build:fast` = solo vite.
+- Validado local: las 6 rutas prerenderizan con contenido + JSON-LD, root no vacío.
+- Riesgo residual: si el build image de Vercel le faltan libs de chromium → fallback `@sparticuz/chromium`. Setup estándar suele funcionar.
+
+### ⚠️ Pendiente menor
 - **JSON-LD per-route vía helmet** (ProfilePage/CollectionPage) — opcional; el Person estático ya cubre identidad.
 - **Rutas ES separadas** (`/es/...`) para indexar español de verdad — deferred (refactor de routing).
 - **Lighthouse baseline** en prod — pendiente correr.

@@ -9,7 +9,7 @@
     "llmsTxt": true,
     "hreflang": true,
     "prerenderLocal": true,
-    "prerenderCI": false,
+    "prerenderCI": true,
     "lighthouse": null
   },
   "targetKeywords": [
@@ -18,7 +18,6 @@
     "AI automation consultant Monterrey"
   ],
   "pending": [
-    "prerender-ci-react-snap",
     "jsonld-per-route-helmet",
     "es-separate-routes",
     "lighthouse-baseline"
@@ -30,6 +29,7 @@
     "static-html-meta",
     "hreflang-tags",
     "sitemap-lastmod",
-    "prerender-local"
+    "prerender-local",
+    "prerender-ci-puppeteer"
   ]
 }
