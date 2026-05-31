@@ -43,15 +43,16 @@ const SystemsSubtitle = styled.p`
   letter-spacing: 0.08em;
   color: ${sys.color.cyanBright};
   margin: 0.4rem 0 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
 `;
 
 const SystemsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 1.25rem;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     gap: 1rem;
   }
 `;
@@ -131,9 +132,28 @@ const ExhibitionsSection = styled.div`
   margin: 4rem 0;
 `;
 
-const CategoryCard = styled(HighlightCard)`
+const CategoryCard = styled.div`
   margin-bottom: 2.5rem;
-  
+  padding: 2rem 1.9rem;
+  background:
+    linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent 45%),
+    ${sys.color.panel};
+  backdrop-filter: blur(12px);
+  border: 1px solid ${sys.color.line};
+  clip-path: ${sys.windowClip()};
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: ${sys.bevel};
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, ${sys.color.cyan}, ${sys.color.cyanBright}, transparent);
+    opacity: 0.55;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -211,18 +231,18 @@ const SubEventList = styled.ul`
 
 const SubEventItem = styled.li`
   padding: 0.875rem 1.125rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.6), rgba(10, 10, 15, 0.6));
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-left: 3px solid ${soloLevelingTheme.colors.accent.purple};
-  border-radius: ${soloLevelingTheme.borderRadius.md};
-  color: ${soloLevelingTheme.colors.text.secondary};
+  background: rgba(10, 18, 34, 0.55);
+  border: 1px solid ${sys.color.line};
+  border-left: 3px solid ${sys.color.cyan};
+  clip-path: ${sys.windowClip('8px')};
+  color: ${sys.color.muted};
   font-size: 1rem;
   line-height: 1.5;
   transition: all 0.3s ease;
-  
+
   &:hover {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(26, 26, 46, 0.8));
-    border-left-color: ${soloLevelingTheme.colors.accent.gold};
+    background: rgba(56, 189, 248, 0.12);
+    border-left-color: ${sys.color.cyanBright};
     transform: translateX(4px);
   }
   
@@ -243,12 +263,14 @@ const DanceStatsSummary = styled.div`
   gap: 0.5rem 1.5rem;
   padding: 1rem 1.25rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(26, 26, 46, 0.9));
-  border: 1px solid ${soloLevelingTheme.colors.border.accent};
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  color: ${soloLevelingTheme.colors.text.secondary};
-  font-size: 1rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid ${sys.color.line};
+  clip-path: ${sys.windowClip('10px')};
+  color: ${sys.color.cyanBright};
+  font-family: ${sys.font.mono};
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
 `;
 
 const AccordionTrigger = styled.button`
@@ -258,35 +280,39 @@ const AccordionTrigger = styled.button`
   justify-content: space-between;
   gap: 1rem;
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(135deg, rgba(26, 26, 46, 0.85), rgba(10, 10, 15, 0.85));
-  border: 1px solid ${soloLevelingTheme.colors.border.primary};
-  border-left: 5px solid ${soloLevelingTheme.colors.accent.orange};
-  border-radius: ${soloLevelingTheme.borderRadius.lg};
-  color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 1.05rem;
-  font-weight: ${soloLevelingTheme.typography.fontWeight.medium};
+  background: rgba(10, 18, 34, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid ${sys.color.line};
+  border-left: 4px solid ${sys.color.cyan};
+  clip-path: ${sys.windowClip('10px')};
+  color: ${sys.color.text};
+  font-family: ${sys.font.mono};
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(26, 26, 46, 0.95));
-    border-left-color: ${soloLevelingTheme.colors.accent.gold};
-    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.12);
+    border-left-color: ${sys.color.cyanBright};
+    box-shadow: ${sys.glow.soft};
   }
-  
+
   &:focus-visible {
-    outline: 2px solid ${soloLevelingTheme.colors.accent.purple};
+    outline: 2px solid ${sys.color.cyanBright};
     outline-offset: 2px;
   }
-  
+
   span {
     flex: 1;
   }
-  
+
   svg {
     flex-shrink: 0;
-    color: ${soloLevelingTheme.colors.accent.gold};
+    color: ${sys.color.cyan};
     transition: transform 0.3s ease;
   }
 `;

@@ -149,17 +149,21 @@ export const GradientBadge = styled.div`
 
 export const SectionTitle = styled.h2`
   color: ${soloLevelingTheme.colors.text.primary};
-  font-size: 2.5rem;
+  font-size: clamp(1.45rem, 6vw, 2.5rem);
   font-weight: ${soloLevelingTheme.typography.fontWeight.bold};
   margin: ${props => props.margin || '4rem 0 3rem'};
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 0 0.75rem;
   font-family: ${soloLevelingTheme.typography.fontFamily.heading};
   text-align: center;
   position: relative;
-  background: ${soloLevelingTheme.colors.gradients.gold};
+  background: linear-gradient(135deg, #7DD3FC 0%, #38BDF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.35);
   animation: ${fadeInUp} 0.8s ease-out;
   
   &::before {
@@ -168,7 +172,8 @@ export const SectionTitle = styled.h2`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120%;
+    width: 100%;
+    max-width: 100%;
     height: 120%;
     background: radial-gradient(
       circle,
@@ -185,9 +190,9 @@ export const SectionTitle = styled.h2`
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 150px;
-    height: 4px;
-    background: ${soloLevelingTheme.colors.gradients.gold};
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #38BDF8, #7DD3FC);
     border-radius: ${soloLevelingTheme.borderRadius.full};
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
     animation: ${glowPulse} 2s ease-in-out infinite;

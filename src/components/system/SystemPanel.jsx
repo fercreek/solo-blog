@@ -21,6 +21,8 @@ export const SystemPanel = styled(motion.div).withConfig({
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
   padding: ${props => (props.$compact ? '1.35rem 1.3rem' : '2rem 1.9rem 1.8rem')};
   background:
     linear-gradient(135deg, rgba(56, 189, 248, 0.06), transparent 42%),

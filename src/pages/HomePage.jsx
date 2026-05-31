@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { soloLevelingTheme } from '../styles/soloLevelingTheme';
 import { PageContainer } from '../components/PageComponents';
@@ -8,6 +8,8 @@ import { useTranslation } from '../hooks/useTranslation';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
 import SystemButton from '../components/SystemButton';
+import { SystemNotice } from '../components/system';
+import { TypeAnimation } from 'react-type-animation';
 import PageHead from '../components/PageHead';
 
 const glowPulse = keyframes`
@@ -17,6 +19,34 @@ const glowPulse = keyframes`
   50% {
     box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.2);
   }
+`;
+
+const orbFloat = keyframes`
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-18px) scale(1.1); opacity: 1; }
+`;
+
+const GridOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 0%, transparent 75%);
+`;
+
+const GlowOrb = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(26px);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.72), transparent 68%);
+  ${props => !props.$reduced && css`animation: ${orbFloat} ${props.$dur || '7s'} ease-in-out infinite;`}
 `;
 
 const HeroWrapper = styled.section`
@@ -484,6 +514,26 @@ const HomePage = () => {
       <HeroWrapper>
         <HeroSection>
         <ParallaxLayerStyles style={{ y: parallaxY }} />
+        <GridOverlay />
+        <GlowOrb $reduced={prefersReducedMotion} $dur="7s" style={{ width: 220, height: 220, top: '8%', left: '-4%' }} />
+        <GlowOrb $reduced={prefersReducedMotion} $dur="9s" style={{ width: 160, height: 160, bottom: '6%', right: '-2%' }} />
+        <SystemNotice reduced={prefersReducedMotion} style={{ position: 'relative', zIndex: 1, marginBottom: '1.4rem' }}>
+          {prefersReducedMotion ? (
+            'Operator online'
+          ) : (
+            <TypeAnimation
+              sequence={[
+                'Operator detected: Fernando', 1800,
+                'Systems running in production', 1800,
+                'Domain online', 1800,
+                'Access granted', 2200,
+              ]}
+              speed={55}
+              repeat={Infinity}
+              cursor
+            />
+          )}
+        </SystemNotice>
         <Kicker>{t('home.hero.kicker')}</Kicker>
         <Name>{t('home.hero.name')}</Name>
         <Title>{t('home.hero.title')}</Title>

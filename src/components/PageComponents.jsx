@@ -28,6 +28,7 @@ export const PageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  overflow-x: clip;
   animation: ${fadeInUp} 0.8s ease-out;
 `;
 

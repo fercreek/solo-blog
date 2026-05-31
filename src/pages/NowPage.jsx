@@ -77,6 +77,10 @@ const ActivitiesGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 // ─── focus section ────────────────────────────────────────────────────────────

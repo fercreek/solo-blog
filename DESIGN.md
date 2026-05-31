@@ -55,7 +55,7 @@ reinventa estilos.
 | Orden | Vista | Estado | Notas |
 |-------|-------|--------|-------|
 | 1 | **Projects** | ✅ hecho | ProjectCard + hackathon cards = SystemPanel. LV badges, mono, cian. |
-| 2 | **About** | ✅ v1 | Bio + hobbies = SystemPanel. Nuevo bloque "Systems in Production" (SL/Vayla/Cargo) con SystemBadge. Metáfora → "financial market". Pendiente v2: accordion de dance/exhibitions sigue morado (legacy). |
+| 2 | **About** | ✅ v2 | Bio + hobbies + Systems-in-Production = SystemPanel. Accordion dance/exhibitions migrado a System (bevel, mono triggers, cyan stats). |
 | 3 | **Contact** | ✅ | CTA System + cards de canal migradas (cian, bevel, mono labels, glow hover). |
 | 4 | **Home** | ✅ | Hero = System window (kicker mono, name cian, rail). Copy reframed a PRESENTACIÓN (no venta / no job-seeking). CTAs → /projects + /about. Featured = 3 productos (Studio Link, Vayla, Cargo·Litebox) en PostCard System. |
 | 5 | **Now** | ✅ | Activity cards + focus = SystemPanel, SystemBadge (DEV/ACTIVE/TRADING/DANCE), mono meta, location badge mono cian. |
