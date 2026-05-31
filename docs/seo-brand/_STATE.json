@@ -1,0 +1,35 @@
+{
+  "site": "fercontreras.com",
+  "lastAnalysis": "2026-05-31",
+  "render": "spa-client-side",
+  "scoreboard": {
+    "routesInSitemap": 6,
+    "jsonLd": true,
+    "ogImage": true,
+    "llmsTxt": true,
+    "hreflang": true,
+    "prerenderLocal": true,
+    "prerenderCI": false,
+    "lighthouse": null
+  },
+  "targetKeywords": [
+    "Agentic AI Architect Monterrey",
+    "Fernando Castañeda operator",
+    "AI automation consultant Monterrey"
+  ],
+  "pending": [
+    "prerender-ci-react-snap",
+    "jsonld-per-route-helmet",
+    "es-separate-routes",
+    "lighthouse-baseline"
+  ],
+  "done": [
+    "jsonld-person-website",
+    "og-image",
+    "llms-txt",
+    "static-html-meta",
+    "hreflang-tags",
+    "sitemap-lastmod",
+    "prerender-local"
+  ]
+}
