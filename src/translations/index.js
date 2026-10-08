@@ -48,7 +48,7 @@ export const translations = {
         cta: 'See the system'
       },
       sections: {
-        featuredPosts: 'Featured Posts',
+        featuredPosts: 'Featured Products',
         recentProjects2025: 'Experiments from 2025'
       },
       featured: {
@@ -310,7 +310,7 @@ export const translations = {
         cta: 'Ver el sistema'
       },
       sections: {
-        featuredPosts: 'Publicaciones Destacadas',
+        featuredPosts: 'Productos Destacados',
         recentProjects2025: 'Experimentos de 2025'
       },
       featured: {
