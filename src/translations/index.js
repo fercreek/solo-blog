@@ -49,7 +49,7 @@ export const translations = {
       },
       sections: {
         featuredPosts: 'Featured Posts',
-        recentProjects2025: 'Recent Projects 2025'
+        recentProjects2025: 'Experiments from 2025'
       },
       featured: {
         studioLink: {
@@ -155,14 +155,14 @@ export const translations = {
     now: {
       title: 'Building in Public: The Agentic Era.',
       description: 'A snapshot of my current activities and priorities. This page serves as a public declaration and personal reminder, inspired by {sivers} and {frank}.',
-      descriptionSeo: 'Agentic AI Architect. Scaling Studio Link\'s Revenue Protection engine to 0% capital leak. Perfecting 30-day MVP sprints with Agentic AI. Builder discipline in trading and bachata.',
+      descriptionSeo: 'Agentic AI Architect. Running a team of AI agents that builds and operates my products. Scaling Studio Link\'s Revenue Protection engine to 0% capital leak. Perfecting 30-day MVP sprints with Agentic AI. Builder discipline in trading and bachata.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Scaling Studio Link: I\'m injecting intelligence into our collection engine so every academy we serve has bulletproof financial health. We don\'t just manage students—we eliminate the human error that costs money. Agentic 0-to-1: My current obsession is speed. After Litebox (0 to operational in 30 days), I\'m refining agent processes so the next launches are even more autonomous and profitable.',
+      highlight: 'The system behind the products: I run a team of AI agents that builds and operates everything below, and every mistake it makes becomes a written lesson. Scaling Studio Link: I\'m injecting intelligence into our collection engine so every academy we serve has bulletproof financial health. We don\'t just manage students—we eliminate the human error that costs money. Agentic 0-to-1: My current obsession is speed. After Litebox (0 to operational in 30 days), I\'m refining agent processes so the next launches are even more autonomous and profitable.',
       currentActivities: {
         title: 'Current Activities',
-        backend: {
-          title: 'Backend Development',
-          description: 'Working as a senior backend developer at Fountain, building scalable solutions.'
+        agentSystem: {
+          title: 'Running a Team of AI Agents',
+          description: 'Most of my hours go into the system that builds and operates my products: specialist agents, written skills and guardrails that I measure and correct every day.'
         },
         sideProjects: {
           title: 'Scaling Studio Link',
@@ -181,7 +181,7 @@ export const translations = {
         title: 'Primary Focus Areas',
         item1: 'Scaling Studio Link\'s Revenue Protection engine',
         item2: 'Perfecting the 0-to-1 Framework (30-day MVPs)',
-        item3: 'Autonomous agent systems',
+        item3: 'A team of AI agents that learns from its own mistakes',
         item4: 'Analytical rigor in trading',
         item5: 'Builder discipline: elegant systems only'
       },
@@ -311,7 +311,7 @@ export const translations = {
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
-        recentProjects2025: 'Proyectos Recientes 2025'
+        recentProjects2025: 'Experimentos de 2025'
       },
       featured: {
         studioLink: {
@@ -417,14 +417,14 @@ export const translations = {
     now: {
       title: 'Construyendo en Público: La Era Agéntica.',
       description: 'Una instantánea de mis actividades y prioridades actuales. Esta página sirve como una declaración pública y un recordatorio personal, inspirado por {sivers} y {frank}.',
-      descriptionSeo: 'Agentic AI Architect. Escalando el motor de Revenue Protection de Studio Link hacia 0% de fuga de capital. Perfeccionando sprints de 30 días con IA Agéntica. Disciplina de Builder en trading y bachata.',
+      descriptionSeo: 'Agentic AI Architect. Dirijo un equipo de agentes de IA que construye y opera mis productos. Escalando el motor de Revenue Protection de Studio Link hacia 0% de fuga de capital. Perfeccionando sprints de 30 días con IA Agéntica. Disciplina de Builder en trading y bachata.',
       location: 'Monterrey, Nuevo León',
-      highlight: 'Protegiendo Ingresos con Studio Link: Estoy inyectando inteligencia a nuestro motor de cobranza para asegurar que cada academia bajo nuestra ala tenga una salud financiera blindada. No solo gestionamos alumnos; eliminamos el error humano que cuesta dinero. Arquitectura Agéntica 0-a-1: Mi obsesión actual es la velocidad. Tras el éxito de Litebox (30 días de 0 a operativo), estoy refinando los procesos de agentes de IA para que mis próximos lanzamientos sean aún más autónomos y rentables.',
+      highlight: 'El sistema detrás de los productos: dirijo un equipo de agentes de IA que construye y opera todo lo de abajo, y cada error que comete se vuelve una lección escrita. Protegiendo Ingresos con Studio Link: Estoy inyectando inteligencia a nuestro motor de cobranza para asegurar que cada academia bajo nuestra ala tenga una salud financiera blindada. No solo gestionamos alumnos; eliminamos el error humano que cuesta dinero. Arquitectura Agéntica 0-a-1: Mi obsesión actual es la velocidad. Tras el éxito de Litebox (30 días de 0 a operativo), estoy refinando los procesos de agentes de IA para que mis próximos lanzamientos sean aún más autónomos y rentables.',
       currentActivities: {
         title: 'Actividades Actuales',
-        backend: {
-          title: 'Desarrollo Backend',
-          description: 'Trabajando como desarrollador backend senior en Fountain, construyendo soluciones escalables.'
+        agentSystem: {
+          title: 'Dirigiendo un Equipo de Agentes de IA',
+          description: 'La mayor parte de mis horas se va en el sistema que construye y opera mis productos: agentes especialistas, skills escritos y candados que mido y corrijo todos los días.'
         },
         sideProjects: {
           title: 'Escalando Studio Link',
@@ -443,7 +443,7 @@ export const translations = {
         title: 'Áreas de Enfoque Principales',
         item1: 'Escalar el motor de Revenue Protection de Studio Link',
         item2: 'Perfeccionar el Framework 0-a-1 (MVPs en 30 días)',
-        item3: 'Sistemas de agentes autónomos',
+        item3: 'Un equipo de agentes de IA que aprende de sus errores',
         item4: 'Rigor analítico en trading',
         item5: 'Disciplina de Builder: solo sistemas elegantes'
       },

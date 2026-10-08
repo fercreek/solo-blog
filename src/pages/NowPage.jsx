@@ -164,7 +164,7 @@ const getFocusIcon = (focusText) => {
 };
 
 // Update this whenever the /now content changes (month index is 0-based).
-const NOW_LAST_UPDATED = new Date(2026, 4, 30);
+const NOW_LAST_UPDATED = new Date(2026, 9, 8);
 
 const NowPage = () => {
   const { t } = useTranslation();
@@ -174,8 +174,8 @@ const NowPage = () => {
   const currentActivities = [
     {
       icon: <FaLaptopCode />,
-      title: t('now.currentActivities.backend.title'),
-      description: t('now.currentActivities.backend.description')
+      title: t('now.currentActivities.agentSystem.title'),
+      description: t('now.currentActivities.agentSystem.description')
     },
     {
       icon: <FaProjectDiagram />,
