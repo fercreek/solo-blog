@@ -26,7 +26,23 @@ Not to be confused with other people sharing the name.
   shipping: quoting, onboarding, payments.
 - **Contreras Code** (https://www.contrerascode.com) — digitalization & automation studio.
 
+## How he works: the agent system (snapshot 2026-10-08)
+Page: https://fercontreras.com/system
+- He directs a team of AI agents that builds and operates his products, and measures
+  and corrects it every day.
+- 16 specialist agents (an analyst, a risk reviewer, an infra monitor, one orchestrator
+  per product). 734 agent launches in the last 30 days, 168 of them to these specialists
+  and the rest to general-purpose agents.
+- 102 skills: written procedures an agent loads on demand.
+- 26 guardrail hooks that stop a risky action before it runs; 74 of 812 launch attempts
+  were stopped in the last 30 days.
+- A local board with 21 automated checks, where sessions report and decisions are answered.
+- 380 written lessons across 9 repos. A mistake becomes a lesson, a repeated lesson
+  becomes a skill, skills that travel together become an agent; he approves each step.
+
 ## Open source
+- **focus-adhd** (https://github.com/fercreek/focus-adhd) — ADHD-friendly responses for
+  Claude Code: length scales with the reader's decisions, not the agent's effort.
 - **Encontreras** (https://github.com/fercreek/encontreras) — agentic open-source lead
   pipeline: extracts from Maps, scores prospects, writes AI icebreakers locally.
 

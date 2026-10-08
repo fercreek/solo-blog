@@ -8,7 +8,8 @@ import { useTranslation } from '../hooks/useTranslation';
 import ProjectCard from '../components/ProjectCard';
 import Button from '../components/Button';
 import SystemButton from '../components/SystemButton';
-import { SystemNotice } from '../components/system';
+import { SystemNotice, SystemPanel, sys } from '../components/system';
+import { systemSnapshot, isSnapshotStale } from '../data/systemSnapshot';
 import { TypeAnimation } from 'react-type-animation';
 import PageHead from '../components/PageHead';
 
@@ -227,6 +228,55 @@ const HeroActions = styled.div`
     align-items: stretch;
     padding: 0 1.5rem;
   }
+`;
+
+const SystemTeaserSection = styled.section`
+  margin: 4rem auto 0;
+  max-width: 760px;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+`;
+
+const TeaserLabel = styled.h2`
+  font-family: ${sys.font.heading};
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: ${sys.color.text};
+  margin: 0 0 0.5rem;
+`;
+
+const TeaserText = styled.p`
+  font-family: ${sys.font.body};
+  font-size: 1rem;
+  line-height: 1.6;
+  color: ${sys.color.muted};
+  margin: 0 0 1.25rem;
+`;
+
+const TeaserNumbers = styled.div`
+  display: flex;
+  gap: 2.5rem;
+  margin: 0 0 1.5rem;
+`;
+
+const TeaserNumber = styled.span`
+  display: block;
+  font-family: ${sys.font.heading};
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: ${sys.color.cyanBright};
+`;
+
+const TeaserUnit = styled.span`
+  display: block;
+  font-family: ${sys.font.mono};
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: ${sys.color.muted};
 `;
 
 const PostsSection = styled.section`
@@ -546,7 +596,27 @@ const HomePage = () => {
         </HeroActions>
       </HeroSection>
       </HeroWrapper>
-      
+
+      <SystemTeaserSection>
+        <SystemPanel $interactive={false} $reduced={prefersReducedMotion}>
+          <TeaserLabel>{t('home.system.label')}</TeaserLabel>
+          <TeaserText>{t('home.system.text')}</TeaserText>
+          {!isSnapshotStale() && (
+            <TeaserNumbers>
+              <div>
+                <TeaserNumber>{systemSnapshot.agents}</TeaserNumber>
+                <TeaserUnit>{t('home.system.agents')}</TeaserUnit>
+              </div>
+              <div>
+                <TeaserNumber>{systemSnapshot.skills}</TeaserNumber>
+                <TeaserUnit>{t('home.system.skills')}</TeaserUnit>
+              </div>
+            </TeaserNumbers>
+          )}
+          <SystemButton to="/system" variant="secondary">{t('home.system.cta')}</SystemButton>
+        </SystemPanel>
+      </SystemTeaserSection>
+
       <PostsSection>
         <SectionTitle>{t('home.sections.featuredPosts')}</SectionTitle>
         <PostsGrid>

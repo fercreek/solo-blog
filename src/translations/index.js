@@ -7,6 +7,7 @@ export const translations = {
         projects: 'Projects',
         impossibleList: 'Impossible List',
         now: 'Now',
+        system: 'System',
         contact: 'Contact'
       },
       language: {
@@ -38,6 +39,13 @@ export const translations = {
         description: 'Engineer and operator from Monterrey. I design systems with the precision of a financial market and the discipline of a bachata choreography, then ship them as real products people use every day. This is who I am and what I\'m building.',
         ctaPrimary: 'Explore my work',
         ctaSecondary: 'Who I am'
+      },
+      system: {
+        label: 'The system behind the products',
+        text: 'A team of AI agents that I direct, measure and correct every day.',
+        agents: 'agents',
+        skills: 'skills',
+        cta: 'See the system'
       },
       sections: {
         featuredPosts: 'Featured Posts',
@@ -179,6 +187,65 @@ export const translations = {
       },
       lastUpdated: 'Last updated: {date}'
     },
+    system: {
+      title: 'The System',
+      description: 'The product I work on most is the one that builds the others: a team of AI agents that I direct, measure and correct every day.',
+      descriptionSeo: 'How one operator runs four products in production with a team of AI agents: specialists, skills, guardrails, a board and a written memory.',
+      snapshot: 'Snapshot · {date}',
+      sections: {
+        layers: 'Five layers',
+        loop: 'How it improves',
+        runs: 'What it runs',
+        openSource: 'Open source'
+      },
+      layers: {
+        agents: {
+          name: 'Agents',
+          unit: 'specialists',
+          text: 'An analyst, a risk reviewer, an infra monitor and one orchestrator per product. Each has a written role and a list of things it must never do.',
+          stat: '{launches} agent launches in the last 30 days, {own} of them to these specialists and the rest to general-purpose agents.'
+        },
+        skills: {
+          name: 'Skills',
+          unit: 'procedures',
+          text: 'Written procedures an agent loads on demand: writing a spec, deploying, checking a page, drafting a message to a client.'
+        },
+        guardrails: {
+          name: 'Guardrails',
+          unit: 'hooks',
+          text: 'Small programs that stop a risky action before it runs, instead of trusting the agent to remember a rule.',
+          stat: '{blocked} of {attempts} launch attempts were stopped in the last 30 days.'
+        },
+        board: {
+          name: 'Board',
+          unit: 'automated checks',
+          text: 'A local dashboard where every session reports what it did, and where I answer pending decisions with clicks.'
+        },
+        memory: {
+          name: 'Memory',
+          unit: 'lessons',
+          text: 'Every mistake becomes a written lesson: what looked true, what was true, and how to check it in ten seconds.',
+          stat: 'Collected across {repos} repos.'
+        }
+      },
+      loop: {
+        mistake: { title: 'Mistake', text: 'Something breaks or gets redone.' },
+        lesson: { title: 'Lesson', text: 'It is written down with its ten-second check.' },
+        skill: { title: 'Skill', text: 'A lesson that keeps repeating becomes a procedure.' },
+        agent: { title: 'Agent', text: 'Skills that travel together become a specialist.' },
+        note: 'I approve each step. Nothing promotes itself.'
+      },
+      runs: {
+        studioLink: 'SaaS for dance and sports academies: billing, attendance, WhatsApp communication.',
+        vayla: 'Real-time judge scoring for live competitions, dance and gymnastics.',
+        litebox: 'Cross-border parcel platform: quoting, onboarding, payments.',
+        cargoControl: 'Logistics control for a McAllen to Monterrey operation.'
+      },
+      openSource: {
+        focusAdhd: 'ADHD-friendly responses for Claude Code. Length scales with your decisions, not the agent\'s effort.',
+        note: 'The rest of the system lives in private repos: it carries client work.'
+      }
+    },
     contact: {
       title: 'Contact',
       description: 'Is your operation bleeding money? Request a 15-minute Operations Audit. Let\'s identify where AI can save you 20 hours of manual work this week.',
@@ -202,6 +269,7 @@ export const translations = {
         projects: 'Proyectos',
         impossibleList: 'Lista Imposible',
         now: 'Ahora',
+        system: 'Sistema',
         contact: 'Contacto'
       },
       language: {
@@ -233,6 +301,13 @@ export const translations = {
         description: 'Ingeniero y operador de Monterrey. Diseño sistemas con la precisión de un mercado financiero y la disciplina de una coreografía de bachata, y los lanzo como productos reales que la gente usa todos los días. Esto es quién soy y lo que estoy construyendo.',
         ctaPrimary: 'Explora mi trabajo',
         ctaSecondary: 'Quién soy'
+      },
+      system: {
+        label: 'El sistema detrás de los productos',
+        text: 'Un equipo de agentes de IA que dirijo, mido y corrijo todos los días.',
+        agents: 'agentes',
+        skills: 'skills',
+        cta: 'Ver el sistema'
       },
       sections: {
         featuredPosts: 'Publicaciones Destacadas',
@@ -373,6 +448,65 @@ export const translations = {
         item5: 'Disciplina de Builder: solo sistemas elegantes'
       },
       lastUpdated: 'Última actualización: {date}'
+    },
+    system: {
+      title: 'El Sistema',
+      description: 'El producto en el que más trabajo es el que construye a los demás: un equipo de agentes de IA que dirijo, mido y corrijo todos los días.',
+      descriptionSeo: 'Cómo un solo operador corre cuatro productos en producción con un equipo de agentes de IA: especialistas, skills, candados, un tablero y una memoria escrita.',
+      snapshot: 'Foto del {date}',
+      sections: {
+        layers: 'Cinco capas',
+        loop: 'Cómo mejora',
+        runs: 'Qué corre',
+        openSource: 'Código abierto'
+      },
+      layers: {
+        agents: {
+          name: 'Agentes',
+          unit: 'especialistas',
+          text: 'Un analista, un revisor de riesgos, un monitor de infraestructura y un orquestador por producto. Cada uno tiene su rol escrito y la lista de lo que nunca debe hacer.',
+          stat: '{launches} lanzamientos de agentes en los últimos 30 días, {own} a estos especialistas y el resto a agentes de uso general.'
+        },
+        skills: {
+          name: 'Skills',
+          unit: 'procedimientos',
+          text: 'Procedimientos escritos que un agente carga cuando los necesita: escribir un spec, publicar, revisar una página, redactarle a un cliente.'
+        },
+        guardrails: {
+          name: 'Candados',
+          unit: 'hooks',
+          text: 'Programas chicos que frenan una acción riesgosa antes de que corra, en vez de confiar en que el agente recuerde una regla.',
+          stat: '{blocked} de {attempts} intentos de lanzamiento se frenaron en los últimos 30 días.'
+        },
+        board: {
+          name: 'Tablero',
+          unit: 'revisiones automáticas',
+          text: 'Un tablero local donde cada sesión reporta lo que hizo, y donde contesto con clics las decisiones pendientes.'
+        },
+        memory: {
+          name: 'Memoria',
+          unit: 'lecciones',
+          text: 'Cada error se vuelve una lección escrita: qué parecía cierto, qué era cierto y cómo comprobarlo en diez segundos.',
+          stat: 'Reunidas en {repos} repos.'
+        }
+      },
+      loop: {
+        mistake: { title: 'Error', text: 'Algo se rompe o se rehace.' },
+        lesson: { title: 'Lección', text: 'Se escribe con su comprobación de diez segundos.' },
+        skill: { title: 'Skill', text: 'Una lección que se repite se vuelve procedimiento.' },
+        agent: { title: 'Agente', text: 'Los skills que viajan juntos se vuelven un especialista.' },
+        note: 'Yo apruebo cada paso. Nada se promueve solo.'
+      },
+      runs: {
+        studioLink: 'SaaS para academias de baile y deporte: cobros, asistencia, comunicación por WhatsApp.',
+        vayla: 'Calificación de jueces en tiempo real para competencias en vivo, de baile y gimnasia.',
+        litebox: 'Plataforma de paquetería transfronteriza: cotización, alta y pagos.',
+        cargoControl: 'Control de logística para una operación de McAllen a Monterrey.'
+      },
+      openSource: {
+        focusAdhd: 'Respuestas amigables con el TDAH para Claude Code. La extensión depende de lo que tienes que decidir, no del esfuerzo del agente.',
+        note: 'El resto del sistema vive en repos privados: trae trabajo de clientes.'
+      }
     },
     contact: {
       title: 'Contacto',

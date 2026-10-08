@@ -13,6 +13,7 @@ const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 const ImpossibleListPage = lazy(() => import('./pages/ImpossibleListPage'))
 const NowPage = lazy(() => import('./pages/NowPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const SystemPage = lazy(() => import('./pages/SystemPage'))
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/impossible-list" element={<ImpossibleListPage />} />
+              <Route path="/system" element={<SystemPage />} />
               <Route path="/now" element={<NowPage />} />
               <Route path="/contact" element={<ContactPage />} />
             </Routes>

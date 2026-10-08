@@ -317,6 +317,7 @@ const Navbar = () => {
           <NavLink to="/about" $active={isActive('/about')}>{t('common.nav.about')}</NavLink>
           <NavLink to="/projects" $active={isActive('/projects')}>{t('common.nav.projects')}</NavLink>
           <NavLink to="/impossible-list" $active={isActive('/impossible-list')}>{t('common.nav.impossibleList')}</NavLink>
+          <NavLink to="/system" $active={isActive('/system')}>{t('common.nav.system')}</NavLink>
           <NavLink to="/now" $active={isActive('/now')}>{t('common.nav.now')}</NavLink>
           <NavLink to="/contact" $active={isActive('/contact')}>{t('common.nav.contact')}</NavLink>
         </NavLinks>
@@ -349,6 +350,7 @@ const Navbar = () => {
         <MobileNavLink to="/about" $active={isActive('/about')} onClick={closeMobileMenu}>{t('common.nav.about')}</MobileNavLink>
         <MobileNavLink to="/projects" $active={isActive('/projects')} onClick={closeMobileMenu}>{t('common.nav.projects')}</MobileNavLink>
         <MobileNavLink to="/impossible-list" $active={isActive('/impossible-list')} onClick={closeMobileMenu}>{t('common.nav.impossibleList')}</MobileNavLink>
+        <MobileNavLink to="/system" $active={isActive('/system')} onClick={closeMobileMenu}>{t('common.nav.system')}</MobileNavLink>
         <MobileNavLink to="/now" $active={isActive('/now')} onClick={closeMobileMenu}>{t('common.nav.now')}</MobileNavLink>
         <MobileNavLink to="/contact" $active={isActive('/contact')} onClick={closeMobileMenu}>{t('common.nav.contact')}</MobileNavLink>
         
