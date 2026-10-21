@@ -390,7 +390,7 @@ const AboutPage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('about.title')} description={t('about.description')} />
+      <PageHead />
       <PageHeader>
         <PageTitle>{t('about.title')}</PageTitle>
         <PageDescription>

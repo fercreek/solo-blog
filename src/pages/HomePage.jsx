@@ -545,7 +545,7 @@ const HomePage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('home.hero.title')} description={t('home.hero.description')} />
+      <PageHead />
       <HeroWrapper>
         <HeroSection>
         <ParallaxLayerStyles style={{ y: parallaxY }} />

@@ -365,7 +365,7 @@ const ImpossibleListPage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('impossibleList.title')} description={t('impossibleList.description', { link: t('impossibleList.linkText') })} />
+      <PageHead />
       <PageHeader>
         <PageTitle>{t('impossibleList.title')}</PageTitle>
         <PageDescription dangerouslySetInnerHTML={{

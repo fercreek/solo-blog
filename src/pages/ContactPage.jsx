@@ -226,7 +226,7 @@ const ContactPage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('contact.title')} description={t('contact.description')} />
+      <PageHead />
       <PageHeader>
         <PageTitle>{t('contact.title')}</PageTitle>
         <PageDescription>{t('contact.description')}</PageDescription>
