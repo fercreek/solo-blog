@@ -112,7 +112,7 @@ const Footer = () => {
       </FooterLinks>
       <FooterDivider />
       <FooterText>
-        © {currentYear} Fernando Castañeda. {t('common.footer.copyright')}
+        © {currentYear} Fernando Contreras. {t('common.footer.copyright')}
       </FooterText>
     </FooterContainer>
   );

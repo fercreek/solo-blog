@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-const SITE_NAME = 'Fernando Castañeda';
-const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://fercontreras.com';
+const SITE_NAME = 'Fernando Contreras';
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.fercontreras.com';
 const DEFAULT_DESCRIPTION = 'Agentic AI Architect. I build autonomous systems that work while you scale. I deliver relief, not hours—eliminating bottlenecks that bleed your cash flow.';
 
 const PageHead = ({ title, description }) => {

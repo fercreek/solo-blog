@@ -25,6 +25,7 @@ export const translations = {
       status: {
         inProduction: 'In Production',
         mvp: 'MVP',
+        openSource: 'Open source',
         project: 'Project'
       },
       time: {
@@ -33,7 +34,7 @@ export const translations = {
     },
     home: {
       hero: {
-        name: 'Fernando Castañeda',
+        name: 'Fernando Contreras',
         kicker: 'Builder · Operator · Dancer · Trader',
         title: 'I build AI-native products — and run them in production.',
         description: 'Engineer and operator from Monterrey. I design systems with the precision of a financial market and the discipline of a bachata choreography, then ship them as real products people use every day. This is who I am and what I\'m building.',
@@ -49,7 +50,7 @@ export const translations = {
       },
       sections: {
         featuredPosts: 'Featured Products',
-        recentProjects2025: 'Experiments from 2025'
+        recentProjects2025: 'Experiments'
       },
       featured: {
         studioLink: {
@@ -69,23 +70,26 @@ export const translations = {
         sinBronca: {
           excerpt: 'Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.'
         },
-        chronoDev: {
-          excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
-        },
         encontreras: {
-          excerpt: 'Agentic open-source pipeline. Stop buying cold databases: it extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers — all from your own machine.'
+          excerpt: 'Open-source educational project. A local pipeline that extracts businesses from Maps, analyzes their web presence, scores prospects and drafts AI icebreakers, to learn how agentic lead research works.'
         },
         cargoControl: {
           excerpt: 'Logistics control for a real cross-border operation (McAllen→Monterrey). Telegram bot + OCR scanning + QR labels + financial reconciliation. Live with a paying client.'
         },
         contrerasCode: {
-          excerpt: 'My digitalization & automation studio. AI WhatsApp agents and custom systems that turn manual operations into measurable outcomes for non-technical businesses.'
+          excerpt: 'The studio through which I take on client work: custom software and AI WhatsApp agents for businesses. This is what I sell; see the case studies.'
+        },
+        danceLeveling: {
+          excerpt: 'Live scoring for Jack & Jill bachata competitions. Judges score from their phones and results update in real time. Used at 9 events between April and September 2026.'
+        },
+        versiculos: {
+          excerpt: 'YouTube channel with daily Bible-verse Shorts and long-form videos of Bible stories, produced with AI tools.'
         }
       }
     },
     about: {
       title: 'About Me',
-      description: 'My methodology unites the strategic vision of a former COO with the execution speed of Agentic AI. My goal is not to deliver lines of code, but an Operational Blueprint that recovers your time and money in under 30 days.',
+      description: 'I\'m Fernando Contreras, an engineer and operator from Monterrey. I build AI-native products and run them in production. Client work goes through Contreras Code: custom software and AI agents for businesses.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'I bridge the gap between technical complexity and business reality.',
@@ -248,16 +252,17 @@ export const translations = {
     },
     contact: {
       title: 'Contact',
-      description: 'Is your operation bleeding money? Request a 15-minute Operations Audit. Let\'s identify where AI can save you 20 hours of manual work this week.',
+      description: 'Tell me what you want to build or automate. I reply within 24 hours; client work goes through Contreras Code.',
       email: 'Email',
       phone: 'Phone',
+      contrerasCode: 'Contreras Code',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       location: 'Location',
       copyEmail: 'Copy email',
       copied: 'Copied!',
       openLink: 'Open',
-      ctaAudit: 'Request your 15-min Audit',
+      ctaAudit: 'Write to me about your project',
       ctaReply: 'Reply within 24 hours'
     }
   },
@@ -287,6 +292,7 @@ export const translations = {
       status: {
         inProduction: 'En Producción',
         mvp: 'MVP',
+        openSource: 'Código abierto',
         project: 'Proyecto'
       },
       time: {
@@ -295,7 +301,7 @@ export const translations = {
     },
     home: {
       hero: {
-        name: 'Fernando Castañeda',
+        name: 'Fernando Contreras',
         kicker: 'Builder · Operator · Dancer · Trader',
         title: 'Construyo productos AI-native — y los corro en producción.',
         description: 'Ingeniero y operador de Monterrey. Diseño sistemas con la precisión de un mercado financiero y la disciplina de una coreografía de bachata, y los lanzo como productos reales que la gente usa todos los días. Esto es quién soy y lo que estoy construyendo.',
@@ -311,7 +317,7 @@ export const translations = {
       },
       sections: {
         featuredPosts: 'Productos Destacados',
-        recentProjects2025: 'Experimentos de 2025'
+        recentProjects2025: 'Experimentos'
       },
       featured: {
         studioLink: {
@@ -331,23 +337,26 @@ export const translations = {
         sinBronca: {
           excerpt: 'Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.'
         },
-        chronoDev: {
-          excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
-        },
         encontreras: {
-          excerpt: 'Pipeline agéntico open-source. Deja de comprar bases frías: extrae de Maps, analiza presencia web, califica prospectos y redacta rompehielos con IA — todo desde tu propia máquina.'
+          excerpt: 'Proyecto open source educativo. Un pipeline local que extrae negocios de Maps, analiza su presencia web, califica prospectos y redacta rompehielos con IA, para aprender cómo funciona la investigación de prospectos con agentes.'
         },
         cargoControl: {
           excerpt: 'Control logístico para una operación transfronteriza real (McAllen→Monterrey). Bot de Telegram + escaneo OCR + etiquetas QR + conciliación financiera. En producción con cliente de pago.'
         },
         contrerasCode: {
-          excerpt: 'Mi estudio de digitalización y automatización. Agentes de WhatsApp con IA y sistemas a la medida que convierten operaciones manuales en resultados medibles para negocios no técnicos.'
+          excerpt: 'El estudio por el que tomo trabajo de clientes: software a la medida y agentes de WhatsApp con IA para negocios. Esto es lo que vendo; mira los casos.'
+        },
+        danceLeveling: {
+          excerpt: 'Puntuación en vivo para competencias Jack & Jill de bachata. Los jueces califican desde su celular y los resultados se actualizan en tiempo real. Usado en 9 eventos entre abril y septiembre de 2026.'
+        },
+        versiculos: {
+          excerpt: 'Canal de YouTube con Shorts diarios de versículos y videos largos de historias bíblicas, producidos con herramientas de IA.'
         }
       }
     },
     about: {
       title: 'Acerca de Mí',
-      description: 'Mi metodología une la visión estratégica de un ex-COO con la velocidad de ejecución de la IA Agéntica. Mi objetivo no es entregarte líneas de código, sino un Blueprint Operativo que recupere tu tiempo y tu dinero en menos de 30 días.',
+      description: 'Soy Fernando Contreras, ingeniero y operador de Monterrey. Construyo productos con IA y los opero en producción. El trabajo para clientes va por Contreras Code: software a la medida y agentes de IA para negocios.',
       location: 'Monterrey, Nuevo León, México',
       bio: {
         intro: 'Uno la complejidad técnica con la realidad del negocio.',
@@ -510,16 +519,17 @@ export const translations = {
     },
     contact: {
       title: 'Contacto',
-      description: '¿Tu operación está sangrando dinero? Solicita una Auditoría Operativa de 15 minutos. Identifiquemos dónde la IA puede ahorrarte 20 horas de labor manual esta misma semana.',
+      description: 'Cuéntame qué quieres construir o automatizar. Respondo en menos de 24 horas; el trabajo para clientes va por Contreras Code.',
       email: 'Correo',
       phone: 'Teléfono',
+      contrerasCode: 'Contreras Code',
       github: 'GitHub',
       linkedin: 'LinkedIn',
       location: 'Ubicación',
       copyEmail: 'Copiar correo',
       copied: '¡Copiado!',
       openLink: 'Abrir',
-      ctaAudit: 'Solicita tu Auditoría de 15 min',
+      ctaAudit: 'Escríbeme sobre tu proyecto',
       ctaReply: 'Respondo en menos de 24 horas'
     }
   }

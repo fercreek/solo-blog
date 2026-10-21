@@ -1,8 +1,8 @@
-# Fernando Castañeda - Strategic Operator
+# Fernando Contreras - Strategic Operator
 
 *Last updated: January 2026*
 
-Personal site built with React, positioned around the **6FE methodology**: from "Senior Dev CV" to proof of an **Independent Operator with systemic discipline**. Live at [fercontreras.com](https://fercontreras.com)
+Personal site built with React, positioned around the **6FE methodology**: from "Senior Dev CV" to proof of an **Independent Operator with systemic discipline**. Live at [fercontreras.com](https://www.fercontreras.com)
 
 **Core idea:** *Engineering is a precision system, like a financial market or a bachata choreography.* Trading (risk) and dancing (discipline, rhythm) support the narrative, not as curiosities but as evidence of how I operate.
 
@@ -208,7 +208,7 @@ src/
 
 ### MVP Projects
 
-- **Progreso Personal Finance**: [v0-progreso-personal-finance-ui.vercel.app](https://v0-progreso-personal-finance-ui.vercel.app/)  
+- **Progreso Personal Finance** (no public link)  
   Personal finance management tool with payment plans, progress visualization, and savings goals.
 
 - **Sin Bronca**: [sin-bronca.vercel.app](https://sin-bronca.vercel.app/)  
@@ -241,5 +241,5 @@ This project is private and proprietary.
 
 ---
 
-**Built with ❤️ by Fernando Castañeda — 2026**  
-**Live at**: [fercontreras.com](https://fercontreras.com)
+**Built with ❤️ by Fernando Contreras — 2026**  
+**Live at**: [fercontreras.com](https://www.fercontreras.com)

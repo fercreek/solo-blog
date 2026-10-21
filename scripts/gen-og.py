@@ -62,7 +62,7 @@ d.text((140, tag_y), "[ SYSTEM ]  ONLINE", font=fm, fill=CYAN_BRIGHT)
 # Name
 fname = font(ARIAL_BOLD, 92)
 d.text((108, 220), "Fernando", font=fname, fill=TEXT)
-d.text((108, 320), "Castañeda", font=fname, fill=CYAN_BRIGHT)
+d.text((108, 320), "Contreras", font=fname, fill=CYAN_BRIGHT)
 
 # subtitle mono
 fsub = font(MENLO, 30)
@@ -70,7 +70,7 @@ d.text((112, 450), "AGENTIC  AI  ARCHITECT", font=fsub, fill=CYAN)
 
 # footer line
 ffoot = font(MENLO, 22)
-d.text((112, 500), "Monterrey · MX   ·   fercontreras.com", font=ffoot, fill=MUTED)
+d.text((112, 500), "Monterrey · MX   ·   www.fercontreras.com", font=ffoot, fill=MUTED)
 
 # kicker right
 fk = font(MENLO, 18)

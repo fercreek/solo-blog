@@ -13,7 +13,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import PageHead from '../components/PageHead';
 import SystemButton from '../components/SystemButton';
 import { sys } from '../styles/systemTokens';
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaCopy, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
 
 const HeroCtaWrapper = styled.div`
   display: flex;
@@ -192,6 +192,7 @@ const CopyFeedback = styled.span`
 const EMAIL = 'fercreek@gmail.com';
 const PHONE = '+52 1 811 765 5605';
 const PHONE_LINK = 'tel:+528117655605';
+const CONTRERAS_CODE_URL = 'https://www.contrerascode.com/casos';
 const GITHUB_URL = 'https://github.com/fercreek';
 const LINKEDIN_URL = 'https://linkedin.com/in/fercreek';
 const LOCATION = 'Monterrey, Nuevo León, México';
@@ -217,6 +218,7 @@ const ContactPage = () => {
   const channels = [
     { id: 'email', icon: <FaEnvelope />, label: t('contact.email'), value: EMAIL, isButton: true },
     { id: 'phone', icon: <FaPhone />, label: t('contact.phone'), value: PHONE, href: PHONE_LINK },
+    { id: 'contreras-code', icon: <FaCode />, label: t('contact.contrerasCode'), value: 'contrerascode.com/casos', href: CONTRERAS_CODE_URL },
     { id: 'github', icon: <FaGithub />, label: t('contact.github'), value: 'github.com/fercreek', href: GITHUB_URL },
     { id: 'linkedin', icon: <FaLinkedin />, label: t('contact.linkedin'), value: 'linkedin.com/in/fercreek', href: LINKEDIN_URL },
     { id: 'location', icon: <FaMapMarkerAlt />, label: t('contact.location'), value: LOCATION, href: LOCATION_URL }
@@ -233,7 +235,7 @@ const ContactPage = () => {
         <HeroCtaWrapper>
           <SystemButton
             variant="primary"
-            href={`mailto:${EMAIL}?subject=${encodeURIComponent('Operations Audit — 15 min')}`}
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent('Project inquiry')}`}
           >
             {t('contact.ctaAudit')}
           </SystemButton>
