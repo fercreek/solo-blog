@@ -18,7 +18,6 @@ Explore more at [Litebox Parcel](https://www.liteboxparcel.com/).
 ## Progreso Personal Finance
 
 Take control of your personal finances. Progreso helps you see where your money goes, create budgets, and better understand your financial situation. Designed to be simple and intuitive.  
-Discover details at [Progreso Personal Finance](https://v0-progreso-personal-finance-ui.vercel.app/).
 
 ## Sin Bronca
 
@@ -27,13 +26,8 @@ Explore more at [Sin Bronca](https://sin-bronca.vercel.app/).
 
 ## Encontreras
 
-Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.  
+Open-source educational project. A local pipeline that extracts businesses from Maps, analyzes their web presence, scores prospects and drafts AI icebreakers, to learn how agentic lead research works.  
 Explore more at [Encontreras Open Source](https://github.com/fercreek/encontreras).
-
-## ChronoDev
-
-Estimate your development hours from GitHub commits. No signup, 100% free. Your data stays in your browser. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.  
-Explore more at [ChronoDev](https://v0-chrono-dev-dashboard.vercel.app/).
 
 ## Hackathon Projects
 
@@ -63,7 +57,6 @@ Explora más en [Litebox Parcel](https://www.liteboxparcel.com/).
 ## Progreso Personal Finance
 
 Toma control de tus finanzas personales. Progreso te ayuda a ver dónde gastas tu dinero, crear presupuestos y entender mejor tu situación financiera. Diseñado para ser simple e intuitivo.  
-Descubre detalles en [Progreso Personal Finance](https://v0-progreso-personal-finance-ui.vercel.app/).
 
 ## Sin Bronca
 
@@ -72,13 +65,8 @@ Explora más en [Sin Bronca](https://sin-bronca.vercel.app/).
 
 ## Encontreras
 
-Pipeline Agéntico Open-Source. Deja de comprar bases de datos frías: Encontreras extrae de Maps, analiza presencia web, califica prospectos, y redacta rompehielos con IA desde tu máquina local.  
+Proyecto open source educativo. Un pipeline local que extrae negocios de Maps, analiza su presencia web, califica prospectos y redacta rompehielos con IA, para aprender cómo funciona la investigación de prospectos con agentes.  
 Explora el código en [Encontreras Open Source](https://github.com/fercreek/encontreras).
-
-## ChronoDev
-
-Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Tus datos se quedan en tu navegador. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).  
-Explora más en [ChronoDev](https://v0-chrono-dev-dashboard.vercel.app/).
 
 ## Proyectos de Hackathon
 
@@ -115,11 +103,8 @@ export const projectsTranslations = {
       sinBronca: {
         excerpt: 'Simple solutions for everyday problems. Sin Bronca offers practical tools with a clean, easy-to-use interface. Designed for those who seek efficiency without complications.'
       },
-      chronoDev: {
-        excerpt: 'Estimate your development hours from GitHub commits. No signup, 100% free. Metrics per repo, weekly charts, CSV export, and AI insights with Gemini.'
-      },
       encontreras: {
-        excerpt: 'Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.'
+        excerpt: 'Open-source educational project. A local pipeline that extracts businesses from Maps, analyzes their web presence, scores prospects and drafts AI icebreakers, to learn how agentic lead research works.'
       }
     }
   },
@@ -142,11 +127,8 @@ export const projectsTranslations = {
       sinBronca: {
         excerpt: 'Soluciones simples para problemas cotidianos. Sin Bronca ofrece herramientas prácticas con una interfaz limpia y fácil de usar. Pensado para quienes buscan eficiencia sin complicaciones.'
       },
-      chronoDev: {
-        excerpt: 'Estima horas de desarrollo a partir de commits de GitHub. Sin registro, 100% gratis. Métricas por repo, gráficas semanales, export CSV e insights con IA (Gemini).'
-      },
       encontreras: {
-        excerpt: 'Pipeline Agéntico Open-Source. Deja de comprar bases de datos frías: Encontreras extrae de Maps, analiza presencia web, califica prospectos, y redacta rompehielos con IA desde tu máquina local.'
+        excerpt: 'Proyecto open source educativo. Un pipeline local que extrae negocios de Maps, analiza su presencia web, califica prospectos y redacta rompehielos con IA, para aprender cómo funciona la investigación de prospectos con agentes.'
       }
     }
   }

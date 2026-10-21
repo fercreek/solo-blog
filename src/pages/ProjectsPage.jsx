@@ -11,7 +11,7 @@ import {
 import {
   SectionTitle
 } from '../styles/designSystem';
-import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools, FaClock } from 'react-icons/fa';
+import { FaGlobe, FaCode, FaRocket, FaBox, FaDollarSign, FaTools, FaTrophy } from 'react-icons/fa';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTranslation } from '../hooks/useTranslation';
 import { getProjectsData } from '../data/projectsTranslations';
@@ -126,7 +126,6 @@ const ProjectsPage = () => {
       id: 'studio-link',
       title: 'Studio Link',
       excerpt: t('home.featured.studioLink.excerpt'),
-      date: '2024',
       url: 'https://studiolink.online/',
       status: 'production',
       category: t('common.status.project'),
@@ -136,8 +135,7 @@ const ProjectsPage = () => {
       id: 'contreras-code',
       title: 'Contreras Code',
       excerpt: t('home.recent.contrerasCode.excerpt'),
-      date: '2025',
-      url: 'https://www.contrerascode.com/',
+      url: 'https://www.contrerascode.com/casos',
       status: 'production',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(31, 75, 255, 0.3), rgba(56, 189, 248, 0.2))'
@@ -146,7 +144,6 @@ const ProjectsPage = () => {
       id: 'vayla-dance',
       title: 'Vayla Dance',
       excerpt: t('home.featured.vaylaDance.excerpt'),
-      date: '2024',
       url: 'https://www.vayla.dance/',
       status: 'production',
       category: t('common.status.project'),
@@ -156,7 +153,6 @@ const ProjectsPage = () => {
       id: 'cargo-control',
       title: 'Cargo Control',
       excerpt: t('home.recent.cargoControl.excerpt'),
-      date: '2025',
       url: '',
       status: 'production',
       category: t('common.status.project'),
@@ -166,19 +162,28 @@ const ProjectsPage = () => {
       id: 'litebox-parcel',
       title: 'Litebox Parcel',
       excerpt: t('home.recent.liteboxParcel.excerpt'),
-      date: '2025',
       url: 'https://www.liteboxparcel.com/',
       status: 'production',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
     },
     {
-      id: 'chronodev',
-      title: 'ChronoDev',
-      excerpt: t('home.recent.chronoDev.excerpt'),
-      date: '2025',
-      url: 'https://v0-chrono-dev-dashboard.vercel.app/',
+      id: 'dance-leveling',
+      title: 'Dance Leveling',
+      excerpt: t('home.recent.danceLeveling.excerpt'),
+      date: '2026',
+      url: 'https://danceleveling.com',
       status: 'production',
+      category: t('common.status.project'),
+      gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
+    },
+    {
+      id: 'versiculos-de-dios',
+      title: 'Versículos de Dios',
+      excerpt: t('home.recent.versiculos.excerpt'),
+      url: 'https://www.youtube.com/@VersiculoDeDios-v1u',
+      status: 'production',
+      statusLabel: 'YouTube',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(100, 116, 139, 0.3), rgba(71, 85, 105, 0.2))'
     },
@@ -186,9 +191,9 @@ const ProjectsPage = () => {
       id: 'encontreras',
       title: 'Encontreras',
       excerpt: t('home.recent.encontreras.excerpt'),
-      date: '2025',
       url: 'https://github.com/fercreek/encontreras',
-      status: 'production',
+      status: 'mvp',
+      statusLabel: t('common.status.openSource'),
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(14, 165, 233, 0.2))'
     },
@@ -196,8 +201,7 @@ const ProjectsPage = () => {
       id: 'progreso',
       title: 'Progreso Personal Finance',
       excerpt: t('home.recent.progreso.excerpt'),
-      date: '2025',
-      url: 'https://v0-progreso-personal-finance-ui.vercel.app/',
+      url: '',
       status: 'mvp',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
@@ -206,7 +210,6 @@ const ProjectsPage = () => {
       id: 'sin-bronca',
       title: 'Sin Bronca',
       excerpt: t('home.recent.sinBronca.excerpt'),
-      date: '2025',
       url: 'https://sin-bronca.vercel.app/',
       status: 'mvp',
       category: t('common.status.project'),
@@ -267,14 +270,14 @@ const ProjectsPage = () => {
     if (lowerTitle.includes('cargo') || lowerTitle.includes('parcel') || lowerTitle.includes('litebox')) return <FaBox />;
     if (lowerTitle.includes('contreras')) return <FaCode />;
     if (lowerTitle.includes('finance') || lowerTitle.includes('progreso')) return <FaDollarSign />;
-    if (lowerTitle.includes('chronodev')) return <FaClock />;
+    if (lowerTitle.includes('leveling')) return <FaTrophy />;
     if (lowerTitle.includes('bronca')) return <FaTools />;
     return <FaGlobe />;
   };
 
   return (
     <PageContainer>
-      <PageHead title={t('projects.title')} description={t('projects.description')} />
+      <PageHead />
       <PageHeader>
         <PageTitle>{t('projects.title')}</PageTitle>
         <PageDescription>
@@ -296,7 +299,7 @@ const ProjectsPage = () => {
               category={project.category}
               delay={`${index * 0.1}s`}
               buttonText={t('common.buttons.viewProject')}
-              statusLabel={project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp')}
+              statusLabel={project.statusLabel || (project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp'))}
             />
           ))}
         </RecentProjectsGrid>

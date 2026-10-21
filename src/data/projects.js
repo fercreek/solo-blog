@@ -11,7 +11,7 @@ Discover details at [Vayla Dance](https://www.vayla.dance/).
 
 ## Encontreras
 
-Agentic Open-Source pipeline. Stop buying cold databases: Encontreras extracts from Maps, analyzes web presence, scores prospects, and writes AI icebreakers from your local machine.  
+Open-source educational project. A local pipeline that extracts businesses from Maps, analyzes their web presence, scores prospects and drafts AI icebreakers, to learn how agentic lead research works.  
 Explore more at [Encontreras Open Source](https://github.com/fercreek/encontreras).
 
 ## Hackathon Projects

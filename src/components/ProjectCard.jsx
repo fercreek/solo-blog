@@ -270,10 +270,12 @@ const ProjectCard = ({
       </HeaderRow>
       <Title>{title}</Title>
       <Excerpt>{excerpt}</Excerpt>
-      <Meta>
-        <span className="dot">▸</span>
-        <span>{date}</span>
-      </Meta>
+      {date && (
+        <Meta>
+          <span className="dot">▸</span>
+          <span>{date}</span>
+        </Meta>
+      )}
       <ButtonWrapper>
         {url ? (
           <SystemButton href={url} target="_blank" rel="noopener noreferrer" variant="secondary">

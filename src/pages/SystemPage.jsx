@@ -191,7 +191,7 @@ const SystemPage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('system.title')} description={t('system.descriptionSeo')} />
+      <PageHead />
       <PageHeader>
         <PageTitle>{t('system.title')}</PageTitle>
         <PageDescription>{t('system.description')}</PageDescription>

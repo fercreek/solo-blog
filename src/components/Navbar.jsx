@@ -309,7 +309,7 @@ const Navbar = () => {
   return (
     <>
       <NavContainer>
-        <Logo to="/" onClick={closeMobileMenu}>Fernando Castañeda</Logo>
+        <Logo to="/" onClick={closeMobileMenu}>Fernando Contreras</Logo>
         
         {/* Desktop Navigation */}
         <NavLinks>

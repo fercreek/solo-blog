@@ -1,15 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
+import { SITE_NAME, getRouteMeta } from '../seo/routes';
 
-const SITE_NAME = 'Fernando Castañeda';
-const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://fercontreras.com';
-const DEFAULT_DESCRIPTION = 'Agentic AI Architect. I build autonomous systems that work while you scale. I deliver relief, not hours—eliminating bottlenecks that bleed your cash flow.';
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://www.fercontreras.com';
 
-const PageHead = ({ title, description }) => {
+// Metadata comes from src/seo/routes.js (shared with the build-time static pass).
+const PageHead = () => {
   const { pathname } = useLocation();
-  const canonicalUrl = `${SITE_URL.replace(/\/$/, '')}${pathname === '/' ? '' : pathname}`;
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Agentic AI Architect`;
-  const metaDescription = description || DEFAULT_DESCRIPTION;
+  const { language } = useLanguage();
+  const { title: fullTitle, description: metaDescription, canonical: canonicalUrl } =
+    getRouteMeta(pathname, language, SITE_URL);
   return (
     <Helmet>
       <title>{fullTitle}</title>

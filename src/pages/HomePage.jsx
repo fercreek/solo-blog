@@ -490,7 +490,6 @@ const HomePage = () => {
       id: 1,
       title: 'Studio Link',
       excerpt: t('home.featured.studioLink.excerpt'),
-      date: '2024',
       readTime: `${language === 'es' ? '3' : '3'} ${language === 'es' ? 'min lectura' : t('common.time.minRead')}`,
       url: 'https://studiolink.online/',
       category: t('common.status.project'),
@@ -501,7 +500,6 @@ const HomePage = () => {
       id: 2,
       title: 'Vayla',
       excerpt: t('home.featured.vaylaDance.excerpt'),
-      date: '2024',
       readTime: `${language === 'es' ? '4' : '4'} ${language === 'es' ? 'min lectura' : t('common.time.minRead')}`,
       url: 'https://www.vayla.dance/',
       category: t('common.status.project'),
@@ -512,7 +510,6 @@ const HomePage = () => {
       id: 3,
       title: 'Litebox Parcel',
       excerpt: t('home.recent.liteboxParcel.excerpt'),
-      date: '2025',
       readTime: `${language === 'es' ? '3 min lectura' : `3 ${t('common.time.minRead')}`}`,
       url: 'https://www.liteboxparcel.com/',
       category: t('common.status.project'),
@@ -526,8 +523,7 @@ const HomePage = () => {
       id: 'progreso',
       title: 'Progreso Personal Finance',
       excerpt: t('home.recent.progreso.excerpt'),
-      date: '2025',
-      url: 'https://v0-progreso-personal-finance-ui.vercel.app/',
+      url: '',
       status: 'mvp',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(116, 185, 255, 0.2))'
@@ -536,21 +532,10 @@ const HomePage = () => {
       id: 'sin-bronca',
       title: 'Sin Bronca',
       excerpt: t('home.recent.sinBronca.excerpt'),
-      date: '2025',
       url: 'https://sin-bronca.vercel.app/',
       status: 'mvp',
       category: t('common.status.project'),
       gradient: 'linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(56, 189, 248, 0.2))'
-    },
-    {
-      id: 'chronodev',
-      title: 'ChronoDev',
-      excerpt: t('home.recent.chronoDev.excerpt'),
-      date: '2025',
-      url: 'https://v0-chrono-dev-dashboard.vercel.app/',
-      status: 'production',
-      category: t('common.status.project'),
-      gradient: 'linear-gradient(135deg, rgba(100, 116, 139, 0.3), rgba(71, 85, 105, 0.2))'
     }
   ];
 
@@ -560,7 +545,7 @@ const HomePage = () => {
 
   return (
     <PageContainer>
-      <PageHead title={t('home.hero.title')} description={t('home.hero.description')} />
+      <PageHead />
       <HeroWrapper>
         <HeroSection>
         <ParallaxLayerStyles style={{ y: parallaxY }} />
@@ -629,7 +614,6 @@ const HomePage = () => {
                 <PostTitle>{post.title}</PostTitle>
                 <PostExcerpt>{post.excerpt}</PostExcerpt>
                 <PostMeta>
-                  <span>{post.date}</span>
                   <span>{post.readTime}</span>
                 </PostMeta>
                 <ReadMoreButtonWrapper>
@@ -657,7 +641,7 @@ const HomePage = () => {
               category={project.category}
               delay={`${index * 0.1}s`}
               buttonText={t('common.buttons.viewProject')}
-              statusLabel={project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp')}
+              statusLabel={project.statusLabel || (project.status === 'production' ? t('common.status.inProduction') : t('common.status.mvp'))}
             />
           ))}
         </RecentProjectsGrid>
