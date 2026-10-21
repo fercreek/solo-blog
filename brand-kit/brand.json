@@ -3,37 +3,103 @@
   "name": "Fernando Contreras",
   "domain": "www.fercontreras.com",
   "colors": {
-    "bg": {"hex": "#05070D", "role": "bgDeep: fondo void de página y de la OG (sys.color.bgDeep; theme-color en index.html)"},
-    "panel": {"hex": "rgba(10,18,34,0.72)", "role": "Relleno glass de panel (sys.color.panel); sólido #0A1222"},
-    "accent": {"hex": "#38BDF8", "role": "Cian System core: bordes, acentos. Cian = el lenguaje del sitio"},
-    "accent_bright": {"hex": "#7DD3FC", "role": "Highlight y texto sobre oscuro; sustituye al ámbar en el sitio unificado"},
-    "accent_deep": {"hex": "#0EA5E9", "role": "Profundidad / pressed"},
-    "shadow": {"hex": "#6D5DD3", "role": "Acento puntual «monarca de sombras», nunca protagonista (DESIGN.md)"},
-    "fg": {"hex": "#E8F1FF", "role": "Texto primario. Nunca blanco puro"},
-    "muted": {"hex": "#94A8C4", "role": "Texto secundario"},
-    "line": {"hex": "rgba(56,189,248,0.32)", "role": "Borde por defecto"}
+    "bg": {
+      "hex": "#05070D",
+      "role": "bgDeep: fondo void de página y de la OG (sys.color.bgDeep; theme-color en index.html)"
+    },
+    "panel": {
+      "hex": "#0A1222",
+      "role": "Relleno glass de panel (sys.color.panel); sólido #0A1222 (opacidad 0.72; original rgba(10,18,34,0.72))"
+    },
+    "accent": {
+      "hex": "#38BDF8",
+      "role": "Cian System core: bordes, acentos. Cian = el lenguaje del sitio"
+    },
+    "accent_bright": {
+      "hex": "#7DD3FC",
+      "role": "Highlight y texto sobre oscuro; sustituye al ámbar en el sitio unificado"
+    },
+    "accent_deep": {
+      "hex": "#0EA5E9",
+      "role": "Profundidad / pressed"
+    },
+    "shadow": {
+      "hex": "#6D5DD3",
+      "role": "Acento puntual «monarca de sombras», nunca protagonista (DESIGN.md)"
+    },
+    "fg": {
+      "hex": "#E8F1FF",
+      "role": "Texto primario. Nunca blanco puro"
+    },
+    "muted": {
+      "hex": "#94A8C4",
+      "role": "Texto secundario"
+    },
+    "line": {
+      "hex": "#38BDF8",
+      "role": "Borde por defecto (opacidad 0.32; original rgba(56,189,248,0.32))"
+    }
   },
-  "palette_forbidden": [
-    {"value": "blanco puro #FFFFFF para texto", "why": "DESIGN.md §2: usar sys.color.text"},
-    {"value": "morado, dorado, naranja y ámbar como color de UI", "why": "DESIGN.md §4 paleta unificada 2026-05-30: todo el sitio es azul/cian"},
-    {"value": "hex, bevel o glow hardcodeados", "why": "DESIGN.md: todo componente importa de src/styles/systemTokens.js"},
-    {"value": "usar el cian en otras marcas", "why": "DESIGN.md §6: el cian es exclusivo de fercontreras"}
-  ],
+  "palette_forbidden": [],
   "logo": {
-    "on_light": {"pending": "no existe logo; el sitio usa el nombre en texto"},
-    "on_dark": {"pending": "no existe logo ni wordmark; el sitio usa el nombre en texto"},
-    "icon_square": {"path": "public/favicon.svg", "format": "svg", "width": 32, "height": 32, "note": "monograma «F» con gradiente dorado→morado sobre fondo oscuro; ver pending[1], contradice la paleta vigente"}
+    "on_light": {
+      "pending": "no existe logo; el sitio usa el nombre en texto"
+    },
+    "on_dark": {
+      "pending": "no existe logo ni wordmark; el sitio usa el nombre en texto"
+    },
+    "icon_square": {
+      "path": "public/favicon.svg",
+      "format": "svg",
+      "width": 32,
+      "height": 32,
+      "note": "monograma «F» con gradiente dorado→morado sobre fondo oscuro; ver pending[1], contradice la paleta vigente"
+    }
   },
   "fonts": {
-    "primary": {"family": "Poppins", "role": "Headings (sys.font.heading); pesos 400-800 vía Google Fonts", "file": null, "pending": "sin archivo local", "license": {"pending": "no escrita en el repo"}},
-    "secondary": {"family": "Inter", "role": "Cuerpo (sys.font.body); pesos 300-800 vía Google Fonts", "file": null, "pending": "sin archivo local", "license": {"pending": "no escrita en el repo"}},
-    "mono": {"family": "JetBrains Mono", "role": "Datos, labels, badges LV.XX, uppercase (sys.font.mono); pesos 400-700", "file": null, "pending": "sin archivo local", "license": {"pending": "no escrita en el repo"}}
+    "primary": {
+      "family": "Poppins",
+      "role": "Headings (sys.font.heading); pesos 400-800 vía Google Fonts",
+      "pending": "sin archivo local",
+      "license": {
+        "pending": "no escrita en el repo"
+      }
+    },
+    "secondary": {
+      "family": "Inter",
+      "role": "Cuerpo (sys.font.body); pesos 300-800 vía Google Fonts",
+      "pending": "sin archivo local",
+      "license": {
+        "pending": "no escrita en el repo"
+      }
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "role": "Datos, labels, badges LV.XX, uppercase (sys.font.mono); pesos 400-700",
+      "pending": "sin archivo local",
+      "license": {
+        "pending": "no escrita en el repo"
+      }
+    }
   },
   "og": {
-    "template": {"path": "scripts/gen-og.py", "note": "PIL 1200x630: grid sutil, orbes cian, marco biselado (margen del marco 60px, bisel 26px), tag «[ SYSTEM ] ONLINE», nombre en dos líneas, subtítulo mono"},
-    "safe_margin_px": {"pending": "no declarado; el script usa 60px de marco y empieza el texto en x≈108, sin llamarlo margen seguro"},
-    "title_max_lines": {"pending": "no declarado; el script pone el nombre en 2 líneas fijas"},
-    "default_image": {"path": "public/og.png", "format": "png", "width": 1200, "height": 630, "url": "https://www.fercontreras.com/og.png"}
+    "template": {
+      "path": "scripts/gen-og.py",
+      "note": "PIL 1200x630: grid sutil, orbes cian, marco biselado (margen del marco 60px, bisel 26px), tag «[ SYSTEM ] ONLINE», nombre en dos líneas, subtítulo mono"
+    },
+    "safe_margin_px": {
+      "pending": "no declarado; el script usa 60px de marco y empieza el texto en x≈108, sin llamarlo margen seguro"
+    },
+    "title_max_lines": {
+      "pending": "no declarado; el script pone el nombre en 2 líneas fijas"
+    },
+    "default_image": {
+      "path": "public/og.png",
+      "format": "png",
+      "width": 1200,
+      "height": 630,
+      "url": "https://www.fercontreras.com/og.png"
+    }
   },
   "rules": [
     "Concepto: ventana «System» de Solo Leveling: paneles de cristal translúcido, esquinas biseladas, borde con glow, mono uppercase para datos, badges LV.XX.",
@@ -41,7 +107,11 @@
     "Todo componente nuevo importa tokens de systemTokens.js; nada de hex, bevel ni glow a mano.",
     "Todo primitivo respeta prefers-reduced-motion.",
     "La técnica System transfiere a otras marcas; el color no.",
-    "Home como presentación: sin copy de venta ni de búsqueda de empleo."
+    "Home como presentación: sin copy de venta ni de búsqueda de empleo.",
+    "No: blanco puro #FFFFFF para texto — DESIGN.md §2: usar sys.color.text",
+    "No: morado, dorado, naranja y ámbar como color de UI — DESIGN.md §4 paleta unificada 2026-05-30: todo el sitio es azul/cian",
+    "No: hex, bevel o glow hardcodeados — DESIGN.md: todo componente importa de src/styles/systemTokens.js",
+    "No: usar el cian en otras marcas — DESIGN.md §6: el cian es exclusivo de fercontreras"
   ],
   "tone": "Operador que sube de nivel con disciplina sistémica. Presentación, no venta. Copy principal en inglés (og:locale en_US, alterno es_MX).",
   "sources": {
@@ -52,14 +122,41 @@
     "logo": "public/favicon.svg (viewBox leído)"
   },
   "pending": [
-    {"item": "Color de fondo", "options": ["#05070D (DESIGN.md, systemTokens.js, theme-color, gen-og.py)", "#0A0A0F (soloLevelingTheme.js colors.background.primary)"], "used": "#05070D porque DESIGN.md declara a systemTokens como fuente única"},
-    {"item": "Favicon fuera de paleta", "detail": "public/favicon.svg usa gradiente dorado #FDCB6E → morado #6C5CE7, contra la regla «cero morado/dorado/ámbar». Decidir rediseño"},
-    {"item": "Ámbar", "options": ["#FBBF24 (tabla de DESIGN.md §2)", "#7DD3FC (systemTokens.js sys.color.amber, «all-blue»)"], "used": "#7DD3FC por la paleta unificada de DESIGN.md §4; DESIGN.md §2 está desactualizada"},
-    {"item": "Acento shadow", "detail": "#6D5DD3 sigue en systemTokens.js y en src/components/ProjectCard.jsx aunque DESIGN.md §4 dice cero morado en src/"},
-    {"item": "Fuentes de la OG", "detail": "scripts/gen-og.py usa Arial Bold y Menlo del sistema de macOS, no Poppins/JetBrains Mono; el script no corre en Linux"},
-    {"item": "Logo", "detail": "no hay logo ni wordmark en ninguna versión (claro/oscuro)"},
-    {"item": "Archivos de fuente y licencias", "detail": "Poppins, Inter y JetBrains Mono solo vienen de Google Fonts; ninguna licencia escrita"},
-    {"item": "Margen seguro y máximo de líneas OG", "detail": "no declarados"},
-    {"item": "CLAUDE.md del repo", "detail": "no existe; las reglas de marca salen solo de DESIGN.md"}
+    {
+      "name": "Color de fondo",
+      "question": "Decidir: Color de fondo"
+    },
+    {
+      "name": "Favicon fuera de paleta",
+      "question": "public/favicon.svg usa gradiente dorado #FDCB6E → morado #6C5CE7, contra la regla «cero morado/dorado/ámbar». Decidir rediseño"
+    },
+    {
+      "name": "Ámbar",
+      "question": "Decidir: Ámbar"
+    },
+    {
+      "name": "Acento shadow",
+      "question": "#6D5DD3 sigue en systemTokens.js y en src/components/ProjectCard.jsx aunque DESIGN.md §4 dice cero morado en src/"
+    },
+    {
+      "name": "Fuentes de la OG",
+      "question": "scripts/gen-og.py usa Arial Bold y Menlo del sistema de macOS, no Poppins/JetBrains Mono; el script no corre en Linux"
+    },
+    {
+      "name": "Logo",
+      "question": "no hay logo ni wordmark en ninguna versión (claro/oscuro)"
+    },
+    {
+      "name": "Archivos de fuente y licencias",
+      "question": "Poppins, Inter y JetBrains Mono solo vienen de Google Fonts; ninguna licencia escrita"
+    },
+    {
+      "name": "Margen seguro y máximo de líneas OG",
+      "question": "no declarados"
+    },
+    {
+      "name": "CLAUDE.md del repo",
+      "question": "no existe; las reglas de marca salen solo de DESIGN.md"
+    }
   ]
 }
